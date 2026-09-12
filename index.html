@@ -6,8 +6,8 @@
   <title>Анатолий Шабаршов — тренер по плаванию в Москве. Группы и персональные тренировки</title>
   <meta name="description" content="Тренер по плаванию для взрослых в Москве. Мастер спорта, 8 лет тренерской работы. Групповые тренировки в бассейне МГТУ им. Баумана, персональные занятия, подготовка к открытой воде и триатлону.">
   <link rel="canonical" href="https://shabarshov.ru/">
-  <meta name="theme-color" content="#0B1A2B">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B1A2B'/%3E%3Cpath d='M10 38c6-6 10-6 16 0s10 6 16 0 10-6 12 0' fill='none' stroke='%2350B5FF' stroke-width='5' stroke-linecap='round'/%3E%3Ccircle cx='24' cy='22' r='6' fill='%23fff'/%3E%3C/svg%3E">
+  <meta name="theme-color" content="#7D6BE0">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23fff'/%3E%3Ctext x='8' y='26' font-family='Montserrat,Arial' font-weight='800' font-size='18' fill='%237D6BE0'%3ESHA%3C/text%3E%3Ctext x='8' y='46' font-family='Montserrat,Arial' font-weight='800' font-size='18' fill='%237D6BE0'%3EBAR%3C/text%3E%3C/svg%3E">
 
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ru_RU">
@@ -18,6 +18,9 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="preload" href="fonts/inter-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;800&display=swap">
   <link rel="stylesheet" href="css/style.css">
 
   <script type="application/ld+json">
@@ -84,8 +87,7 @@
 <header class="nav" id="top">
   <div class="nav__in">
     <a class="nav__brand" href="#top" aria-label="SHABARSHOV swimming club — на главную">
-      <span class="nav__logo" aria-hidden="true">SHA<br>BAR<br>SHOV</span>
-      <span class="nav__name">swimming club</span>
+      <span class="logo logo--s" aria-hidden="true"><span class="logo__club">swimming<br>club</span><span class="logo__word">SHA<br>BAR<br>SHOV</span></span>
     </a>
     <nav class="nav__links" aria-label="Разделы">
       <a href="#trener">Тренер</a>
@@ -103,6 +105,7 @@
   <!-- ГЛАВНЫЙ ЭКРАН -->
   <section class="hero">
     <div class="hero__in">
+    <div class="hero__text">
       <p class="hero__eyebrow reveal">Тренер по плаванию · Москва</p>
       <h1 class="hero__title reveal d1">Плавать легко,<br>быстро и&nbsp;далеко.</h1>
       <p class="hero__lead reveal d2">Учу взрослых плавать: с нуля, от первых 100 метров до километра и дальше, к стартам на открытой воде и триатлону. Группы и персональные тренировки в бассейнах Москвы. Мастер спорта, восемь лет тренерской работы.</p>
@@ -111,18 +114,13 @@
         <a class="btn btn--ghost" href="#formaty">Смотреть форматы</a>
       </div>
     </div>
-    <figure class="hero__figure reveal d2" aria-label="Фото Анатолия Шабаршова">
-      <div class="hero__photo" role="img" aria-label="Место для фотографии тренера">
-        <!-- ФОТО: заменить на img/hero.jpg, когда Анатолий пришлёт -->
-        <svg viewBox="0 0 400 520" aria-hidden="true">
-          <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#123A5C"/><stop offset="1" stop-color="#0B1A2B"/></linearGradient></defs>
-          <rect width="400" height="520" fill="url(#g)"/>
-          <path d="M-20 380c50-40 90-40 140 0s90 40 140 0 90-40 140 0" fill="none" stroke="#50B5FF" stroke-width="10" stroke-linecap="round" opacity=".9"/>
-          <path d="M-20 430c50-40 90-40 140 0s90 40 140 0 90-40 140 0" fill="none" stroke="#50B5FF" stroke-width="10" stroke-linecap="round" opacity=".45"/>
-          <path d="M-20 480c50-40 90-40 140 0s90 40 140 0 90-40 140 0" fill="none" stroke="#50B5FF" stroke-width="10" stroke-linecap="round" opacity=".2"/>
-        </svg>
+    <figure class="hero__figure reveal d2">
+      <div class="hero__card" role="img" aria-label="Логотип SHABARSHOV swimming club">
+        <!-- ФОТО: когда Анатолий пришлёт, сюда встанет <img src="img/hero.jpg"> вместо логотипа -->
+        <span class="logo logo--xl"><span class="logo__club">swimming<br>club</span><span class="logo__word">SHA<br>BAR<br>SHOV</span></span>
       </div>
     </figure>
+    </div>
   </section>
 
   <!-- ЦИФРЫ -->
@@ -136,7 +134,7 @@
   </section>
 
   <!-- О ТРЕНЕРЕ -->
-  <section class="about" id="trener">
+  <section class="about anchor" id="trener">
     <div class="about__in">
       <h2 class="reveal">Анатолий Шабаршов</h2>
       <p class="about__lead reveal d1">Я плаваю с детства и прошёл путь от юношеских сборных до Masters. Знаю, как чувствует себя тело в воде на каждом уровне, и учу этому взрослых: спокойно, по шагам, в воде рядом с вами.</p>
@@ -162,7 +160,7 @@
   </section>
 
   <!-- ФОРМАТЫ -->
-  <section class="formats" id="formaty">
+  <section class="formats anchor" id="formaty">
     <div class="formats__in">
       <h2 class="reveal">Форматы тренировок</h2>
       <div class="formats__grid">
@@ -194,14 +192,14 @@
           <h3>Тренировка недели в Telegram</h3>
           <p>Каждую неделю публикую готовую самостоятельную тренировку: инвентарь, разминка, основное задание, заминка. Плюс новости плавания и разборы техники.</p>
           <p class="fmt__price">канал клуба</p>
-          <a class="link" href="https://t.me/shabarshov" target="_blank" rel="noopener">Подписаться →</a>
+          <a class="link" href="https://t.me/shabarshov" target="_blank" rel="noopener" data-channel>Подписаться на канал →</a>
         </article>
       </div>
     </div>
   </section>
 
   <!-- ЦЕНЫ И ОПЛАТА -->
-  <section class="prices" id="ceny">
+  <section class="prices anchor" id="ceny">
     <div class="prices__in">
       <h2 class="reveal">Цены и оплата</h2>
       <p class="prices__lead reveal d1">Точные цены назову в переписке: они зависят от бассейна и формата. Оплата после первого занятия, переводом по СБП.</p>
@@ -216,7 +214,7 @@
   </section>
 
   <!-- ГДЕ И КОГДА -->
-  <section class="where" id="gde">
+  <section class="where anchor" id="gde">
     <div class="where__in">
       <h2 class="reveal">Где и когда</h2>
       <div class="where__grid">
@@ -258,21 +256,21 @@
   </section>
 
   <!-- ВОПРОСЫ -->
-  <section class="faq" id="faq">
+  <section class="faq anchor" id="faq">
     <div class="faq__in">
       <h2 class="reveal">Частые вопросы</h2>
-      <details class="reveal"><summary>Я плаваю плохо или не плаваю совсем. С чего начать?</summary><p>С персональных тренировок. Группа в Бауманке для тех, кто уже проплывает километр. Если вы начинаете с нуля или держитесь на воде, но не знакомы со стилями, первые занятия проходят один на один: так техника ставится быстрее и без страха.</p></details>
-      <details class="reveal d1"><summary>Что взять с собой на первую тренировку?</summary><p>Справку для бассейна, купальник или плавки, шапочку, очки, сланцы и полотенце. Свой инвентарь, если есть. Что докупить, подскажу после первого занятия.</p></details>
-      <details class="reveal d1"><summary>Нужна ли справка в бассейн?</summary><p>Да, стандартная справка для бассейна. Как и где её получить, расскажу при записи.</p></details>
-      <details class="reveal d2"><summary>Что, если я пропущу занятие в группе?</summary><p>Предупредите заранее, и мы найдём, как отработать. Пропуск без предупреждения не переносится.</p></details>
-      <details class="reveal d2"><summary>Как проходит тренировка?</summary><p>Час в воде: разминка, основное задание на технику или выносливость, заминка. Я в воде вместе с группой и показываю упражнения сам.</p></details>
-      <details class="reveal d3"><summary>Готовите ли к открытой воде и триатлону?</summary><p>Да. Сам регулярно выступаю на X-Waters и SwimCup, готовлю к первым стартам на 1–3 км и к плавательному этапу триатлона.</p></details>
-      <details class="reveal d3"><summary>Можно ли прийти на пробную тренировку?</summary><p>Да, напишите мне, и договоримся о дне. Первое занятие покажет ваш уровень и поможет выбрать формат.</p></details>
+      <details class="reveal"><summary>Я плаваю плохо или не плаваю совсем. С чего начать?</summary><div class="faq__body"><p>С персональных тренировок. Группа в Бауманке для тех, кто уже проплывает километр. Если вы начинаете с нуля или держитесь на воде, но не знакомы со стилями, первые занятия проходят один на один: так техника ставится быстрее и без страха.</p></div></details>
+      <details class="reveal d1"><summary>Что взять с собой на первую тренировку?</summary><div class="faq__body"><p>Справку для бассейна, купальник или плавки, шапочку, очки, сланцы и полотенце. Свой инвентарь, если есть. Что докупить, подскажу после первого занятия.</p></div></details>
+      <details class="reveal d1"><summary>Нужна ли справка в бассейн?</summary><div class="faq__body"><p>Да, стандартная справка для бассейна. Как и где её получить, расскажу при записи.</p></div></details>
+      <details class="reveal d2"><summary>Что, если я пропущу занятие в группе?</summary><div class="faq__body"><p>Предупредите заранее, и мы найдём, как отработать. Пропуск без предупреждения не переносится.</p></div></details>
+      <details class="reveal d2"><summary>Как проходит тренировка?</summary><div class="faq__body"><p>Час в воде: разминка, основное задание на технику или выносливость, заминка. Я в воде вместе с группой и показываю упражнения сам.</p></div></details>
+      <details class="reveal d3"><summary>Готовите ли к открытой воде и триатлону?</summary><div class="faq__body"><p>Да. Сам регулярно выступаю на X-Waters и SwimCup, готовлю к первым стартам на 1–3 км и к плавательному этапу триатлона.</p></div></details>
+      <details class="reveal d3"><summary>Можно ли прийти на пробную тренировку?</summary><div class="faq__body"><p>Да, напишите мне, и договоримся о дне. Первое занятие покажет ваш уровень и поможет выбрать формат.</p></div></details>
     </div>
   </section>
 
   <!-- ЗАПИСЬ -->
-  <section class="cta" id="zapis">
+  <section class="cta anchor" id="zapis">
     <div class="cta__in">
       <h2 class="reveal">Записаться на тренировку</h2>
       <p class="reveal d1">Напишите, где и как хотите заниматься. Отвечу в течение дня и предложу ближайшее время.</p>
@@ -288,10 +286,11 @@
 
 <footer class="foot">
   <div class="foot__in">
-    <p class="foot__brand">SHABARSHOV swimming club</p>
+    <a class="foot__brand" href="#top"><span class="logo logo--s" aria-hidden="true"><span class="logo__club">swimming<br>club</span><span class="logo__word">SHA<br>BAR<br>SHOV</span></span><span class="visually-hidden">SHABARSHOV swimming club</span></a>
     <nav class="foot__social" aria-label="Соцсети">
       <a href="https://www.instagram.com/shabarshov_/" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://t.me/shabarshov" target="_blank" rel="noopener">Telegram</a>
+      <a href="https://t.me/shabarshov" target="_blank" rel="noopener" data-channel>Telegram-канал</a>
+      <a href="https://t.me/shabarshov" target="_blank" rel="noopener">Написать тренеру</a>
       <a href="https://profi.ru/sport/swim/" target="_blank" rel="noopener">Профи.ру</a>
     </nav>
     <p class="foot__note">Анатолий Шабаршов, тренер по плаванию, Москва. © <span id="year">2026</span></p>
