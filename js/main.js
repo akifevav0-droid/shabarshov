@@ -1,4 +1,4 @@
-// Появление блоков, тень шапки при прокрутке, подсветка активного раздела, год в подвале.
+// Появление блоков, тень шапки, активный раздел в меню, панель записи на телефоне, год в подвале.
 (function () {
   var items = document.querySelectorAll('.reveal');
   function showAll() { items.forEach(function (el) { el.classList.add('is-visible'); }); }
@@ -15,6 +15,9 @@
   }
 
   var nav = document.querySelector('.nav');
+  var dock = document.querySelector('.dock');
+  var hero = document.querySelector('.hero');
+  var zapis = document.getElementById('zapis');
   var links = document.querySelectorAll('.nav__links a');
   var sections = [];
   links.forEach(function (a) {
@@ -22,14 +25,22 @@
     if (s) sections.push({ a: a, s: s });
   });
   function onScroll() {
-    if (nav) nav.classList.toggle('is-scrolled', window.scrollY > 8);
-    var y = window.scrollY + 120, current = null;
-    sections.forEach(function (x) { if (x.s.offsetTop <= y) current = x; });
-    sections.forEach(function (x) { x.a.classList.toggle('is-active', x === current); });
+    var y = window.scrollY;
+    if (nav) nav.classList.toggle('is-scrolled', y > 8);
+    // Панель записи: после главного экрана и до блока записи
+    if (dock && hero && zapis) {
+      var pastHero = y > hero.offsetTop + hero.offsetHeight - 80;
+      var beforeZapis = y + window.innerHeight < zapis.offsetTop + 40;
+      dock.classList.toggle('is-visible', pastHero && beforeZapis);
+    }
+    var cur = null;
+    sections.forEach(function (x) { if (x.s.offsetTop <= y + 120) cur = x; });
+    sections.forEach(function (x) { x.a.classList.toggle('is-active', x === cur); });
   }
   window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
   onScroll();
 
-  var y = document.getElementById('year');
-  if (y) y.textContent = String(new Date().getFullYear());
+  var yr = document.getElementById('year');
+  if (yr) yr.textContent = String(new Date().getFullYear());
 })();
