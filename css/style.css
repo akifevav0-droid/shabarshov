@@ -638,3 +638,23 @@ h1.rv, h2.rv { transition: clip-path 1.3s var(--ease-out), opacity .9s var(--eas
 }
 @media (max-width: 734px) { .nav { background: transparent; border-bottom: 0; } }
 .trener__meta { margin-bottom: 14px; font-size: 14px; font-weight: 500; letter-spacing: .02em; color: var(--lav-deep); }
+
+/* Кнопки заметнее на светлом фоне */
+.btn:not(.btn--outline) { background: #E6E2EE; color: #4E4866; box-shadow: inset 0 0 0 1px rgba(110, 103, 136, .28); }
+.btn:not(.btn--outline):hover { background: #DCD7E6; }
+
+/* Подвал: одна строка без логотипа */
+.foot__legal { display: block; width: auto; padding-top: 16px; border-top: 1px solid var(--line); font-size: 12px; color: var(--grey); text-align: center; white-space: nowrap; }
+.foot__legal a { color: var(--grey); }
+
+@media (max-width: 734px) {
+  /* Тренер по центру, как остальные разделы */
+  .trener__body, .trener__body * { text-align: center; }
+  .trener__meta, .trener h2, .trener .lead { margin-left: auto; margin-right: auto; }
+  .trener .more > summary { justify-content: center !important; }
+  .trener .bio li, .trener .bio li * { text-align: left; }
+  /* «Все цены и абонементы» по ширине текста */
+  .formats__more .btn { width: auto; }
+  .foot__legal { font-size: 11px; }
+}
+@media (max-width: 734px) { .trener h2, .trener .lead, .trener .trener__meta { text-align: center; } }
