@@ -1,41 +1,36 @@
-// Появление блоков, тень шапки, активный раздел в меню, панель записи на телефоне, год в подвале.
+// Ступенчатое появление, активный раздел в шапке, панель записи на телефоне, год.
 (function () {
-  var items = document.querySelectorAll('.reveal');
-  function showAll() { items.forEach(function (el) { el.classList.add('is-visible'); }); }
+  var items = document.querySelectorAll('.rv');
+  function showAll() { items.forEach(function (el) { el.classList.add('on'); }); }
   if ('IntersectionObserver' in window) {
+    var queue = 0;
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+        if (!e.isIntersecting) return;
+        io.unobserve(e.target);
+        var el = e.target, delay = (queue++ % 6) * 70;
+        setTimeout(function () { el.classList.add('on'); }, delay);
+        setTimeout(function () { queue = Math.max(0, queue - 1); }, 400);
       });
-    }, { threshold: 0.05 });
+    }, { threshold: 0.08 });
     items.forEach(function (el) { io.observe(el); });
-    setTimeout(showAll, 2000); // страховка: через две секунды видно всё
-  } else {
-    showAll();
-  }
+    setTimeout(showAll, 2500);
+  } else { showAll(); }
 
-  var nav = document.querySelector('.nav');
-  var dock = document.querySelector('.dock');
-  var hero = document.querySelector('.hero');
-  var zapis = document.getElementById('zapis');
   var links = document.querySelectorAll('.nav__links a');
   var sections = [];
-  links.forEach(function (a) {
-    var s = document.querySelector(a.getAttribute('href'));
-    if (s) sections.push({ a: a, s: s });
-  });
+  links.forEach(function (a) { var s = document.querySelector(a.getAttribute('href')); if (s) sections.push({ a: a, s: s }); });
+  var dock = document.querySelector('.dock'), hero = document.querySelector('.hero'), zapis = document.getElementById('zapis');
   function onScroll() {
     var y = window.scrollY;
-    if (nav) nav.classList.toggle('is-scrolled', y > 8);
-    // Панель записи: после главного экрана и до блока записи
     if (dock && hero && zapis) {
-      var pastHero = y > hero.offsetTop + hero.offsetHeight - 80;
-      var beforeZapis = y + window.innerHeight < zapis.offsetTop + 40;
-      dock.classList.toggle('is-visible', pastHero && beforeZapis);
+      var past = y > hero.offsetTop + hero.offsetHeight - 60;
+      var before = y + window.innerHeight < zapis.offsetTop + 40;
+      dock.classList.toggle('on', past && before);
     }
     var cur = null;
-    sections.forEach(function (x) { if (x.s.offsetTop <= y + 120) cur = x; });
-    sections.forEach(function (x) { x.a.classList.toggle('is-active', x === cur); });
+    sections.forEach(function (x) { if (x.s.offsetTop <= y + 100) cur = x; });
+    sections.forEach(function (x) { x.a.classList.toggle('on', x === cur); });
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll);
