@@ -547,3 +547,13 @@ h2 { font-size: clamp(28px, 3.4vw, 44px); max-width: 20em; margin: 0 auto 16px; 
 .trener .more .facts { margin-top: 28px; }
 .trener .more .bio { margin-top: 28px; }
 @media (max-width: 900px) { .trener__photo { position: static; } }
+
+/* Кнопки светлее: нежная лаванда вместо тёмно-фиолетовой заливки */
+.btn { background: #E9E2FA; color: #5E45B8; }
+.btn:hover { background: #DDD3F7; }
+.btn--outline { background: transparent; color: var(--head); border-color: rgba(123, 95, 208, .35); }
+.btn--outline:hover { background: rgba(123, 95, 208, .06); }
+.pr__best { background: radial-gradient(80% 120% at 100% 0%, rgba(122, 196, 255, .30) 0%, transparent 60%), linear-gradient(135deg, #EFEAFC 0%, #E2D8F8 100%); color: var(--head); box-shadow: none; }
+.pr__badge { background: #fff; color: var(--lav-deep); }
+.pr__best-per { opacity: 1; color: var(--text); }
+.pr__best-btn { background: #fff; color: #5E45B8; }
