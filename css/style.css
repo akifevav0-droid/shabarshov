@@ -978,3 +978,17 @@ body { padding-top: 0; }
 @media (min-width: 735px) { .list li .arrow { top: 34px !important; right: 30px !important; } .list li b { padding-right: 110px; } }
 @media (max-width: 734px) { .list li .arrow { top: 25px !important; right: 20px !important; } .list li b { padding-right: 96px; } .list__price { padding-top: 14px; font-size: 20px; } }
 @media (hover: hover) and (min-width: 901px) { .list li:hover { background: #FBFAFC; } }
+
+/* ===== Карта: мягкая синхронная пульсация, подписи на телефоне по одному правилу ===== */
+@keyframes soft-dot { 0%, 100% { box-shadow: 0 0 0 0 rgba(148, 119, 224, .22); } 50% { box-shadow: 0 0 0 9px rgba(148, 119, 224, 0), 0 0 14px 2px rgba(148, 119, 224, .18); } }
+@keyframes soft-label { 0%, 100% { box-shadow: 0 4px 14px -8px rgba(40, 38, 55, .22); } 50% { box-shadow: 0 4px 14px -8px rgba(40, 38, 55, .22), 0 0 16px 1px rgba(148, 119, 224, .22); } }
+.mpin .mpin__dot::before, .mpin:nth-child(n) .mpin__dot::before { animation: soft-dot 5s ease-in-out infinite !important; animation-delay: 0s !important; }
+@media (max-width: 900px) {
+  .mpin .mpin__card, .mpin.is-open .mpin__card { animation: soft-label 5s ease-in-out infinite !important; animation-delay: 0s !important; }
+  .mpin.is-open .mpin__card { background: #FFFFFF; box-shadow: 0 4px 14px -8px rgba(40, 38, 55, .22), 0 0 0 1px rgba(110, 103, 136, .22); }
+  .mpin.is-open .mpin__dot::before { animation-name: soft-dot !important; }
+  /* подпись сбоку от точки, по центру по высоте */
+  .mpin .mpin__card { top: 50% !important; bottom: auto !important; transform: translateY(-50%) !important; white-space: nowrap; }
+  .mpin--l2 .mpin__card, .mpin--b .mpin__card, .mpin--t .mpin__card { right: 16px !important; left: auto !important; }
+  .mpin--tr .mpin__card { left: 16px !important; right: auto !important; }
+}
