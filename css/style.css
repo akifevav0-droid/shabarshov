@@ -540,3 +540,10 @@ h2 { font-size: clamp(28px, 3.4vw, 44px); max-width: 20em; margin: 0 auto 16px; 
 .trener .facts dd { max-width: 18em; }
 .trener .more > summary { justify-content: flex-start !important; }
 @media (max-width: 900px) { .trener__body, .trener__body * { text-align: left; } }
+
+/* Тренер: фото не скачет при раскрытии; цифры внутри «Подробнее» */
+.trener { align-items: start !important; }
+.trener__photo { position: sticky; top: calc(var(--nav-h) + 24px); }
+.trener .more .facts { margin-top: 28px; }
+.trener .more .bio { margin-top: 28px; }
+@media (max-width: 900px) { .trener__photo { position: static; } }
