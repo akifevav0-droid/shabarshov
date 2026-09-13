@@ -104,7 +104,15 @@ h1.rv.on, h2.rv.on, .facts.rv.on { clip-path: inset(-10% -5% -15% -5%); }
 .facts dt { font-family: var(--head-font); font-weight: 700; font-size: clamp(48px, 5vw, 72px); line-height: 1; letter-spacing: -0.03em; color: var(--head); }
 .facts dt.accent { color: var(--lav-deep); }
 .facts dd { font-size: 14px; color: var(--grey); margin-top: 12px; max-width: 16em; }
-.regalia { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); font-size: 13px; letter-spacing: .04em; color: var(--text); }
+.more { margin-top: 40px; }
+.more > summary { display: inline-flex; align-items: center; gap: 12px; min-height: 48px; padding: 0 22px 0 26px; border: 1px solid var(--lav); border-radius: 980px; color: var(--lav-deep); font-size: 15px; font-weight: 500; cursor: pointer; list-style: none; transition: background .3s var(--ease); }
+.more > summary::-webkit-details-marker { display: none; }
+.more > summary::after { content: ""; width: 14px; height: 14px; background: linear-gradient(currentColor, currentColor) center / 14px 1.5px no-repeat, linear-gradient(currentColor, currentColor) center / 1.5px 14px no-repeat; transition: transform .35s var(--ease-out); }
+.more[open] > summary::after { transform: rotate(45deg); }
+.more > summary:hover { background: #F1ECFC; }
+.bio { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; margin-top: 32px; padding-top: 28px; border-top: 1px solid var(--line); animation: fade .45s var(--ease-out); }
+.bio b { display: block; font-size: 11px; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--lav-deep); margin-bottom: 10px; }
+.bio p { font-size: 15px; color: var(--text); }
 
 /* Списки на линиях — разметка дорожки */
 .list, .pools, .pricelist { list-style: none; counter-reset: n; text-align: left; }
@@ -154,7 +162,10 @@ h1.rv.on, h2.rv.on, .facts.rv.on { clip-path: inset(-10% -5% -15% -5%); }
 .quote p { font-family: var(--head-font); font-weight: 700; font-size: clamp(28px, 3.8vw, 52px); line-height: 1.15; letter-spacing: -0.03em; color: var(--head); max-width: 18em; margin: 0 auto; text-wrap: balance; }
 .qm { color: var(--lav); }
 .band--quote { padding: calc(var(--s-section) * .75) 0; }
-.quote footer { margin-top: 28px; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--grey); }
+.rating { margin-top: 32px; display: inline-flex; align-items: center; flex-wrap: wrap; justify-content: center; gap: 8px 12px; padding: 10px 20px; border-radius: 980px; background: #FFF; border: 1px solid rgba(123, 95, 208, .2); }
+.stars { color: var(--lav); font-size: 15px; letter-spacing: .12em; }
+.rating__score { font-family: var(--head-font); font-weight: 700; font-size: 16px; color: var(--head); }
+.rating__src { font-size: 13px; color: var(--grey); }
 
 /* Вопросы */
 .qa { border-bottom: 1px solid var(--line); }
@@ -214,7 +225,10 @@ h1.rv.on, h2.rv.on, .facts.rv.on { clip-path: inset(-10% -5% -15% -5%); }
   .facts > div:last-child { border-bottom: 1px solid var(--line); }
   .facts dt { font-size: 40px; }
   .facts dd { margin-top: 0; font-size: 15px; }
-  .regalia { border-top: 0; padding-top: 0; margin-top: 24px; line-height: 1.6; }
+  .more { margin-top: 28px; }
+  .more > summary { width: 100%; justify-content: space-between; }
+  .bio { grid-template-columns: 1fr; gap: 20px; margin-top: 20px; padding-top: 20px; }
+  .rating { border-radius: 20px; }
   .list, .pools { margin-top: 32px; }
   .list li { grid-template-columns: 36px minmax(0, 1fr); gap: 8px 14px; padding: 24px 0; }
   .list p, .list .arrow { grid-column: 2; }
