@@ -58,7 +58,7 @@ h1.rv.on, h2.rv.on { clip-path: inset(-10% -5% -15% -5%); }
 .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 30px; border-radius: 980px; font-size: 15px; font-weight: 500; letter-spacing: .01em; color: #fff; background: linear-gradient(100deg, #9477E0 0%, #7B5FD0 55%, #9477E0 100%) 0 0 / 200% 100%; transition: background-position .6s var(--ease-out); }
 .btn:hover { background-position: 100% 0; }
 .btn:active { transform: scale(.98); }
-.btn--outline { background: transparent; color: var(--head); border: 1px solid rgba(36, 28, 79, .25); transition: border-color .3s var(--ease), background .3s var(--ease); }
+.btn--outline { background: transparent; color: var(--head); border: 1px solid rgba(123, 95, 208, .6); transition: border-color .3s var(--ease), background .3s var(--ease); }
 .btn--outline:hover { border-color: var(--head); background: rgba(255, 255, 255, .5); }
 .arrow { display: inline-flex; align-items: center; color: var(--lav-deep); font-size: 15px; white-space: nowrap; text-decoration: underline; text-decoration-color: rgba(123, 95, 208, .35); text-underline-offset: 4px; transition: text-decoration-color .3s var(--ease); }
 .arrow:hover { text-decoration-color: var(--lav-deep); }
@@ -124,14 +124,14 @@ h1.rv.on, h2.rv.on { clip-path: inset(-10% -5% -15% -5%); }
 
 /* Списки на линиях — разметка дорожки */
 .list { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 40px; text-align: left; }
-.list li { position: relative; display: flex; flex-direction: column; gap: 16px; padding: 32px; border-radius: 24px; background: #fff; border: 1px solid transparent; overflow: hidden; }
+.list li { position: relative; display: flex; flex-direction: column; gap: 16px; padding: 32px; border-radius: 24px; background: #fff; border: 1px solid rgba(123, 95, 208, .18); overflow: hidden; }
 .list li::after { content: ""; position: absolute; left: 0; bottom: 0; height: 3px; width: var(--p); background: var(--lav); transition: --p .9s var(--ease-out); }
 .list li:hover::after { --p: 100%; }
 .list b { font-family: var(--head-font); font-weight: 700; font-size: 28px; line-height: 1.2; letter-spacing: -0.02em; color: var(--head); transition: color .3s var(--ease); }
 .list li:hover b { color: var(--lav-deep); }
 .list p { color: var(--text); font-size: 16px; flex: 1; }
 .list__price { font-family: var(--head-font); font-weight: 700; font-size: 28px; letter-spacing: -0.02em; color: var(--head); white-space: nowrap; }
-.list li:nth-child(2) { border-color: var(--lav); }
+
 .list__price small { display: block; font-family: var(--sans); font-weight: 400; font-size: 13px; letter-spacing: 0; color: var(--grey-2); margin-top: 4px; }
 .list .arrow { align-self: flex-start; }
 
@@ -252,10 +252,9 @@ a.rating:hover .rating__src { color: var(--lav-deep); text-decoration: underline
   .hero__photo { order: -1; justify-self: center; width: min(100%, 340px); height: auto; aspect-ratio: 4 / 5; border-radius: 24px; }
   .hero__photo img { object-position: 50% 8%; }
   .hero__title { font-size: 40px; margin-bottom: 16px; }
-  .hero__btns { gap: 16px; }
   .hero__link { align-self: center; }
   .kicker { font-size: 13px; margin-bottom: 12px; }
-  .hero__btns { flex-direction: column; align-items: stretch; margin-top: 28px; }
+  .hero__btns { flex-direction: column; align-items: stretch; gap: 16px; margin-top: 28px; }
   .lead { font-size: 17px; }
   .facts { display: grid; grid-template-columns: 1fr; gap: 0; margin-top: 36px; }
   .facts > div { display: grid; grid-template-columns: 96px minmax(0, 1fr); align-items: center; gap: 16px; padding: 14px 0; border-top: 1px solid var(--line); }
@@ -268,7 +267,6 @@ a.rating:hover .rating__src { color: var(--lav-deep); text-decoration: underline
   .list { grid-template-columns: 1fr; gap: 12px; margin-top: 32px; }
   .list li { gap: 10px; padding: 24px 22px; border-radius: 20px; }
 
-  .list__price { font-size: 19px; }
   .list b { font-size: 24px; }
   .qa summary { font-size: 17px; }
   .end__in { padding-top: 88px; padding-bottom: 36px; }
@@ -332,8 +330,8 @@ a.rating:hover .rating__src { color: var(--lav-deep); text-decoration: underline
    Метка раздела — линия дна с поперечиной «Т»; на светлых полосах — линии дорожек. */
 .eyebrow { display: inline-flex; align-items: center; gap: 14px; margin-bottom: 20px; font-size: 12px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--lav-deep); }
 .eyebrow::before { content: ""; width: 44px; height: 14px; flex: none; background: linear-gradient(var(--lav), var(--lav)) 0 50% / 100% 2px no-repeat, linear-gradient(var(--lav), var(--lav)) 100% 0 / 2px 100% no-repeat; }
-.band--light { position: relative; isolation: isolate; }
-.band--light::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: repeating-linear-gradient(90deg, transparent 0 calc(12.5% - 1px), rgba(123, 95, 208, .045) calc(12.5% - 1px) 12.5%, transparent 12.5% 25%); -webkit-mask: linear-gradient(180deg, transparent, #000 18%, #000 82%, transparent); mask: linear-gradient(180deg, transparent, #000 18%, #000 82%, transparent); }
+#formaty .list { position: relative; isolation: isolate; overflow: visible; }
+#formaty .list::before { content: ""; position: absolute; top: -32px; bottom: -24px; left: -12px; right: -12px; z-index: -1; pointer-events: none; background: linear-gradient(90deg, rgba(123, 95, 208, .10) 1px, transparent 1px) 0 0 / calc((100% - 1px) / 3) 100% repeat-x, linear-gradient(90deg, transparent calc(100% - 1px), rgba(123, 95, 208, .10) 1px); -webkit-mask: linear-gradient(180deg, transparent, #000 12%, #000 88%, transparent); mask: linear-gradient(180deg, transparent, #000 12%, #000 88%, transparent); }
 .lane { font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--lav-deep); margin-bottom: -8px; }
 
 /* Разный ритм разделов */
@@ -377,7 +375,6 @@ a.rating:hover .rating__src { color: var(--lav-deep); text-decoration: underline
 @media (max-width: 734px) {
   .eyebrow { margin-bottom: 14px; font-size: 11px; }
   .eyebrow::before { width: 32px; }
-  .band--light::before { background: repeating-linear-gradient(90deg, transparent 0 calc(25% - 1px), rgba(123, 95, 208, .045) calc(25% - 1px) 25%, transparent 25% 50%); }
   #trener, #formaty, #gde, .band--quote { padding: 64px 0; }
   .list__price { font-size: 24px; }
   .reviews { grid-template-columns: 1fr; }
@@ -389,4 +386,36 @@ a.rating:hover .rating__src { color: var(--lav-deep); text-decoration: underline
   .trener { display: flex; flex-direction: column; }
   .trener__head { display: contents; }
   .trener .more { order: 2; }
+}
+
+/* Первый экран: подтверждения под кнопками */
+.hero__proof { display: flex; flex-wrap: wrap; gap: 6px 0; margin-top: 28px; font-size: 14px; color: var(--text); }
+.hero__proof > * + *::before { content: "·"; margin: 0 10px; color: var(--lav); }
+.hero__proof a { color: var(--lav-deep); text-decoration: underline; text-decoration-color: rgba(123, 95, 208, .35); text-underline-offset: 3px; }
+.kicker { color: var(--text); }
+.facts dt.facts__txt { letter-spacing: .01em; }
+.trener .facts dt.facts__txt { font-size: 56px; }
+@media (max-width: 900px) { .facts dt.facts__txt { font-size: 30px; } }
+.list__price small, .pr__name small { color: var(--text); }
+.review__src { margin-left: auto; font-size: 13px; font-weight: 400; color: var(--lav-deep); text-decoration: underline; text-decoration-color: rgba(123, 95, 208, .35); text-underline-offset: 3px; }
+/* Вопросы — по левому краю, как остальные разделы */
+#faq .wrap--narrow { max-width: var(--w); }
+#faq .wrap--narrow > * { max-width: 720px; }
+/* Финал: одна главная кнопка, остальное — ссылками */
+.end__btns { flex-direction: column; align-items: center; gap: 18px; }
+.end__alt { font-size: 15px; color: var(--grey); }
+.end__link { color: var(--lav-deep); text-decoration: underline; text-decoration-color: rgba(123, 95, 208, .35); text-underline-offset: 4px; }
+.end__link:hover { text-decoration-color: var(--lav-deep); }
+.end__in { padding-top: 120px; }
+@media (min-width: 901px) {
+  .mpin__card { padding: 14px 18px 15px; }
+  .mpin__card b { font-size: 18px; }
+  .mpin__card em { font-weight: 500; }
+  .mpin--tr .mpin__card { left: -14px; }
+  .mpin--tr .mpin__card::before { left: 9px; }
+}
+@media (max-width: 734px) {
+  .hero__proof { justify-content: center; font-size: 13px; margin-top: 20px; }
+  #formaty .list::before { left: 0; right: 0; background: linear-gradient(90deg, rgba(123, 95, 208, .08) 1px, transparent 1px) 0 0 / calc(100% - 1px) 100% repeat-x, linear-gradient(90deg, transparent calc(100% - 1px), rgba(123, 95, 208, .08) 1px); }
+  .end__btns .btn { width: 100%; }
 }
