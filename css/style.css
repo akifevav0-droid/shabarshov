@@ -72,7 +72,8 @@ h1.rv.on, h2.rv.on, .facts.rv.on { clip-path: inset(-10% -5% -15% -5%); }
 .nav__links { margin-left: auto; display: flex; gap: 32px; font-size: 13px; color: var(--text); }
 .nav__links a { transition: color .25s var(--ease); }
 .nav__links a:hover, .nav__links a.on { color: var(--lav-deep); }
-.nav__cta { position: relative; isolation: isolate; font-size: 13px; font-weight: 500; padding: 7px 16px; border-radius: 980px; background: #FFF; color: var(--lav-deep); border: 1px solid var(--lav); transition: background .25s var(--ease); animation: cta-glow 3.2s ease-in-out infinite; }
+.nav__cta { margin-left: auto; position: relative; isolation: isolate; font-size: 13px; font-weight: 500; padding: 7px 16px; border-radius: 980px; background: #FFF; color: var(--lav-deep); border: 1px solid var(--lav); transition: background .25s var(--ease); animation: cta-glow 3.2s ease-in-out infinite; }
+.nav__links + .nav__cta { margin-left: 0; }
 .nav__cta:hover { background: #F1ECFC; animation-play-state: paused; }
 .nav__cta::after { content: ""; position: absolute; inset: -1px; border-radius: inherit; border: 1px solid var(--lav); z-index: -1; animation: cta-ring 3.2s ease-out infinite; }
 @keyframes cta-glow { 0%, 100% { box-shadow: 0 4px 14px rgba(123, 95, 208, .12); transform: scale(1); } 50% { box-shadow: 0 0 14px 2px rgba(148, 119, 224, .28), 0 4px 14px rgba(123, 95, 208, .16); transform: scale(1.02); } }
