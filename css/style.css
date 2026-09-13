@@ -787,3 +787,10 @@ body { padding-top: 0; }
   .hero:not(.hero--end) { background: radial-gradient(80% 35% at 15% 32%, rgba(148, 119, 224, .22) 0%, transparent 70%), radial-gradient(70% 30% at 90% 40%, rgba(122, 196, 255, .24) 0%, transparent 70%), linear-gradient(180deg, #FDFDFE 0%, #F7F6FA 45%, #FFFFFF 90%); }
 }
 @media (max-width: 734px) { .hero:not(.hero--end) .hero__in { padding-top: 120px; } }
+
+/* Инверсия карточек мягче */
+@media (hover: hover) and (min-width: 901px) {
+  .list li:hover { background: #7F7899; box-shadow: 0 26px 50px -30px rgba(110, 103, 136, .55); }
+  .list li:hover p, .list li:hover .list__price small { color: rgba(255, 255, 255, .86); }
+  .list li:hover .arrow { color: #FFFFFF; text-decoration-color: rgba(255, 255, 255, .5); }
+}
