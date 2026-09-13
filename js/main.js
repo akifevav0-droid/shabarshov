@@ -52,11 +52,6 @@
     openEl.hidden = true; openEl = null; document.documentElement.style.overflow = '';
     if (lastFocus) lastFocus.focus();
   }
-  // Цены в окне — копия блока цен со страницы: ссылки на оплату меняются в одном месте
-  if (prices) {
-    var src = document.getElementById('ceny'), slot = prices.querySelector('.sheet__prices');
-    if (src && slot) { var copy = src.cloneNode(true); copy.removeAttribute('id'); slot.appendChild(copy); }
-  }
   document.addEventListener('click', function (e) {
     var a = e.target.closest('a[data-msg], a.js-prices, [data-close]');
     if (!a) return;

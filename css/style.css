@@ -300,7 +300,7 @@ a.rating:hover .rating__go { transform: translateX(4px); }
 .sheet__prices .tile--hero { padding: 24px; align-self: stretch; }
 .sheet__prices .tile--hero b { font-size: 56px; margin: 12px 0 8px; }
 .sheet__prices .tile--hero .btn { margin-top: 18px; }
-.sheet__prices .rv { opacity: 1; transform: none; clip-path: none; }
+.sheet__prices .note { margin-top: 16px; }
 .sheet__x { position: absolute; top: 14px; right: 14px; width: 36px; height: 36px; border: 0; border-radius: 50%; background: var(--light); cursor: pointer; }
 .sheet__x::before, .sheet__x::after { content: ""; position: absolute; left: 11px; right: 11px; top: 17px; height: 1.5px; background: var(--head); transform: rotate(45deg); }
 .sheet__x::after { transform: rotate(-45deg); }
