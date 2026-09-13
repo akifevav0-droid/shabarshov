@@ -40,17 +40,21 @@
     [tg, sTg].forEach(function (a) { if (a) a.href = 'https://t.me/shabarshov?text=' + q; });
     [wa, sWa].forEach(function (a) { if (a) a.href = 'https://wa.me/79969669160?text=' + q; });
   }
+  var closeT = null;
   function open(el, focusEl) {
     if (!el) return false;
-    if (openEl && openEl !== el) openEl.hidden = true; else lastFocus = document.activeElement;
+    clearTimeout(closeT);
+    if (openEl && openEl !== el) { openEl.classList.remove('is-in'); openEl.hidden = true; } else if (!openEl) lastFocus = document.activeElement;
     el.hidden = false; openEl = el; document.documentElement.style.overflow = 'hidden';
-    var f = focusEl || el.querySelector('.sheet__x'); if (f) f.focus();
+    void el.offsetWidth; el.classList.add('is-in');
+    var f = focusEl || el.querySelector('.sheet__x'); if (f) f.focus({ preventScroll: true });
     return true;
   }
   function close() {
     if (!openEl) return;
-    openEl.hidden = true; openEl = null; document.documentElement.style.overflow = '';
-    if (lastFocus) lastFocus.focus();
+    var el = openEl; openEl = null; el.classList.remove('is-in');
+    closeT = setTimeout(function () { el.hidden = true; document.documentElement.style.overflow = ''; }, 480);
+    if (lastFocus) lastFocus.focus({ preventScroll: true });
   }
   document.addEventListener('click', function (e) {
     var a = e.target.closest('a[data-msg], a.js-prices, [data-close]');
@@ -120,7 +124,8 @@
       var h = w.scrollHeight, fin = once(function () { busy = false; }, 1000);
       w.animate([{ height: '0px' }, { height: h + 'px' }], { duration: 850, easing: ease }).onfinish = fin;
       items.forEach(function (li, i) {
-        li.animate([{ opacity: 0, transform: 'translateY(16px)' }, { opacity: 1, transform: 'none' }], { duration: 900, delay: 160 + i * 110, easing: ease, fill: 'backwards' });
+        var mob = window.matchMedia('(max-width: 900px)').matches;
+        li.animate(mob ? [{ opacity: 0 }, { opacity: 1 }] : [{ opacity: 0, transform: 'translateY(16px)' }, { opacity: 1, transform: 'none' }], { duration: mob ? 700 : 900, delay: mob ? 200 + i * 140 : 160 + i * 110, easing: ease, fill: 'backwards' });
       });
     } else {
       d.classList.remove('is-open');
