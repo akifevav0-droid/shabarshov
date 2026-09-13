@@ -105,14 +105,44 @@
   if (yr) yr.textContent = String(new Date().getFullYear());
 })();
 
-// «Подробнее о тренере»: плавное закрытие (открытие анимирует CSS)
+
+// «Подробнее о тренере»: плавное раскрытие по высоте, колонки появляются по очереди
 (function () {
   var d = document.querySelector('.trener .more'); if (!d) return;
-  var s = d.querySelector('summary'), bio = d.querySelector('.bio');
+  var s = d.querySelector('summary'), w = d.querySelector('.bio-wrap'); if (!w || !w.animate) return;
+  var items = w.querySelectorAll('.bio li'), busy = false;
+  var ease = 'cubic-bezier(.22, 1, .36, 1)';
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   s.addEventListener('click', function (e) {
-    if (!d.open || !bio || !bio.animate || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    e.preventDefault(); if (busy) return; busy = true;
+    if (!d.open) {
+      d.open = true; d.classList.add('is-open');
+      var h = w.scrollHeight;
+      w.animate([{ height: '0px' }, { height: h + 'px' }], { duration: 700, easing: ease }).onfinish = function () { busy = false; };
+      items.forEach(function (li, i) {
+        li.animate([{ opacity: 0, transform: 'translateY(14px)', filter: 'blur(4px)' }, { opacity: 1, transform: 'none', filter: 'blur(0)' }],
+          { duration: 800, delay: 180 + i * 120, easing: ease, fill: 'backwards' });
+      });
+    } else {
+      d.classList.remove('is-open');
+      items.forEach(function (li) { li.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 250, easing: 'ease-out', fill: 'forwards' }); });
+      var a = w.animate([{ height: w.scrollHeight + 'px' }, { height: '0px' }], { duration: 550, delay: 120, easing: ease, fill: 'forwards' });
+      a.onfinish = function () { d.open = false; a.cancel(); items.forEach(function (li) { li.getAnimations().forEach(function (x) { x.cancel(); }); }); busy = false; };
+    }
+  });
+})();
+
+// Переходы по разделам: к заголовку раздела, чуть ниже шапки, а не к верхнему отступу
+(function () {
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href^="#"]'); if (!a || a.classList.contains('js-book') || a.classList.contains('js-prices')) return;
+    var id = a.getAttribute('href'); if (id.length < 2) return;
+    var sec = document.querySelector(id); if (!sec || !sec.classList.contains('band')) return;
+    var target = sec.querySelector('.trener, h2') || sec;
+    var nav = document.querySelector('.nav'), navH = nav && getComputedStyle(nav).position === 'fixed' ? nav.offsetHeight : 0;
+    var y = target.getBoundingClientRect().top + window.scrollY - navH - 32;
     e.preventDefault();
-    var a = bio.animate([{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'translateY(-8px)' }], { duration: 280, easing: 'ease-in' });
-    a.onfinish = function () { d.open = false; };
+    window.scrollTo({ top: Math.max(0, y), behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    if (history.replaceState) history.replaceState(null, '', id);
   });
 })();
