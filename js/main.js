@@ -70,10 +70,15 @@
       if (e.target.closest('.mpin__links a')) return;
       var pin = e.target.closest('.mpin');
       if (!pin) return;
+      show(pin);
+    });
+    var show = function (pin) {
       map.querySelectorAll('.mpin.is-open').forEach(function (p) { p.classList.remove('is-open'); });
       pin.classList.add('is-open');
       panel.innerHTML = pin.querySelector('.mpin__card').innerHTML;
-    });
+    };
+    var first = map.querySelector('.mpin');
+    if (first && window.matchMedia('(max-width: 900px)').matches) show(first);
   }
 
   var yr = document.getElementById('year');
