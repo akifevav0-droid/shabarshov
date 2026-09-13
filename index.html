@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&amp;display=swap">
-  <link rel="stylesheet" href="css/style.css?v=1789311621">
+  <link rel="stylesheet" href="css/style.css?v=1789312055">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@graph":[
     {"@type":"Person","@id":"https://shabarshov.ru/#person","name":"Анатолий Шабаршов","jobTitle":"Тренер по плаванию","description":"Мастер спорта по плаванию, тренер для взрослых. Групповые и персональные тренировки в Москве, подготовка к открытой воде и триатлону.","url":"https://shabarshov.ru/","image":"https://shabarshov.ru/img/anatoliy_hero.jpg","sameAs":["https://profi.ru/profile/ShabarshovAS/","https://www.instagram.com/shabarshov_/","https://t.me/shabarshov","https://t.me/shabarshov_club"],"address":{"@type":"PostalAddress","addressLocality":"Москва","addressCountry":"RU"},"alumniOf":"РГУФКСМиТ","award":["Мастер спорта по плаванию"]},
@@ -103,7 +103,7 @@
         <li><b>Персонально</b><p>Час один на&nbsp;один, я&nbsp;в&nbsp;воде рядом. Время и&nbsp;бассейн под ваш график, включая Лужники.</p><span class="list__price">по&nbsp;запросу<small>зависит от бассейна</small></span><a class="arrow js-book" href="#zapis" data-msg="Здравствуйте, Анатолий! Хочу записаться на персональную тренировку.">Записаться</a></li>
         <li><b>Открытая вода</b><p>Ориентирование, старт в&nbsp;толпе, дыхание в&nbsp;волну. Готовлю к&nbsp;X-Waters, SwimCup и&nbsp;триатлону.</p><span class="list__price">по&nbsp;запросу<small>под ваш старт</small></span><a class="arrow js-book" href="#zapis" data-msg="Здравствуйте, Анатолий! Хочу обсудить подготовку к открытой воде.">Записаться</a></li>
       </ol>
-      <p class="note rv"><a class="arrow" href="#ceny">Все цены и абонементы</a></p>
+      <p class="note rv"><a class="arrow js-prices" href="#ceny">Все цены и абонементы</a></p>
     </div>
   </section>
 
@@ -118,6 +118,14 @@
         <li><b>Акватория ЗИЛ</b><p>Мини-группа&nbsp;· МЦК&nbsp;ЗИЛ</p><em>Ср · Пт · 7:45</em><a class="arrow" href="https://yandex.ru/maps/?text=Акватория%20ЗИЛ%20бассейн" target="_blank" rel="noopener">На карте</a></li>
         <li><b>Лужники</b><p>Персональные тренировки&nbsp;· м.&nbsp;Спортивная</p><em>По договорённости</em><a class="arrow js-book" href="#zapis" data-msg="Здравствуйте, Анатолий! Хочу узнать о свободном времени для персональных тренировок.">Спросить</a></li>
       </ul>
+      <div class="citymap rv" role="group" aria-label="Бассейны на карте Москвы">
+        <img src="img/map.jpg" width="1400" height="1100" alt="" loading="lazy">
+        <a class="mpin mpin--bl" style="left:68.8%;top:24.6%" href="https://yandex.ru/maps/?text=Госпитальная%20набережная%204%20строение%201%20бассейн%20МГТУ" target="_blank" rel="noopener"><span class="mpin__dot"></span><span class="mpin__card"><b>Бауманка</b><small>Пн, Чт · 19:45 и 20:30</small></span></a>
+        <a class="mpin mpin--l" style="left:86.4%;top:10.2%" href="https://yandex.ru/maps/org/formula_vody/1057488653" target="_blank" rel="noopener"><span class="mpin__dot"></span><span class="mpin__card"><b>Формула Воды</b><small>Вт, Пт · 20:45</small></span></a>
+        <a class="mpin mpin--t" style="left:51.4%;top:90.5%" href="https://yandex.ru/maps/?text=Акватория%20ЗИЛ%20бассейн" target="_blank" rel="noopener"><span class="mpin__dot"></span><span class="mpin__card"><b>Акватория ЗИЛ</b><small>Ср, Пт · 7:45</small></span></a>
+        <a class="mpin mpin--tr" style="left:10.9%;top:73.9%" href="https://yandex.ru/maps/?text=Лужники%20бассейн" target="_blank" rel="noopener"><span class="mpin__dot"></span><span class="mpin__card"><b>Лужники</b><small>Персонально, по договорённости</small></span></a>
+        <span class="citymap__credit">© участники OpenStreetMap</span>
+      </div>
       <div class="pricing" id="ceny">
         <div class="tile tile--hero rv">
           <span class="tile__label">Абонемент · 8 тренировок в&nbsp;месяц</span>
@@ -182,6 +190,16 @@
   </div>
 </div>
 
-<script src="js/main.js?v=1789311621" defer></script>
+<div class="sheet" id="prices" hidden>
+  <div class="sheet__bg" data-close></div>
+  <div class="sheet__box sheet__box--wide" role="dialog" aria-modal="true" aria-labelledby="prices-title">
+    <button class="sheet__x" type="button" data-close aria-label="Закрыть"></button>
+    <p class="sheet__title" id="prices-title">Цены и абонементы</p>
+    <p class="sheet__sub">Первая тренировка бесплатна в&nbsp;любом формате.</p>
+    <div class="sheet__prices"></div>
+  </div>
+</div>
+
+<script src="js/main.js?v=1789312055" defer></script>
 </body>
 </html>

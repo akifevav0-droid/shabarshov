@@ -30,38 +30,43 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  // Кнопки записи: окно выбора мессенджера с подставленным текстом (нет Telegram — есть WhatsApp и звонок)
+  // Окна: запись (Telegram, WhatsApp, звонок) и цены. Нет Telegram — есть WhatsApp и звонок.
   var tg = document.getElementById('tg'), wa = document.getElementById('wa');
-  var sheet = document.getElementById('sheet'), sTg = document.getElementById('sheet-tg'), sWa = document.getElementById('sheet-wa');
-  var lastFocus = null;
+  var book = document.getElementById('sheet'), prices = document.getElementById('prices');
+  var sTg = document.getElementById('sheet-tg'), sWa = document.getElementById('sheet-wa');
+  var openEl = null, lastFocus = null;
   function setMsg(msg) {
     var q = encodeURIComponent(msg);
     [tg, sTg].forEach(function (a) { if (a) a.href = 'https://t.me/shabarshov?text=' + q; });
     [wa, sWa].forEach(function (a) { if (a) a.href = 'https://wa.me/79969669160?text=' + q; });
   }
-  function openSheet(msg) {
-    if (!sheet) return false;
-    setMsg(msg); lastFocus = document.activeElement;
-    sheet.hidden = false; document.documentElement.style.overflow = 'hidden';
-    if (sTg) sTg.focus();
+  function open(el, focusEl) {
+    if (!el) return false;
+    if (openEl && openEl !== el) openEl.hidden = true; else lastFocus = document.activeElement;
+    el.hidden = false; openEl = el; document.documentElement.style.overflow = 'hidden';
+    var f = focusEl || el.querySelector('.sheet__x'); if (f) f.focus();
     return true;
   }
-  function closeSheet() {
-    if (!sheet || sheet.hidden) return;
-    sheet.hidden = true; document.documentElement.style.overflow = '';
+  function close() {
+    if (!openEl) return;
+    openEl.hidden = true; openEl = null; document.documentElement.style.overflow = '';
     if (lastFocus) lastFocus.focus();
   }
-  document.querySelectorAll('a[data-msg]').forEach(function (a) {
-    a.addEventListener('click', function (e) {
-      var msg = a.getAttribute('data-msg');
-      if (a.classList.contains('js-book') && openSheet(msg)) { e.preventDefault(); } else { setMsg(msg); }
-    });
-  });
-  if (sheet) {
-    sheet.querySelectorAll('[data-close]').forEach(function (el) { el.addEventListener('click', closeSheet); });
-    sheet.querySelectorAll('.sheet__btn').forEach(function (el) { el.addEventListener('click', function () { setTimeout(closeSheet, 300); }); });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeSheet(); });
+  // Цены в окне — копия блока цен со страницы: ссылки на оплату меняются в одном месте
+  if (prices) {
+    var src = document.getElementById('ceny'), slot = prices.querySelector('.sheet__prices');
+    if (src && slot) { var copy = src.cloneNode(true); copy.removeAttribute('id'); slot.appendChild(copy); }
   }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[data-msg], a.js-prices, [data-close]');
+    if (!a) return;
+    if (a.hasAttribute('data-close')) { close(); return; }
+    if (a.classList.contains('js-prices')) { if (open(prices)) e.preventDefault(); return; }
+    var msg = a.getAttribute('data-msg');
+    if (a.classList.contains('js-book') && open(book, sTg)) { setMsg(msg); e.preventDefault(); } else { setMsg(msg); }
+  });
+  if (book) book.querySelectorAll('.sheet__btn').forEach(function (el) { el.addEventListener('click', function () { setTimeout(close, 300); }); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
 
   var yr = document.getElementById('year');
   if (yr) yr.textContent = String(new Date().getFullYear());

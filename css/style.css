@@ -84,7 +84,7 @@ h1.rv.on, h2.rv.on, .facts.rv.on { clip-path: inset(-10% -5% -15% -5%); }
 .hero::before { content: ""; position: absolute; inset: -20% -10%; pointer-events: none; background: radial-gradient(40% 35% at 30% 30%, rgba(148, 119, 224, .16) 0%, transparent 70%), radial-gradient(35% 30% at 75% 40%, rgba(122, 196, 255, .18) 0%, transparent 70%); animation: drift 18s ease-in-out infinite alternate; }
 @keyframes drift { 0% { transform: translate3d(-3%, -2%, 0) scale(1); } 100% { transform: translate3d(3%, 3%, 0) scale(1.06); } }
 .hero > .wrap { position: relative; }
-.hero__in { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 64px; min-height: min(calc(100svh - var(--nav-h)), 820px); padding-top: 48px; padding-bottom: 72px; }
+.hero__in { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 64px; min-height: min(calc(100svh - var(--nav-h)), 820px); padding-top: 48px; padding-bottom: 104px; }
 .hero__title { font-size: clamp(44px, 5.2vw, 84px); line-height: 1.02; letter-spacing: -0.035em; margin-bottom: 28px; }
 .hero__sub { font-size: clamp(18px, 1.6vw, 21px); color: var(--grey); max-width: 27em; }
 .hero__btns { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 40px; }
@@ -92,14 +92,14 @@ h1.rv.on, h2.rv.on, .facts.rv.on { clip-path: inset(-10% -5% -15% -5%); }
 .hero__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; filter: saturate(.8) contrast(1.03); }
 .hero__photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(148, 119, 224, .10) 0%, transparent 40%, rgba(148, 119, 224, .30) 100%); mix-blend-mode: multiply; pointer-events: none; }
 
-/* Движущаяся лавандовая волна: два слоя с разной скоростью */
-.wave { position: absolute; left: 0; right: 0; bottom: -1px; height: 72px; pointer-events: none; z-index: 2; overflow: hidden; }
-.wave::before, .wave::after { content: ""; position: absolute; inset: 0; background-repeat: repeat-x; background-size: 1440px 64px; }
-.wave::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 64' preserveAspectRatio='none'%3E%3Cpath d='M0 26 C240 8 480 8 720 26 S1200 44 1440 26 V64 H0 Z' fill='%239477E0' fill-opacity='.42'/%3E%3C/svg%3E"); animation: wave-move 26s linear infinite; }
-.wave::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 64' preserveAspectRatio='none'%3E%3Cpath d='M0 34 C180 18 360 18 540 34 S900 50 1080 34 S1260 18 1440 34 V64 H0 Z' fill='%23FFFFFF'/%3E%3Cpath d='M0 34 C180 18 360 18 540 34 S900 50 1080 34 S1260 18 1440 34' fill='none' stroke='%239477E0' stroke-opacity='.8' stroke-width='1.2'/%3E%3C/svg%3E"); animation: wave-move 17s linear infinite reverse; }
+/* Движущаяся лавандовая волна: точная синусоида без стыков, два слоя с разной скоростью */
+.wave { position: absolute; left: 0; right: 0; bottom: -1px; height: 90px; pointer-events: none; z-index: 2; overflow: hidden; }
+.wave::before, .wave::after { content: ""; position: absolute; inset: 0; background-repeat: repeat-x; background-size: 1440px 100%; will-change: background-position; }
+.wave::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 90' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%239477E0' stop-opacity='.55'/%3E%3Cstop offset='.6' stop-color='%23B8A6EE' stop-opacity='.25'/%3E%3C/linearGradient%3E%3ClinearGradient id='h' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%237AC4FF' stop-opacity='.35'/%3E%3Cstop offset='.7' stop-color='%23C9BCF2' stop-opacity='.15'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M0 40.00 L12 41.67 L24 43.33 L36 44.94 L48 46.51 L60 48.00 L72 49.40 L84 50.71 L96 51.89 L108 52.94 L120 53.86 L132 54.62 L144 55.22 L156 55.65 L168 55.91 L180 56.00 L192 55.91 L204 55.65 L216 55.22 L228 54.62 L240 53.86 L252 52.94 L264 51.89 L276 50.71 L288 49.40 L300 48.00 L312 46.51 L324 44.94 L336 43.33 L348 41.67 L360 40.00 L372 38.33 L384 36.67 L396 35.06 L408 33.49 L420 32.00 L432 30.60 L444 29.29 L456 28.11 L468 27.06 L480 26.14 L492 25.38 L504 24.78 L516 24.35 L528 24.09 L540 24.00 L552 24.09 L564 24.35 L576 24.78 L588 25.38 L600 26.14 L612 27.06 L624 28.11 L636 29.29 L648 30.60 L660 32.00 L672 33.49 L684 35.06 L696 36.67 L708 38.33 L720 40.00 L732 41.67 L744 43.33 L756 44.94 L768 46.51 L780 48.00 L792 49.40 L804 50.71 L816 51.89 L828 52.94 L840 53.86 L852 54.62 L864 55.22 L876 55.65 L888 55.91 L900 56.00 L912 55.91 L924 55.65 L936 55.22 L948 54.62 L960 53.86 L972 52.94 L984 51.89 L996 50.71 L1008 49.40 L1020 48.00 L1032 46.51 L1044 44.94 L1056 43.33 L1068 41.67 L1080 40.00 L1092 38.33 L1104 36.67 L1116 35.06 L1128 33.49 L1140 32.00 L1152 30.60 L1164 29.29 L1176 28.11 L1188 27.06 L1200 26.14 L1212 25.38 L1224 24.78 L1236 24.35 L1248 24.09 L1260 24.00 L1272 24.09 L1284 24.35 L1296 24.78 L1308 25.38 L1320 26.14 L1332 27.06 L1344 28.11 L1356 29.29 L1368 30.60 L1380 32.00 L1392 33.49 L1404 35.06 L1416 36.67 L1428 38.33 L1440 40.00 V90 H0 Z' fill='url%28%23g%29'/%3E%3Cpath d='M0 61.56 L12 61.71 L24 61.83 L36 61.92 L48 61.98 L60 62.00 L72 61.99 L84 61.95 L96 61.87 L108 61.76 L120 61.62 L132 61.45 L144 61.24 L156 61.01 L168 60.74 L180 60.45 L192 60.12 L204 59.77 L216 59.39 L228 58.99 L240 58.56 L252 58.11 L264 57.64 L276 57.14 L288 56.63 L300 56.09 L312 55.54 L324 54.98 L336 54.40 L348 53.81 L360 53.21 L372 52.60 L384 51.98 L396 51.36 L408 50.74 L420 50.11 L432 49.48 L444 48.85 L456 48.23 L468 47.61 L480 47.00 L492 46.39 L504 45.80 L516 45.22 L528 44.65 L540 44.09 L552 43.56 L564 43.03 L576 42.53 L588 42.05 L600 41.59 L612 41.15 L624 40.74 L636 40.36 L648 40.00 L660 39.66 L672 39.36 L684 39.08 L696 38.84 L708 38.62 L720 38.44 L732 38.29 L744 38.17 L756 38.08 L768 38.02 L780 38.00 L792 38.01 L804 38.05 L816 38.13 L828 38.24 L840 38.38 L852 38.55 L864 38.76 L876 38.99 L888 39.26 L900 39.55 L912 39.88 L924 40.23 L936 40.61 L948 41.01 L960 41.44 L972 41.89 L984 42.36 L996 42.86 L1008 43.37 L1020 43.91 L1032 44.46 L1044 45.02 L1056 45.60 L1068 46.19 L1080 46.79 L1092 47.40 L1104 48.02 L1116 48.64 L1128 49.26 L1140 49.89 L1152 50.52 L1164 51.15 L1176 51.77 L1188 52.39 L1200 53.00 L1212 53.61 L1224 54.20 L1236 54.78 L1248 55.35 L1260 55.91 L1272 56.44 L1284 56.97 L1296 57.47 L1308 57.95 L1320 58.41 L1332 58.85 L1344 59.26 L1356 59.64 L1368 60.00 L1380 60.34 L1392 60.64 L1404 60.92 L1416 61.16 L1428 61.38 L1440 61.56 V90 H0 Z' fill='url%28%23h%29'/%3E%3C/svg%3E"); animation: wave-move 48s linear infinite; }
+.wave::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 90' preserveAspectRatio='none'%3E%3Cpath d='M0 60.00 L12 60.47 L24 60.94 L36 61.41 L48 61.87 L60 62.33 L72 62.78 L84 63.23 L96 63.66 L108 64.09 L120 64.50 L132 64.90 L144 65.29 L156 65.66 L168 66.02 L180 66.36 L192 66.69 L204 66.99 L216 67.28 L228 67.55 L240 67.79 L252 68.02 L264 68.22 L276 68.40 L288 68.56 L300 68.69 L312 68.80 L324 68.89 L336 68.95 L348 68.99 L360 69.00 L372 68.99 L384 68.95 L396 68.89 L408 68.80 L420 68.69 L432 68.56 L444 68.40 L456 68.22 L468 68.02 L480 67.79 L492 67.55 L504 67.28 L516 66.99 L528 66.69 L540 66.36 L552 66.02 L564 65.66 L576 65.29 L588 64.90 L600 64.50 L612 64.09 L624 63.66 L636 63.23 L648 62.78 L660 62.33 L672 61.87 L684 61.41 L696 60.94 L708 60.47 L720 60.00 L732 59.53 L744 59.06 L756 58.59 L768 58.13 L780 57.67 L792 57.22 L804 56.77 L816 56.34 L828 55.91 L840 55.50 L852 55.10 L864 54.71 L876 54.34 L888 53.98 L900 53.64 L912 53.31 L924 53.01 L936 52.72 L948 52.45 L960 52.21 L972 51.98 L984 51.78 L996 51.60 L1008 51.44 L1020 51.31 L1032 51.20 L1044 51.11 L1056 51.05 L1068 51.01 L1080 51.00 L1092 51.01 L1104 51.05 L1116 51.11 L1128 51.20 L1140 51.31 L1152 51.44 L1164 51.60 L1176 51.78 L1188 51.98 L1200 52.21 L1212 52.45 L1224 52.72 L1236 53.01 L1248 53.31 L1260 53.64 L1272 53.98 L1284 54.34 L1296 54.71 L1308 55.10 L1320 55.50 L1332 55.91 L1344 56.34 L1356 56.77 L1368 57.22 L1380 57.67 L1392 58.13 L1404 58.59 L1416 59.06 L1428 59.53 L1440 60.00 V90 H0 Z' fill='%23FFFFFF'/%3E%3C/svg%3E"); animation: wave-move 72s linear infinite reverse; }
 .wave--top { top: -1px; bottom: auto; transform: scaleY(-1); }
 @keyframes wave-move { from { background-position-x: 0; } to { background-position-x: -1440px; } }
-@media (max-width: 734px) { .wave { height: 44px; } .wave::before, .wave::after { background-size: 900px 44px; } @keyframes wave-move { from { background-position-x: 0; } to { background-position-x: -900px; } } }
+@media (max-width: 734px) { .wave { height: 56px; } }
 
 /* Полосы */
 .band { padding: var(--s-section) 0; }
@@ -147,6 +147,30 @@ h1.rv.on, h2.rv.on, .facts.rv.on { clip-path: inset(-10% -5% -15% -5%); }
 .pools p { font-size: 15px; color: var(--text); }
 .pools em { font-style: normal; color: var(--lav-deep); font-size: 15px; white-space: nowrap; }
 
+
+/* Карта бассейнов: своя подложка, открытые подписи на метках */
+.citymap { position: relative; margin-top: 40px; border-radius: var(--r-l); overflow: hidden; background: var(--light); border: 1px solid rgba(123, 95, 208, .18); }
+.citymap img { width: 100%; height: auto; }
+.citymap__credit { position: absolute; right: 10px; bottom: 8px; font-size: 10px; color: var(--grey); background: rgba(255, 255, 255, .7); padding: 2px 6px; border-radius: 6px; }
+.mpin { position: absolute; width: 0; height: 0; z-index: 1; }
+.mpin:hover { z-index: 3; }
+.mpin__dot { position: absolute; left: -8px; top: -8px; width: 16px; height: 16px; border-radius: 50%; background: var(--lav-deep); border: 3px solid #fff; box-shadow: 0 0 0 6px rgba(123, 95, 208, .22); }
+.mpin__dot::after { content: ""; position: absolute; inset: -9px; border-radius: 50%; border: 1px solid var(--lav); animation: cta-ring 3.2s ease-out infinite; }
+.mpin__card { position: absolute; display: block; white-space: nowrap; padding: 9px 14px 10px; background: #fff; border-radius: 12px; box-shadow: 0 10px 30px -10px rgba(36, 28, 79, .35); transition: transform .3s var(--ease-out), box-shadow .3s var(--ease); }
+.mpin:hover .mpin__card { transform: translateY(-2px); box-shadow: 0 16px 36px -12px rgba(36, 28, 79, .45); }
+.mpin__card b { display: block; font-family: var(--head-font); font-weight: 700; font-size: 15px; color: var(--head); letter-spacing: -0.01em; }
+.mpin__card small { display: block; margin-top: 2px; font-size: 12px; color: var(--lav-deep); }
+.mpin--l .mpin__card { right: 18px; top: -10px; }
+.mpin--bl .mpin__card { right: 14px; top: 14px; }
+.mpin--t .mpin__card { left: 50%; bottom: 18px; transform: translateX(-50%); }
+.mpin--t:hover .mpin__card { transform: translate(-50%, -2px); }
+.mpin--tr .mpin__card { left: 14px; bottom: 14px; }
+@media (max-width: 734px) {
+  .citymap { margin-top: 28px; }
+  .mpin__card { padding: 6px 9px 7px; border-radius: 9px; }
+  .mpin__card b { font-size: 12px; }
+  .mpin__card small { display: none; }
+}
 
 /* Цены */
 .pricing { display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; margin-top: 64px; align-items: start; }
@@ -270,11 +294,18 @@ a.rating:hover .rating__go { transform: translateX(4px); }
 .sheet__title { font-family: var(--head-font); font-weight: 700; font-size: 22px; color: var(--head); letter-spacing: -0.02em; }
 .sheet__sub { font-size: 14px; color: var(--grey); margin-bottom: 10px; }
 .sheet__btn { width: 100%; }
+.sheet__box--wide { width: min(560px, calc(100% - 32px)); max-height: calc(100svh - 48px); overflow-y: auto; }
+.sheet__prices .pricing { display: flex; flex-direction: column; gap: 20px; margin: 0; }
+.sheet__prices .pricelist { order: -1; }
+.sheet__prices .tile--hero { padding: 24px; align-self: stretch; }
+.sheet__prices .tile--hero b { font-size: 56px; margin: 12px 0 8px; }
+.sheet__prices .tile--hero .btn { margin-top: 18px; }
+.sheet__prices .rv { opacity: 1; transform: none; clip-path: none; }
 .sheet__x { position: absolute; top: 14px; right: 14px; width: 36px; height: 36px; border: 0; border-radius: 50%; background: var(--light); cursor: pointer; }
 .sheet__x::before, .sheet__x::after { content: ""; position: absolute; left: 11px; right: 11px; top: 17px; height: 1.5px; background: var(--head); transform: rotate(45deg); }
 .sheet__x::after { transform: rotate(-45deg); }
 @keyframes sheet-in { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
 @media (max-width: 734px) {
   .sheet { align-items: flex-end; }
-  .sheet__box { width: 100%; border-radius: 24px 24px 0 0; padding: 28px 20px calc(20px + env(safe-area-inset-bottom)); }
+  .sheet__box, .sheet__box--wide { width: 100%; border-radius: 24px 24px 0 0; padding: 28px 20px calc(20px + env(safe-area-inset-bottom)); max-height: 88svh; }
 }
