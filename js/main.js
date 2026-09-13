@@ -1,3 +1,8 @@
+// При открытии и обновлении — всегда с первого экрана
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+if (location.hash && history.replaceState) history.replaceState(null, '', location.pathname + location.search);
+window.addEventListener('load', function () { window.scrollTo(0, 0); });
+
 // Ступенчатое появление, активный раздел в шапке, тема сообщения для кнопок записи, год.
 (function () {
   var items = document.querySelectorAll('.rv');
@@ -166,7 +171,6 @@
     var y = r.top + window.scrollY - navH - gap;
     e.preventDefault();
     smoothTo(Math.max(0, y));
-    if (history.replaceState) history.replaceState(null, '', id);
   });
 })();
 
@@ -212,4 +216,12 @@
   var nav = document.querySelector('.nav'); if (!nav) return;
   function upd() { nav.classList.toggle('is-top', window.scrollY < 24); }
   window.addEventListener('scroll', upd, { passive: true }); upd();
+})();
+
+// Телефон: плашка «Связаться» появляется после первого экрана и прячется у финала
+(function () {
+  var hero = document.querySelector('.hero:not(.hero--end)'), end = document.getElementById('zapis');
+  if (!hero || !('IntersectionObserver' in window)) return;
+  new IntersectionObserver(function (e) { document.body.classList.toggle('past-hero', !e[0].isIntersecting); }, { threshold: 0.15 }).observe(hero);
+  if (end) new IntersectionObserver(function (e) { document.body.classList.toggle('at-end', e[0].isIntersecting); }, { threshold: 0.2 }).observe(end);
 })();
