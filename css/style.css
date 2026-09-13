@@ -162,6 +162,10 @@ h1.rv.on, h2.rv.on { clip-path: inset(-10% -5% -15% -5%); }
   .mpin__card { padding: 6px 10px 7px; border-radius: 10px; max-width: 200px; transition: box-shadow .25s var(--ease); }
   .mpin__card b { font-size: 12px; }
   .mpin__more { display: none; }
+  .mpin--l2 .mpin__card { right: -8px; top: 14px; transform: none; }
+  .mpin--b .mpin__card { left: auto; right: 14px; top: 50%; transform: translateY(-50%); }
+  .mpin--t .mpin__card { bottom: 14px; }
+  .mpin--tr .mpin__card { left: 6px; bottom: 14px; }
   .mpin__card::before { display: none; }
   .mpin.is-open .mpin__card { box-shadow: 0 0 0 2px var(--lav), 0 12px 32px -12px rgba(36, 28, 79, .35); }
   .mpin.is-open .mpin__dot { background: var(--lav); }
@@ -243,7 +247,7 @@ a.rating:hover .rating__src { color: var(--lav-deep); text-decoration: underline
   h2 { font-size: 30px; }
   .hero__in { padding-top: 72px; padding-bottom: 56px; gap: 24px; }
   .hero__in { min-height: 0; }
-  .hero__photo { order: -1; justify-self: center; width: auto; height: min(52svh, 440px); aspect-ratio: 4 / 5; border-radius: 24px; }
+  .hero__photo { order: -1; justify-self: center; width: min(100%, 340px); height: auto; aspect-ratio: 4 / 5; border-radius: 24px; }
   .hero__photo img { object-position: 50% 8%; }
   .hero__title { font-size: 40px; margin-bottom: 16px; }
   .hero__btns { gap: 16px; }
