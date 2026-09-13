@@ -20,17 +20,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&amp;display=swap">
-  <link rel="stylesheet" href="css/style.css?v=1789310877">
+  <link rel="stylesheet" href="css/style.css?v=1789311495">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@graph":[
-    {"@type":"Person","@id":"https://shabarshov.ru/#person","name":"Анатолий Шабаршов","jobTitle":"Тренер по плаванию","description":"Мастер спорта по плаванию, тренер для взрослых. Групповые и персональные тренировки в Москве, подготовка к открытой воде и триатлону.","url":"https://shabarshov.ru/","image":"https://shabarshov.ru/img/anatoliy_hero.jpg","sameAs":["https://www.instagram.com/shabarshov_/","https://t.me/shabarshov","https://t.me/shabarshov_club"],"address":{"@type":"PostalAddress","addressLocality":"Москва","addressCountry":"RU"},"alumniOf":"РГУФКСМиТ","award":["Мастер спорта по плаванию"]},
+    {"@type":"Person","@id":"https://shabarshov.ru/#person","name":"Анатолий Шабаршов","jobTitle":"Тренер по плаванию","description":"Мастер спорта по плаванию, тренер для взрослых. Групповые и персональные тренировки в Москве, подготовка к открытой воде и триатлону.","url":"https://shabarshov.ru/","image":"https://shabarshov.ru/img/anatoliy_hero.jpg","sameAs":["https://profi.ru/profile/ShabarshovAS/","https://www.instagram.com/shabarshov_/","https://t.me/shabarshov","https://t.me/shabarshov_club"],"address":{"@type":"PostalAddress","addressLocality":"Москва","addressCountry":"RU"},"alumniOf":"РГУФКСМиТ","award":["Мастер спорта по плаванию"]},
     {"@type":"SportsActivityLocation","@id":"https://shabarshov.ru/#club","name":"SHABARSHOV swimming club","url":"https://shabarshov.ru/","founder":{"@id":"https://shabarshov.ru/#person"},"areaServed":"Москва","sport":"Плавание","address":{"@type":"PostalAddress","streetAddress":"Госпитальная наб., 4, стр. 1","addressLocality":"Москва","addressCountry":"RU"},
      "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Thursday"],"opens":"19:45","closes":"21:30"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Friday"],"opens":"20:45","closes":"21:45"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Wednesday","Friday"],"opens":"07:45","closes":"08:45"}],
      "makesOffer":[{"@type":"Offer","price":"0","priceCurrency":"RUB","itemOffered":{"@type":"Service","name":"Пробная тренировка по плаванию"}},{"@type":"Offer","price":"13600","priceCurrency":"RUB","itemOffered":{"@type":"Service","name":"Абонемент на 8 групповых тренировок"}},{"@type":"Offer","price":"7500","priceCurrency":"RUB","itemOffered":{"@type":"Service","name":"Абонемент на 4 групповые тренировки"}},{"@type":"Offer","price":"2000","priceCurrency":"RUB","itemOffered":{"@type":"Service","name":"Разовая групповая тренировка"}}]},
     {"@type":"FAQPage","mainEntity":[
       {"@type":"Question","name":"Я не умею плавать. С чего начать?","acceptedAnswer":{"@type":"Answer","text":"С бесплатной пробной тренировки. Даже если вы не умеете плавать совсем, за одну тренировку проплывёте свой первый бассейн. Дальше подберём формат: группу или персональные занятия."}},
       {"@type":"Question","name":"Что взять на первую тренировку?","acceptedAnswer":{"@type":"Answer","text":"Справку для бассейна (как получить, расскажу при записи), купальник или плавки, шапочку, очки, сланцы, полотенце."}},
-      {"@type":"Question","name":"Как проходит тренировка?","acceptedAnswer":{"@type":"Answer","text":"Час в воде: разминка, основное задание, заминка. Тренер в воде рядом и показывает упражнения сам."}},
+      {"@type":"Question","name":"Как проходит тренировка?","acceptedAnswer":{"@type":"Answer","text":"Час в воде: разминка, основное задание, заминка. Я в воде рядом и показываю упражнения сам."}},
       {"@type":"Question","name":"Что, если пропущу занятие?","acceptedAnswer":{"@type":"Answer","text":"Предупредите заранее, и найдём, как отработать. Пропуск без предупреждения не переносится."}}]}
   ]}
   </script>
@@ -45,7 +45,7 @@
     <nav class="nav__links" aria-label="Разделы">
       <a href="#trener">Тренер</a><a href="#formaty">Форматы</a><a href="#gde">Где и цены</a><a href="#faq">Вопросы</a>
     </nav>
-    <a class="nav__cta" href="https://t.me/shabarshov?text=Здравствуйте%2C%20Анатолий!%20Хочу%20записаться%20на%20бесплатную%20пробную%20тренировку." target="_blank" rel="noopener">Записаться</a>
+    <a class="nav__cta js-book" href="#zapis" data-msg="Здравствуйте, Анатолий! Хочу записаться на бесплатную пробную тренировку.">Записаться</a>
   </div>
 </header>
 
@@ -59,7 +59,7 @@
         <h1 class="hero__title rv">Плавать <em>легко</em>,<br>быстро и&nbsp;далеко.</h1>
         <p class="hero__sub rv">Персональные и&nbsp;групповые тренировки для взрослых: с&nbsp;нуля до&nbsp;открытой воды. Ведёт мастер спорта <strong class="name">Анатолий&nbsp;Шабаршов</strong>.</p>
         <div class="hero__btns rv">
-          <a class="btn" href="https://t.me/shabarshov?text=Здравствуйте%2C%20Анатолий!%20Хочу%20записаться%20на%20бесплатную%20пробную%20тренировку." target="_blank" rel="noopener">Пробная тренировка</a>
+          <a class="btn js-book" href="#zapis" data-msg="Здравствуйте, Анатолий! Хочу записаться на бесплатную пробную тренировку.">Пробная тренировка</a>
           <a class="btn btn--outline" href="#formaty">Форматы и&nbsp;цены</a>
         </div>
       </div>
@@ -67,7 +67,7 @@
         <img src="img/anatoliy_hero.jpg" width="720" height="900" alt="Анатолий Шабаршов с медалью X-Waters Istra после заплыва на открытой воде" fetchpriority="high">
       </figure>
     </div>
-    <svg class="wave" viewBox="0 0 1440 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 24 C240 4 480 44 720 24 S1200 4 1440 24 V40 H0 Z" fill="#FFF"/><path d="M0 24 C240 4 480 44 720 24 S1200 4 1440 24" fill="none" stroke="#9477E0" stroke-opacity=".35" stroke-width="1"/></svg>
+    <div class="wave" aria-hidden="true"></div>
   </section>
 
   <!-- 2. Тренер -->
@@ -99,10 +99,11 @@
       <h2 class="rv">Под вашу <em>цель</em>.</h2>
       <p class="lead rv">Первая тренировка бесплатна в&nbsp;любом формате. Даже если вы&nbsp;не&nbsp;умеете плавать, за&nbsp;одну тренировку проплывёте свой первый бассейн.</p>
       <ol class="list rv">
-        <li><b>Персонально</b><p>Час один на&nbsp;один, тренер в&nbsp;воде. Время и&nbsp;бассейн под ваш график, включая Лужники.</p><a class="arrow" href="#zapis" data-msg="Здравствуйте, Анатолий! Хочу записаться на персональную тренировку.">Записаться</a></li>
-        <li><b>Открытая вода</b><p>Ориентирование, старт в&nbsp;толпе, дыхание в&nbsp;волну. К&nbsp;X-Waters, SwimCup и&nbsp;триатлону.</p><a class="arrow" href="#zapis" data-msg="Здравствуйте, Анатолий! Хочу обсудить подготовку к открытой воде.">Записаться</a></li>
-        <li><b>Группы</b><p>Своя дорожка, до&nbsp;8&nbsp;человек. Уровень подберём на&nbsp;пробной: новичкам дыхание и&nbsp;первые метры, пловцам техника и&nbsp;скорость.</p><a class="arrow" href="#gde">Где и когда</a></li>
+        <li><b>Группы</b><p>Своя дорожка, до&nbsp;8&nbsp;человек. Уровень подберём на&nbsp;пробной: новичкам дыхание и&nbsp;первые метры, пловцам техника и&nbsp;скорость.</p><span class="list__price">от&nbsp;1&nbsp;700&nbsp;₽<small>за занятие</small></span><a class="arrow" href="#gde">Где и когда</a></li>
+        <li><b>Персонально</b><p>Час один на&nbsp;один, я&nbsp;в&nbsp;воде рядом. Время и&nbsp;бассейн под ваш график, включая Лужники.</p><span class="list__price">по&nbsp;запросу<small>зависит от бассейна</small></span><a class="arrow js-book" href="#zapis" data-msg="Здравствуйте, Анатолий! Хочу записаться на персональную тренировку.">Записаться</a></li>
+        <li><b>Открытая вода</b><p>Ориентирование, старт в&nbsp;толпе, дыхание в&nbsp;волну. Готовлю к&nbsp;X-Waters, SwimCup и&nbsp;триатлону.</p><span class="list__price">по&nbsp;запросу<small>под ваш старт</small></span><a class="arrow js-book" href="#zapis" data-msg="Здравствуйте, Анатолий! Хочу обсудить подготовку к открытой воде.">Записаться</a></li>
       </ol>
+      <p class="note rv"><a class="arrow" href="#ceny">Все цены и абонементы</a></p>
     </div>
   </section>
 
@@ -115,7 +116,7 @@
         <li><b>Бауманка</b><p>СК МГТУ&nbsp;· <span class="nw">Госпитальная наб., 4</span>&nbsp;· <span class="nw">м.&nbsp;Электрозаводская</span></p><em>Пн · Чт · 19:45 и&nbsp;20:30</em><a class="arrow" href="https://yandex.ru/maps/?text=Госпитальная%20набережная%204%20строение%201%20бассейн%20МГТУ" target="_blank" rel="noopener">На карте</a></li>
         <li><b>Формула Воды</b><p>Мироновская ул., 27&nbsp;· м.&nbsp;Семёновская</p><em>Вт · Пт · 20:45</em><a class="arrow" href="https://yandex.ru/maps/org/formula_vody/1057488653" target="_blank" rel="noopener">На карте</a></li>
         <li><b>Акватория ЗИЛ</b><p>Мини-группа&nbsp;· МЦК&nbsp;ЗИЛ</p><em>Ср · Пт · 7:45</em><a class="arrow" href="https://yandex.ru/maps/?text=Акватория%20ЗИЛ%20бассейн" target="_blank" rel="noopener">На карте</a></li>
-        <li><b>Лужники</b><p>Персональные тренировки&nbsp;· м.&nbsp;Спортивная</p><em>По договорённости</em><a class="arrow" href="#zapis" data-msg="Здравствуйте, Анатолий! Хочу узнать о свободном времени для персональных тренировок.">Спросить</a></li>
+        <li><b>Лужники</b><p>Персональные тренировки&nbsp;· м.&nbsp;Спортивная</p><em>По договорённости</em><a class="arrow js-book" href="#zapis" data-msg="Здравствуйте, Анатолий! Хочу узнать о свободном времени для персональных тренировок.">Спросить</a></li>
       </ul>
       <div class="map rv" aria-label="Четыре бассейна на карте">
         <iframe src="https://yandex.ru/map-widget/v1/?ll=37.655,55.742&amp;z=11&amp;pt=37.6935,55.7674,pm2vvm~37.7360,55.7828,pm2vvm~37.6520,55.6975,pm2vvm~37.5545,55.7150,pm2vvm" title="Бассейны на карте" loading="lazy"></iframe>
@@ -128,8 +129,8 @@
           <a class="btn pay" href="https://yookassa.ru/my/i/apQml-T_gMen/l" target="_blank" rel="noopener" data-pay="8">Оплатить</a>
         </div>
         <ul class="pricelist rv">
-          <li><span>Пробная тренировка<small>любой формат</small></span><b>Бесплатно</b><a class="arrow" href="#zapis" data-msg="Здравствуйте, Анатолий! Хочу записаться на бесплатную пробную тренировку.">Записаться</a></li>
-          <li><span>Персональная тренировка<small>зависит от бассейна, назову при записи</small></span><b>По запросу</b><a class="arrow" href="#zapis" data-msg="Здравствуйте, Анатолий! Хочу уточнить стоимость персональной тренировки.">Уточнить</a></li>
+          <li><span>Пробная тренировка<small>любой формат</small></span><b>Бесплатно</b><a class="arrow js-book" href="#zapis" data-msg="Здравствуйте, Анатолий! Хочу записаться на бесплатную пробную тренировку.">Записаться</a></li>
+          <li><span>Персональная тренировка<small>зависит от бассейна, назову при записи</small></span><b>По запросу</b><a class="arrow js-book" href="#zapis" data-msg="Здравствуйте, Анатолий! Хочу уточнить стоимость персональной тренировки.">Уточнить</a></li>
           <li><span>4 тренировки в&nbsp;месяц<small>1 875 ₽ за занятие</small></span><b>7&nbsp;500&nbsp;₽</b><a class="arrow pay" href="https://yookassa.ru/my/i/apQmxFM5OBYk/l" target="_blank" rel="noopener" data-pay="4">Оплатить</a></li>
           <li><span>Разовая тренировка<small>в любой группе</small></span><b>2&nbsp;000&nbsp;₽</b><a class="arrow pay" href="https://yookassa.ru/my/i/anCYe_NYmOQf/l" target="_blank" rel="noopener" data-pay="1">Оплатить</a></li>
         </ul>
@@ -141,7 +142,7 @@
   <!-- 5. Отзыв -->
   <section class="band band--light band--quote" aria-label="Отзывы">
     <div class="wrap wrap--narrow center">
-      <blockquote class="quote rv"><p><span class="qm">«</span>Плавает вместе с&nbsp;учеником в&nbsp;воде, а&nbsp;не&nbsp;кричит с&nbsp;бортика<span class="qm">»</span></p><footer class="rating"><span class="stars" aria-hidden="true">★★★★★</span><span class="rating__score">5,0</span><span class="rating__src">Отзыв ученика на&nbsp;Профи.ру · 10&nbsp;отзывов</span></footer></blockquote>
+      <blockquote class="quote rv" cite="https://profi.ru/profile/ShabarshovAS/"><p><span class="qm">«</span>Благодарна Анатолию за&nbsp;чёткость планирования встреч и&nbsp;тренировок, за&nbsp;внимательное отношение и&nbsp;индивидуальный подход<span class="qm">»</span></p><cite class="quote__who">Анна, ученица</cite><a class="rating" href="https://profi.ru/profile/ShabarshovAS/" target="_blank" rel="noopener"><span class="stars" aria-hidden="true">★★★★★</span><span class="rating__score">5,0</span><span class="rating__src">10&nbsp;отзывов на&nbsp;Профи.ру</span><span class="rating__go" aria-hidden="true">→</span></a></blockquote>
     </div>
   </section>
 
@@ -158,7 +159,7 @@
 
   <!-- 7. Запись и подвал -->
   <section class="hero hero--end anchor" id="zapis">
-    <svg class="wave wave--top" viewBox="0 0 1440 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 16 C240 36 480 -4 720 16 S1200 36 1440 16 V0 H0 Z" fill="#FFF"/><path d="M0 16 C240 36 480 -4 720 16 S1200 36 1440 16" fill="none" stroke="#9477E0" stroke-opacity=".35" stroke-width="1"/></svg>
+    <div class="wave wave--top" aria-hidden="true"></div>
     <div class="wrap end__in">
       <h2 class="end__title rv">Начнём с&nbsp;<em>бесплатной</em><br>тренировки.</h2>
       <p class="end__note rv">Напишите цель и&nbsp;удобный район, предложу формат, бассейн и&nbsp;время.</p>
@@ -172,6 +173,18 @@
 
 </main>
 
-<script src="js/main.js?v=1789310877" defer></script>
+<div class="sheet" id="sheet" hidden>
+  <div class="sheet__bg" data-close></div>
+  <div class="sheet__box" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+    <button class="sheet__x" type="button" data-close aria-label="Закрыть"></button>
+    <p class="sheet__title" id="sheet-title">Как удобнее написать?</p>
+    <p class="sheet__sub">Текст сообщения уже подставлен, останется нажать «отправить».</p>
+    <a class="btn sheet__btn" id="sheet-tg" href="https://t.me/shabarshov?text=Здравствуйте%2C%20Анатолий!%20Хочу%20записаться%20на%20бесплатную%20пробную%20тренировку." target="_blank" rel="noopener">Telegram</a>
+    <a class="btn btn--outline sheet__btn" id="sheet-wa" href="https://wa.me/79969669160?text=Здравствуйте%2C%20Анатолий!%20Хочу%20записаться%20на%20бесплатную%20пробную%20тренировку." target="_blank" rel="noopener">WhatsApp</a>
+    <a class="btn btn--outline sheet__btn" href="tel:+79969669160">Позвонить · +7 996 966-91-60</a>
+  </div>
+</div>
+
+<script src="js/main.js?v=1789311495" defer></script>
 </body>
 </html>
