@@ -21,8 +21,10 @@
   var sections = [];
   links.forEach(function (a) { var s = document.querySelector(a.getAttribute('href')); if (s) sections.push({ a: a, s: s }); });
   var dock = document.querySelector('.dock'), hero = document.querySelector('.hero'), zapis = document.getElementById('zapis');
+  var heroEl = document.querySelector('.hero');
   function onScroll() {
     var y = window.scrollY;
+    if (heroEl && y < 900) heroEl.style.setProperty('--py', (y * 0.18) + 'px');
     if (dock && hero && zapis) {
       var past = y > hero.offsetTop + hero.offsetHeight - 60;
       var before = y + window.innerHeight < zapis.offsetTop + 40;
