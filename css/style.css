@@ -543,7 +543,7 @@ h2 { font-size: clamp(28px, 3.4vw, 44px); max-width: 20em; margin: 0 auto 16px; 
 
 /* Тренер: фото не скачет при раскрытии; цифры внутри «Подробнее» */
 .trener { align-items: start !important; }
-.trener__photo { position: sticky; top: calc(var(--nav-h) + 24px); }
+
 .trener .more .facts { margin-top: 28px; }
 .trener .more .bio { margin-top: 28px; }
 @media (max-width: 900px) { .trener__photo { position: static; } }
@@ -569,3 +569,13 @@ h2 { font-size: clamp(28px, 3.4vw, 44px); max-width: 20em; margin: 0 auto 16px; 
 
 /* Карта приглушённее */
 .citymap img { filter: saturate(.55) brightness(1.04) contrast(.93); }
+
+/* Подпись под фото тренера */
+.trener__fig { margin: 0; }
+.trener__fig figcaption { margin-top: 14px; font-size: 15px; font-weight: 500; color: var(--text); text-align: center; }
+.trener .bio { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+@media (max-width: 900px) {
+  .trener__fig { justify-self: center; width: min(260px, 70%); }
+  .trener__fig .trener__photo { width: 100%; }
+  .trener .bio { grid-template-columns: 1fr !important; }
+}
