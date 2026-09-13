@@ -794,3 +794,46 @@ body { padding-top: 0; }
   .list li:hover p, .list li:hover .list__price small { color: rgba(255, 255, 255, .86); }
   .list li:hover .arrow { color: #FFFFFF; text-decoration-color: rgba(255, 255, 255, .5); }
 }
+
+/* Волна: свечение отдельным слоем (надёжно на любом круге), движение медленное */
+.wave svg { position: absolute; top: 0; left: 0; width: 200%; height: 100%; animation: wave-move 90s linear infinite; will-change: transform; }
+.wave { overflow: visible; }
+.wave__glow { filter: blur(6px); opacity: .55; }
+@media (max-width: 734px) { .wave svg { width: 400%; animation-duration: 120s; } }
+
+/* Окно цен на телефоне: компактные строки, «ручка» сверху */
+@media (max-width: 734px) {
+  #prices .sheet__box--wide { padding: 30px 20px calc(22px + env(safe-area-inset-bottom)); border-radius: 26px 26px 0 0; max-height: 92svh; }
+  #prices .sheet__box--wide::before { content: ""; position: absolute; top: 10px; left: 50%; width: 38px; height: 4px; margin-left: -19px; border-radius: 4px; background: rgba(40, 38, 55, .16); }
+  #prices .sheet__x { top: 16px; right: 16px; width: 32px; height: 32px; }
+  #prices .sheet__x::before, #prices .sheet__x::after { left: 9px; right: 9px; top: 15px; }
+  #prices .sheet__title { font-size: 22px; margin: 6px 44px 6px 0; }
+  .pr__lead { font-size: 14px; margin-bottom: 18px; }
+  .pr li { grid-template-columns: minmax(0, 1fr) auto; gap: 14px; padding: 15px 0; align-items: center; }
+  .pr__name b { font-size: 15px; }
+  .pr__name small { font-size: 12px; line-height: 1.35; }
+  .pr__side { flex-direction: column; align-items: flex-end; gap: 7px; justify-content: center; }
+  .pr__price { font-size: 16px; min-width: 0; text-align: right; white-space: nowrap; }
+  .pr__act { min-width: 0; height: 30px; padding: 0 13px; font-size: 12px; }
+  .pr__best { margin-top: 18px; padding: 20px; border-radius: 20px; grid-template-columns: minmax(0, 1fr) auto; align-items: end; }
+  .pr__best-title { font-size: 14px; }
+  .pr__best-price { font-size: 28px; }
+  .pr__best-per { display: block; font-size: 12px; }
+  .pr__best-row { display: block; }
+  .pr__best-btn { grid-column: 2; grid-row: 2 / span 2; width: auto; margin: 0; min-height: 40px; padding: 0 20px; font-size: 14px; }
+  .pr__note { margin-top: 14px; }
+}
+
+/* Карточки бассейнов: симметрично — сверху информация, внизу по центру кнопки */
+.mpin__card { padding: 18px 22px 18px; }
+.mpin__acts { display: flex; justify-content: center; gap: 8px; margin-top: 12px; }
+.mpin__route { position: static; height: 28px; padding: 0 14px; font-size: 12px; }
+.mpin__route--ghost { background: transparent; box-shadow: inset 0 0 0 1px rgba(110, 103, 136, .3); }
+.mpin__route--ghost::after { content: none; }
+@media (max-width: 900px) {
+  .mpin__card { padding: 6px 10px 7px; }
+  .citymap__panel { padding: 20px; }
+  .citymap__panel .mpin__route { position: static; height: 32px; font-size: 13px; }
+}
+@media (max-width: 734px) { .pr__best-title { grid-column: 1 / -1; } }
+.mpin__route { white-space: nowrap; }
