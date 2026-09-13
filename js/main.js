@@ -164,8 +164,8 @@
     var cur = items[i]; i = (i + 1) % items.length; var nx = items[i];
     cur.classList.remove('is-on'); cur.classList.add('is-off'); cur.setAttribute('aria-hidden', 'true');
     nx.classList.remove('is-off'); nx.classList.add('is-on'); nx.removeAttribute('aria-hidden');
-    setTimeout(function () { cur.classList.remove('is-off'); }, 900);
-  }, 3400);
+    setTimeout(function () { cur.classList.remove("is-off"); }, 1800);
+  }, 6000);
 })();
 
 // Вопросы: ответ мягко выезжает, закрывается так же плавно
