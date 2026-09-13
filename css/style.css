@@ -594,3 +594,46 @@ h2 { font-size: clamp(28px, 3.4vw, 44px); max-width: 20em; margin: 0 auto 16px; 
 .hero:not(.hero--end) { background-color: #FFF; }
 .hero:not(.hero--end) { background: radial-gradient(55% 45% at 18% 12%, rgba(148, 119, 224, .20) 0%, transparent 70%), radial-gradient(45% 40% at 84% 22%, rgba(122, 196, 255, .22) 0%, transparent 70%), linear-gradient(180deg, #F5F3FB 0%, #FFFFFF 85%); }
 @media (max-width: 900px) { .hero:not(.hero--end) { background: radial-gradient(70% 35% at 15% 8%, rgba(148, 119, 224, .22) 0%, transparent 70%), radial-gradient(60% 30% at 90% 20%, rgba(122, 196, 255, .24) 0%, transparent 70%), linear-gradient(180deg, #F5F3FB 0%, #FFFFFF 85%); } }
+
+/* ===== Элитность: шапка, воздух, плавность ===== */
+/* Шапка тоньше и тише, логотип чётче */
+:root { --nav-h: 60px; }
+.nav { background: rgba(255, 255, 255, .72); border-bottom-color: rgba(40, 38, 55, .06); }
+.logo--nav { width: 40px; color: #6E6788; }
+.nav__links { gap: 40px; font-size: 13px; letter-spacing: .02em; color: #55536A; }
+.nav__cta { font-size: 13px; letter-spacing: .02em; padding: 8px 18px; border-color: rgba(110, 103, 136, .45); }
+
+/* Воздух: разделы дышат */
+#trener, #formaty, #gde, .band--quote { padding: clamp(104px, 12vw, 168px) 0; }
+#faq { padding: clamp(96px, 10vw, 140px) 0; }
+.end__in { padding-top: clamp(120px, 12vw, 168px); padding-bottom: 56px; }
+h2 { margin-bottom: 20px; }
+.lead { line-height: 1.6; }
+.list, .citymap { margin-top: 64px; }
+.band--quote h2 { margin-bottom: 56px; }
+.hero__in { padding-block: clamp(96px, 14vh, 150px) clamp(110px, 15vh, 170px); }
+.hero__btns { margin-top: 40px; }
+
+/* Плавное появление: мягче и медленнее */
+.rv { transform: translateY(22px); transition: opacity 1.2s var(--ease-out), transform 1.2s var(--ease-out); }
+h1.rv, h2.rv { transition: clip-path 1.3s var(--ease-out), opacity .9s var(--ease-out); }
+
+/* Единые стрелки у текстовых ссылок */
+.list .arrow, .mpin__links .arrow { gap: 6px; text-decoration: none; }
+.list .arrow::after { content: "→"; transition: transform .35s var(--ease-out); }
+.list .arrow:hover::after { transform: translateX(4px); }
+
+/* Окно цен аккуратнее */
+.sheet__bg { background: rgba(40, 38, 55, .28); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.sheet__box { border-radius: 28px; box-shadow: 0 40px 100px -30px rgba(40, 38, 55, .35); }
+.pr li { padding: 20px 0; }
+.pr__price { font-weight: 600; letter-spacing: -0.02em; }
+
+@media (max-width: 734px) {
+  :root { --nav-h: 56px; }
+  #trener, #formaty, #gde, .band--quote, #faq { padding: 80px 0; }
+  .list, .citymap { margin-top: 40px; }
+  .hero__in { padding-top: 104px; padding-bottom: 96px; }
+  .band--quote h2 { margin-bottom: 32px; }
+}
+@media (max-width: 734px) { .nav { background: transparent; border-bottom: 0; } }
