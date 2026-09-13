@@ -137,8 +137,24 @@
   });
 })();
 
-// Переходы по разделам: к заголовку раздела, чуть ниже шапки, а не к верхнему отступу
+// Переходы по разделам: мягкая прокрутка с плавным разгоном и торможением, раздел по центру экрана
 (function () {
+  var raf = null;
+  function smoothTo(to) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { window.scrollTo(0, to); return; }
+    var from = window.scrollY, dist = to - from, dur = Math.min(1400, Math.max(700, Math.abs(dist) * 0.35)), t0 = null;
+    var html = document.documentElement, prev = html.style.scrollBehavior; html.style.scrollBehavior = 'auto';
+    cancelAnimationFrame(raf);
+    function ease(t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+    function step(ts) {
+      if (t0 === null) t0 = ts;
+      var k = Math.min(1, (ts - t0) / dur);
+      window.scrollTo(0, from + dist * ease(k));
+      if (k < 1) raf = requestAnimationFrame(step); else html.style.scrollBehavior = prev;
+    }
+    raf = requestAnimationFrame(step);
+    ['wheel', 'touchstart', 'keydown'].forEach(function (ev) { window.addEventListener(ev, function stop() { cancelAnimationFrame(raf); html.style.scrollBehavior = prev; window.removeEventListener(ev, stop); }, { passive: true, once: true }); });
+  }
   document.addEventListener('click', function (e) {
     var a = e.target.closest('a[href^="#"]'); if (!a || a.classList.contains('js-book') || a.classList.contains('js-prices')) return;
     var id = a.getAttribute('href'); if (id.length < 2) return;
@@ -149,7 +165,7 @@
     var gap = Math.max(32, (avail - r.height) / 2);
     var y = r.top + window.scrollY - navH - gap;
     e.preventDefault();
-    window.scrollTo({ top: Math.max(0, y), behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    smoothTo(Math.max(0, y));
     if (history.replaceState) history.replaceState(null, '', id);
   });
 })();
