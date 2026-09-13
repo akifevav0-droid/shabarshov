@@ -928,3 +928,33 @@ body { padding-top: 0; }
   .list li:hover .arrow { color: #4E4866; background: #FFFFFF; }
 }
 @media (min-width: 735px) { .list li b { font-size: 24px; white-space: nowrap; padding-right: 100px; } }
+
+/* Шапка: «Связаться» в том же стиле, что кнопка внизу */
+.nav__cta { background: #E6E2EE; color: #4E4866; border: 0; box-shadow: inset 0 0 0 1px rgba(110, 103, 136, .28); font-weight: 500; animation: none; }
+.nav__cta::after { display: none; }
+.nav__cta:hover { background: #DCD7E6; }
+
+/* Окно «Каналы для связи»: по центру, аккуратные кнопки с иконками */
+#sheet { align-items: center; }
+#sheet .sheet__box { width: min(400px, calc(100% - 40px)); padding: 40px 28px 28px; border-radius: 28px; text-align: center; gap: 0; }
+#sheet .sheet__title { font-size: 24px; font-weight: 600; letter-spacing: -0.02em; }
+#sheet .sheet__sub { margin: 8px auto 24px; max-width: 18em; font-size: 14px; line-height: 1.45; color: var(--grey); }
+#sheet .sheet__btn { position: relative; width: 100%; min-height: 54px; margin-top: 10px; gap: 10px; font-size: 15px; font-weight: 500; background: #F4F2F7; color: var(--head); border: 0; box-shadow: inset 0 0 0 1px rgba(110, 103, 136, .16); }
+#sheet .sheet__btn:first-of-type { background: #E6E2EE; box-shadow: inset 0 0 0 1px rgba(110, 103, 136, .28); }
+#sheet .sheet__btn:hover { background: #ECE8F3; }
+#sheet .sheet__btn .ic { width: 20px; height: 20px; flex: none; color: #6E6788; }
+@media (max-width: 734px) {
+  #sheet .sheet__box { padding: 36px 22px 22px; border-radius: 26px; transform: translateY(18px) scale(.96); max-height: none; }
+  #sheet.is-in .sheet__box { transform: none; }
+}
+
+/* Карточки форматов на компьютере: тише пилюли, мягче наведение, медленнее движение */
+@media (min-width: 735px) {
+  .list li .arrow { background: transparent; color: #6E6788; font-weight: 500; box-shadow: inset 0 0 0 1px rgba(110, 103, 136, .22); transition: background .8s cubic-bezier(.16, 1, .3, 1), box-shadow .8s cubic-bezier(.16, 1, .3, 1), color .8s ease; }
+  .list li .arrow:hover { background: rgba(110, 103, 136, .06); box-shadow: inset 0 0 0 1px rgba(110, 103, 136, .35); transform: none; }
+}
+@media (hover: hover) and (min-width: 901px) {
+  .list li { transition: background 1s cubic-bezier(.16, 1, .3, 1), transform 1.1s cubic-bezier(.16, 1, .3, 1), box-shadow 1.1s cubic-bezier(.16, 1, .3, 1); }
+  .list li:hover { background: #F7F6F9; transform: translateY(-2px); box-shadow: 0 18px 40px -30px rgba(110, 103, 136, .35); }
+  .list li:hover .arrow { background: transparent; color: #57506E; box-shadow: inset 0 0 0 1px rgba(110, 103, 136, .32); }
+}
