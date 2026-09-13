@@ -41,7 +41,7 @@ h2 { font-size: clamp(30px, 4.2vw, 50px); margin-bottom: 20px; max-width: 16em; 
 
 .logo { display: inline-block; aspect-ratio: 673 / 682; background: currentColor; color: var(--lav); -webkit-mask: url("../img/logo.svg") center / contain no-repeat; mask: url("../img/logo.svg") center / contain no-repeat; }
 .logo--nav { width: 44px; display: block; }
-.logo--foot { width: 44px; }
+.logo--foot { width: 30px; flex: none; }
 
 .eyebrow, .kicker { display: flex; align-items: center; gap: 14px; font-size: 11px; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--grey); margin-bottom: 18px; }
 .eyebrow::before { content: ""; width: 48px; height: 1px; background: var(--lav); }
@@ -232,11 +232,13 @@ a.rating:hover .rating__go { transform: translateX(4px); }
 .end__btns { margin-top: 36px; display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; }
 
 /* Подвал */
-.foot { margin-top: 72px; display: flex; flex-direction: column; align-items: center; gap: 22px; }
-.foot__links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
-.foot__links a { padding: 8px 16px; border-radius: 980px; border: 1px solid rgba(123, 95, 208, .25); background: rgba(255, 255, 255, .6); font-size: 13px; color: var(--head); transition: border-color .3s var(--ease), color .3s var(--ease); }
-.foot__links a:hover { border-color: var(--lav); color: var(--lav-deep); }
-.foot__legal { width: min(560px, 100%); padding-top: 18px; border-top: 1px solid var(--line); font-size: 12px; color: var(--grey-2); text-align: center; }
+.foot { margin-top: 64px; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.foot__links { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 0; font-size: 14px; }
+.foot__links a { color: var(--text); padding: 2px 0; }
+.foot__links a + a::before { content: "·"; margin: 0 12px; color: var(--grey-2); }
+.foot__links a:hover { color: var(--lav-deep); }
+.foot__legal { display: flex; align-items: center; justify-content: center; gap: 12px; width: min(560px, 100%); padding-top: 16px; border-top: 1px solid var(--line); }
+.foot__legal p { font-size: 12px; color: var(--grey-2); text-align: left; line-height: 1.5; }
 .foot__legal a { color: var(--grey); }
 .foot__legal a:hover { color: var(--lav-deep); }
 
