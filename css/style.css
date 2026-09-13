@@ -5,10 +5,12 @@
 
 @font-face { font-family: "Inter"; src: url("../fonts/inter-latin.woff2") format("woff2"); font-weight: 100 900; font-display: swap; unicode-range: U+0000-00FF, U+2011, U+2013-2014, U+2018-201D, U+2026, U+20BD; }
 @font-face { font-family: "Inter"; src: url("../fonts/inter-cyrillic.woff2") format("woff2"); font-weight: 100 900; font-display: swap; unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: "Montserrat"; src: url("../fonts/montserrat-latin.woff2") format("woff2"); font-weight: 600 700; font-display: swap; unicode-range: U+0000-00FF, U+2013-2014, U+2018-201D, U+2026, U+20BD; }
+@font-face { font-family: "Montserrat"; src: url("../fonts/montserrat-cyrillic.woff2") format("woff2"); font-weight: 600 700; font-display: swap; unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
 @property --p { syntax: "<percentage>"; inherits: false; initial-value: 0%; }
 
 :root {
-  --ink: #241C4F; --head: #2B2262; --text: #4A4272; --grey: #6E6A80; --grey-2: #716C85;
+  --ink: #241C4F; --head: #2B2262; --text: #4A4272; --grey: #625C7A; --grey-2: #625C7A;
   --line: rgba(36, 28, 79, .12); --white: #FFF; --light: #F5F3FB;
   --lav: #9477E0; --lav-deep: #7B5FD0;
   --head-font: "Montserrat", "Inter", -apple-system, "Helvetica Neue", Arial, sans-serif;
@@ -25,7 +27,7 @@ body { font-family: var(--sans); font-size: 17px; line-height: 1.5; color: var(-
 a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; }
 p { overflow-wrap: anywhere; text-wrap: pretty; }
-h1, h2 { font-family: var(--head-font); font-weight: 700; letter-spacing: -0.03em; line-height: 1.08; color: var(--head); text-wrap: balance; }
+h1, h2 { font-family: var(--head-font); font-weight: 700; letter-spacing: -0.015em; line-height: 1.1; color: var(--head); text-wrap: balance; }
 h1 em, h2 em { font-style: normal; color: inherit; }
 h2 { font-size: clamp(32px, 4vw, 48px); margin-bottom: 24px; max-width: 16em; }
 .nw { white-space: nowrap; }
@@ -80,12 +82,12 @@ h1.rv.on, h2.rv.on { clip-path: inset(-10% -5% -15% -5%); }
 @media (min-width: 1500px) { :root { --w: 1280px; } }
 
 /* Первый экран: живой перелив, заголовок слева, фото в арке справа */
-.hero { position: relative; overflow-x: clip; overflow-y: visible; z-index: 1; background: linear-gradient(180deg, rgba(255, 255, 255, 0) 70%, #FFFFFF 100%), radial-gradient(60% 70% at 12% 38%, rgba(148, 119, 224, .24) 0%, transparent 70%), radial-gradient(40% 45% at 34% 78%, rgba(122, 196, 255, .20) 0%, transparent 70%), linear-gradient(90deg, #F3F0FB 0%, #FAF9FE 55%, #FFFFFF 100%); }
-.hero::before { content: ""; position: absolute; inset: 0 40% 0 -20%; pointer-events: none; background: radial-gradient(45% 40% at 40% 35%, rgba(148, 119, 224, .18) 0%, transparent 70%), radial-gradient(40% 35% at 55% 70%, rgba(122, 196, 255, .16) 0%, transparent 70%); animation: drift 18s ease-in-out infinite alternate; }
+.hero { position: relative; overflow-x: clip; overflow-y: visible; z-index: 1; background: linear-gradient(180deg, rgba(255, 255, 255, 0) 70%, #FFFFFF 100%), radial-gradient(60% 70% at 12% 38%, rgba(148, 119, 224, .24) 0%, transparent 70%), radial-gradient(40% 45% at 34% 78%, rgba(185, 196, 245, .20) 0%, transparent 70%), linear-gradient(90deg, #F3F0FB 0%, #FAF9FE 55%, #FFFFFF 100%); }
+.hero::before { content: ""; position: absolute; inset: 0 40% 0 -20%; pointer-events: none; background: radial-gradient(45% 40% at 40% 35%, rgba(148, 119, 224, .18) 0%, transparent 70%), radial-gradient(40% 35% at 55% 70%, rgba(185, 196, 245, .16) 0%, transparent 70%); animation: drift 18s ease-in-out infinite alternate; }
 @keyframes drift { 0% { transform: translate3d(-3%, -2%, 0) scale(1); } 100% { transform: translate3d(3%, 3%, 0) scale(1.06); } }
 .hero > .wrap { position: relative; }
 .hero__in { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 64px; min-height: calc(100svh - var(--nav-h)); padding-block: clamp(32px, 6vh, 64px); }
-.hero__title { font-size: clamp(48px, 5.6vw, 88px); line-height: 1.02; letter-spacing: -0.04em; margin-bottom: 24px; }
+.hero__title { font-size: clamp(48px, 5.6vw, 88px); line-height: 1.04; letter-spacing: -0.025em; margin-bottom: 24px; }
 .hero__sub { font-size: 21px; color: var(--text); max-width: 27em; }
 .hero__btns { display: flex; align-items: center; gap: 32px; flex-wrap: wrap; margin-top: 40px; }
 .hero__link { color: var(--lav-deep); font-size: 17px; font-weight: 500; }
@@ -122,14 +124,14 @@ h1.rv.on, h2.rv.on { clip-path: inset(-10% -5% -15% -5%); }
 
 /* Списки на линиях — разметка дорожки */
 .list { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 40px; text-align: left; }
-.list li { position: relative; display: flex; flex-direction: column; gap: 16px; padding: 32px; border-radius: 24px; background: #fff; overflow: hidden; }
+.list li { position: relative; display: flex; flex-direction: column; gap: 16px; padding: 32px; border-radius: 24px; background: #fff; border: 1px solid transparent; overflow: hidden; }
 .list li::after { content: ""; position: absolute; left: 0; bottom: 0; height: 3px; width: var(--p); background: var(--lav); transition: --p .9s var(--ease-out); }
 .list li:hover::after { --p: 100%; }
 .list b { font-family: var(--head-font); font-weight: 700; font-size: 28px; line-height: 1.2; letter-spacing: -0.02em; color: var(--head); transition: color .3s var(--ease); }
 .list li:hover b { color: var(--lav-deep); }
 .list p { color: var(--text); font-size: 16px; flex: 1; }
-.list__price { font-family: var(--head-font); font-weight: 600; font-size: 20px; letter-spacing: -0.01em; color: var(--text); white-space: nowrap; }
-.list li:nth-child(2) { background: linear-gradient(160deg, #FFFFFF 0%, #EFEAFB 100%); box-shadow: 0 24px 50px -30px rgba(123, 95, 208, .45); }
+.list__price { font-family: var(--head-font); font-weight: 700; font-size: 28px; letter-spacing: -0.02em; color: var(--head); white-space: nowrap; }
+.list li:nth-child(2) { border-color: var(--lav); }
 .list__price small { display: block; font-family: var(--sans); font-weight: 400; font-size: 13px; letter-spacing: 0; color: var(--grey-2); margin-top: 4px; }
 .list .arrow { align-self: flex-start; }
 
@@ -205,7 +207,7 @@ a.rating:hover .rating__src { color: var(--lav-deep); text-decoration: underline
 @keyframes fade { from { opacity: 0; transform: translateY(-4px) } to { opacity: 1; transform: none } }
 
 /* Последний экран: запись и подвал */
-.hero--end { background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 30%), radial-gradient(55% 45% at 82% 10%, rgba(148, 119, 224, .22) 0%, transparent 70%), radial-gradient(45% 40% at 16% 30%, rgba(122, 196, 255, .22) 0%, transparent 70%), linear-gradient(180deg, #FFF 0%, #F5F3FB 100%); }
+.hero--end { background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 30%), radial-gradient(55% 45% at 82% 10%, rgba(148, 119, 224, .22) 0%, transparent 70%), radial-gradient(45% 40% at 16% 30%, rgba(185, 196, 245, .22) 0%, transparent 70%), linear-gradient(180deg, #FFF 0%, #F5F3FB 100%); }
 .end__in { text-align: center; padding-top: 104px; padding-bottom: 40px; }
 .end__title { font-size: clamp(34px, 4.6vw, 58px); line-height: 1.05; max-width: 12em; margin: 0 auto 20px; }
 .end__note { font-size: 17px; color: var(--grey); max-width: 30em; margin: 0 auto; }
@@ -226,7 +228,7 @@ a.rating:hover .rating__src { color: var(--lav-deep); text-decoration: underline
 /* Планшет */
 @media (max-width: 1000px) and (min-width: 735px) { .list { grid-template-columns: 1fr; } }
 @media (max-width: 900px) {
-  .hero { background: linear-gradient(180deg, rgba(255, 255, 255, 0) 70%, #FFFFFF 100%), radial-gradient(70% 45% at 20% 62%, rgba(148, 119, 224, .22) 0%, transparent 70%), radial-gradient(50% 35% at 85% 85%, rgba(122, 196, 255, .18) 0%, transparent 70%), linear-gradient(180deg, #FFFFFF 0%, #F5F3FB 100%); }
+  .hero { background: linear-gradient(180deg, rgba(255, 255, 255, 0) 70%, #FFFFFF 100%), radial-gradient(70% 45% at 20% 62%, rgba(148, 119, 224, .22) 0%, transparent 70%), radial-gradient(50% 35% at 85% 85%, rgba(185, 196, 245, .18) 0%, transparent 70%), linear-gradient(180deg, #FFFFFF 0%, #F5F3FB 100%); }
   .hero::before { inset: 40% -10% 0 -10%; }
   .hero__in { grid-template-columns: 1fr; gap: 40px; }
   .hero__photo { justify-self: start; height: auto; width: min(380px, 100%); }
@@ -304,7 +306,7 @@ a.rating:hover .rating__src { color: var(--lav-deep); text-decoration: underline
 .pr__price--free { color: var(--lav-deep); }
 .pr__act { font-size: 13px; font-weight: 500; color: var(--lav-deep); }
 .pr__act:hover { text-decoration: underline; text-underline-offset: 3px; }
-.pr__best { position: relative; margin-top: 24px; padding: 26px 28px 28px; border-radius: 20px; color: #fff; overflow: hidden; background: radial-gradient(80% 120% at 100% 0%, rgba(122, 196, 255, .35) 0%, transparent 60%), linear-gradient(135deg, #9D82E6 0%, #7B5FD0 100%); box-shadow: 0 24px 50px -24px rgba(123, 95, 208, .6); }
+.pr__best { position: relative; margin-top: 24px; padding: 26px 28px 28px; border-radius: 20px; color: #fff; overflow: hidden; background: radial-gradient(80% 120% at 100% 0%, rgba(185, 196, 245, .35) 0%, transparent 60%), linear-gradient(135deg, #9D82E6 0%, #7B5FD0 100%); box-shadow: 0 24px 50px -24px rgba(123, 95, 208, .6); }
 .pr__badge { display: inline-block; padding: 4px 10px; border-radius: 980px; background: rgba(255, 255, 255, .2); font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
 .pr__best-title { display: block; margin-top: 14px; font-size: 17px; font-weight: 600; }
 .pr__best-row { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 14px; margin-top: 6px; }
@@ -325,41 +327,66 @@ a.rating:hover .rating__src { color: var(--lav-deep); text-decoration: underline
   .formats__more .btn { width: 100%; }
 }
 
-/* === Фирменные детали из бассейна (ветка vizual-10) === */
-/* Метка раздела: разметка дна бассейна — линия с поперечиной «Т» в конце */
-.eyebrow { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 18px; font-size: 12px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--lav-deep); }
-.eyebrow::before { content: ""; width: 28px; height: 12px; flex: none; background: linear-gradient(var(--lav), var(--lav)) 0 50% / 100% 2px no-repeat, linear-gradient(var(--lav), var(--lav)) 100% 0 / 2px 100% no-repeat; }
 
-/* Тренер: заголовок слева, цифры справа столбиком по дорожкам */
+/* Фирменная деталь: разметка бассейна.
+   Метка раздела — линия дна с поперечиной «Т»; на светлых полосах — линии дорожек. */
+.eyebrow { display: inline-flex; align-items: center; gap: 14px; margin-bottom: 20px; font-size: 12px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--lav-deep); }
+.eyebrow::before { content: ""; width: 44px; height: 14px; flex: none; background: linear-gradient(var(--lav), var(--lav)) 0 50% / 100% 2px no-repeat, linear-gradient(var(--lav), var(--lav)) 100% 0 / 2px 100% no-repeat; }
+.band--light { position: relative; isolation: isolate; }
+.band--light::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: repeating-linear-gradient(90deg, transparent 0 calc(12.5% - 1px), rgba(123, 95, 208, .045) calc(12.5% - 1px) 12.5%, transparent 12.5% 25%); -webkit-mask: linear-gradient(180deg, transparent, #000 18%, #000 82%, transparent); mask: linear-gradient(180deg, transparent, #000 18%, #000 82%, transparent); }
+.lane { font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--lav-deep); margin-bottom: -8px; }
+
+/* Разный ритм разделов */
+#trener { padding: clamp(96px, 11vw, 160px) 0 clamp(64px, 7vw, 96px); }
+#formaty { padding: clamp(72px, 8vw, 112px) 0 clamp(88px, 9vw, 128px); }
+#gde { padding: clamp(72px, 7vw, 96px) 0 clamp(72px, 8vw, 112px); }
+.band--quote { padding: clamp(80px, 9vw, 128px) 0; }
+
+/* Тренер: слева заголовок, справа крупные цифры по дорожкам */
+.facts dd { color: var(--text); }
 @media (min-width: 901px) {
-  .trener { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); column-gap: 80px; align-items: end; }
-  .trener__head h2 { margin-bottom: 24px; }
-  .trener .facts { display: grid; gap: 0; margin-top: 0; }
-  .trener .facts > div { display: grid; grid-template-columns: 110px minmax(0, 1fr); align-items: center; gap: 20px; padding: 18px 0; border-top: 1px solid var(--line); }
+  .trener { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 88px; align-items: start; }
+  .trener h2 { margin-bottom: 24px; }
+  .trener .facts { display: grid; gap: 0; margin-top: 6px; }
+  .trener .facts > div { display: grid; grid-template-columns: 120px minmax(0, 1fr); align-items: center; gap: 24px; padding: 20px 0; border-top: 1px solid var(--line); }
   .trener .facts > div:last-child { border-bottom: 1px solid var(--line); }
-  .trener .facts dd { margin-top: 0; }
-  .trener .more { grid-column: 1 / -1; }
+  .trener .facts dt { font-size: 72px; }
+  .trener .facts dd { margin-top: 0; font-size: 17px; max-width: 22em; }
+  .trener .more { margin-top: 40px; }
+  .trener .bio { grid-template-columns: 1fr; gap: 20px; }
 }
 
-/* Форматы: номер дорожки вместо свечения; акцент на «Персонально» — обводкой */
-.list { counter-reset: lane; }
-.list li { counter-increment: lane; border: 1px solid transparent; }
-.list li::before { content: counter(lane); position: absolute; top: 22px; right: 28px; font-family: var(--head-font); font-weight: 700; font-size: 56px; line-height: 1; letter-spacing: -0.04em; color: transparent; -webkit-text-stroke: 1.5px rgba(148, 119, 224, .45); pointer-events: none; }
-.list li:nth-child(2) { background: #fff; box-shadow: none; border-color: var(--lav); }
-.list li:nth-child(2)::before { -webkit-text-stroke-color: var(--lav); }
-.list b { padding-right: 56px; }
-
-/* Отзывы: кавычка и звёзды, без дат */
-.band--quote h2 { margin-bottom: 40px; }
-.review { position: relative; padding-top: 52px; }
-.review::before { content: "“"; position: absolute; top: 14px; left: 24px; font-family: var(--head-font); font-weight: 700; font-size: 56px; line-height: 1; color: var(--lav); }
-.review p { quotes: none; }
-.review footer { display: flex; flex-direction: column; gap: 6px; font-weight: 500; color: var(--head); font-size: 14px; }
+/* Отзывы: один крупный, два под ним — без подложек, по линиям */
+.band--quote h2 { margin-bottom: 48px; }
+.reviews { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 64px; }
+.review { padding: 28px 0 0; border-radius: 0; background: none; border-top: 1px solid rgba(123, 95, 208, .3); gap: 16px; }
+.review--big { grid-column: 1 / -1; padding: 0 0 48px; border-top: 0; }
+.review--big p { font-family: var(--head-font); font-weight: 600; font-size: clamp(24px, 2.6vw, 34px); line-height: 1.3; letter-spacing: -0.01em; max-width: 30em; }
+.review footer { display: flex; align-items: center; gap: 12px; font-size: 14px; font-weight: 500; color: var(--head); }
 .review .stars { font-size: 13px; }
+.band--quote .rating { margin-top: 48px; }
 #faq h2 { margin-bottom: 16px; }
+
+/* Карта: расписание ровными строками */
+.mpin__card em { line-height: 1.45; }
+@media (max-width: 900px) {
+  .mpin__dot { width: 20px; height: 20px; left: -10px; top: -10px; }
+  .mpin__dot::after { content: ""; position: absolute; inset: -12px; border-radius: 50%; }
+  .mpin__card b { font-size: 13px; }
+}
 @media (max-width: 734px) {
-  .eyebrow { margin-bottom: 12px; font-size: 11px; }
-  .list li::before { top: 18px; right: 20px; font-size: 44px; }
-  .review { padding-top: 46px; }
-  .review::before { left: 18px; top: 10px; font-size: 48px; }
+  .eyebrow { margin-bottom: 14px; font-size: 11px; }
+  .eyebrow::before { width: 32px; }
+  .band--light::before { background: repeating-linear-gradient(90deg, transparent 0 calc(25% - 1px), rgba(123, 95, 208, .045) calc(25% - 1px) 25%, transparent 25% 50%); }
+  #trener, #formaty, #gde, .band--quote { padding: 64px 0; }
+  .list__price { font-size: 24px; }
+  .reviews { grid-template-columns: 1fr; }
+  .review--big { padding-bottom: 32px; }
+  .review:not(.review--big) { padding-bottom: 24px; }
+  .band--quote h2 { margin-bottom: 32px; }
+}
+@media (max-width: 900px) {
+  .trener { display: flex; flex-direction: column; }
+  .trener__head { display: contents; }
+  .trener .more { order: 2; }
 }
