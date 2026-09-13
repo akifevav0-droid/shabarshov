@@ -150,7 +150,7 @@ h2.rv.on, .facts.rv.on, .tile--hero.rv.on { clip-path: inset(0 0 -10% 0); }
 .more { margin-top: 32px; text-align: left; border-bottom: 0; }
 .more > summary { display: inline-flex; align-items: center; gap: 4px; list-style: none; cursor: pointer; color: var(--lav-deep); font-size: 17px; font-weight: 500; padding: 8px 0; }
 .more > summary::-webkit-details-marker { display: none }
-.more > summary::after { content: ""; width: 8px; height: 8px; margin-left: 10px; margin-top: -5px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg); transition: transform .3s var(--ease-out); }
+.more > summary::after { content: ""; position: static; flex: none; width: 8px; height: 8px; margin-left: 10px; margin-top: -5px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg); transition: transform .3s var(--ease-out); }
 .more[open] > summary::after { transform: rotate(225deg); margin-top: 4px; }
 .more > summary:hover { text-decoration: underline; text-underline-offset: 4px; }
 .bio { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 24px; animation: fade .45s var(--ease-out); }
