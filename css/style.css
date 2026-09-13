@@ -579,3 +579,18 @@ h2 { font-size: clamp(28px, 3.4vw, 44px); max-width: 20em; margin: 0 auto 16px; 
   .trener__fig .trener__photo { width: 100%; }
   .trener .bio { grid-template-columns: 1fr !important; }
 }
+
+/* Волна: ровная светящаяся синусоида, плывёт без стыка */
+.wave { top: auto; bottom: -30px; height: 60px; overflow: hidden; }
+.wave::before { display: none; }
+.wave svg { position: absolute; top: 0; left: 0; width: 200%; height: 100%; animation: wave-move 40s linear infinite; }
+@media (max-width: 734px) { .wave { height: 44px; bottom: -22px; } .wave svg { width: 400%; } }
+
+/* Финал: одна кнопка «Связаться» */
+.end__btns .btn { min-width: 220px; }
+@media (max-width: 734px) { .end__btns .btn { width: auto; min-width: 200px; } }
+/* Перелив первого экрана гаснет к низу — без резкой границы у волны */
+.hero:not(.hero--end)::before { -webkit-mask: linear-gradient(180deg, #000 55%, transparent 92%); mask: linear-gradient(180deg, #000 55%, transparent 92%); }
+.hero:not(.hero--end) { background-color: #FFF; }
+.hero:not(.hero--end) { background: radial-gradient(55% 45% at 18% 12%, rgba(148, 119, 224, .20) 0%, transparent 70%), radial-gradient(45% 40% at 84% 22%, rgba(122, 196, 255, .22) 0%, transparent 70%), linear-gradient(180deg, #F5F3FB 0%, #FFFFFF 85%); }
+@media (max-width: 900px) { .hero:not(.hero--end) { background: radial-gradient(70% 35% at 15% 8%, rgba(148, 119, 224, .22) 0%, transparent 70%), radial-gradient(60% 30% at 90% 20%, rgba(122, 196, 255, .24) 0%, transparent 70%), linear-gradient(180deg, #F5F3FB 0%, #FFFFFF 85%); } }
