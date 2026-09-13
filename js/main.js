@@ -21,10 +21,8 @@
   var sections = [];
   links.forEach(function (a) { var s = document.querySelector(a.getAttribute('href')); if (s) sections.push({ a: a, s: s }); });
   var dock = document.querySelector('.dock'), hero = document.querySelector('.hero'), zapis = document.getElementById('zapis');
-  var heroEl = document.querySelector('.hero');
   function onScroll() {
     var y = window.scrollY;
-    if (heroEl && y < 900) heroEl.style.setProperty('--py', (y * 0.18) + 'px');
     if (dock && hero && zapis) {
       var past = y > hero.offsetTop + hero.offsetHeight - 60;
       var before = y + window.innerHeight < zapis.offsetTop + 40;
@@ -39,13 +37,12 @@
   onScroll();
 
   // Ссылки с data-msg: блок записи подставляет тему в кнопки Telegram и WhatsApp
-  var tg = document.getElementById('tg'), wa = document.getElementById('wa'), sub = document.getElementById('zapis-sub');
+  var tg = document.getElementById('tg'), wa = document.getElementById('wa');
   document.querySelectorAll('a[data-msg]').forEach(function (a) {
     a.addEventListener('click', function () {
       var msg = a.getAttribute('data-msg'), q = encodeURIComponent(msg);
       if (tg) tg.href = 'https://t.me/shabarshov?text=' + q;
       if (wa) wa.href = 'https://wa.me/79969669160?text=' + q;
-      if (sub) sub.textContent = 'Текст уже подставлен: «' + msg.replace('Здравствуйте, Анатолий! ', '') + '» Останется только отправить.';
     });
   });
 
