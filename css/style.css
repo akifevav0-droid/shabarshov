@@ -40,7 +40,7 @@ h2 { font-size: clamp(30px, 4.2vw, 50px); margin-bottom: 20px; max-width: 16em; 
 .skip:focus { position: fixed; left: 12px; top: 12px; width: auto; height: auto; clip-path: none; background: var(--lav); color: #fff; padding: 10px 16px; border-radius: 10px; z-index: 100; }
 
 .logo { display: inline-block; aspect-ratio: 673 / 682; background: currentColor; color: var(--lav); -webkit-mask: url("../img/logo.svg") center / contain no-repeat; mask: url("../img/logo.svg") center / contain no-repeat; }
-.logo--nav { width: 32px; }
+.logo--nav { width: 44px; display: block; }
 .logo--foot { width: 44px; }
 
 .eyebrow, .kicker { display: flex; align-items: center; gap: 14px; font-size: 11px; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--grey); margin-bottom: 18px; }
@@ -256,8 +256,8 @@ a.rating:hover .rating__go { transform: translateX(4px); }
   body { padding-top: 0; }
   .nav { position: absolute; background: transparent; border-bottom: 0; backdrop-filter: none; -webkit-backdrop-filter: none; }
   .nav::before { display: none; }
-  .nav__in { height: 64px; }
-  .logo--nav { width: 36px; }
+  .nav__in { height: 72px; }
+  .logo--nav { width: 48px; }
   .nav__links { display: none; }
   .nav__cta { position: fixed; top: calc(14px + env(safe-area-inset-top)); right: 16px; z-index: 70; font-size: 15px; padding: 9px 18px; }
   .wrap { padding: 0 20px; }
