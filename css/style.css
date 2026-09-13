@@ -150,8 +150,8 @@ h2.rv.on, .facts.rv.on, .tile--hero.rv.on { clip-path: inset(0 0 -10% 0); }
 .more { margin-top: 32px; text-align: left; border-bottom: 0; }
 .more > summary { display: inline-flex; align-items: center; gap: 4px; list-style: none; cursor: pointer; color: var(--lav-deep); font-size: 17px; font-weight: 500; padding: 8px 0; }
 .more > summary::-webkit-details-marker { display: none }
-.more > summary::after { content: "›"; display: inline-block; margin-left: 8px; font-size: 22px; line-height: 1; transform: rotate(90deg); transition: transform .3s var(--ease-out); }
-.more[open] > summary::after { transform: rotate(-90deg); }
+.more > summary::after { content: ""; width: 8px; height: 8px; margin-left: 10px; margin-top: -5px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg); transition: transform .3s var(--ease-out); }
+.more[open] > summary::after { transform: rotate(225deg); margin-top: 4px; }
 .more > summary:hover { text-decoration: underline; text-underline-offset: 4px; }
 .bio { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 24px; animation: fade .45s var(--ease-out); }
 .bio b { display: block; font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: .12em; color: var(--lav); margin-bottom: 8px; }
@@ -161,8 +161,11 @@ h2.rv.on, .facts.rv.on, .tile--hero.rv.on { clip-path: inset(0 0 -10% 0); }
   .about { grid-template-columns: 1fr; gap: 28px; }
   .photo { padding-top: 0; }
   .photo__ph, .photo img { width: 180px; height: 180px; } .photo__ph .logo { width: 76px; }
-  .facts { grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; }
-  .facts dd { font-size: 13px; max-width: none; }
+  .facts { grid-template-columns: 1fr; gap: 0; margin-top: 24px; padding-top: 0; border-top: 0; }
+  .facts > div { display: grid; grid-template-columns: 92px 1fr; align-items: center; gap: 16px; min-height: 84px; padding: 12px 0; border-top: 1px solid var(--line); }
+  .facts > div:last-child { border-bottom: 1px solid var(--line); }
+  .facts dt { font-size: 40px; }
+  .facts dd { font-size: 15px; margin-top: 0; max-width: none; }
   .bio { grid-template-columns: 1fr; gap: 20px; }
 }
 
@@ -171,7 +174,6 @@ h2.rv.on, .facts.rv.on, .tile--hero.rv.on { clip-path: inset(0 0 -10% 0); }
   .photo { padding-top: 0; }
   .pricing { grid-template-columns: 1fr; }
   .tile--hero { order: 2; } .pricelist { order: 1; }
-  .facts { grid-template-columns: repeat(3, 1fr); }
 }
 
 /* Где и цены */
