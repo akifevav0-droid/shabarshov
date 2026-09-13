@@ -81,6 +81,26 @@
     if (first && window.matchMedia('(max-width: 900px)').matches) show(first);
   }
 
+  // Яндекс.Метрика: номер счётчика в <html data-ym="">. Пусто — ничего не грузится.
+  var ym_id = document.documentElement.getAttribute('data-ym');
+  if (ym_id) {
+    window.ym = window.ym || function () { (window.ym.a = window.ym.a || []).push(arguments); };
+    window.ym.l = +new Date();
+    var s = document.createElement('script'); s.async = true; s.src = 'https://mc.yandex.ru/metrika/tag.js';
+    document.head.appendChild(s);
+    window.ym(+ym_id, 'init', { clickmap: true, trackLinks: true, accurateTrackBounce: true });
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('a'); if (!a) return;
+      var h = a.getAttribute('href') || '', goal = null;
+      if (a.classList.contains('js-book')) goal = 'zapis';
+      else if (a.classList.contains('pay')) goal = 'oplata';
+      else if (h.indexOf('tel:') === 0) goal = 'zvonok';
+      else if (h.indexOf('t.me/shabarshov?') > -1) goal = 'telegram';
+      else if (h.indexOf('wa.me/') > -1) goal = 'whatsapp';
+      if (goal) window.ym(+ym_id, 'reachGoal', goal);
+    });
+  }
+
   var yr = document.getElementById('year');
   if (yr) yr.textContent = String(new Date().getFullYear());
 })();

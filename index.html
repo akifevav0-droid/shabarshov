@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-ym="">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -62,9 +62,12 @@
 
   <!-- 2. Тренер -->
   <section class="band anchor" id="trener">
-    <div class="wrap">
+    <div class="wrap trener">
+      <div class="trener__head">
+      <p class="eyebrow rv">Тренер</p>
       <h2 class="rv">В воде рядом с&nbsp;вами,<br>а&nbsp;не&nbsp;на&nbsp;бортике.</h2>
       <p class="lead rv">Показываю каждое упражнение сам, в&nbsp;воде. После тренировки присылаю видеоразбор техники и&nbsp;задание на&nbsp;следующий раз.</p>
+      </div>
       <dl class="facts rv">
         <div><dt>10</dt><dd>лет тренерской работы</dd></div>
         <div><dt>МС</dt><dd>мастер спорта, сборные Тульской области и&nbsp;Москвы</dd></div>
@@ -84,10 +87,11 @@
   <!-- 3. Форматы -->
   <section class="band band--light anchor" id="formaty">
     <div class="wrap">
+      <p class="eyebrow rv">Форматы</p>
       <h2 class="rv">Три формата. Первая тренировка бесплатно.</h2>
       <p class="lead rv">Результат уже на&nbsp;первом занятии: новичок почувствует себя в&nbsp;воде увереннее, а&nbsp;опытный пловец улучшит технику.</p>
       <ol class="list rv">
-        <li><b>Группы</b><p>Своя дорожка, до&nbsp;8&nbsp;человек, на&nbsp;ЗИЛе мини-группа до&nbsp;5. Группы по&nbsp;уровню: начинающий, средний, продвинутый.</p><span class="list__price">от&nbsp;1&nbsp;700&nbsp;₽<small>за занятие</small></span><a class="arrow" href="#gde">Где и когда</a></li>
+        <li><b>Группы</b><p>Своя дорожка, до&nbsp;8&nbsp;человек, на&nbsp;ЗИЛе мини-группа до&nbsp;5. Группы по&nbsp;уровню: начинающий, средний, продвинутый.</p><span class="list__price">от&nbsp;1&nbsp;700&nbsp;₽<small>за занятие по&nbsp;абонементу</small></span><a class="arrow js-book" href="#zapis" data-msg="Здравствуйте, Анатолий! Хочу записаться в группу.">Записаться</a></li>
         <li><b>Персонально</b><p>Час один на&nbsp;один, я&nbsp;в&nbsp;воде рядом. Бассейн и&nbsp;время, удобные вам, включая Лужники.</p><span class="list__price">от&nbsp;4&nbsp;200&nbsp;₽<small>с проходом в&nbsp;бассейн</small></span><a class="arrow js-book" href="#zapis" data-msg="Здравствуйте, Анатолий! Хочу записаться на персональную тренировку.">Записаться</a></li>
         <li><b>Открытая вода</b><p>Ориентирование, старт в&nbsp;толпе, дыхание в&nbsp;волну. Готовлю к&nbsp;X-Waters, SwimCup и&nbsp;триатлону.</p><span class="list__price">от&nbsp;3&nbsp;500&nbsp;₽<small>за&nbsp;час</small></span><a class="arrow js-book" href="#zapis" data-msg="Здравствуйте, Анатолий! Хочу обсудить подготовку к открытой воде.">Записаться</a></li>
       </ol>
@@ -98,6 +102,7 @@
   <!-- 4. Где, когда и сколько -->
   <section class="band anchor" id="gde">
     <div class="wrap">
+      <p class="eyebrow rv">Где и когда</p>
       <h2 class="rv">Четыре бассейна в&nbsp;Москве.</h2>
       <div class="citymap rv" role="group" aria-label="Бассейны на карте Москвы">
         <img src="img/map.jpg" width="1400" height="1100" alt="" loading="lazy">
@@ -113,20 +118,24 @@
   </section>
 
   <!-- 5. Отзыв -->
-  <section class="band band--light band--quote" aria-label="Отзывы">
-    <div class="wrap center">
+  <section class="band band--light band--quote" aria-labelledby="otzyvy">
+    <div class="wrap">
+      <p class="eyebrow rv">Отзывы</p>
+      <h2 class="rv" id="otzyvy">Что говорят ученики.</h2>
       <div class="reviews rv">
-        <blockquote class="review"><p>«Поставили цель подготовиться к&nbsp;соревнованиям и&nbsp;проплыть свой первый километр на&nbsp;открытой воде. Комфортное общение и&nbsp;приятная атмосфера тренировочного процесса».</p><footer>Владимир · декабрь 2022</footer></blockquote>
-        <blockquote class="review"><p>«100% времени сопровождает в&nbsp;воде и&nbsp;смотрит подводную часть, чтобы все моменты спортсмен делал правильно».</p><footer>Сергей · сентябрь 2021</footer></blockquote>
-        <blockquote class="review"><p>«Тренируюсь с&nbsp;ним уже больше полугода и&nbsp;научилась многому! Советую».</p><footer>Даша · декабрь 2022</footer></blockquote>
+        <blockquote class="review"><p>Поставили цель подготовиться к&nbsp;соревнованиям и&nbsp;проплыть свой первый километр на&nbsp;открытой воде. Комфортное общение и&nbsp;приятная атмосфера тренировочного процесса.</p><footer><span class="stars" aria-label="5 из 5">★★★★★</span>Владимир</footer></blockquote>
+        <blockquote class="review"><p>100% времени сопровождает в&nbsp;воде и&nbsp;смотрит подводную часть, чтобы все моменты спортсмен делал правильно.</p><footer><span class="stars" aria-label="5 из 5">★★★★★</span>Сергей</footer></blockquote>
+        <blockquote class="review"><p>Тренируюсь с&nbsp;ним уже больше полугода и&nbsp;научилась многому! Советую.</p><footer><span class="stars" aria-label="5 из 5">★★★★★</span>Даша</footer></blockquote>
       </div>
-      <a class="rating rv" href="https://profi.ru/profile/ShabarshovAS/" target="_blank" rel="noopener"><span class="stars" aria-hidden="true">★★★★★</span><span class="rating__score">5,0</span><span class="rating__src">10&nbsp;отзывов на&nbsp;Профи.ру</span></a>
+      <div class="center"><a class="rating rv" href="https://profi.ru/profile/ShabarshovAS/" target="_blank" rel="noopener"><span class="stars" aria-hidden="true">★★★★★</span><span class="rating__score">5,0</span><span class="rating__src">10&nbsp;отзывов на&nbsp;Профи.ру</span></a></div>
     </div>
   </section>
 
   <!-- 6. Вопросы -->
   <section class="band anchor" id="faq">
     <div class="wrap wrap--narrow">
+      <p class="eyebrow rv">Вопросы</p>
+      <h2 class="rv">Перед первой тренировкой.</h2>
       <details class="qa"><summary>Я не умею плавать. С чего начать?</summary><p>С бесплатной пробной тренировки. За&nbsp;первое занятие вы&nbsp;подружитесь с&nbsp;водой и&nbsp;станете увереннее. Дальше подберём формат: группу по&nbsp;уровню или персональные занятия.</p></details>
       <details class="qa"><summary>Как проходит тренировка?</summary><p>Час в&nbsp;воде: разминка, основное задание, заминка. Я&nbsp;в&nbsp;воде рядом и&nbsp;показываю упражнения сам.</p></details>
       <details class="qa"><summary>Что взять на первую тренировку?</summary><p>Справку для бассейна (как получить, расскажу при записи), купальник или плавки, шапочку, очки, сланцы, полотенце.</p></details>
