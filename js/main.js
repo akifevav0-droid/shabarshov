@@ -63,6 +63,19 @@
   if (book) book.querySelectorAll('.sheet__btn').forEach(function (el) { el.addEventListener('click', function () { setTimeout(close, 300); }); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
 
+  // Карта: на телефоне нажатие на метку показывает адрес и расписание в плашке под картой
+  var map = document.querySelector('.citymap'), panel = document.querySelector('.citymap__panel');
+  if (map && panel) {
+    map.addEventListener('click', function (e) {
+      if (e.target.closest('.mpin__links a')) return;
+      var pin = e.target.closest('.mpin');
+      if (!pin) return;
+      map.querySelectorAll('.mpin.is-open').forEach(function (p) { p.classList.remove('is-open'); });
+      pin.classList.add('is-open');
+      panel.innerHTML = pin.querySelector('.mpin__card').innerHTML;
+    });
+  }
+
   var yr = document.getElementById('year');
   if (yr) yr.textContent = String(new Date().getFullYear());
 })();
