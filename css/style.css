@@ -16,7 +16,7 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { background: var(--light); scroll-behavior: smooth; -webkit-text-size-adjust: 100%; overflow-x: clip; }
-body { font-family: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif; font-optical-sizing: auto; font-size: 17px; line-height: 1.47; letter-spacing: -0.022em; color: var(--ink); background: var(--white); overflow-x: clip; padding-top: var(--nav-h); -webkit-font-smoothing: antialiased; }
+body { font-family: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif; font-optical-sizing: auto; font-size: 17px; line-height: 1.47; letter-spacing: -0.022em; color: var(--ink); background: var(--white); padding-top: var(--nav-h); -webkit-font-smoothing: antialiased; }
 a { color: inherit; text-decoration: none; }
 h1, h2, h3 { font-weight: 600; letter-spacing: -0.03em; line-height: 1.08; text-wrap: balance; color: var(--head); }
 h2 { font-size: clamp(32px, 4.6vw, 52px); margin-bottom: 16px; }
@@ -67,7 +67,7 @@ p { overflow-wrap: anywhere; }
 .nav__links a:hover, .nav__links a.on { color: var(--lav-deep); }
 .nav__cta { font-size: 13px; padding: 6px 14px; border-radius: 980px; background: var(--lav); color: #fff; transition: background .25s var(--ease); }
 .nav__cta:hover { background: var(--lav-deep); }
-@media (max-width: 734px) { .nav__links { display: none } .nav__cta { margin-left: auto } }
+@media (max-width: 734px) { .nav { background: #FFF; backdrop-filter: none; -webkit-backdrop-filter: none; transform: translateZ(0); } .nav__links { display: none } .nav__cta { margin-left: auto } }
 
 /* Первый и последний экран: живой перелив воды */
 .hero { position: relative; color: var(--ink); text-align: center; background: radial-gradient(55% 45% at 18% 12%, rgba(148, 119, 224, .20) 0%, transparent 70%), radial-gradient(45% 40% at 84% 22%, rgba(122, 196, 255, .22) 0%, transparent 70%), linear-gradient(180deg, #F5F3FB 0%, #FFFFFF 100%); }
