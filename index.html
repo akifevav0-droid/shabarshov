@@ -17,7 +17,7 @@
   <meta property="og:image" content="https://shabarshov.ru/img/og.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preload" href="fonts/inter-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=1789305802">
+  <link rel="stylesheet" href="css/style.css?v=1789306391">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@graph":[
     {"@type":"Person","@id":"https://shabarshov.ru/#person","name":"Анатолий Шабаршов","jobTitle":"Тренер по плаванию","description":"Мастер спорта по плаванию, тренер для взрослых. Групповые и персональные тренировки в Москве, подготовка к открытой воде и триатлону.","url":"https://shabarshov.ru/","image":"https://shabarshov.ru/img/og.png","sameAs":["https://www.instagram.com/shabarshov_/","https://t.me/shabarshov","https://t.me/shabarshov_club"],"address":{"@type":"PostalAddress","addressLocality":"Москва","addressCountry":"RU"},"alumniOf":"РГУФКСМиТ","award":["Мастер спорта по плаванию"]},
@@ -42,7 +42,7 @@
     <nav class="nav__links" aria-label="Разделы">
       <a href="#trener">Тренер</a><a href="#formaty">Форматы</a><a href="#gde">Где и цены</a><a href="#faq">Вопросы</a>
     </nav>
-    <a class="nav__cta" href="#zapis" data-msg="Здравствуйте, Анатолий! Хочу записаться на бесплатную пробную тренировку.">Пробная тренировка</a>
+    <a class="nav__cta" href="#zapis" data-msg="Здравствуйте, Анатолий! Хочу записаться на бесплатную пробную тренировку.">Записаться</a>
   </div>
 </header>
 
@@ -54,7 +54,7 @@
       <h1 class="hero__title rv">Плавать легко,<br>быстро и&nbsp;далеко.</h1>
       <p class="hero__sub rv">Тренировки по плаванию с&nbsp;мастером спорта <strong class="name">Анатолием&nbsp;Шабаршовым</strong>.</p>
       <div class="hero__btns rv">
-        <a class="btn" href="#zapis" data-msg="Здравствуйте, Анатолий! Хочу записаться на бесплатную пробную тренировку.">Записаться на пробную</a>
+        <a class="btn" href="#zapis" data-msg="Здравствуйте, Анатолий! Хочу записаться на бесплатную пробную тренировку.">Пробная тренировка</a>
         <a class="btn btn--outline" href="#formaty">Смотреть форматы</a>
       </div>
     </div>
@@ -63,67 +63,75 @@
 
   <!-- 2. Тренер -->
   <section class="band anchor" id="trener">
-    <div class="wrap wrap--narrow center">
-      <p class="eyebrow rv">Тренер</p>
-      <h2 class="rv">В воде рядом с&nbsp;вами, а&nbsp;не&nbsp;на&nbsp;бортике.</h2>
+    <div class="wrap about">
       <figure class="photo rv">
         <div class="photo__ph" role="img" aria-label="Фотография тренера появится здесь"><span class="logo"></span></div>
         <figcaption><strong class="name">Анатолий Шабаршов</strong><span>мастер спорта по&nbsp;плаванию</span></figcaption>
       </figure>
-      <p class="lead rv">10 лет тренирую взрослых: от&nbsp;первых метров до&nbsp;стартов на&nbsp;открытой воде. Мастер спорта, плыл за&nbsp;сборные Тульской области и&nbsp;Москвы.</p>
-      <details class="more rv">
-        <summary>Подробнее о тренере</summary>
-        <ul class="cards cards--3">
-          <li class="tile"><b>Образование</b><p>Училище олимпийского резерва и&nbsp;РГУФК, кафедра теории и&nbsp;методики плавания.</p></li>
-          <li class="tile"><b>Достижения</b><p>Первые места X-Waters Волга и&nbsp;Истра, SwimCup Сочи, регулярные призовые на&nbsp;X-Waters и&nbsp;SwimCup. Участник чемпионата мира Masters&nbsp;2025.</p></li>
-          <li class="tile"><b>Метод</b><p>Показываю сам в&nbsp;воде. Домашние задания под вашу цель и&nbsp;видеоразборы техники после тренировки.</p><a class="arrow" href="https://profi.ru/sport/swim/" target="_blank" rel="noopener">Отзывы на Профи.ру</a></li>
-        </ul>
-      </details>
+      <div class="about__main">
+        <p class="eyebrow rv">Тренер</p>
+        <h2 class="rv">В воде рядом с&nbsp;вами, а&nbsp;не&nbsp;на&nbsp;бортике.</h2>
+        <p class="lead rv">Сам показываю каждое упражнение в&nbsp;воде, даю домашние задания под вашу цель и&nbsp;отправляю видеоразборы техники.</p>
+        <dl class="facts rv">
+          <div><dt>10</dt><dd>лет тренирую взрослых</dd></div>
+          <div><dt>МС</dt><dd>мастер спорта, сборные Тульской области и&nbsp;Москвы</dd></div>
+          <div><dt>4</dt><dd>бассейна в&nbsp;Москве</dd></div>
+        </dl>
+        <details class="more rv">
+          <summary>Подробнее о тренере</summary>
+          <ul class="bio">
+            <li><b>Образование</b><p>Училище олимпийского резерва и&nbsp;РГУФК, кафедра теории и&nbsp;методики плавания.</p></li>
+            <li><b>Достижения</b><p>Первые места X-Waters Волга и&nbsp;Истра, SwimCup Сочи, регулярные призовые на&nbsp;X-Waters и&nbsp;SwimCup. Участник чемпионата мира Masters&nbsp;2025.</p></li>
+            <li><b>Метод</b><p>Показываю сам в&nbsp;воде. Домашние задания и&nbsp;видеоразборы техники после тренировки. <a class="arrow" href="https://profi.ru/sport/swim/" target="_blank" rel="noopener">Отзывы на Профи.ру</a></p></li>
+          </ul>
+        </details>
+      </div>
     </div>
   </section>
 
   <!-- 3. Форматы -->
   <section class="band band--light anchor" id="formaty">
-    <div class="wrap wrap--narrow center">
+    <div class="wrap">
       <p class="eyebrow rv">Форматы</p>
       <h2 class="rv">Под вашу цель.</h2>
       <p class="lead rv">Первая тренировка бесплатна в&nbsp;любом формате.</p>
-    </div>
-    <div class="wrap">
-      <ul class="cards cards--3 rv">
-        <li class="tile"><svg class="ico" viewBox="0 0 32 32" aria-hidden="true"><path d="M4 12c3-3 5-3 8 0s5 3 8 0 5-3 8 0M4 20c3-3 5-3 8 0s5 3 8 0 5-3 8 0"/></svg><b>Группы</b><p>Своя дорожка, до&nbsp;8&nbsp;человек, любой уровень. Домашние задания и&nbsp;видеоразбор техники.</p><a class="arrow" href="#gde">Где и когда</a></li>
-        <li class="tile"><svg class="ico" viewBox="0 0 32 32" aria-hidden="true"><circle cx="22" cy="9" r="3"/><path d="M4 22c3-3 5-3 8 0s5 3 8 0 5-3 8 0M8 17l7-6 6 4"/></svg><b>Персонально</b><p>Час один на&nbsp;один, тренер в&nbsp;воде. С&nbsp;нуля, техника, подготовка к&nbsp;старту.</p><a class="arrow" href="#zapis" data-msg="Здравствуйте, Анатолий! Хочу записаться на персональную тренировку.">Записаться</a></li>
-        <li class="tile"><svg class="ico" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="11" r="5"/><path d="M4 23c3-3 5-3 8 0s5 3 8 0 5-3 8 0"/></svg><b>Открытая вода</b><p>Ориентирование, старт в&nbsp;толпе, дыхание в&nbsp;волну. К&nbsp;X-Waters, SwimCup и&nbsp;триатлону.</p><a class="arrow" href="#zapis" data-msg="Здравствуйте, Анатолий! Хочу обсудить подготовку к открытой воде.">Записаться</a></li>
-      </ul>
+      <ol class="list rv">
+        <li><b>Группы</b><p>Своя дорожка, до&nbsp;8&nbsp;человек, любой уровень. Домашние задания и&nbsp;видеоразбор техники.</p><a class="arrow" href="#gde">Где и когда</a></li>
+        <li><b>Персонально</b><p>Час один на&nbsp;один, тренер в&nbsp;воде. С&nbsp;нуля, техника, подготовка к&nbsp;старту.</p><a class="arrow" href="#zapis" data-msg="Здравствуйте, Анатолий! Хочу записаться на персональную тренировку.">Записаться</a></li>
+        <li><b>Открытая вода</b><p>Ориентирование, старт в&nbsp;толпе, дыхание в&nbsp;волну. К&nbsp;X-Waters, SwimCup и&nbsp;триатлону.</p><a class="arrow" href="#zapis" data-msg="Здравствуйте, Анатолий! Хочу обсудить подготовку к открытой воде.">Записаться</a></li>
+      </ol>
     </div>
   </section>
 
   <!-- 4. Где, когда и сколько -->
   <section class="band anchor" id="gde">
-    <div class="wrap wrap--narrow center">
+    <div class="wrap">
       <p class="eyebrow rv">Где, когда и сколько</p>
       <h2 class="rv">Четыре бассейна, понятные цены.</h2>
-    </div>
-    <div class="wrap">
-      <ul class="cards cards--4 pools rv">
-        <li class="tile"><b>Бауманка</b><p>СК МГТУ · Госпитальная наб., 4<br>м.&nbsp;Электрозаводская</p><em>Пн · Чт · 19:45 и&nbsp;20:30</em><a class="arrow" href="https://yandex.ru/maps/?text=Госпитальная%20набережная%204%20строение%201%20бассейн%20МГТУ" target="_blank" rel="noopener">На карте</a></li>
-        <li class="tile"><b>Формула Воды</b><p>Мироновская ул., 27<br>м.&nbsp;Семёновская</p><em>Вт · Пт · 20:45</em><a class="arrow" href="https://yandex.ru/maps/org/formula_vody/1057488653" target="_blank" rel="noopener">На карте</a></li>
-        <li class="tile"><b>Акватория ЗИЛ</b><p>Мини-группа<br>МЦК&nbsp;ЗИЛ</p><em>Ср · Пт · 7:45</em><a class="arrow" href="https://yandex.ru/maps/?text=Акватория%20ЗИЛ%20бассейн" target="_blank" rel="noopener">На карте</a></li>
-        <li class="tile"><b>Лужники</b><p>Персональные тренировки<br>м.&nbsp;Спортивная</p><em>По договорённости</em><a class="arrow" href="#zapis" data-msg="Здравствуйте, Анатолий! Хочу узнать о свободном времени для персональных тренировок.">Спросить</a></li>
+      <ul class="pools rv">
+        <li><b>Бауманка</b><p>СК МГТУ · Госпитальная наб., 4 · м.&nbsp;Электрозаводская</p><em>Пн · Чт · 19:45 и&nbsp;20:30</em><a class="arrow" href="https://yandex.ru/maps/?text=Госпитальная%20набережная%204%20строение%201%20бассейн%20МГТУ" target="_blank" rel="noopener">На карте</a></li>
+        <li><b>Формула Воды</b><p>Мироновская ул., 27 · м.&nbsp;Семёновская</p><em>Вт · Пт · 20:45</em><a class="arrow" href="https://yandex.ru/maps/org/formula_vody/1057488653" target="_blank" rel="noopener">На карте</a></li>
+        <li><b>Акватория ЗИЛ</b><p>Мини-группа · МЦК&nbsp;ЗИЛ</p><em>Ср · Пт · 7:45</em><a class="arrow" href="https://yandex.ru/maps/?text=Акватория%20ЗИЛ%20бассейн" target="_blank" rel="noopener">На карте</a></li>
+        <li><b>Лужники</b><p>Персональные тренировки · м.&nbsp;Спортивная</p><em>По договорённости</em><a class="arrow" href="#zapis" data-msg="Здравствуйте, Анатолий! Хочу узнать о свободном времени для персональных тренировок.">Спросить</a></li>
       </ul>
       <div class="map rv" aria-label="Четыре бассейна на карте">
         <iframe src="https://yandex.ru/map-widget/v1/?ll=37.655,55.742&z=11&pt=37.6935,55.7674,pm2vvm~37.7360,55.7828,pm2vvm~37.6520,55.6975,pm2vvm~37.5545,55.7150,pm2vvm" title="Бассейны на карте" loading="lazy"></iframe>
       </div>
-      <ul class="prices rv" id="ceny">
-        <li class="tile tile--price"><span>Пробная</span><b class="free">Бесплатно</b><small>любой формат</small><a class="arrow" href="#zapis" data-msg="Здравствуйте, Анатолий! Хочу записаться на бесплатную пробную тренировку.">Записаться</a></li>
-        <li class="tile tile--price"><span>4 тренировки в&nbsp;месяц</span><b>7 500 ₽</b><small>1 875 ₽ за занятие</small><a class="arrow pay" href="https://yookassa.ru/my/i/apQmxFM5OBYk/l" target="_blank" rel="noopener" data-pay="4">Оплатить</a></li>
-        <li class="tile tile--price tile--best"><span>8 тренировок в&nbsp;месяц</span><b>13 600 ₽</b><small>1 700 ₽ за занятие</small><a class="arrow pay" href="https://yookassa.ru/my/i/apQml-T_gMen/l" target="_blank" rel="noopener" data-pay="8">Оплатить</a></li>
-      </ul>
-      <ul class="prices prices--extra rv">
-        <li class="tile tile--price"><span>Разовая тренировка</span><b>2 000 ₽</b><small>в любой группе</small><a class="arrow pay" href="https://yookassa.ru/my/i/anCYe_NYmOQf/l" target="_blank" rel="noopener" data-pay="1">Оплатить</a></li>
-        <li class="tile tile--price"><span>Персональная тренировка</span><b>По запросу</b><small>зависит от бассейна</small><a class="arrow" href="#zapis" data-msg="Здравствуйте, Анатолий! Хочу уточнить стоимость персональной тренировки.">Уточнить</a></li>
-      </ul>
-      <p class="note center rv">Абонемент действует календарный месяц. Оплата через ЮKassa, <span class="nw">Т-Банк</span> или переводом.</p>
+      <div class="pricing" id="ceny">
+        <div class="tile tile--hero rv">
+          <span class="eyebrow">Абонемент · 8 тренировок в&nbsp;месяц</span>
+          <b>13 600 ₽</b>
+          <small>1 700 ₽ за занятие · действует календарный месяц</small>
+          <a class="btn pay" href="https://yookassa.ru/my/i/apQml-T_gMen/l" target="_blank" rel="noopener" data-pay="8">Оплатить</a>
+        </div>
+        <ul class="pricelist rv">
+          <li><span>Пробная тренировка<small>любой формат</small></span><b class="free">Бесплатно</b><a class="arrow" href="#zapis" data-msg="Здравствуйте, Анатолий! Хочу записаться на бесплатную пробную тренировку.">Записаться</a></li>
+          <li><span>4 тренировки в&nbsp;месяц<small>1 875 ₽ за занятие</small></span><b>7 500 ₽</b><a class="arrow pay" href="https://yookassa.ru/my/i/apQmxFM5OBYk/l" target="_blank" rel="noopener" data-pay="4">Оплатить</a></li>
+          <li><span>Разовая тренировка<small>в любой группе</small></span><b>2 000 ₽</b><a class="arrow pay" href="https://yookassa.ru/my/i/anCYe_NYmOQf/l" target="_blank" rel="noopener" data-pay="1">Оплатить</a></li>
+          <li><span>Персональная тренировка<small>зависит от бассейна</small></span><b>По запросу</b><a class="arrow" href="#zapis" data-msg="Здравствуйте, Анатолий! Хочу уточнить стоимость персональной тренировки.">Уточнить</a></li>
+        </ul>
+      </div>
+      <p class="note rv">Оплата через ЮKassa, <span class="nw">Т-Банк</span> или переводом.</p>
     </div>
   </section>
 
@@ -162,8 +170,8 @@
 
 </main>
 
-<div class="dock" aria-label="Быстрая запись"><a class="btn" href="#zapis" data-msg="Здравствуйте, Анатолий! Хочу записаться на бесплатную пробную тренировку.">Записаться на пробную</a></div>
+<div class="dock" aria-label="Быстрая запись"><a class="btn" href="#zapis" data-msg="Здравствуйте, Анатолий! Хочу записаться на бесплатную пробную тренировку.">Пробная тренировка</a></div>
 
-<script src="js/main.js?v=1789305802" defer></script>
+<script src="js/main.js?v=1789306391" defer></script>
 </body>
 </html>
