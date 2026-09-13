@@ -885,3 +885,25 @@ body { padding-top: 0; }
   .list li:hover p, .list li:hover .list__price small { color: var(--text); }
   .list li:hover .arrow { color: #4E4866; text-decoration-color: rgba(110, 103, 136, .4); }
 }
+
+/* Окно цен: содержимое проявляется по очереди */
+.sheet__bg { transition: opacity .7s cubic-bezier(.16, 1, .3, 1); }
+.sheet__box { transition: opacity .6s cubic-bezier(.16, 1, .3, 1), transform .8s cubic-bezier(.16, 1, .3, 1); }
+.sheet .sheet__title, .sheet .pr__lead, .sheet .pr li, .sheet .pr__best, .sheet .pr__note, .sheet .sheet__sub, .sheet .sheet__btn {
+  opacity: 0; transform: translateY(10px);
+  transition: opacity .6s cubic-bezier(.16, 1, .3, 1), transform .8s cubic-bezier(.16, 1, .3, 1);
+}
+.sheet.is-in .sheet__title, .sheet.is-in .pr__lead, .sheet.is-in .pr li, .sheet.is-in .pr__best, .sheet.is-in .pr__note,
+.sheet.is-in .sheet__sub, .sheet.is-in .sheet__btn { opacity: 1; transform: none; }
+.sheet.is-in .sheet__title { transition-delay: .08s; }
+.sheet.is-in .pr__lead, .sheet.is-in .sheet__sub { transition-delay: .14s; }
+.sheet.is-in .pr li:nth-child(1), .sheet.is-in .sheet__btn:nth-of-type(1) { transition-delay: .2s; }
+.sheet.is-in .pr li:nth-child(2), .sheet.is-in .sheet__btn:nth-of-type(2) { transition-delay: .26s; }
+.sheet.is-in .pr li:nth-child(3), .sheet.is-in .sheet__btn:nth-of-type(3) { transition-delay: .32s; }
+.sheet.is-in .pr li:nth-child(4) { transition-delay: .38s; }
+.sheet.is-in .pr li:nth-child(5) { transition-delay: .44s; }
+.sheet.is-in .pr__best { transition-delay: .52s; }
+.sheet.is-in .pr__note { transition-delay: .6s; }
+.sheet:not(.is-in) * { transition-delay: 0s !important; transition-duration: .3s !important; }
+.sheet:not(.is-in) .sheet__bg { transition-duration: .5s !important; }
+@media (prefers-reduced-motion: reduce) { .sheet * { opacity: 1 !important; transform: none !important; } }

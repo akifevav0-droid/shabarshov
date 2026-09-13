@@ -143,9 +143,11 @@
     var a = e.target.closest('a[href^="#"]'); if (!a || a.classList.contains('js-book') || a.classList.contains('js-prices')) return;
     var id = a.getAttribute('href'); if (id.length < 2) return;
     var sec = document.querySelector(id); if (!sec || !sec.classList.contains('band')) return;
-    var target = sec.querySelector('.trener, h2') || sec;
+    var target = sec.querySelector('.wrap') || sec;
     var nav = document.querySelector('.nav'), navH = nav && getComputedStyle(nav).position === 'fixed' ? nav.offsetHeight : 0;
-    var y = target.getBoundingClientRect().top + window.scrollY - navH - 32;
+    var r = target.getBoundingClientRect(), avail = window.innerHeight - navH;
+    var gap = Math.max(32, (avail - r.height) / 2);
+    var y = r.top + window.scrollY - navH - gap;
     e.preventDefault();
     window.scrollTo({ top: Math.max(0, y), behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
     if (history.replaceState) history.replaceState(null, '', id);
