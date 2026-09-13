@@ -90,8 +90,8 @@ h1.rv.on, h2.rv.on, .facts.rv.on { clip-path: inset(-10% -5% -15% -5%); }
 .hero__title { font-size: clamp(44px, 5.2vw, 84px); line-height: 1.02; letter-spacing: -0.035em; margin-bottom: 28px; }
 .hero__sub { font-size: clamp(18px, 1.6vw, 21px); color: var(--grey); max-width: 27em; }
 .hero__btns { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 40px; }
-.hero__photo { position: relative; aspect-ratio: 4 / 5; border-radius: 240px 240px var(--r-l) var(--r-l); overflow: hidden; max-width: 540px; justify-self: end; width: 100%; }
-.hero__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; filter: saturate(.7) hue-rotate(14deg) contrast(1.03); }
+.hero__photo { position: relative; aspect-ratio: 4 / 5; border-radius: 28px; box-shadow: 0 30px 60px -30px rgba(123, 95, 208, .45); overflow: hidden; max-width: 540px; justify-self: end; width: 100%; }
+.hero__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; filter: saturate(.8) contrast(1.03); }
 .hero__photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(148, 119, 224, .10) 0%, transparent 40%, rgba(148, 119, 224, .30) 100%); mix-blend-mode: multiply; pointer-events: none; }
 
 /* Полосы */
@@ -204,7 +204,7 @@ h1.rv.on, h2.rv.on, .facts.rv.on { clip-path: inset(-10% -5% -15% -5%); }
   h2 { font-size: 30px; }
   .hero__in { padding-top: 80px; padding-bottom: 64px; gap: 24px; }
   .hero__in { min-height: 0; }
-  .hero__photo { order: -1; justify-self: center; width: min(280px, 78vw); max-width: none; aspect-ratio: 4 / 4.4; border-radius: 140px 140px 16px 16px; }
+  .hero__photo { order: -1; justify-self: stretch; width: 100%; max-width: none; aspect-ratio: 1 / 1; border-radius: 24px; }
   .hero__title { font-size: 40px; margin-bottom: 16px; }
   .kicker { font-size: 10px; letter-spacing: .18em; margin-bottom: 12px; }
   .hero__btns { flex-direction: column; align-items: stretch; margin-top: 28px; }
