@@ -658,3 +658,25 @@ h1.rv, h2.rv { transition: clip-path 1.3s var(--ease-out), opacity .9s var(--eas
   .foot__legal { font-size: 11px; }
 }
 @media (max-width: 734px) { .trener h2, .trener .lead, .trener .trener__meta { text-align: center; } }
+
+/* «Подробнее о тренере»: после раскрытия — только круглая стрелка; текст не длиннее фото */
+.more > summary { transition: width .35s var(--ease-out), padding .35s var(--ease-out), background .3s var(--ease); }
+.more[open] > summary { font-size: 0; gap: 0; width: 44px !important; min-height: 44px; height: 44px; padding: 0; justify-content: center !important; }
+.more[open] > summary::after { margin: 5px 0 0 0; }
+.trener .more .bio { margin-top: 20px; padding-top: 20px; }
+@media (min-width: 901px) {
+  .trener .bio { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 28px !important; }
+  .trener .bio p { font-size: 14px; line-height: 1.5; }
+  .trener .bio b { margin-bottom: 8px; }
+}
+.bio { animation: bio-in .5s var(--ease-out); }
+@keyframes bio-in { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+@media (min-width: 901px) {
+  .trener__meta { margin-bottom: 10px; }
+  .trener h2 { margin-bottom: 14px; }
+  .trener .lead { font-size: 17px; }
+  .trener .more { margin-top: 24px !important; }
+  .trener .more .bio { margin-top: 16px; padding-top: 16px; }
+  .trener .bio p { font-size: 13.5px; }
+  .trener__fig { margin-top: 0; }
+}

@@ -104,3 +104,15 @@
   var yr = document.getElementById('year');
   if (yr) yr.textContent = String(new Date().getFullYear());
 })();
+
+// «Подробнее о тренере»: плавное закрытие (открытие анимирует CSS)
+(function () {
+  var d = document.querySelector('.trener .more'); if (!d) return;
+  var s = d.querySelector('summary'), bio = d.querySelector('.bio');
+  s.addEventListener('click', function (e) {
+    if (!d.open || !bio || !bio.animate || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    e.preventDefault();
+    var a = bio.animate([{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'translateY(-8px)' }], { duration: 280, easing: 'ease-in' });
+    a.onfinish = function () { d.open = false; };
+  });
+})();
