@@ -1,7 +1,7 @@
 // При открытии и обновлении — всегда с первого экрана
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 if (location.hash && history.replaceState) history.replaceState(null, '', location.pathname + location.search);
-window.addEventListener('load', function () { window.scrollTo(0, 0); });
+window.scrollTo(0, 0);
 
 // Ступенчатое появление, активный раздел в шапке, тема сообщения для кнопок записи, год.
 (function () {
@@ -45,10 +45,12 @@ window.addEventListener('load', function () { window.scrollTo(0, 0); });
     [tg, sTg].forEach(function (a) { if (a) a.href = 'https://t.me/shabarshov?text=' + q; });
     [wa, sWa].forEach(function (a) { if (a) a.href = 'https://wa.me/79969669160?text=' + q; });
   }
-  var closeT = null;
+  var closeT = null, closingEl = null;
   function open(el, focusEl) {
     if (!el) return false;
     clearTimeout(closeT);
+    if (closingEl && closingEl !== el) { closingEl.hidden = true; }
+    closingEl = null;
     if (openEl && openEl !== el) { openEl.classList.remove('is-in'); openEl.hidden = true; } else if (!openEl) lastFocus = document.activeElement;
     el.hidden = false; openEl = el; document.documentElement.style.overflow = 'hidden';
     void el.offsetWidth; el.classList.add('is-in');
@@ -57,8 +59,8 @@ window.addEventListener('load', function () { window.scrollTo(0, 0); });
   }
   function close() {
     if (!openEl) return;
-    var el = openEl; openEl = null; el.classList.remove('is-in');
-    closeT = setTimeout(function () { el.hidden = true; document.documentElement.style.overflow = ''; }, 480);
+    var el = openEl; openEl = null; closingEl = el; el.classList.remove('is-in');
+    closeT = setTimeout(function () { el.hidden = true; closingEl = null; document.documentElement.style.overflow = ''; }, 480);
     if (lastFocus) lastFocus.focus({ preventScroll: true });
   }
   document.addEventListener('click', function (e) {
@@ -70,7 +72,16 @@ window.addEventListener('load', function () { window.scrollTo(0, 0); });
     if (a.classList.contains('js-book') && open(book, sTg)) { setMsg(msg); e.preventDefault(); } else { setMsg(msg); }
   });
   if (book) book.querySelectorAll('.sheet__btn').forEach(function (el) { el.addEventListener('click', function () { setTimeout(close, 300); }); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') close();
+    if (e.key === 'Tab' && openEl) {
+      var f = openEl.querySelectorAll('a[href], button'); if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { last.focus(); e.preventDefault(); }
+      else if (!e.shiftKey && document.activeElement === last) { first.focus(); e.preventDefault(); }
+      else if (!openEl.contains(document.activeElement)) { first.focus(); e.preventDefault(); }
+    }
+  });
 
   // Карта: на телефоне нажатие на метку показывает адрес и расписание в плашке под картой
   var map = document.querySelector('.citymap'), panel = document.querySelector('.citymap__panel');
@@ -82,8 +93,8 @@ window.addEventListener('load', function () { window.scrollTo(0, 0); });
       show(pin);
     });
     var show = function (pin) {
-      map.querySelectorAll('.mpin.is-open').forEach(function (p) { p.classList.remove('is-open'); });
-      pin.classList.add('is-open');
+      map.querySelectorAll('.mpin.is-open').forEach(function (p) { p.classList.remove('is-open'); p.querySelector('.mpin__dot').setAttribute('aria-expanded', 'false'); });
+      pin.classList.add('is-open'); pin.querySelector('.mpin__dot').setAttribute('aria-expanded', 'true');
       panel.innerHTML = pin.querySelector('.mpin__card').innerHTML;
     };
     var first = map.querySelector('.mpin');
@@ -120,7 +131,7 @@ window.addEventListener('load', function () { window.scrollTo(0, 0); });
   var d = document.querySelector('.trener .more'); if (!d) return;
   var s = d.querySelector('summary'), w = d.querySelector('.bio-wrap'); if (!w || !w.animate) return;
   var items = w.querySelectorAll('.bio li'), busy = false, ease = 'cubic-bezier(.16, 1, .3, 1)';
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { d.addEventListener('toggle', function () { d.classList.toggle('is-open', d.open); }); return; }
   function once(fn, ms) { var done = false; var f = function () { if (!done) { done = true; fn(); } }; setTimeout(f, ms); return f; }
   s.addEventListener('click', function (e) {
     e.preventDefault(); if (busy) return; busy = true;
@@ -155,10 +166,13 @@ window.addEventListener('load', function () { window.scrollTo(0, 0); });
       if (t0 === null) t0 = ts;
       var k = Math.min(1, (ts - t0) / dur);
       window.scrollTo(0, from + dist * ease(k));
-      if (k < 1) raf = requestAnimationFrame(step); else html.style.scrollBehavior = prev;
+      if (k < 1) raf = requestAnimationFrame(step); else done();
     }
+    var stops = ['wheel', 'touchstart', 'keydown'];
+    function stop() { cancelAnimationFrame(raf); done(); }
+    function done() { html.style.scrollBehavior = prev; stops.forEach(function (ev) { window.removeEventListener(ev, stop); }); }
+    stops.forEach(function (ev) { window.addEventListener(ev, stop, { passive: true }); });
     raf = requestAnimationFrame(step);
-    ['wheel', 'touchstart', 'keydown'].forEach(function (ev) { window.addEventListener(ev, function stop() { cancelAnimationFrame(raf); html.style.scrollBehavior = prev; window.removeEventListener(ev, stop); }, { passive: true, once: true }); });
   }
   document.addEventListener('click', function (e) {
     var a = e.target.closest('a[href^="#"]'); if (!a || a.classList.contains('js-book') || a.classList.contains('js-prices')) return;
@@ -190,8 +204,11 @@ window.addEventListener('load', function () { window.scrollTo(0, 0); });
 
 // Вопросы: ответ мягко выезжает, закрывается так же плавно
 (function () {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var ease = 'cubic-bezier(.22, 1, .36, 1)';
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.qa').forEach(function (d) { d.addEventListener('toggle', function () { d.classList.toggle('is-open', d.open); }); });
+    return;
+  }
+  var ease = 'cubic-bezier(.16, 1, .3, 1)';
   document.querySelectorAll('.qa').forEach(function (d) {
     var s = d.querySelector('summary'), p = d.querySelector('p'); if (!p || !p.animate) return;
     var busy = false;
@@ -201,10 +218,10 @@ window.addEventListener('load', function () { window.scrollTo(0, 0); });
         d.open = true; d.classList.add('is-open');
         var h = p.offsetHeight;
         var f1 = false, done1 = function () { if (!f1) { f1 = true; busy = false; } }; setTimeout(done1, 800);
-        p.animate([{ height: '0px', opacity: 0, transform: 'translateY(-10px)' }, { height: h + 'px', opacity: 1, transform: 'none' }], { duration: 650, easing: ease }).onfinish = done1;
+        p.animate([{ height: '0px', paddingBottom: '0px', opacity: 0, transform: 'translateY(-10px)' }, { height: h + 'px', paddingBottom: getComputedStyle(p).paddingBottom, opacity: 1, transform: 'none' }], { duration: 650, easing: ease }).onfinish = done1;
       } else {
         d.classList.remove('is-open');
-        var a = p.animate([{ height: p.offsetHeight + 'px', opacity: 1, transform: 'none' }, { height: '0px', opacity: 0, transform: 'translateY(-8px)' }], { duration: 450, easing: ease, fill: 'forwards' });
+        var a = p.animate([{ height: p.offsetHeight + 'px', paddingBottom: getComputedStyle(p).paddingBottom, opacity: 1, transform: 'none' }, { height: '0px', paddingBottom: '0px', opacity: 0, transform: 'translateY(-8px)' }], { duration: 450, easing: ease, fill: 'forwards' });
         var f2 = false, done2 = function () { if (!f2) { f2 = true; d.open = false; a.cancel(); busy = false; } }; setTimeout(done2, 600); a.onfinish = done2;
       }
     });
