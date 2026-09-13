@@ -67,7 +67,7 @@
   var map = document.querySelector('.citymap'), panel = document.querySelector('.citymap__panel');
   if (map && panel) {
     map.addEventListener('click', function (e) {
-      if (e.target.closest('.mpin__links a')) return;
+      if (e.target.closest('.mpin__more a')) return;
       var pin = e.target.closest('.mpin');
       if (!pin) return;
       show(pin);
@@ -106,28 +106,28 @@
 })();
 
 
-// «Подробнее о тренере»: плавное раскрытие по высоте, колонки появляются по очереди
+// «Подробнее о тренере»: кнопка не меняет форму, надпись сменяется; блок раскрывается долго и мягко
 (function () {
   var d = document.querySelector('.trener .more'); if (!d) return;
   var s = d.querySelector('summary'), w = d.querySelector('.bio-wrap'); if (!w || !w.animate) return;
-  var items = w.querySelectorAll('.bio li'), busy = false;
-  var ease = 'cubic-bezier(.22, 1, .36, 1)';
+  var items = w.querySelectorAll('.bio li'), busy = false, ease = 'cubic-bezier(.16, 1, .3, 1)';
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  function once(fn, ms) { var done = false; var f = function () { if (!done) { done = true; fn(); } }; setTimeout(f, ms); return f; }
   s.addEventListener('click', function (e) {
     e.preventDefault(); if (busy) return; busy = true;
     if (!d.open) {
       d.open = true; d.classList.add('is-open');
-      var h = w.scrollHeight;
-      w.animate([{ height: '0px' }, { height: h + 'px' }], { duration: 700, easing: ease }).onfinish = function () { busy = false; };
+      var h = w.scrollHeight, fin = once(function () { busy = false; }, 1000);
+      w.animate([{ height: '0px' }, { height: h + 'px' }], { duration: 850, easing: ease }).onfinish = fin;
       items.forEach(function (li, i) {
-        li.animate([{ opacity: 0, transform: 'translateY(14px)', filter: 'blur(4px)' }, { opacity: 1, transform: 'none', filter: 'blur(0)' }],
-          { duration: 800, delay: 180 + i * 120, easing: ease, fill: 'backwards' });
+        li.animate([{ opacity: 0, transform: 'translateY(16px)' }, { opacity: 1, transform: 'none' }], { duration: 900, delay: 160 + i * 110, easing: ease, fill: 'backwards' });
       });
     } else {
       d.classList.remove('is-open');
-      items.forEach(function (li) { li.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 250, easing: 'ease-out', fill: 'forwards' }); });
-      var a = w.animate([{ height: w.scrollHeight + 'px' }, { height: '0px' }], { duration: 550, delay: 120, easing: ease, fill: 'forwards' });
-      a.onfinish = function () { d.open = false; a.cancel(); items.forEach(function (li) { li.getAnimations().forEach(function (x) { x.cancel(); }); }); busy = false; };
+      items.forEach(function (li) { li.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 220, easing: 'ease-out', fill: 'forwards' }); });
+      var a = w.animate([{ height: w.scrollHeight + 'px' }, { height: '0px' }], { duration: 600, delay: 90, easing: ease, fill: 'forwards' });
+      var fin2 = once(function () { d.open = false; a.cancel(); items.forEach(function (li) { li.getAnimations().forEach(function (x) { x.cancel(); }); }); busy = false; }, 800);
+      a.onfinish = fin2;
     }
   });
 })();
@@ -145,4 +145,48 @@
     window.scrollTo({ top: Math.max(0, y), behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
     if (history.replaceState) history.replaceState(null, '', id);
   });
+})();
+
+// «Три формата»: вторая строка заголовка сменяется по кругу (компьютер)
+(function () {
+  var box = document.querySelector('.rot'); if (!box) return;
+  var items = box.querySelectorAll('.rot__i'), i = 0;
+  if (!window.matchMedia('(min-width: 901px)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  setInterval(function () {
+    if (document.hidden) return;
+    var cur = items[i]; i = (i + 1) % items.length; var nx = items[i];
+    cur.classList.remove('is-on'); cur.classList.add('is-off'); cur.setAttribute('aria-hidden', 'true');
+    nx.classList.remove('is-off'); nx.classList.add('is-on'); nx.removeAttribute('aria-hidden');
+    setTimeout(function () { cur.classList.remove('is-off'); }, 900);
+  }, 3400);
+})();
+
+// Вопросы: ответ мягко выезжает, закрывается так же плавно
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var ease = 'cubic-bezier(.22, 1, .36, 1)';
+  document.querySelectorAll('.qa').forEach(function (d) {
+    var s = d.querySelector('summary'), p = d.querySelector('p'); if (!p || !p.animate) return;
+    var busy = false;
+    s.addEventListener('click', function (e) {
+      e.preventDefault(); if (busy) return; busy = true;
+      if (!d.open) {
+        d.open = true; d.classList.add('is-open');
+        var h = p.offsetHeight;
+        var f1 = false, done1 = function () { if (!f1) { f1 = true; busy = false; } }; setTimeout(done1, 800);
+        p.animate([{ height: '0px', opacity: 0, transform: 'translateY(-10px)' }, { height: h + 'px', opacity: 1, transform: 'none' }], { duration: 650, easing: ease }).onfinish = done1;
+      } else {
+        d.classList.remove('is-open');
+        var a = p.animate([{ height: p.offsetHeight + 'px', opacity: 1, transform: 'none' }, { height: '0px', opacity: 0, transform: 'translateY(-8px)' }], { duration: 450, easing: ease, fill: 'forwards' });
+        var f2 = false, done2 = function () { if (!f2) { f2 = true; d.open = false; a.cancel(); busy = false; } }; setTimeout(done2, 600); a.onfinish = done2;
+      }
+    });
+  });
+})();
+
+// Шапка прозрачная, пока страница наверху
+(function () {
+  var nav = document.querySelector('.nav'); if (!nav) return;
+  function upd() { nav.classList.toggle('is-top', window.scrollY < 24); }
+  window.addEventListener('scroll', upd, { passive: true }); upd();
 })();
