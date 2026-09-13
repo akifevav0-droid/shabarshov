@@ -79,6 +79,10 @@ h2.rv.on, .facts.rv.on, .tile--hero.rv.on { clip-path: inset(0 0 -10% 0); }
 .nav__cta:hover { background: var(--lav-deep); }
 @media (max-width: 734px) { .nav { background: #FFF; backdrop-filter: none; -webkit-backdrop-filter: none; transform: translateZ(0); } .nav__links { display: none } .nav__cta { margin-left: auto } }
 
+.nav { padding-top: env(safe-area-inset-top); }
+.nav::before { content: ""; position: absolute; left: 0; right: 0; bottom: 100%; height: 300px; background: #FFF; }
+body { padding-top: calc(var(--nav-h) + env(safe-area-inset-top)); }
+
 /* Первый и последний экран: живой перелив воды */
 .hero { position: relative; overflow: hidden; color: var(--ink); text-align: center; background: radial-gradient(55% 45% at 18% 12%, rgba(148, 119, 224, .20) 0%, transparent 70%), radial-gradient(45% 40% at 84% 22%, rgba(122, 196, 255, .22) 0%, transparent 70%), linear-gradient(180deg, #F5F3FB 0%, #FFFFFF 100%); }
 .hero::before { content: ""; position: absolute; inset: -20% -10%; pointer-events: none; background: radial-gradient(40% 35% at 30% 30%, rgba(148, 119, 224, .16) 0%, transparent 70%), radial-gradient(35% 30% at 75% 40%, rgba(122, 196, 255, .18) 0%, transparent 70%); animation: drift 18s ease-in-out infinite alternate; }
