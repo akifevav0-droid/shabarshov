@@ -566,3 +566,6 @@ h2 { font-size: clamp(28px, 3.4vw, 44px); max-width: 20em; margin: 0 auto 16px; 
   .reviews { grid-template-columns: 1fr; }
   .review { padding: 24px 0; }
 }
+
+/* Карта приглушённее */
+.citymap img { filter: saturate(.55) brightness(1.04) contrast(.93); }
