@@ -557,3 +557,12 @@ h2 { font-size: clamp(28px, 3.4vw, 44px); max-width: 20em; margin: 0 auto 16px; 
 .pr__badge { background: #fff; color: var(--lav-deep); }
 .pr__best-per { opacity: 1; color: var(--text); }
 .pr__best-btn { background: #fff; color: #5E45B8; }
+
+/* Отзывы: три одинаковых, текст меньше заголовка раздела */
+.reviews { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: var(--w); gap: 0 48px; }
+.review { padding: 28px 0 0; border-top: 1px solid var(--line); justify-content: space-between; }
+.review p { font-family: var(--sans); font-weight: 400; font-size: 17px; line-height: 1.55; letter-spacing: 0; color: var(--text); }
+@media (max-width: 900px) {
+  .reviews { grid-template-columns: 1fr; }
+  .review { padding: 24px 0; }
+}
