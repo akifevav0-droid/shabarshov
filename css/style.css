@@ -1,19 +1,19 @@
 /* SHABARSHOV swimming club — одностраничник.
    Палитра из логотипа: лаванда #9477E0 / #7B5FD0, светлая лаванда #F5F3FB, текст тёмно-фиолетовый. Чёрного и тёмных блоков нет.
-   Шрифты: Montserrat (шрифт логотипа) — заголовки, цифры, цены; Inter — текст и интерфейс.
+   Шрифты: Tenor Sans — заголовки, цифры, цены (одно начертание, жирность не синтезируется); Inter — текст и интерфейс.
    Фирменная деталь: линии списков как разметка дорожки, при наведении наливаются лавандой. */
 
 @font-face { font-family: "Inter"; src: url("../fonts/inter-latin.woff2") format("woff2"); font-weight: 100 900; font-display: swap; unicode-range: U+0000-00FF, U+2011, U+2013-2014, U+2018-201D, U+2026, U+20BD; }
 @font-face { font-family: "Inter"; src: url("../fonts/inter-cyrillic.woff2") format("woff2"); font-weight: 100 900; font-display: swap; unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
-@font-face { font-family: "Montserrat"; src: url("../fonts/montserrat-latin.woff2") format("woff2"); font-weight: 600 700; font-display: swap; unicode-range: U+0000-00FF, U+2013-2014, U+2018-201D, U+2026, U+20BD; }
-@font-face { font-family: "Montserrat"; src: url("../fonts/montserrat-cyrillic.woff2") format("woff2"); font-weight: 600 700; font-display: swap; unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: "Tenor Sans"; src: url("../fonts/tenor-latin.woff2") format("woff2"); font-weight: 100 900; font-display: swap; unicode-range: U+0000-00FF, U+2013-2014, U+2018-201D, U+2026, U+20BD; }
+@font-face { font-family: "Tenor Sans"; src: url("../fonts/tenor-cyrillic.woff2") format("woff2"); font-weight: 100 900; font-display: swap; unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
 @property --p { syntax: "<percentage>"; inherits: false; initial-value: 0%; }
 
 :root {
   --ink: #241C4F; --head: #2B2262; --text: #4A4272; --grey: #625C7A; --grey-2: #625C7A;
   --line: rgba(36, 28, 79, .12); --white: #FFF; --light: #F5F3FB;
   --lav: #9477E0; --lav-deep: #7B5FD0;
-  --head-font: "Montserrat", "Inter", -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --head-font: "Tenor Sans", "Inter", -apple-system, "Helvetica Neue", Arial, sans-serif;
   --sans: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   --r-s: 10px; --r-l: 20px;
   --ease: cubic-bezier(.25, .1, .25, 1); --ease-out: cubic-bezier(.22, 1, .36, 1);
@@ -27,7 +27,7 @@ body { font-family: var(--sans); font-size: 17px; line-height: 1.5; color: var(-
 a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; }
 p { overflow-wrap: anywhere; text-wrap: pretty; }
-h1, h2 { font-family: var(--head-font); font-weight: 700; letter-spacing: -0.015em; line-height: 1.1; color: var(--head); text-wrap: balance; }
+h1, h2 { font-family: var(--head-font); font-weight: 700; letter-spacing: -0.01em; line-height: 1.12; color: var(--head); text-wrap: balance; }
 h1 em, h2 em { font-style: normal; color: inherit; }
 h2 { font-size: clamp(32px, 4vw, 48px); margin-bottom: 24px; max-width: 16em; }
 .nw { white-space: nowrap; }
@@ -87,7 +87,7 @@ h1.rv.on, h2.rv.on { clip-path: inset(-10% -5% -15% -5%); }
 @keyframes drift { 0% { transform: translate3d(-3%, -2%, 0) scale(1); } 100% { transform: translate3d(3%, 3%, 0) scale(1.06); } }
 .hero > .wrap { position: relative; }
 .hero__in { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 64px; min-height: calc(100svh - var(--nav-h)); padding-block: clamp(32px, 6vh, 64px); }
-.hero__title { font-size: clamp(48px, 5.6vw, 88px); line-height: 1.04; letter-spacing: -0.025em; margin-bottom: 24px; }
+.hero__title { font-size: clamp(48px, 5.6vw, 88px); line-height: 1.06; letter-spacing: -0.02em; margin-bottom: 24px; }
 .hero__sub { font-size: 21px; color: var(--text); max-width: 27em; }
 .hero__btns { display: flex; align-items: center; gap: 32px; flex-wrap: wrap; margin-top: 40px; }
 .hero__link { color: var(--lav-deep); font-size: 17px; font-weight: 500; }
