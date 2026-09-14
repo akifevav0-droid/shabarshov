@@ -177,6 +177,7 @@ window.scrollTo(0, 0);
   document.addEventListener('click', function (e) {
     var a = e.target.closest('a[href^="#"]'); if (!a || a.classList.contains('js-book') || a.classList.contains('js-prices')) return;
     var id = a.getAttribute('href'); if (id.length < 2) return;
+    if (id === '#top') { e.preventDefault(); smoothTo(0); return; }
     var sec = document.querySelector(id); if (!sec || !sec.classList.contains('band')) return;
     var target = sec.querySelector('.wrap') || sec;
     var nav = document.querySelector('.nav'), navH = nav && getComputedStyle(nav).position === 'fixed' ? nav.offsetHeight : 0;
@@ -241,4 +242,17 @@ window.scrollTo(0, 0);
   if (!hero || !('IntersectionObserver' in window)) return;
   new IntersectionObserver(function (e) { document.body.classList.toggle('past-hero', !e[0].isIntersecting); }, { threshold: 0.15 }).observe(hero);
   if (end) new IntersectionObserver(function (e) { document.body.classList.toggle('at-end', e[0].isIntersecting); }, { threshold: 0.2 }).observe(end);
+})();
+
+// Фото тренера: медленная смена кадров — кадр тает с лёгким приближением, следующий проявляется
+(function () {
+  var box = document.querySelector('.slides'); if (!box) return;
+  var items = box.querySelectorAll('.slide'), i = 0;
+  if (items.length < 2 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  setInterval(function () {
+    if (document.hidden) return;
+    var cur = items[i]; i = (i + 1) % items.length; var nx = items[i];
+    cur.classList.remove('is-on'); cur.setAttribute('aria-hidden', 'true');
+    nx.classList.add('is-on'); nx.removeAttribute('aria-hidden');
+  }, 6500);
 })();

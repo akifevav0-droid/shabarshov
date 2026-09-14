@@ -513,3 +513,17 @@ html { scrollbar-gutter: stable; }
 #formaty { padding-bottom: clamp(64px, 7.5vw, 108px); }
 @media (max-width: 734px) { .formats__more { margin-top: 32px; } }
 @media (max-width: 734px) { #formaty { padding-bottom: 72px; } }
+
+/* Фото тренера: смена кадров */
+.slides { position: relative; isolation: isolate; }
+.slides .slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 15%; opacity: 0; transform: scale(1.06); filter: blur(6px) saturate(.9); transition: opacity 2.2s cubic-bezier(.45, 0, .2, 1), transform 8s cubic-bezier(.16, 1, .3, 1), filter 2.2s cubic-bezier(.45, 0, .2, 1); will-change: opacity, transform; }
+.slides .slide.is-on { opacity: 1; transform: scale(1); filter: blur(0) saturate(1); z-index: 1; }
+@media (prefers-reduced-motion: reduce) { .slides .slide { transition: none; } }
+/* Подпись тренера — между текстом и «Подробнее» */
+.trener__meta { margin: 20px 0 0; }
+.trener .more { margin-top: 20px !important; }
+@media (max-width: 900px) { .trener__meta { margin-left: auto; margin-right: auto; } }
+/* Логотип — ссылка наверх, рядом город */
+.nav__brand { display: inline-flex; align-items: center; gap: 14px; cursor: pointer; }
+.nav__city { font-size: 13px; font-weight: 500; letter-spacing: .02em; color: var(--grey); padding-left: 14px; border-left: 1px solid rgba(40, 38, 55, .15); line-height: 1; transition: color .45s ease; }
+.nav__brand:hover .nav__city { color: var(--head); }
