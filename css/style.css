@@ -840,3 +840,55 @@ html, body { overflow-x: clip; }
   /* размытие у шапки делало её рамкой для кнопки — кнопка уезжала наверх */
   .nav, .nav.is-top { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
 }
+
+/* Плаваем вместе — лента фото по кругу, чёткие края */
+.club { padding-top: clamp(40px, 5vw, 72px) !important; }
+.clubrow { margin-top: 36px; overflow: hidden; }
+.clubrow__track { display: flex; gap: 0; width: max-content; animation: clubrow 60s linear infinite; }
+.clubrow__track img { display: block; width: clamp(200px, 20vw, 300px); aspect-ratio: 4 / 5; height: auto; object-fit: cover; border-radius: 0; box-shadow: none; }
+.clubrow:hover .clubrow__track { animation-play-state: paused; }
+@keyframes clubrow { to { transform: translateX(-50%); } }
+@media (max-width: 734px) { .clubrow { margin-top: 24px; } .clubrow__track img { width: 170px; } .clubrow__track { animation-duration: 45s; } }
+
+/* Карта: широкая и низкая, бассейны ближе к центру */
+.citymap { --k: 1; height: clamp(460px, 62vh, 600px); }
+.citymap img.citymap__img { position: absolute; left: 50%; top: 50%; width: calc(2600px * var(--k)) !important; max-width: none; height: auto; transform: translate(-50%, -50%); }
+.citymap .mpin { left: calc(50% + var(--dx) * var(--k) * 1px); top: calc(50% + var(--dy) * var(--k) * 1px); }
+@media (max-width: 900px) { .citymap { --k: .72; height: 440px; } }
+@media (max-width: 480px) { .citymap { --k: .6; height: 380px; } }
+
+/* Телефон: вместо ленты фото — маленькое фото и сведения под картой */
+@media (max-width: 900px) {
+  .pools { display: none !important; }
+  .citymap__panel { display: grid !important; grid-template-columns: 112px 1fr; gap: 4px 16px; align-items: start; text-align: left !important; padding: 16px !important; }
+  .citymap__panel .mpin__img { display: block !important; grid-row: 1 / 3; width: 112px; max-width: none; aspect-ratio: 1; margin: 0 !important; border-radius: 12px; object-fit: cover; }
+  .citymap__panel b, .citymap__panel .mpin__addr, .citymap__panel em { text-align: left !important; }
+  .citymap__panel .mpin__acts { justify-content: flex-start; flex-wrap: wrap; }
+}
+@media (min-width: 901px) { .citymap .mpin--l2 .mpin__card { top: -40px; transform: none; } .citymap .mpin--l2 .mpin__card::before { top: 35px; } }
+
+/* Компьютер: у точек только названия, карточка с фото раскрывается по наведению/нажатию */
+@media (min-width: 901px) {
+  .citymap .mpin .mpin__card { width: auto; padding: 7px 14px; border-radius: 10px; cursor: pointer; white-space: nowrap; }
+  .citymap .mpin .mpin__card b { font-size: 14px; }
+  .citymap .mpin .mpin__img, .citymap .mpin .mpin__more { display: none; }
+  .citymap .mpin.is-open { z-index: 4; }
+  .citymap .mpin.is-open .mpin__card { width: 250px; padding: 18px 22px; border-radius: 14px; white-space: normal; cursor: default; }
+  .citymap .mpin.is-open .mpin__img, .citymap .mpin.is-open .mpin__more { display: block; }
+  .citymap .mpin.is-open .mpin__card b { font-size: 18px; }
+}
+
+/* Компьютер: шапка без белой полосы — логотип и кнопки прямо на фото, верх фото размыт */
+@media (min-width: 735px) {
+  .trener-top .portret { margin-top: 0 !important; height: 100svh; }
+  .nav.is-top { background: transparent !important; border-bottom-color: transparent !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+  .nav.is-top::before { content: ""; position: absolute; inset: 0 0 -40px; z-index: -1; pointer-events: none;
+    background: linear-gradient(180deg, rgba(20, 18, 32, .38), rgba(20, 18, 32, 0));
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    -webkit-mask: linear-gradient(180deg, #000 45%, transparent); mask: linear-gradient(180deg, #000 45%, transparent); }
+  .nav.is-top .logo--nav { color: #fff; }
+  .nav.is-top .nav__city { color: rgba(255, 255, 255, .92); border-left-color: rgba(255, 255, 255, .35); }
+  .nav.is-top .nav__links a { color: #fff; text-shadow: 0 1px 8px rgba(0, 0, 0, .25); }
+  .nav.is-top .nav__cta { background: rgba(255, 255, 255, .92) !important; color: #2C2A3A; }
+  .trener-top .portret__card { top: calc(var(--nav-h) + clamp(16px, 3vw, 40px)) !important; }
+}

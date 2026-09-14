@@ -97,8 +97,12 @@ window.scrollTo(0, 0);
       pin.classList.add('is-open'); pin.querySelector('.mpin__dot').setAttribute('aria-expanded', 'true');
       panel.innerHTML = pin.querySelector('.mpin__card').innerHTML;
     };
+    map.addEventListener('mouseover', function (e) {
+      var pin = e.target.closest('.mpin');
+      if (pin && !pin.classList.contains('is-open') && window.matchMedia('(min-width: 901px) and (hover: hover)').matches) show(pin);
+    });
     var first = map.querySelector('.mpin');
-    if (first && window.matchMedia('(max-width: 900px)').matches) show(first);
+    if (first) show(first);
   }
 
   // Яндекс.Метрика: номер счётчика в <html data-ym="">. Пусто — ничего не грузится.
