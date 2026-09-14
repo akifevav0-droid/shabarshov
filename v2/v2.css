@@ -471,7 +471,7 @@ a.proof__i:hover b { color: #D6D0EA; }
   .hero__shade { background: linear-gradient(180deg, rgba(12, 11, 18, .65), rgba(12, 11, 18, 0) 32%) !important; }
 }
 .hero__shade { background: linear-gradient(180deg, rgba(12, 11, 18, .62), rgba(12, 11, 18, 0) 26%); }
-@media (min-width: 1101px) { .top__nav a[href="#trener"] { display: none; } }
+
 @media (max-width: 1100px) {
   .hero__btns .btn { white-space: nowrap; padding: 0 22px; font-size: 16px; }
   .hero__nums span { white-space: nowrap; font-size: 13px; }
@@ -489,7 +489,7 @@ a.proof__i:hover b { color: #D6D0EA; }
 @media (max-width: 1100px) and (min-width: 721px) { .coach__photo { max-width: none; } .prices { grid-template-columns: repeat(3, 1fr); } }
 .rating span:last-child { white-space: nowrap; }
 @media (min-width: 1101px) { .faq > h2 { position: sticky; top: 120px; } }
-.split h2 { max-width: none; font-size: clamp(34px, 3.6vw, 52px); }
+.split h2 { max-width: none; }
 @media (min-width: 1300px) {
   .hero { grid-template-columns: calc((100vw - var(--w)) / 2 + var(--pad) + 600px) 1fr; }
   .hero__title { font-size: clamp(56px, 4.6vw, 80px); max-width: 9ch; }
@@ -503,3 +503,34 @@ a.proof__i:hover b { color: #D6D0EA; }
 .qa2 p { margin-top: 8px; max-width: 62ch; font-size: 17px; color: var(--text); }
 .faq > h2 { max-width: 12ch; }
 @media (max-width: 720px) { .qa2 h3 { font-size: 17px; } .qa2 p { font-size: 16px; } }
+
+/* ===== Финальный круг: брак и «человечность» ===== */
+img[height] { height: auto; }
+.hero .slide[height], .split__photo img[height], .coach__photo img[height], .bento img[height], .story img[height] { height: 100%; }
+.row__pool img[height] { height: 72px; }
+@media (max-width: 720px) { .row__pool img[height] { height: 60px; } .pool__img[height] { height: auto; } }
+@media (max-width: 900px) { .hero { grid-template-columns: minmax(0, 1fr); } .hero__in { min-width: 0; } }
+@media (max-width: 420px) { .hero__btns .btn { white-space: normal; } }
+
+.plain { margin: 28px 0 0; font-size: 18px; line-height: 1.65; color: var(--text); max-width: 56ch; }
+
+.plist2 { border-top: 1px solid var(--line); }
+.pl { display: grid; grid-template-columns: 1fr auto; gap: 8px 40px; align-items: baseline; padding: 26px 0; border-bottom: 1px solid var(--line); }
+.pl h3 { font-size: 22px; }
+.pl__n p { margin-top: 4px; color: var(--mute); font-size: 16px; }
+.pl__p { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 4px 22px; color: var(--ink); font-size: 20px; font-weight: 600; letter-spacing: -.01em; text-align: right; }
+.pl__p small { display: block; width: 100%; color: var(--mute); font-size: 14px; font-weight: 400; }
+.prices__foot { margin-top: 32px; justify-content: flex-start; gap: 16px 28px; }
+@media (max-width: 720px) { .pl { grid-template-columns: 1fr; } .pl__p { justify-content: flex-start; text-align: left; font-size: 18px; } }
+
+.quote blockquote::before { content: none; }
+.quote--big blockquote { font-weight: 500; }
+.quiz legend, .row--head { text-transform: none; letter-spacing: 0; font-size: 15px; }
+.quiz legend { color: rgba(255, 255, 255, .75); }
+.row--head { color: var(--mute); font-weight: 600; }
+@media (max-width: 720px) { .quiz fieldset, .quiz fieldset:last-of-type { grid-template-columns: 1fr 1fr; } .quiz label span { font-size: 14px; } }
+@media (min-width: 1101px) { .row { grid-template-columns: minmax(340px, 1.6fr) 170px 1.3fr 120px; } }
+.hero__nums span { white-space: nowrap; }
+.hero__nums li { min-width: 0; }
+@media (max-width: 720px) { .hero__nums span { white-space: normal; font-size: 13px; } .hero__nums li { padding-right: 10px; } .hero__nums li + li { padding-left: 12px; } .hero__nums b { font-size: 24px; } }
+@media (max-width: 380px) { .rating { flex-wrap: wrap; row-gap: 0; } }

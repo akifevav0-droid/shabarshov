@@ -63,9 +63,10 @@
       tg = document.getElementById('quiz-tg'), wa = document.getElementById('quiz-wa');
   function val(n) { var c = quiz.querySelector('input[name="' + n + '"]:checked'); return c ? c.value : ''; }
   function build() {
-    var pool = val('pool');
-    var msg = 'Здравствуйте, Анатолий! Хочу на бесплатную пробную тренировку. Формат: ' + val('fmt').toLowerCase() +
-      '. Сейчас ' + val('lvl') + '. Бассейн: ' + (pool === 'подскажите' ? 'подскажите, какой подойдёт' : pool) + '.';
+    var pool = val('pool'), lvl = val('lvl');
+    var msg = 'Здравствуйте, Анатолий! Хочу на бесплатную пробную тренировку. Формат: ' + val('fmt').toLowerCase() + '.' +
+      (lvl ? ' Сейчас ' + lvl + '.' : '') +
+      (pool ? ' Бассейн: ' + (pool === 'подскажите' ? 'подскажите, какой подойдёт' : pool) + '.' : '');
     prev.textContent = msg;
     tg.href = 'https://t.me/shabarshov?text=' + encodeURIComponent(msg);
     wa.href = 'https://wa.me/79969669160?text=' + encodeURIComponent(msg);

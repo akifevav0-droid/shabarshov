@@ -26,3 +26,14 @@ figure { position: relative; }
 @media (min-width: 1101px) { #otzyvy .quotes { grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; } #otzyvy .quote--big { grid-row: auto; grid-column: 1 / -1; } }
 @media (max-width: 1100px) { .method { grid-template-columns: 1fr; } }
 @media (max-width: 720px) { .st { grid-template-columns: 1fr; } .st:nth-child(2) figure { order: 0; } .st figure { min-height: 260px; } .st dl { grid-template-columns: 1fr 1fr; } }
+
+/* финальный круг */
+@media (min-width: 721px) { .st { grid-template-columns: 1fr 1.1fr; } }
+.st__q { font-size: clamp(22px, 2.1vw, 32px); }
+.st__who { display: flex; align-items: center; gap: 8px; }
+@media (min-width: 1101px) { .method { grid-template-columns: 1.2fr 1fr; } }
+.method__img img { aspect-ratio: 16 / 10; height: auto; }
+.method__small img { aspect-ratio: 4 / 3; height: auto; }
+#istorii .quote, .quote { position: relative; }
+
+.st figure img[height] { height: 100%; }

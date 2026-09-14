@@ -13,10 +13,11 @@
   <meta name="theme-color" content="#15141C">
   <link rel="icon" href="../img/icon-light.svg" type="image/svg+xml">
   <link rel="preload" href="../fonts/inter-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="../img/wide_goggles.jpg" as="image">
+  <link rel="preload" href="../img/wide_goggles.jpg" as="image" fetchpriority="high">
   <script>document.documentElement.classList.add('js')</script>
-  <link rel="stylesheet" href="../v2/v2.css?v=1789421455">
-  <link rel="stylesheet" href="demo.css?v=1789421455">
+  <link rel="stylesheet" href="../v2/v2.css?v=1789422061">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Анатолий Шабаршов","jobTitle":"Тренер по плаванию","url":"https://akifevav0-droid.github.io/shabarshov/","sameAs":["https://www.instagram.com/shabarshov_/","https://t.me/shabarshov","https://profi.ru/profile/ShabarshovAS/"],"workLocation":[{"@type":"SportsActivityLocation","name":"СК МГТУ им. Баумана","address":"Москва, Госпитальная наб., 4, стр. 1"},{"@type":"SportsActivityLocation","name":"Формула Воды","address":"Москва, Мироновская ул., 27, стр. 2"},{"@type":"SportsActivityLocation","name":"Акватория ЗИЛ","address":"Москва, Автозаводская ул., 23А, к. 4"}]}</script>
+  <link rel="stylesheet" href="demo.css?v=1789422061">
 </head>
 <body>
 
@@ -24,7 +25,7 @@
   <div class="top__in">
     <a class="top__logo" href="#top" aria-label="SHABARSHOV swimming club — наверх"><span class="logo"></span></a>
     <nav class="top__nav" aria-label="Разделы">
-      <a href="#trener">Обо мне</a><a href="#proba">Пробная</a><a href="#ceny">Цены</a><a href="#raspisanie">Расписание</a><a href="#otzyvy">Отзывы</a>
+      <a href="#trener">Обо мне</a><a href="#ceny">Цены</a><a href="#raspisanie">Бассейны</a><a href="#otzyvy">Отзывы</a><a href="#istorii">Ученики</a>
     </nav>
     <a class="btn btn--sm top__cta" href="#zapis">Записаться бесплатно</a>
     <button class="top__menu" type="button" aria-expanded="false" aria-controls="mnav" aria-label="Меню"><span></span><span></span></button>
@@ -53,7 +54,7 @@
       </div>
       <ul class="hero__nums">
         <li><b>10&nbsp;лет</b><span>тренерского стажа</span></li>
-        <li><b>МС</b><span>мастер спорта</span></li>
+        <li><b>57.85</b><span>100&nbsp;м батт., ЧМ&nbsp;Masters</span></li>
         <li><a href="https://profi.ru/profile/ShabarshovAS/" target="_blank" rel="noopener"><b>5,0</b><span>Профи.ру</span></a></li>
       </ul>
     </div>
@@ -80,13 +81,13 @@
   </section>
 
 
-  <!-- ДЕМО: метод -->
-  <section class="sec sec--dark" id="metod">
+  <!-- ДЕМО: под водой -->
+  <section class="sec" id="metod">
     <div class="wrap method">
       <figure class="method__img rv"><span class="smp">Образец</span><img src="img/gen_underwater_coach.jpg" width="1024" height="572" alt="Образец: тренер под водой рядом с ученицей" loading="lazy"></figure>
       <div class="method__text rv">
-        <h2>Вижу, что происходит под водой</h2>
-        <p>С&nbsp;бортика видно только брызги. Я&nbsp;плыву рядом и&nbsp;смотрю, куда уходит локоть, как работает кисть и&nbsp;где теряется скорость. Поправляю сразу, пока движение ещё не&nbsp;закрепилось.</p>
+        <h2>Смотрю на&nbsp;технику под водой</h2>
+        <p>Плыву рядом и&nbsp;вижу, куда уходит локоть, как работает кисть и&nbsp;где теряется скорость. Поправляю сразу, пока движение не&nbsp;закрепилось.</p>
         <figure class="method__small"><span class="smp">Образец</span><img src="img/gen_hands_technique.jpg" width="1024" height="765" alt="Образец: тренер поправляет локоть ученика" loading="lazy"></figure>
       </div>
     </div>
@@ -98,13 +99,7 @@
       <div class="split__text rv">
         <h2>Первая тренировка&nbsp;— бесплатно</h2>
         <p class="lead">Приходите в&nbsp;любую группу или на&nbsp;персональную. Я&nbsp;посмотрю, как вы&nbsp;плывёте, и&nbsp;скажу, с&nbsp;чего начать и&nbsp;в&nbsp;какую дорожку идти.</p>
-        <ul class="ticks">
-          <li><b>Час в&nbsp;воде.</b> Разминка, основное задание, заминка.</li>
-          <li><b>Я&nbsp;в&nbsp;воде рядом.</b> Упражнения показываю сам, а&nbsp;не&nbsp;объясняю с&nbsp;бортика.</li>
-          <li><b>Не&nbsp;умеете плавать&nbsp;— это нормально.</b> Если держитесь на&nbsp;воде, проплывёте первые бассейны; если плаваете&nbsp;— поймёте, что поправить в&nbsp;технике.</li>
-          <li><b>После тренировки</b>&nbsp;— видеоразбор техники и&nbsp;задание на&nbsp;следующий раз.</li>
-        </ul>
-        <a class="btn btn--dark btn--lg" href="#zapis">Записаться бесплатно</a>
+        <p class="plain">Час в&nbsp;воде: разминка, основное задание, заминка. Упражнения показываю сам, в&nbsp;воде. Если пока не&nbsp;плаваете&nbsp;— подружимся с&nbsp;водой, станет спокойнее. Держитесь на&nbsp;воде&nbsp;— проплывёте первые бассейны. Плаваете&nbsp;— разберём технику, а&nbsp;после тренировки пришлю видеоразбор и&nbsp;задание.</p>
       </div>
       <figure class="split__photo rv">
         <img width="600" height="750" src="../img/club_2.jpg" alt="Ученики клуба в шапочках SHABARSHOV на тренировке" loading="lazy">
@@ -115,32 +110,15 @@
   <!-- 4. Цены -->
   <section class="sec sec--tint" id="ceny">
     <div class="wrap">
-      <h2 class="rv">Сколько стоит</h2>
-      <div class="prices rv">
-        <article class="price">
-          <h3>Группа</h3>
-          <p>Своя дорожка, до&nbsp;8&nbsp;человек, на&nbsp;ЗИЛе&nbsp;— до&nbsp;5. По&nbsp;уровню: начинающий, средний, продвинутый.</p>
-          <p class="price__sum">1&nbsp;700&nbsp;₽</p>
-          <p class="price__note">за&nbsp;занятие в&nbsp;абонементе на&nbsp;8</p>
-          <a class="price__go" href="#zapis" data-fmt="Группа">Записаться →</a>
-        </article>
-        <article class="price">
-          <h3>Персонально</h3>
-          <p>Час один на&nbsp;один. Бассейн и&nbsp;время под вас, включая Лужники.</p>
-          <p class="price__sum">от&nbsp;3&nbsp;000&nbsp;₽</p>
-          <p class="price__note">за&nbsp;час + проход в&nbsp;бассейн</p>
-          <a class="price__go" href="#zapis" data-fmt="Персонально">Записаться →</a>
-        </article>
-        <article class="price">
-          <h3>Открытая вода</h3>
-          <p>Ориентирование, старт в&nbsp;толпе, дыхание в&nbsp;волну. Готовлю к&nbsp;X&#8209;Waters и&nbsp;SwimCup&nbsp;— сам на&nbsp;них выступаю.</p>
-          <p class="price__sum">от&nbsp;3&nbsp;500&nbsp;₽</p>
-          <p class="price__note">за&nbsp;час</p>
-          <a class="price__go" href="#zapis" data-fmt="Открытая вода">Записаться →</a>
-        </article>
+      <h2 class="rv">Цены</h2>
+      <div class="plist2 rv">
+        <div class="pl"><div class="pl__n"><h3>Первая тренировка</h3><p>любой формат</p></div><div class="pl__p">бесплатно</div></div>
+        <div class="pl"><div class="pl__n"><h3>Группа</h3><p>своя дорожка, до&nbsp;8&nbsp;человек, на&nbsp;ЗИЛе&nbsp;— до&nbsp;5; по&nbsp;уровню</p></div><div class="pl__p"><span>разовая 2&nbsp;000&nbsp;₽</span><span>4&nbsp;занятия 7&nbsp;500&nbsp;₽</span><span>8&nbsp;занятий 13&nbsp;600&nbsp;₽</span></div></div>
+        <div class="pl"><div class="pl__n"><h3>Персонально</h3><p>час один на&nbsp;один, бассейн и&nbsp;время под вас, включая Лужники</p></div><div class="pl__p">от&nbsp;3&nbsp;000&nbsp;₽ в&nbsp;час <small>+ проход в&nbsp;бассейн</small></div></div>
+        <div class="pl"><div class="pl__n"><h3>Открытая вода</h3><p>ориентирование, старт в&nbsp;толпе, дыхание в&nbsp;волну; к&nbsp;X&#8209;Waters и&nbsp;SwimCup</p></div><div class="pl__p">3&nbsp;500&nbsp;₽ в&nbsp;час</div></div>
       </div>
       <div class="prices__foot rv">
-        <p>Пробная&nbsp;— бесплатно. Разовая в&nbsp;группе&nbsp;— 2&nbsp;000&nbsp;₽, 4&nbsp;тренировки&nbsp;— 7&nbsp;500&nbsp;₽, 8&nbsp;тренировок&nbsp;— 13&nbsp;600&nbsp;₽.</p>
+        <a class="btn btn--dark btn--lg" href="#zapis">Записаться на&nbsp;бесплатную</a>
         <button class="link js-prices" type="button">Абонементы и&nbsp;оплата</button>
       </div>
     </div>
@@ -150,32 +128,32 @@
   <!-- 6. Расписание -->
   <section class="sec" id="raspisanie">
     <div class="wrap">
-      <h2 class="rv">Где и&nbsp;когда плаваем</h2>
+      <h2 class="rv">Бассейны и&nbsp;расписание</h2>
       <div class="table rv" role="table" aria-label="Расписание групп">
         <div class="row row--head" role="row"><span role="columnheader">Бассейн</span><span role="columnheader">Дни</span><span role="columnheader">Время и&nbsp;уровень</span><span role="columnheader"></span></div>
         <div class="row" role="row">
           <span class="row__pool" role="cell"><img width="640" height="400" src="../img/pool_baumanka.jpg" alt="" loading="lazy"><span><b>Бауманка</b><small>СК МГТУ им.&nbsp;Баумана, Госпитальная наб., 4<br>м.&nbsp;Электрозаводская</small></span></span>
           <span class="row__days" role="cell">Пн, Чт</span>
           <span class="row__time" role="cell"><span>19:45&nbsp;· средний и&nbsp;продвинутый</span><span>20:30&nbsp;· начинающий и&nbsp;средний</span></span>
-          <span class="row__acts" role="cell"><a class="btn btn--dark btn--sm" href="#zapis" data-pool="Бауманка">Записаться</a><a class="row__map" href="https://yandex.ru/maps/?text=%D0%93%D0%BE%D1%81%D0%BF%D0%B8%D1%82%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F%20%D0%BD%D0%B0%D0%B1%D0%B5%D1%80%D0%B5%D0%B6%D0%BD%D0%B0%D1%8F%204%20%D1%81%D1%82%D1%80%D0%BE%D0%B5%D0%BD%D0%B8%D0%B5%201%20%D0%B1%D0%B0%D1%81%D1%81%D0%B5%D0%B9%D0%BD%20%D0%9C%D0%93%D0%A2%D0%A3" target="_blank" rel="noopener">Маршрут</a></span>
+          <span class="row__acts" role="cell"><a class="row__map" href="https://yandex.ru/maps/?text=%D0%93%D0%BE%D1%81%D0%BF%D0%B8%D1%82%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F%20%D0%BD%D0%B0%D0%B1%D0%B5%D1%80%D0%B5%D0%B6%D0%BD%D0%B0%D1%8F%204%20%D1%81%D1%82%D1%80%D0%BE%D0%B5%D0%BD%D0%B8%D0%B5%201%20%D0%B1%D0%B0%D1%81%D1%81%D0%B5%D0%B9%D0%BD%20%D0%9C%D0%93%D0%A2%D0%A3" target="_blank" rel="noopener">Маршрут</a></span>
         </div>
         <div class="row" role="row">
           <span class="row__pool" role="cell"><img width="500" height="312" src="../img/pool_formula.jpg" alt="" loading="lazy"><span><b>Формула Воды</b><small>Мироновская ул., 27, стр.&nbsp;2<br>м.&nbsp;Семёновская</small></span></span>
           <span class="row__days" role="cell">Вт, Пт</span>
           <span class="row__time" role="cell"><span>20:45&nbsp;· начинающий и&nbsp;средний</span></span>
-          <span class="row__acts" role="cell"><a class="btn btn--dark btn--sm" href="#zapis" data-pool="Формула Воды">Записаться</a><a class="row__map" href="https://yandex.ru/maps/org/formula_vody/1057488653" target="_blank" rel="noopener">Маршрут</a></span>
+          <span class="row__acts" role="cell"><a class="row__map" href="https://yandex.ru/maps/org/formula_vody/1057488653" target="_blank" rel="noopener">Маршрут</a></span>
         </div>
         <div class="row" role="row">
           <span class="row__pool" role="cell"><img width="640" height="400" src="../img/pool_zil.jpg" alt="" loading="lazy"><span><b>Акватория ЗИЛ</b><small>Автозаводская ул., 23А, к.&nbsp;4</small></span></span>
           <span class="row__days" role="cell">Ср, Пт</span>
           <span class="row__time" role="cell"><span>7:45&nbsp;· мини-группа до&nbsp;5&nbsp;человек</span></span>
-          <span class="row__acts" role="cell"><a class="btn btn--dark btn--sm" href="#zapis" data-pool="Акватория ЗИЛ">Записаться</a><a class="row__map" href="https://yandex.ru/maps/?text=%D0%90%D0%B2%D1%82%D0%BE%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4%D1%81%D0%BA%D0%B0%D1%8F%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%2023%D0%90%D0%BA4" target="_blank" rel="noopener">Маршрут</a></span>
+          <span class="row__acts" role="cell"><a class="row__map" href="https://yandex.ru/maps/?text=%D0%90%D0%B2%D1%82%D0%BE%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4%D1%81%D0%BA%D0%B0%D1%8F%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%2023%D0%90%D0%BA4" target="_blank" rel="noopener">Маршрут</a></span>
         </div>
         <div class="row" role="row">
           <span class="row__pool" role="cell"><img width="510" height="318" src="../img/pool_luzhniki.jpg" alt="" loading="lazy"><span><b>Лужники</b><small>м.&nbsp;Спортивная</small></span></span>
           <span class="row__days" role="cell">По&nbsp;договорённости</span>
           <span class="row__time" role="cell"><span>Только персональные тренировки</span></span>
-          <span class="row__acts" role="cell"><a class="btn btn--dark btn--sm" href="#zapis" data-pool="Лужники">Узнать время</a><a class="row__map" href="https://yandex.ru/maps/?text=%D0%9B%D1%83%D0%B6%D0%BD%D0%B8%D0%BA%D0%B8%20%D0%B1%D0%B0%D1%81%D1%81%D0%B5%D0%B9%D0%BD" target="_blank" rel="noopener">Маршрут</a></span>
+          <span class="row__acts" role="cell"><a class="row__map" href="https://yandex.ru/maps/?text=%D0%9B%D1%83%D0%B6%D0%BD%D0%B8%D0%BA%D0%B8%20%D0%B1%D0%B0%D1%81%D1%81%D0%B5%D0%B9%D0%BD" target="_blank" rel="noopener">Маршрут</a></span>
         </div>
       </div>
     </div>
@@ -185,15 +163,15 @@
   <section class="sec sec--tint" id="otzyvy">
     <div class="wrap">
       <div class="head rv">
-        <h2>Что пишут ученики</h2>
+        <h2>Отзывы с&nbsp;Профи.ру</h2>
         <a class="rating" href="https://profi.ru/profile/ShabarshovAS/" target="_blank" rel="noopener"><b>5,0</b><span class="stars" aria-hidden="true">★★★★★</span><span>10&nbsp;отзывов на&nbsp;Профи.ру</span></a>
       </div>
       <div class="quotes">
-        <figure class="quote quote--big rv"><blockquote>Поставили цель подготовиться к&nbsp;соревнованиям и&nbsp;проплыть свой первый километр на&nbsp;открытой воде. Комфортное общение и&nbsp;приятная атмосфера тренировочного процесса.</blockquote><figcaption><span class="stars" aria-label="5 из 5">★★★★★</span>Владимир <span>· Профи.ру</span></figcaption></figure>
-        <figure class="quote rv"><blockquote>100% времени сопровождает в&nbsp;воде и&nbsp;смотрит подводную часть, чтобы все моменты спортсмен делал правильно.</blockquote><figcaption><span class="stars" aria-label="5 из 5">★★★★★</span>Сергей <span>· Профи.ру</span></figcaption></figure>
+        <figure class="quote quote--big rv"><blockquote>100% времени сопровождает в&nbsp;воде и&nbsp;смотрит подводную часть, чтобы все моменты спортсмен делал правильно.</blockquote><figcaption><span class="stars" aria-label="5 из 5">★★★★★</span>Сергей <span>· Профи.ру</span></figcaption></figure>
+        <figure class="quote rv"><blockquote>Поставили цель подготовиться к&nbsp;соревнованиям и&nbsp;проплыть свой первый километр на&nbsp;открытой воде. Комфортное общение и&nbsp;приятная атмосфера тренировочного процесса.</blockquote><figcaption><span class="stars" aria-label="5 из 5">★★★★★</span>Владимир <span>· Профи.ру</span></figcaption></figure>
         <figure class="quote rv"><blockquote>Тренируюсь с&nbsp;ним уже больше полугода и&nbsp;научилась многому! Советую.</blockquote><figcaption><span class="stars" aria-label="5 из 5">★★★★★</span>Даша <span>· Профи.ру</span></figcaption></figure>
-              <figure class="quote rv"><span class="smp">Образец</span><blockquote>Пришла с&nbsp;нуля, через два месяца плаваю в&nbsp;средней группе. Анатолий всё время в&nbsp;воде и&nbsp;объясняет спокойно.</blockquote><figcaption><span class="stars" aria-label="5 из 5">★★★★★</span>Имя · Профи.ру</figcaption></figure>
-        <figure class="quote rv"><span class="smp">Образец</span><blockquote>Готовился к&nbsp;первому триатлону. Поставили дыхание на&nbsp;обе стороны&nbsp;— в&nbsp;воде впервые не&nbsp;было паники.</blockquote><figcaption><span class="stars" aria-label="5 из 5">★★★★★</span>Имя · Профи.ру</figcaption></figure>
+              <figure class="quote rv"><span class="smp">Образец</span><blockquote>Пришла с&nbsp;нуля, через два месяца перешла в&nbsp;среднюю группу. Объясняет спокойно и&nbsp;всё время рядом в&nbsp;воде.</blockquote><figcaption><span class="stars" aria-label="5 из 5">★★★★★</span>Имя ученицы</figcaption></figure>
+        <figure class="quote rv"><span class="smp">Образец</span><blockquote>Готовился к&nbsp;первому триатлону, поставили дыхание на&nbsp;обе стороны. На&nbsp;старте плыл ровно.</blockquote><figcaption><span class="stars" aria-label="5 из 5">★★★★★</span>Имя ученика</figcaption></figure>
       </div>
     </div>
   </section>
@@ -202,12 +180,12 @@
 
 
   <!-- ДЕМО: истории -->
-  <section class="sec" id="istorii">
+  <section class="sec sec--tint" id="istorii">
     <div class="wrap">
-      <h2 class="rv">Истории учеников</h2>
+      <h2 class="rv">Ученики</h2>
       <div class="stories2">
-        <article class="st rv"><figure><span class="smp">Образец</span><img src="img/gen_story_pool.jpg" width="1024" height="765" alt="" loading="lazy"></figure><div class="st__b"><p class="st__q">«Полгода назад боялась отпустить бортик. В&nbsp;мае проплыла километр кролем без остановки.»</p><dl><div><dt>Было</dt><dd>не&nbsp;проплывала 25&nbsp;м</dd></div><div><dt>Стало</dt><dd>1&nbsp;км кролем</dd></div><div><dt>Срок</dt><dd>6&nbsp;месяцев, группа</dd></div></dl><p class="st__who">Имя, 35&nbsp;лет · Формула Воды <span class="smp">Образец</span></p></div></article>
-        <article class="st rv"><figure><span class="smp">Образец</span><img src="img/gen_story_openwater.jpg" width="1024" height="765" alt="" loading="lazy"></figure><div class="st__b"><p class="st__q">«Хотел просто доплыть X&#8209;Waters. Доплыл 2,5&nbsp;км и&nbsp;уже записался на&nbsp;следующий старт.»</p><dl><div><dt>Было</dt><dd>100&nbsp;м и&nbsp;одышка</dd></div><div><dt>Стало</dt><dd>2,5&nbsp;км на&nbsp;открытой воде</dd></div><div><dt>Срок</dt><dd>4&nbsp;месяца, персонально</dd></div></dl><p class="st__who">Имя, 41&nbsp;год · открытая вода <span class="smp">Образец</span></p></div></article>
+        <article class="st rv"><figure><span class="smp">Образец</span><img src="img/gen_story_pool.jpg" width="1024" height="765" alt="" loading="lazy"></figure><div class="st__b"><p class="st__q">Марина пришла в&nbsp;Формулу Воды в&nbsp;марте и&nbsp;не&nbsp;проплывала бассейн. В&nbsp;сентябре плывёт километр кролем.</p><p class="st__who">Записка тренера <span class="smp">Образец</span></p></div></article>
+        <article class="st rv"><figure><span class="smp">Образец</span><img src="img/gen_story_openwater.jpg" width="1024" height="765" alt="" loading="lazy"></figure><div class="st__b"><p class="st__q">Олег занимался персонально четыре месяца перед X&#8209;Waters. Проплыл 2,5&nbsp;км и&nbsp;едет на&nbsp;следующий старт.</p><p class="st__who">Записка тренера <span class="smp">Образец</span></p></div></article>
       </div>
     </div>
   </section>
@@ -218,8 +196,8 @@
       <h2 class="rv">Клуб SHABARSHOV</h2>
       <div class="bento">
         <figure class="bento__a rv"><img width="600" height="750" src="../img/club_6.jpg" alt="Команда клуба на X&#8209;Waters Истра" loading="lazy"><figcaption>X&#8209;Waters, Истра</figcaption></figure>
-        <figure class="bento__b rv"><img width="600" height="750" src="../img/club_8.jpg" alt="Группа клуба в открытой воде" loading="lazy"><figcaption>Открытая вода</figcaption></figure>
-        <figure class="bento__c rv"><img width="600" height="750" src="../img/club_4.jpg" alt="Групповая тренировка в бассейне" loading="lazy"><figcaption>Тренировка группы</figcaption></figure>
+        <figure class="bento__b rv"><img width="600" height="750" src="../img/club_8.jpg" alt="Группа клуба в открытой воде" loading="lazy"><figcaption>Заплыв клуба</figcaption></figure>
+        <figure class="bento__c rv"><img width="600" height="750" src="../img/club_4.jpg" alt="Групповая тренировка в бассейне" loading="lazy"><figcaption>Группа в&nbsp;бассейне</figcaption></figure>
       </div>
     </div>
   </section>
@@ -231,9 +209,7 @@
       <div class="faq__list rv">
         <div class="qa2"><h3>Я&nbsp;совсем не&nbsp;умею плавать. Мне&nbsp;к&nbsp;вам?</h3><p>Да. Начнём с&nbsp;бесплатной пробной: за&nbsp;первое занятие станете в&nbsp;воде увереннее. Дальше подберём группу по&nbsp;уровню или персональные тренировки.</p></div>
         <div class="qa2"><h3>Что взять на&nbsp;первую тренировку?</h3><p>Справку для бассейна (как получить, расскажу при записи), купальник или плавки, шапочку, очки, сланцы, полотенце.</p></div>
-        <div class="qa2"><h3>Сколько стоит и&nbsp;как оплатить?</h3><p>Пробная бесплатно. Разовая в&nbsp;группе 2&nbsp;000&nbsp;₽, 4&nbsp;тренировки&nbsp;— 7&nbsp;500&nbsp;₽, 8&nbsp;тренировок&nbsp;— 13&nbsp;600&nbsp;₽. Абонемент действует календарный месяц. Оплата по&nbsp;ссылке ЮKassa или переводом на&nbsp;Т&#8209;Банк.</p></div>
         <div class="qa2"><h3>Что, если пропущу занятие?</h3><p>Предупредите заранее&nbsp;— найдём, как отработать. Пропуск без предупреждения не&nbsp;переносится.</p></div>
-        <div class="qa2"><h3>Готовите к&nbsp;X&#8209;Waters и&nbsp;триатлону?</h3><p>Да, это отдельный формат: ориентирование, старт в&nbsp;толпе, дыхание в&nbsp;волну. Час&nbsp;— от&nbsp;3&nbsp;500&nbsp;₽.</p></div>
       </div>
     </div>
   </section>
@@ -252,13 +228,13 @@
           <label><input type="radio" name="fmt" value="Персонально"><span>Персонально</span></label>
           <label><input type="radio" name="fmt" value="Открытая вода"><span>Открытая вода</span></label>
         </fieldset>
-        <fieldset><legend>Как плаваете сейчас</legend>
-          <label><input type="radio" name="lvl" value="пока не плаваю" checked><span>Не&nbsp;плаваю</span></label>
+        <fieldset><legend>Как плаваете</legend>
+          <label><input type="radio" name="lvl" value="пока не плаваю"><span>Не&nbsp;плаваю</span></label>
           <label><input type="radio" name="lvl" value="держусь на воде"><span>Держусь на&nbsp;воде</span></label>
           <label><input type="radio" name="lvl" value="плаваю уверенно"><span>Плаваю уверенно</span></label>
         </fieldset>
         <fieldset><legend>Бассейн</legend>
-          <label><input type="radio" name="pool" value="Бауманка" checked><span>Бауманка</span></label>
+          <label><input type="radio" name="pool" value="Бауманка"><span>Бауманка</span></label>
           <label><input type="radio" name="pool" value="Формула Воды"><span>Формула Воды</span></label>
           <label><input type="radio" name="pool" value="Акватория ЗИЛ"><span>ЗИЛ</span></label>
           <label><input type="radio" name="pool" value="Лужники"><span>Лужники</span></label>
@@ -300,6 +276,6 @@
   <a class="btn btn--dark btn--block btn--lg" href="#zapis" data-close>Сначала бесплатная тренировка</a>
 </dialog>
 
-<script src="../v2/v2.js?v=1789421455"></script>
+<script src="../v2/v2.js?v=1789422061"></script>
 </body>
 </html>
