@@ -99,3 +99,19 @@
     new IntersectionObserver(function (es) { inZapis = es[0].isIntersecting; dockUpd(); }, { threshold: 0.05 }).observe(zapis);
   } else { inHero = false; dockUpd(); }
 })();
+
+// Цифры набегают при появлении
+(function () {
+  var els = document.querySelectorAll('.count');
+  if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return; io.unobserve(e.target);
+      var el = e.target, to = parseFloat(el.dataset.to), dec = +el.dataset.dec || 0, t0 = null;
+      function step(t) { if (!t0) t0 = t; var k = Math.min(1, (t - t0) / 1400); k = 1 - Math.pow(1 - k, 3);
+        el.textContent = (to * k).toFixed(dec).replace('.', ','); if (k < 1) requestAnimationFrame(step); }
+      requestAnimationFrame(step);
+    });
+  }, { threshold: .6 });
+  els.forEach(function (el) { io.observe(el); });
+})();

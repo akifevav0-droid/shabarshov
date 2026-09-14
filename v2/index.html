@@ -11,7 +11,7 @@
   <link rel="preload" href="../fonts/inter-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../img/wide_doha.jpg" as="image">
   <script>document.documentElement.classList.add('js')</script>
-  <link rel="stylesheet" href="v2.css?v=3">
+  <link rel="stylesheet" href="v2.css?v=1789418983">
 </head>
 <body>
 
@@ -19,14 +19,14 @@
   <div class="top__in">
     <a class="top__logo" href="#top" aria-label="SHABARSHOV swimming club — наверх"><span class="logo"></span></a>
     <nav class="top__nav" aria-label="Разделы">
-      <a href="#proba">Пробная</a><a href="#ceny">Цены</a><a href="#trener">Обо мне</a><a href="#raspisanie">Расписание</a><a href="#otzyvy">Отзывы</a>
+      <a href="#proba">Пробная</a><a href="#ceny">Цены</a><a href="#trener">Обо мне</a><a href="#raspisanie">Расписание</a><a href="#otzyvy">Отзывы</a><a href="#istorii">Истории</a>
     </nav>
     <a class="btn btn--sm top__cta" href="#zapis">Записаться бесплатно</a>
     <button class="top__menu" type="button" aria-expanded="false" aria-controls="mnav" aria-label="Меню"><span></span><span></span></button>
   </div>
 </header>
 
-<nav class="mnav" id="mnav" aria-label="Меню" hidden><a href="#proba">Пробная тренировка</a><a href="#ceny">Цены</a><a href="#trener">Обо мне</a><a href="#raspisanie">Расписание</a><a href="#otzyvy">Отзывы</a><a href="#voprosy">Вопросы</a><a class="btn btn--dark btn--lg" href="#zapis">Записаться бесплатно</a></nav>
+<nav class="mnav" id="mnav" aria-label="Меню" hidden><a href="#proba">Пробная тренировка</a><a href="#ceny">Цены</a><a href="#trener">Обо мне</a><a href="#raspisanie">Расписание</a><a href="#otzyvy">Отзывы</a><a href="#istorii">Истории</a><a href="#voprosy">Вопросы</a><a class="btn btn--dark btn--lg" href="#zapis">Записаться бесплатно</a></nav>
 
 <main>
 
@@ -50,12 +50,13 @@
   </section>
 
   <!-- 2. Доказательства цифрами -->
+  <div class="waterline" aria-hidden="true"><svg viewBox="0 0 1440 40" preserveAspectRatio="none"><path class="wl1" d="M0 22 C 180 8, 360 36, 540 22 S 900 8, 1080 22 S 1320 36, 1440 22 V40 H0Z"/><path class="wl2" d="M0 26 C 200 14, 400 38, 600 26 S 1000 14, 1200 26 S 1380 34, 1440 26 V40 H0Z"/></svg></div>
   <section class="proof" aria-label="Коротко обо мне">
     <div class="wrap proof__in">
-      <div class="proof__i"><b>10&nbsp;лет</b><span>тренерского стажа</span></div>
+      <div class="proof__i"><b><span class="count" data-to="10">10</span>&nbsp;лет</b><span>тренерского стажа</span></div>
       <div class="proof__i"><b>МС</b><span>мастер спорта по&nbsp;плаванию</span></div>
       <div class="proof__i"><b>2&#8209;е и&nbsp;3&#8209;е</b><span>места, Всемирные игры Masters, Абу&#8209;Даби&nbsp;2026</span></div>
-      <a class="proof__i" href="https://profi.ru/profile/ShabarshovAS/" target="_blank" rel="noopener"><b>5,0</b><span>рейтинг на&nbsp;Профи.ру, 10&nbsp;отзывов</span></a>
+      <a class="proof__i" href="https://profi.ru/profile/ShabarshovAS/" target="_blank" rel="noopener"><b><span class="count" data-to="5.0" data-dec="1">5,0</span></b><span>рейтинг на&nbsp;Профи.ру, 10&nbsp;отзывов</span></a>
     </div>
   </section>
 
@@ -180,6 +181,24 @@
     </div>
   </section>
 
+
+  <!-- 7б. Истории учеников — ОБРАЗЕЦ, заменить реальными -->
+  <section class="sec" id="istorii">
+    <div class="wrap">
+      <div class="head rv"><h2>Истории учеников</h2><p class="sample-note">Образец раздела. Истории ниже придуманы для макета и&nbsp;будут заменены реальными с&nbsp;разрешения учеников.</p></div>
+      <div class="stories">
+        <article class="story rv"><span class="sample">Образец</span><img src="../img/club_9.jpg" alt="" loading="lazy"><div class="story__body"><p class="story__ba"><span>Было</span>Боялась глубины, не&nbsp;проплывала бассейн</p><p class="story__ba story__ba--after"><span>Стало</span>Плывёт кролем 1&nbsp;км без остановок</p><p class="story__who">Имя ученицы · группа в&nbsp;Формуле Воды</p></div></article>
+        <article class="story rv"><span class="sample">Образец</span><img src="../img/club_1.jpg" alt="" loading="lazy"><div class="story__body"><p class="story__ba"><span>Было</span>Плавал «по-своему», уставал через 100&nbsp;м</p><p class="story__ba story__ba--after"><span>Стало</span>Первый старт X&#8209;Waters на&nbsp;2,5&nbsp;км</p><p class="story__who">Имя ученика · открытая вода</p></div></article>
+        <article class="story rv"><span class="sample">Образец</span><img src="../img/club_extra.jpg" alt="" loading="lazy"><div class="story__body"><p class="story__ba"><span>Было</span>Готовился к&nbsp;первому триатлону, плавание&nbsp;— слабое место</p><p class="story__ba story__ba--after"><span>Стало</span>Вышел из&nbsp;воды в&nbsp;первой половине</p><p class="story__who">Имя ученика · персональные тренировки</p></div></article>
+      </div>
+      <div class="video rv">
+        <img src="../img/wide_pool.jpg" alt="" loading="lazy">
+        <button class="video__play" type="button" aria-label="Смотреть видео (образец)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button>
+        <div class="video__cap"><span class="sample">Образец</span><b>Как проходит тренировка</b><span>20&nbsp;секунд: тренер в&nbsp;воде показывает упражнение ученику</span></div>
+      </div>
+    </div>
+  </section>
+
   <!-- 8. Клуб -->
   <section class="sec" id="klub">
     <div class="wrap">
@@ -269,6 +288,6 @@
   <a class="btn btn--dark btn--block btn--lg" href="#zapis" data-close>Сначала бесплатная тренировка</a>
 </dialog>
 
-<script src="v2.js?v=3"></script>
+<script src="v2.js?v=1789418983"></script>
 </body>
 </html>
