@@ -586,3 +586,34 @@ html { scrollbar-gutter: stable; }
 
 /* Шапка на всю ширину: логотип у левого края, меню и «Связаться» у правого */
 .nav .wrap.nav__in { max-width: none; padding-left: clamp(20px, 3vw, 48px); padding-right: clamp(20px, 3vw, 48px); }
+
+/* ===== Законченный вид: единая сетка, крупнее для ноутбука ===== */
+:root { --w: 1240px; }
+@media (min-width: 1500px) { :root { --w: 1280px; } }
+/* одна ширина у всех разделов */
+.reviews, #faq .wrap--narrow { max-width: var(--w) !important; }
+#faq .qa, #faq h2 { max-width: 860px; margin-left: auto; margin-right: auto; }
+.citymap, .list { max-width: none; }
+/* первый экран: подзаголовок в две строки */
+.hero__sub { max-width: 40em; }
+/* тренер крупнее */
+@media (min-width: 901px) {
+  .trener { grid-template-columns: 480px minmax(0, 600px) !important; gap: 96px !important; }
+}
+/* мелкий текст на ноутбуке читаемее */
+@media (min-width: 901px) {
+  .list p { font-size: 16px; }
+  .list__price small, .pq__l small { font-size: 14px; }
+  .mpin__addr { font-size: 14px; }
+  .mpin__card em { font-size: 14px; }
+  .review p { font-size: 18px !important; }
+  .qa summary { font-size: 18px; }
+  .qa p { font-size: 17px; }
+  .lead { font-size: 19px; }
+}
+/* подвал: логотип и контакты (фон не меняется) */
+.foot__brand { display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 14px; font-weight: 500; color: var(--head); }
+.foot__brand img { width: 36px; height: auto; }
+.foot__contacts { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 24px; font-size: 15px; }
+.foot__contacts a { color: var(--head); transition: color .45s ease; }
+.foot__contacts a:hover { color: var(--lav-deep); }
