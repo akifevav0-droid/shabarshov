@@ -126,32 +126,6 @@ window.scrollTo(0, 0);
 })();
 
 
-// «Подробнее о тренере»: кнопка не меняет форму, надпись сменяется; блок раскрывается долго и мягко
-(function () {
-  var d = document.querySelector('.trener .more'); if (!d) return;
-  var s = d.querySelector('summary'), w = d.querySelector('.bio-wrap'); if (!w || !w.animate) return;
-  var items = w.querySelectorAll('.bio li'), busy = false, ease = 'cubic-bezier(.16, 1, .3, 1)';
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { d.addEventListener('toggle', function () { d.classList.toggle('is-open', d.open); }); return; }
-  function once(fn, ms) { var done = false; var f = function () { if (!done) { done = true; fn(); } }; setTimeout(f, ms); return f; }
-  s.addEventListener('click', function (e) {
-    e.preventDefault(); if (busy) return; busy = true;
-    if (!d.open) {
-      d.open = true; d.classList.add('is-open');
-      var h = w.scrollHeight, fin = once(function () { busy = false; }, 1000);
-      w.animate([{ height: '0px' }, { height: h + 'px' }], { duration: 850, easing: ease }).onfinish = fin;
-      items.forEach(function (li, i) {
-        var mob = window.matchMedia('(max-width: 900px)').matches;
-        li.animate(mob ? [{ opacity: 0 }, { opacity: 1 }] : [{ opacity: 0, transform: 'translateY(16px)' }, { opacity: 1, transform: 'none' }], { duration: mob ? 700 : 900, delay: mob ? 200 + i * 140 : 160 + i * 110, easing: ease, fill: 'backwards' });
-      });
-    } else {
-      d.classList.remove('is-open');
-      items.forEach(function (li) { li.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 220, easing: 'ease-out', fill: 'forwards' }); });
-      var a = w.animate([{ height: w.scrollHeight + 'px' }, { height: '0px' }], { duration: 600, delay: 90, easing: ease, fill: 'forwards' });
-      var fin2 = once(function () { d.open = false; a.cancel(); items.forEach(function (li) { li.getAnimations().forEach(function (x) { x.cancel(); }); }); busy = false; }, 800);
-      a.onfinish = fin2;
-    }
-  });
-})();
 
 // Переходы по разделам: мягкая прокрутка с плавным разгоном и торможением, раздел по центру экрана
 (function () {
