@@ -655,10 +655,6 @@ html { overflow-x: hidden; }
   .portret__facts { font-size: 13px; margin-top: 16px; }
 }
 @media (max-width: 734px) {
-  .portret__photo .slide[src*="pool"] { object-position: 40% 40%; }
-  .portret__photo .slide[src*="finish"] { object-position: 50% 30%; }
-  .portret__photo .slide[src*="beach"] { object-position: 52% 30%; }
-  .portret__photo .slide[src*="singapore"] { object-position: 50% 30%; }
   .portret__facts { gap: 6px 14px; }
   .portret__facts li + li::before { display: none; }
 }
@@ -686,3 +682,27 @@ html { overflow-x: hidden; }
 }
 .portret__cap .portret__facts { gap: 8px 28px; }
 .portret__cap .portret__facts li + li::before { display: none !important; }
+
+/* Портрет: текст на фото в матовой стеклянной плашке — читается на любом кадре */
+.portret { aspect-ratio: 16 / 9 !important; }
+.portret__card { position: absolute; left: 32px; bottom: 32px; z-index: 3; max-width: 560px; padding: 30px 34px 28px; border-radius: 22px; background: rgba(22, 20, 34, .42); backdrop-filter: blur(22px) saturate(140%); -webkit-backdrop-filter: blur(22px) saturate(140%); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .12); color: #fff; text-align: left; }
+.portret__card h2 { margin: 0 0 12px; color: #fff; text-align: left; font-size: clamp(26px, 2.6vw, 38px); line-height: 1.12; }
+.portret__card .portret__side p { margin: 0; color: rgba(255, 255, 255, .88); font-size: 16px; line-height: 1.55; }
+.portret__card .portret__facts { display: flex; flex-wrap: wrap; gap: 6px 22px; margin: 18px 0 0; padding: 16px 0 0; border-top: 1px solid rgba(255, 255, 255, .18); list-style: none; font-size: 13px; font-weight: 500; color: #fff !important; text-shadow: none; }
+.portret__card .portret__facts li + li::before { display: none !important; }
+.portret__photo .slide[src*="doha"] { object-position: 75% 50%; }
+@media (max-width: 900px) {
+  .portret { aspect-ratio: 4 / 5 !important; }
+  .portret__card { left: 12px; right: 12px; bottom: 12px; max-width: none; padding: 20px 20px 18px; border-radius: 18px; }
+  .portret__card h2 { font-size: 23px; }
+  .portret__card .portret__side p { font-size: 14px; }
+  .portret__card .portret__facts { font-size: 12px; gap: 4px 14px; margin-top: 12px; padding-top: 12px; }
+  .portret__photo .slide[src*="goggles"] { object-position: 50% 30%; }
+  .portret__photo .slide[src*="doha"] { object-position: 72% 30%; }
+  .portret__photo .slide[src*="dive"] { object-position: 55% 30%; }
+  .portret__photo .slide[src*="pool"] { object-position: 70% 40%; }
+  .portret__photo .slide[src*="finish"] { object-position: 50% 20%; }
+}
+.portret__card { max-width: 470px; }
+@media (max-width: 900px) { .portret__card .portret__side p { display: none; } .portret__card .portret__facts { margin-top: 10px; } .portret { aspect-ratio: 3 / 4 !important; } }
+@media (min-width: 901px) { .portret__card { max-width: 420px; left: 28px; bottom: 28px; padding: 26px 30px 24px; } }
