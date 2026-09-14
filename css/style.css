@@ -626,3 +626,11 @@ html { scrollbar-gutter: stable; }
 .foot__row a { color: var(--grey); transition: color .45s ease; }
 .foot__row a:hover { color: var(--head); }
 @media (max-width: 734px) { .foot { margin-top: 56px; } .foot__row { flex-direction: column; gap: 12px; text-align: center; } .foot__nav { gap: 20px; } }
+/* Подвал на всю ширину — края совпадают с шапкой */
+.foot { width: 100vw; margin-left: calc(50% - 50vw); padding-left: clamp(20px, 3vw, 48px); padding-right: clamp(20px, 3vw, 48px); box-sizing: border-box; }
+html { overflow-x: hidden; }
+/* Волны медленнее вдвое */
+.wave__l1 { animation-duration: 280s !important; }
+.wave__l2 { animation-duration: 200s !important; }
+.wave__l3 { animation-duration: 360s !important; }
+.wave__l4 { animation-duration: 240s !important; }
