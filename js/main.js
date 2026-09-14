@@ -90,6 +90,7 @@ window.scrollTo(0, 0);
       if (e.target.closest('.mpin__more a')) return;
       var pin = e.target.closest('.mpin');
       if (!pin) return;
+      if (pin.classList.contains('is-open') && window.matchMedia('(max-width: 900px)').matches) { hide(); return; }
       show(pin);
     });
     var show = function (pin) {
@@ -101,8 +102,12 @@ window.scrollTo(0, 0);
       var pin = e.target.closest('.mpin');
       if (pin && !pin.classList.contains('is-open') && window.matchMedia('(min-width: 901px) and (hover: hover)').matches) show(pin);
     });
+    var hide = function () {
+      map.querySelectorAll('.mpin.is-open').forEach(function (p) { p.classList.remove('is-open'); p.querySelector('.mpin__dot').setAttribute('aria-expanded', 'false'); });
+      panel.innerHTML = '';
+    };
     var first = map.querySelector('.mpin');
-    if (first) show(first);
+    if (first && window.matchMedia('(min-width: 901px)').matches) show(first);
   }
 
 
@@ -142,6 +147,31 @@ window.scrollTo(0, 0);
     function up() { if (!drag) return; drag = false; row.classList.remove('is-drag'); if (performance.now() - lastT > 120) v = 0; v = Math.max(-2500, Math.min(2500, v)); }
     row.addEventListener('pointerup', up); row.addEventListener('pointercancel', up);
   });
+
+  // Телефон: форматы и отзывы листаются по кругу
+  if (window.matchMedia('(max-width: 734px)').matches) {
+    document.querySelectorAll('#formaty .list, .reviews').forEach(function (box) {
+      var items = Array.prototype.slice.call(box.children); if (items.length < 2) return;
+      function clone(el) { var c = el.cloneNode(true); c.setAttribute('aria-hidden', 'true'); c.classList.add('is-clone'); c.querySelectorAll('a, button').forEach(function (a) { a.tabIndex = -1; }); return c; }
+      items.forEach(function (el) { box.appendChild(clone(el)); });
+      items.slice().reverse().forEach(function (el) { box.insertBefore(clone(el), box.firstChild); });
+      var n = items.length, t;
+      function period() { return box.children[n * 2].offsetLeft - box.children[n].offsetLeft; }
+      function center(i) { var el = box.children[i]; return el.offsetLeft - (box.clientWidth - el.offsetWidth) / 2; }
+      requestAnimationFrame(function () { box.style.scrollSnapType = 'none'; box.scrollLeft = center(n); box.style.scrollSnapType = ''; });
+      box.addEventListener('scroll', function () {
+        clearTimeout(t);
+        t = setTimeout(function () {
+          var p = period(), a = center(n), x = box.scrollLeft;
+          if (x < a - p / (2 * n) || x > a + p - p / (2 * n)) {
+            box.style.scrollSnapType = 'none';
+            box.scrollLeft = x < a ? x + p : x - p;
+            box.style.scrollSnapType = '';
+          }
+        }, 120);
+      }, { passive: true });
+    });
+  }
 
   // Яндекс.Метрика: номер счётчика в <html data-ym="">. Пусто — ничего не грузится.
   var ym_id = document.documentElement.getAttribute('data-ym');
