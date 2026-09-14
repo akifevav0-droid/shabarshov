@@ -10,7 +10,7 @@
     var y = window.scrollY, h = top.offsetHeight;
     var edge = window.matchMedia('(max-width: 900px)').matches ? hero.querySelector('.hero__media').offsetHeight : hero.offsetHeight;
     var past = y > edge - h;
-    var overDark = past && darks.some(function (s) { var r = s.getBoundingClientRect(); return r.top <= h / 2 && r.bottom >= h / 2; });
+    var overDark = past && darks.some(function (s) { var r = s.getBoundingClientRect(); return r.top <= h && r.bottom > h; });
     top.classList.toggle('is-dark', overDark);
     top.classList.toggle('is-solid', past && !overDark);
   }
