@@ -561,3 +561,11 @@ html { scrollbar-gutter: stable; }
 /* «Подробнее о тренере»: тонкая рамка, при наведении без свечения — только лёгкий фон */
 .more > summary { border: 1px solid rgba(110, 103, 136, .3) !important; box-shadow: none !important; background: transparent; }
 .more > summary:hover { background: rgba(110, 103, 136, .05) !important; border-color: rgba(110, 103, 136, .45) !important; box-shadow: none !important; }
+
+/* Карта: приглушённее; ЗИЛ открывается вправо от точки, чтобы не наезжать на Лужники */
+.citymap img { filter: saturate(.35) brightness(1.04); }
+@media (min-width: 901px) {
+  .mpin--t .mpin__card { left: 22px !important; right: auto !important; bottom: auto !important; top: auto !important; transform: translateY(calc(-100% + 30px)) !important; }
+  .mpin--t .mpin__card::before { left: -4px !important; bottom: 22px !important; top: auto !important; }
+}
+@media (min-width: 901px) and (max-width: 1099px) { .mpin--b .mpin__card { top: 116px !important; } .mpin--b .mpin__card::before { display: none !important; } }
