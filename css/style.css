@@ -668,3 +668,21 @@ html { overflow-x: hidden; }
 .portret__text p { color: rgba(255, 255, 255, .95) !important; }
 .portret__facts { color: #fff !important; }
 @media (max-width: 734px) { .portret::after { background: linear-gradient(180deg, rgba(20, 18, 30, 0) 22%, rgba(20, 18, 30, .5) 50%, rgba(20, 18, 30, .88) 100%) !important; } }
+
+/* Портрет: фото чистое, текст под ним в две колонки */
+.portret::after { display: none !important; }
+.portret { aspect-ratio: 21 / 10 !important; }
+.portret__cap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; align-items: start; margin-top: 48px; text-align: left; }
+.portret__cap h2 { margin: 0; text-align: left; font-size: clamp(30px, 3.2vw, 44px); }
+.portret__side p { margin: 4px 0 0; font-size: 18px; line-height: 1.6; color: var(--text); }
+.portret__cap .portret__facts { color: var(--head) !important; text-shadow: none; margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(40, 38, 55, .1); font-size: 14px; }
+.portret__cap .portret__facts li + li::before { color: var(--grey); }
+@media (max-width: 900px) {
+  .portret { aspect-ratio: 4 / 5 !important; }
+  .portret__cap { grid-template-columns: 1fr; gap: 16px; margin-top: 28px; text-align: center; }
+  .portret__cap h2 { text-align: center; font-size: 28px; }
+  .portret__side p { font-size: 16px; }
+  .portret__cap .portret__facts { justify-content: center; }
+}
+.portret__cap .portret__facts { gap: 8px 28px; }
+.portret__cap .portret__facts li + li::before { display: none !important; }
