@@ -583,3 +583,6 @@ html { scrollbar-gutter: stable; }
 }
 .more.is-open > summary { border-color: transparent !important; background: transparent !important; padding-left: 0 !important; padding-right: 0 !important; min-height: 32px !important; color: var(--grey); }
 .more.is-open > summary:hover { color: var(--head); }
+
+/* Шапка на всю ширину: логотип у левого края, меню и «Связаться» у правого */
+.nav .wrap.nav__in { max-width: none; padding-left: clamp(20px, 3vw, 48px); padding-right: clamp(20px, 3vw, 48px); }
