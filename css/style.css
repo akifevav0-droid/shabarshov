@@ -722,3 +722,21 @@ html { overflow-x: hidden; }
   .portret__card .portret__facts { justify-content: center; color: #fff !important; font-size: 13px; font-weight: 600; opacity: 1; }
   .portret__card .portret__facts li { color: #fff; }
 }
+
+/* Фото бассейнов в карточках на карте */
+.mpin__img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 10px; margin: -24px 0 10px; }
+@media (min-width: 901px) { .mpin__card { width: 250px; } }
+@media (max-width: 900px) { .mpin__card .mpin__img { display: none; } .citymap__panel .mpin__img { display: block; max-width: 320px; margin: 0 auto 12px; } }
+
+/* Клуб: медленная лента фото групп */
+.club { overflow: hidden; }
+.club h2 { margin-bottom: 14px; }
+.club__track { margin-top: 48px; overflow: hidden; -webkit-mask: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.club__row { display: flex; gap: 18px; width: max-content; animation: club-move 90s linear infinite; }
+.club__track:hover .club__row { animation-play-state: paused; }
+.club__i { margin: 0; width: 300px; aspect-ratio: 4 / 5; border-radius: 22px; overflow: hidden; flex: none; }
+.club__i img { width: 100%; height: 100%; object-fit: cover; }
+@keyframes club-move { from { transform: translateX(0); } to { transform: translateX(calc(-50% - 9px)); } }
+@media (max-width: 734px) { .club__i { width: 220px; border-radius: 18px; } .club__row { gap: 12px; animation-duration: 70s; } .club__track { margin-top: 32px; } }
+@media (prefers-reduced-motion: reduce) { .club__row { animation: none; } .club__track { overflow-x: auto; } }
+@media (min-width: 901px) and (max-width: 1099px) { .mpin__img { display: none; } .mpin__card { width: auto; } }
