@@ -764,3 +764,4 @@ html { overflow-x: hidden; }
 @keyframes kb { from { transform: scale(1.001); } to { transform: scale(1.045); } }
 @media (max-width: 900px) { .slides .slide.is-on { animation: none; } .slides .slide { transition: opacity 1.4s ease !important; } }
 @media (prefers-reduced-motion: reduce) { .slides .slide.is-on { animation: none; } }
+.mpin__img, .pools__i img { filter: none !important; }
