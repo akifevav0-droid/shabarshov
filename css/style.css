@@ -1114,3 +1114,40 @@ html, body { overflow-x: clip; }
   .trener-top .portret::before { content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; background: radial-gradient(ellipse 42% 55% at 0% 12%, rgba(16, 14, 26, .55), rgba(16, 14, 26, 0) 100%); }
 }
 @media (min-width: 735px) { .trener-top .portret::before { background: radial-gradient(ellipse 50% 62% at 0% 14%, rgba(16, 14, 26, .72), rgba(16, 14, 26, .35) 45%, rgba(16, 14, 26, 0) 100%) !important; } }
+
+/* Телефон: кадры дальше — фото 460px целиком, заголовок полосой сразу под фото */
+@media (max-width: 734px) {
+  .trener-top .portret { height: auto !important; background: #1E1C2A; }
+  .trener-top .portret__photo { position: relative !important; inset: auto !important; height: 460px !important; }
+  .trener-top .portret__photo .slide:nth-child(1) { object-position: 50% 50% !important; }
+  .trener-top .portret__photo .slide:nth-child(2) { object-position: 70% 35% !important; }
+  .trener-top .portret__photo .slide:nth-child(3) { object-position: 38% 75% !important; }
+  .trener-top .portret__photo .slide:nth-child(4) { object-position: 45% 45% !important; }
+  .trener-top .portret__photo .slide:nth-child(5) { object-position: 50% 5% !important; }
+  .trener-top .portret__card { position: relative !important; inset: auto !important; padding: 18px 20px 20px !important; background: #1E1C2A !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; -webkit-mask: none !important; mask: none !important; }
+}
+
+/* Телефон: бассейн — на карте только подписи, под картой одна карточка: фото + сведения */
+@media (max-width: 900px) {
+  .citymap .mpin.is-open .mpin__card { width: auto !important; padding: 6px 10px 7px !important; white-space: nowrap !important; background: #fff !important; box-shadow: 0 0 0 2px #6E6788, 0 4px 14px -8px rgba(40, 38, 55, .3) !important; animation: none !important; }
+  .citymap .mpin.is-open .mpin__card b { font-size: 13px !important; }
+  .citymap .mpin.is-open .mpin__more { display: none !important; }
+  .citymap .mpin--l2.is-open .mpin__card, .citymap .mpin--b.is-open .mpin__card, .citymap .mpin--t.is-open .mpin__card { top: 50% !important; bottom: auto !important; right: 16px !important; left: auto !important; transform: translateY(-50%) !important; }
+  .citymap .mpin--tr.is-open .mpin__card { top: 50% !important; bottom: auto !important; left: 16px !important; right: auto !important; transform: translateY(-50%) !important; }
+
+  .citymap__panel { display: block !important; width: auto !important; margin: 16px 0 0 !important; padding: 0 !important; overflow: hidden; background: rgba(255, 255, 255, .72) !important; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-radius: 0 !important; box-shadow: 0 18px 40px -26px rgba(40, 38, 55, .35) !important; text-align: left !important; animation: info-fade .45s ease both; }
+  .citymap__panel > * { display: block !important; }
+  .citymap__panel .mpin__img { width: 100% !important; height: auto !important; aspect-ratio: 16 / 9 !important; border-radius: 0 !important; margin: 0 !important; }
+  .citymap__panel b { margin: 16px 18px 0 !important; font-size: 19px !important; text-align: left !important; }
+  .citymap__panel .mpin__more { display: block !important; padding: 0 18px 18px; }
+  .citymap__panel .mpin__addr { margin-top: 4px !important; font-size: 14px !important; color: var(--grey) !important; text-align: left !important; }
+  .citymap__panel em { margin-top: 10px !important; font-size: 14px !important; line-height: 1.5 !important; text-align: left !important; }
+  .citymap__panel .mpin__acts { display: flex !important; flex-direction: row !important; gap: 8px !important; margin-top: 14px !important; justify-content: flex-start !important; }
+  .citymap__panel .mpin__route { flex: 1; justify-content: center; height: 44px !important; font-size: 14px !important; }
+}
+@media (max-width: 900px) { .citymap__panel > b:not(.x), .citymap__panel > .mpin__more:not(.x) { display: block !important; } }
+
+/* Отзывы: текст по центру карточки по вертикали */
+.review { justify-content: center !important; }
+.review p { margin-top: auto !important; }
+.review footer { margin-bottom: auto !important; }
