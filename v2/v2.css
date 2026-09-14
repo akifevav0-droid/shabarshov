@@ -488,10 +488,18 @@ a.proof__i:hover b { color: #D6D0EA; }
 .row__map { text-decoration-color: rgba(87, 81, 111, .35); text-underline-offset: 5px; }
 @media (max-width: 1100px) and (min-width: 721px) { .coach__photo { max-width: none; } .prices { grid-template-columns: repeat(3, 1fr); } }
 .rating span:last-child { white-space: nowrap; }
-.faq > h2 { position: sticky; top: 120px; }
+@media (min-width: 1101px) { .faq > h2 { position: sticky; top: 120px; } }
 .split h2 { max-width: none; font-size: clamp(34px, 3.6vw, 52px); }
 @media (min-width: 1300px) {
   .hero { grid-template-columns: calc((100vw - var(--w)) / 2 + var(--pad) + 600px) 1fr; }
   .hero__title { font-size: clamp(56px, 4.6vw, 80px); max-width: 9ch; }
   .hero__in { padding-right: 56px; }
 }
+
+/* Вопросы: живой список без плюсиков */
+.qa2 { padding: 22px 0; border-top: 1px solid var(--line); }
+.qa2:last-child { border-bottom: 1px solid var(--line); }
+.qa2 h3 { font-size: 19px; font-weight: 600; }
+.qa2 p { margin-top: 8px; max-width: 62ch; font-size: 17px; color: var(--text); }
+.faq > h2 { max-width: 12ch; }
+@media (max-width: 720px) { .qa2 h3 { font-size: 17px; } .qa2 p { font-size: 16px; } }
