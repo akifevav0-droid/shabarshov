@@ -106,44 +106,41 @@ window.scrollTo(0, 0);
   }
 
 
-  // Лента фото групп: медленно едет сама, листается пальцем/мышкой с инерцией
+  // Лента фото групп: медленно едет сама; на телефоне листается пальцем (родная прокрутка), на компьютере тянется мышкой
   document.querySelectorAll('.clubrow').forEach(function (row) {
     var track = row.querySelector('.clubrow__track'); if (!track) return;
-    var x = 0, v = 0, auto = -18, drag = false, lastX = 0, lastT = 0, moved = 0, prev = performance.now();
     var calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (calm) auto = 0;
+    var auto = calm ? 0 : 18, v = auto, pos = 0, hold = false, idleUntil = 0, prev = performance.now();
+    var drag = false, lastX = 0, lastT = 0;
     function half() { return track.scrollWidth / 2; }
+    function wrap() { var h = half(); if (h <= 0) return; if (row.scrollLeft >= h) row.scrollLeft -= h; else if (row.scrollLeft <= 0) row.scrollLeft += h; pos = row.scrollLeft; }
+    row.scrollLeft = 1; pos = 1;
     function frame(t) {
       var dt = Math.min(0.05, (t - prev) / 1000); prev = t;
-      if (!drag) {
-        v += (auto - v) * Math.min(1, dt * 1.6); // скорость плавно возвращается к обычной
-        x += v * dt;
-      }
-      var h = half();
-      if (h > 0) { if (x <= -h) x += h; if (x > 0) x -= h; }
-      track.style.transform = 'translate3d(' + x + 'px,0,0)';
+      if (!hold && !drag && t > idleUntil) {
+        v += (auto - v) * Math.min(1, dt * 1.6);
+        pos += v * dt; var h = half(); if (h > 0) { if (pos >= h) pos -= h; if (pos < 0) pos += h; } row.scrollLeft = pos;
+      } else { pos = row.scrollLeft; }
       requestAnimationFrame(frame);
     }
     requestAnimationFrame(frame);
+    // палец: родная прокрутка с инерцией, автопрокрутка ждёт
+    row.addEventListener('touchstart', function () { hold = true; }, { passive: true });
+    row.addEventListener('touchend', function () { hold = false; idleUntil = performance.now() + 1500; v = 0; }, { passive: true });
+    row.addEventListener('scroll', function () { if (hold || performance.now() < idleUntil) { wrap(); if (!hold) idleUntil = performance.now() + 400; } }, { passive: true });
+    // мышь: тянуть с инерцией
     row.addEventListener('pointerdown', function (e) {
-      drag = true; moved = 0; lastX = e.clientX; lastT = performance.now(); v = 0;
-      row.classList.add('is-drag');
+      if (e.pointerType !== 'mouse') return;
+      drag = true; lastX = e.clientX; lastT = performance.now(); v = 0; row.classList.add('is-drag');
       try { row.setPointerCapture(e.pointerId); } catch (err) {}
     });
     row.addEventListener('pointermove', function (e) {
       if (!drag) return;
       var now = performance.now(), dx = e.clientX - lastX, dt = Math.max(1, now - lastT) / 1000;
-      x += dx; moved += Math.abs(dx);
-      v = v * 0.6 + (dx / dt) * 0.4;
-      lastX = e.clientX; lastT = now;
+      row.scrollLeft -= dx; wrap(); v = v * 0.6 + (-dx / dt) * 0.4; lastX = e.clientX; lastT = now;
     });
-    function up() {
-      if (!drag) return; drag = false; row.classList.remove('is-drag');
-      if (performance.now() - lastT > 120) v = 0; // палец остановился — лента стоит и снова трогается
-      v = Math.max(-2500, Math.min(2500, v));
-    }
-    row.addEventListener('pointerup', up);
-    row.addEventListener('pointercancel', up);
+    function up() { if (!drag) return; drag = false; row.classList.remove('is-drag'); if (performance.now() - lastT > 120) v = 0; v = Math.max(-2500, Math.min(2500, v)); }
+    row.addEventListener('pointerup', up); row.addEventListener('pointercancel', up);
   });
 
   // Яндекс.Метрика: номер счётчика в <html data-ym="">. Пусто — ничего не грузится.

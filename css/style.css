@@ -1004,3 +1004,38 @@ html, body { overflow-x: clip; }
   .trener-top .portret__card h2 { margin: 0 !important; color: #fff !important; font-size: 24px !important; line-height: 1.2; text-align: center !important; text-shadow: 0 1px 12px rgba(0, 0, 0, .25); }
   .trener-top .portret__card .portret__side, .trener-top .portret__card .portret__facts { display: none !important; }
 }
+
+/* Лента групп: родная горизонтальная прокрутка без полосы */
+.clubrow { overflow-x: auto !important; overflow-y: hidden; scrollbar-width: none; touch-action: auto; -webkit-overflow-scrolling: touch; }
+.clubrow::-webkit-scrollbar { display: none; }
+.clubrow .clubrow__track { transform: none !important; will-change: auto; }
+
+/* Телефон: сведения о бассейне — на карте у точки, под картой только фото */
+@media (max-width: 900px) {
+  .citymap .mpin.is-open { z-index: 5; }
+  .citymap .mpin.is-open .mpin__card { width: 214px; padding: 12px 14px 14px !important; white-space: normal; text-align: left; border-radius: 14px; background: rgba(255, 255, 255, .9) !important; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); animation: info-fade .4s ease both; }
+  .citymap .mpin.is-open .mpin__card b { font-size: 15px; text-align: left; }
+  .citymap .mpin.is-open .mpin__more { display: block !important; }
+  .citymap .mpin.is-open .mpin__img { display: none !important; }
+  .citymap .mpin.is-open .mpin__addr, .citymap .mpin.is-open em { text-align: left; font-size: 12px; margin-top: 3px; }
+  .citymap .mpin.is-open em { font-weight: 600; line-height: 1.4; margin-top: 6px; }
+  .citymap .mpin.is-open .mpin__acts { justify-content: flex-start; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .citymap .mpin.is-open .mpin__route { height: 28px; padding: 0 10px; font-size: 11.5px; }
+  .citymap .mpin--l2.is-open .mpin__card, .citymap .mpin--b.is-open .mpin__card { top: 14px !important; bottom: auto !important; right: -12px !important; left: auto !important; transform: none !important; }
+  .citymap .mpin--t.is-open .mpin__card { bottom: 14px !important; top: auto !important; left: 50% !important; right: auto !important; transform: translateX(-50%) !important; }
+  .citymap .mpin--tr.is-open .mpin__card { bottom: 14px !important; top: auto !important; left: -12px !important; right: auto !important; transform: none !important; }
+
+  .citymap__panel { display: block !important; padding: 0 !important; margin-top: 0 !important; border-radius: 0 !important; background: none !important; box-shadow: none !important; }
+  .citymap__panel > :not(.mpin__img) { display: none !important; }
+  .citymap__panel .mpin__img { display: block !important; width: 100% !important; height: auto !important; min-height: 0 !important; aspect-ratio: 16 / 10 !important; border-radius: 0 !important; object-fit: cover; }
+}
+
+/* Телефон: форматы — плашки лентой во всю ширину, края растворяются */
+@media (max-width: 734px) {
+  #formaty .list { display: flex !important; gap: 12px; width: 100vw; margin-left: calc(50% - 50vw) !important; padding: 8px 12vw 24px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+    -webkit-mask: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); mask: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); }
+  #formaty .list::-webkit-scrollbar { display: none; }
+  #formaty .list li { flex: none; width: 76vw; scroll-snap-align: center; }
+}
+@media (max-width: 734px) { .band--quote { padding-bottom: 28px !important; } #faq { padding-top: 28px !important; } }
+@media (max-width: 900px) { .citymap__panel { width: 100vw; margin-left: calc(50% - 50vw) !important; } }
