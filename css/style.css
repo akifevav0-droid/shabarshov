@@ -623,3 +623,13 @@ html { scrollbar-gutter: stable; }
 .foot, .foot * { text-align: left; }
 @media (max-width: 900px) { .foot__grid { grid-template-columns: 1fr 1fr; gap: 32px 24px; } .foot__brand { grid-column: 1 / -1; } }
 @media (max-width: 480px) { .foot__bottom { flex-direction: column; } .foot { margin-top: 64px; } }
+
+/* Волна: тонкая рябь из нескольких линий, медленно и с разной скоростью */
+.wave { height: 90px !important; bottom: -45px !important; overflow: hidden; }
+.wave svg { position: absolute; top: 0; left: 0; width: 200%; height: 100%; will-change: transform; filter: none !important; opacity: 1 !important; }
+.wave__l1 { animation: wave-move 140s linear infinite !important; }
+.wave__l2 { animation: wave-move 95s linear infinite reverse !important; }
+.wave__l3 { animation: wave-move 180s linear infinite !important; }
+.wave__l4 { animation: wave-move 120s linear infinite reverse !important; }
+@media (max-width: 734px) { .wave { height: 64px !important; bottom: -32px !important; } .wave svg { width: 400%; } }
+@media (prefers-reduced-motion: reduce) { .wave svg { animation: none !important; } }
