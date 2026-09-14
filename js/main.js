@@ -228,6 +228,6 @@ window.scrollTo(0, 0);
     var cur = items[i]; i = (i + 1) % items.length; var nx = items[i];
     cur.classList.remove('is-on'); cur.setAttribute('aria-hidden', 'true');
     nx.classList.add('is-on'); nx.removeAttribute('aria-hidden');
-  }, 4200);
+  }, 5200);
 })();
 

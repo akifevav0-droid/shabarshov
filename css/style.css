@@ -740,3 +740,27 @@ html { overflow-x: hidden; }
 @media (max-width: 734px) { .club__i { width: 220px; border-radius: 18px; } .club__row { gap: 12px; animation-duration: 70s; } .club__track { margin-top: 32px; } }
 @media (prefers-reduced-motion: reduce) { .club__row { animation: none; } .club__track { overflow-x: auto; } }
 @media (min-width: 901px) and (max-width: 1099px) { .mpin__img { display: none; } .mpin__card { width: auto; } }
+
+/* Фото бассейнов лентой (только телефон) */
+.pools { display: none; }
+@media (max-width: 900px) {
+  .pools { display: flex; gap: 12px; margin: 20px -20px 0; padding: 0 20px 4px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+  .pools::-webkit-scrollbar { display: none; }
+  .pools__i { flex: none; width: 72%; margin: 0; scroll-snap-align: start; border-radius: 18px; overflow: hidden; background: #fff; box-shadow: 0 10px 30px -20px rgba(40, 38, 55, .4); }
+  .pools__i img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+  .pools__i figcaption { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding: 12px 14px; font-size: 13px; color: var(--grey); }
+  .pools__i b { font-size: 15px; color: var(--head); font-weight: 600; }
+  .citymap__panel .mpin__img { display: none !important; }
+}
+
+/* Меньше пустоты между разделами */
+#trener, #formaty, #gde, .band--quote, #faq, .club { padding-top: clamp(56px, 8vw, 120px) !important; padding-bottom: clamp(56px, 8vw, 120px) !important; }
+.end__in { padding-top: clamp(64px, 8vw, 120px) !important; }
+@media (max-width: 734px) { .list, .citymap, .reviews, .club__track { margin-top: 28px !important; } }
+
+/* Смена фото: чистое перетекание, активный кадр медленно приближается */
+.slides .slide { opacity: 0; transform: scale(1); transition: opacity 1.8s cubic-bezier(.4, 0, .2, 1) !important; }
+.slides .slide.is-on { opacity: 1; animation: kb 7s ease-out both; }
+@keyframes kb { from { transform: scale(1.001); } to { transform: scale(1.045); } }
+@media (max-width: 900px) { .slides .slide.is-on { animation: none; } .slides .slide { transition: opacity 1.4s ease !important; } }
+@media (prefers-reduced-motion: reduce) { .slides .slide.is-on { animation: none; } }
