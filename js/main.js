@@ -256,3 +256,15 @@ window.scrollTo(0, 0);
     nx.classList.add('is-on'); nx.removeAttribute('aria-hidden');
   }, 4200);
 })();
+
+// Регалии тренера: сменяются по одной, мягко
+(function () {
+  var items = document.querySelectorAll('.regal__i'), i = 0;
+  if (items.length < 2 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  setInterval(function () {
+    if (document.hidden) return;
+    var cur = items[i]; i = (i + 1) % items.length; var nx = items[i];
+    cur.classList.remove('is-on'); cur.setAttribute('aria-hidden', 'true');
+    nx.classList.add('is-on'); nx.removeAttribute('aria-hidden');
+  }, 3200);
+})();
