@@ -924,3 +924,16 @@ html, body { overflow-x: clip; }
   .reviews { display: grid !important; gap: 16px !important; }
 }
 @media (max-width: 734px) { .foot__row { flex-wrap: nowrap !important; gap: 12px !important; font-size: 11px !important; white-space: nowrap; } }
+
+/* Карточка на карте: полупрозрачная, всё внутри, мягкое появление */
+@media (min-width: 901px) {
+  .citymap .mpin .mpin__card { background: rgba(255, 255, 255, .78) !important; backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%); overflow: hidden; }
+  .citymap .mpin .mpin__card::before { display: none; }
+  .citymap .mpin.is-open .mpin__card { padding: 12px 12px 16px !important; animation: card-in .55s cubic-bezier(.16, 1, .3, 1) both; }
+  .citymap .mpin.is-open .mpin__img { margin: 0 0 12px !important; width: 100%; border-radius: 8px; }
+  .citymap .mpin.is-open .mpin__img, .citymap .mpin.is-open .mpin__card b, .citymap .mpin.is-open .mpin__more { animation: info-in .6s cubic-bezier(.16, 1, .3, 1) .08s both; }
+}
+@keyframes card-in { from { opacity: 0; transform: var(--tf, none) scale(.94); } to { opacity: 1; transform: var(--tf, none) scale(1); } }
+@keyframes info-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.citymap .mpin--t { --tf: translateX(-50%); }
+.citymap .mpin--b { --tf: translateX(-60%); }
