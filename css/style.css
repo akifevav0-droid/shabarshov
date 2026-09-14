@@ -541,14 +541,6 @@ html { scrollbar-gutter: stable; }
   #gde { padding-top: 64px; }
 }
 
-/* Регалии тренера: одна строка, сменяется */
-.regal { display: flex; align-items: center; gap: 14px; margin: 26px 0 0; font-size: 15px; font-weight: 500; color: var(--head); }
-.regal__line { flex: none; width: 28px; height: 1px; background: linear-gradient(90deg, rgba(110, 103, 136, .15), rgba(110, 103, 136, .6)); }
-.regal__box { display: grid; min-width: 0; }
-.regal__i { grid-area: 1 / 1; opacity: 0; transform: translateY(8px); filter: blur(3px); transition: opacity 1s cubic-bezier(.45, 0, .2, 1), transform 1.2s cubic-bezier(.16, 1, .3, 1), filter 1s ease; }
-.regal__i.is-on { opacity: 1; transform: none; filter: blur(0); transition-delay: .25s; }
-@media (max-width: 900px) { .regal { justify-content: center; text-align: center; } .regal__line { display: none; } }
-@media (prefers-reduced-motion: reduce) { .regal__i { transition: none; } }
 
 /* ===== Тренер: собранный блок ===== */
 .trener__photo { position: relative !important; top: auto !important; }
@@ -556,16 +548,10 @@ html { scrollbar-gutter: stable; }
   .trener { grid-template-columns: 400px minmax(0, 560px) !important; justify-content: center; gap: 80px !important; align-items: start !important; }
   .trener__body { padding-top: 8px !important; }
 }
-/* регалии — тихая надпись над заголовком */
-.regal { display: block; margin: 0 0 14px; font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--grey); }
-.regal__box { display: grid; }
-.regal__i { grid-area: 1 / 1; opacity: 0; transform: translateY(6px); filter: none; transition: opacity .9s cubic-bezier(.45, 0, .2, 1), transform 1.1s cubic-bezier(.16, 1, .3, 1); }
-.regal__i.is-on { opacity: 1; transform: none; transition-delay: .35s; }
 .trener h2 { margin-bottom: 18px; }
 /* кнопка «Подробнее» по размеру текста */
 .more > summary { padding: 0 24px !important; column-gap: 10px; min-height: 52px; }
 .trener .more { margin-top: 28px !important; }
-@media (max-width: 900px) { .regal { text-align: center; font-size: 12px; } }
 
 /* Кнопки при наведении не двигаются — только мягко меняется фон */
 .btn:hover, .nav__cta:hover, .mpin__route:hover, .more > summary:hover, .pr__best-btn:hover { transform: none !important; }
