@@ -83,33 +83,56 @@ window.scrollTo(0, 0);
     }
   });
 
-  // Карта: на телефоне нажатие на метку показывает адрес и расписание в плашке под картой
+  // Карта. Компьютер: карточка по наведению. Телефон: сведения слева и фото справа всплывают прямо на карте;
+  // зажали название — видно, пока держите; короткое нажатие — остаётся (чтобы нажать «Маршрут»), закрывается нажатием мимо или повторно
   var map = document.querySelector('.citymap'), panel = document.querySelector('.citymap__panel');
   if (map && panel) {
-    map.addEventListener('click', function (e) {
-      if (e.target.closest('.mpin__more a')) return;
-      var pin = e.target.closest('.mpin');
-      if (!pin) return;
-      if (pin.classList.contains('is-open') && window.matchMedia('(max-width: 900px)').matches) { hide(); return; }
-      show(pin);
-    });
+    var mob = window.matchMedia('(max-width: 900px)');
+    if (mob.matches) map.appendChild(panel);
+    var openPin = null, downAt = 0, downPin = null;
     var show = function (pin) {
       map.querySelectorAll('.mpin.is-open').forEach(function (p) { p.classList.remove('is-open'); p.querySelector('.mpin__dot').setAttribute('aria-expanded', 'false'); });
       pin.classList.add('is-open'); pin.querySelector('.mpin__dot').setAttribute('aria-expanded', 'true');
-      panel.innerHTML = pin.querySelector('.mpin__card').innerHTML;
+      openPin = pin;
+      if (mob.matches) {
+        var c = pin.querySelector('.mpin__card');
+        panel.innerHTML = '<div class="cp__info">' + c.querySelector('b').outerHTML + c.querySelector('.mpin__more').outerHTML + '</div><div class="cp__photo">' + c.querySelector('.mpin__img').outerHTML + '</div>';
+        var low = pin.getBoundingClientRect().top - map.getBoundingClientRect().top > map.clientHeight / 2;
+        panel.classList.toggle('is-up', low); // точка внизу — карточка сверху, чтобы не закрывать название
+        panel.classList.remove('is-show'); void panel.offsetWidth; panel.classList.add('is-show');
+      }
     };
+    var hide = function () {
+      map.querySelectorAll('.mpin.is-open').forEach(function (p) { p.classList.remove('is-open'); p.querySelector('.mpin__dot').setAttribute('aria-expanded', 'false'); });
+      openPin = null; panel.classList.remove('is-show');
+    };
+    map.addEventListener('click', function (e) {
+      if (e.target.closest('.citymap__panel a, .mpin__more a')) return;
+      if (e.target.closest('.citymap__panel')) return;
+      var pin = e.target.closest('.mpin');
+      if (!mob.matches) { if (pin) show(pin); return; }
+      if (!pin) { hide(); return; }
+      if (downPin === pin && performance.now() - downAt > 450) return; // это было удержание — его обработал touchend
+      if (pin === openPin && !pin.__justOpened) { hide(); return; }
+      pin.__justOpened = false;
+      show(pin);
+    });
+    map.addEventListener('touchstart', function (e) {
+      var pin = e.target.closest('.mpin'); if (!pin || !mob.matches) return;
+      downPin = pin; downAt = performance.now();
+      if (pin !== openPin) { show(pin); pin.__justOpened = true; }
+    }, { passive: true });
+    map.addEventListener('touchend', function () {
+      if (downPin && performance.now() - downAt > 450) hide();
+      setTimeout(function () { downPin = null; }, 50);
+    }, { passive: true });
     map.addEventListener('mouseover', function (e) {
       var pin = e.target.closest('.mpin');
       if (pin && !pin.classList.contains('is-open') && window.matchMedia('(min-width: 901px) and (hover: hover)').matches) show(pin);
     });
-    var hide = function () {
-      map.querySelectorAll('.mpin.is-open').forEach(function (p) { p.classList.remove('is-open'); p.querySelector('.mpin__dot').setAttribute('aria-expanded', 'false'); });
-      panel.innerHTML = '';
-    };
     var first = map.querySelector('.mpin');
-    if (first && window.matchMedia('(min-width: 901px)').matches) show(first);
+    if (first && !mob.matches) show(first);
   }
-
 
   // Лента фото групп: медленно едет сама; на телефоне листается пальцем (родная прокрутка), на компьютере тянется мышкой
   document.querySelectorAll('.clubrow').forEach(function (row) {
@@ -298,8 +321,11 @@ document.querySelectorAll('.slides').forEach(function (box) {
   setInterval(function () {
     if (document.hidden) return;
     var cur = items[i]; i = (i + 1) % items.length; var nx = items[i];
-    cur.classList.remove('is-on'); cur.setAttribute('aria-hidden', 'true');
+    // новый кадр проявляется поверх старого, старый уходит только когда его уже закрыли — без просвечивания двух кадров
+    items.forEach(function (im) { im.classList.remove('was-on'); });
+    cur.classList.remove('is-on'); cur.classList.add('was-on'); cur.setAttribute('aria-hidden', 'true');
     nx.classList.add('is-on'); nx.removeAttribute('aria-hidden');
+    setTimeout(function () { cur.classList.remove('was-on'); }, 1800);
   }, 5200);
 });
 
