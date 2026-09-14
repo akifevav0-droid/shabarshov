@@ -706,3 +706,13 @@ html { overflow-x: hidden; }
 .portret__card { max-width: 470px; }
 @media (max-width: 900px) { .portret__card .portret__side p { display: none; } .portret__card .portret__facts { margin-top: 10px; } .portret { aspect-ratio: 3 / 4 !important; } }
 @media (min-width: 901px) { .portret__card { max-width: 420px; left: 28px; bottom: 28px; padding: 26px 30px 24px; } }
+/* Телефон: фото над плашкой, лица не перекрываются и не обрезаются */
+@media (max-width: 900px) {
+  .portret { background: #24212F; }
+  .portret__photo { bottom: 28% !important; }
+  .portret__photo::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 30%; background: linear-gradient(180deg, rgba(36, 33, 47, 0), #24212F); z-index: 2; }
+  .portret__card { background: rgba(255, 255, 255, .06); }
+  .portret__photo .slide[src*="dive"] { object-position: 12% 40% !important; }
+  .portret__photo .slide[src*="finish"] { object-position: 50% 20% !important; }
+}
+@media (min-width: 901px) { .portret__card { top: 28px; bottom: auto !important; max-width: 400px; } }
