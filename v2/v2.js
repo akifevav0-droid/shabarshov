@@ -1,14 +1,15 @@
 (function () {
   var calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var phone = window.matchMedia('(max-width: 720px)');
+  var phone = window.matchMedia('(max-width: 900px)');
   var root = document.documentElement;
 
   // Шапка: прозрачная на фото, светлая над светлыми разделами, тёмная над тёмными
   var top = document.getElementById('top'), hero = document.querySelector('.hero');
-  var darks = [].slice.call(document.querySelectorAll('.sec--dark, .proof'));
+  var darks = [].slice.call(document.querySelectorAll('.sec--dark, .proof, .hero__in'));
   function onScroll() {
     var y = window.scrollY, h = top.offsetHeight;
-    var past = y > hero.offsetHeight - h;
+    var edge = window.matchMedia('(max-width: 900px)').matches ? hero.querySelector('.hero__media').offsetHeight : hero.offsetHeight;
+    var past = y > edge - h;
     var overDark = past && darks.some(function (s) { var r = s.getBoundingClientRect(); return r.top <= h / 2 && r.bottom >= h / 2; });
     top.classList.toggle('is-dark', overDark);
     top.classList.toggle('is-solid', past && !overDark);
@@ -29,7 +30,7 @@
 
   // Первый экран: новый кадр проявляется поверх старого, старый уходит, когда уже закрыт
   var slides = [].slice.call(document.querySelectorAll('.hero .slide')), cur = 0;
-  function place() { slides.forEach(function (s) { s.style.objectPosition = phone.matches ? (s.dataset.m || '') : ''; }); }
+  function place() { slides.forEach(function (s) { s.style.objectPosition = (phone.matches ? s.dataset.m : s.dataset.d) || ''; }); }
   place(); phone.addEventListener('change', place);
   if (slides.length > 1 && !calm) {
     slides.forEach(function (s, i) { if (i) { var im = new Image(); im.src = s.src; } });
