@@ -507,3 +507,9 @@ html { scrollbar-gutter: stable; }
   .mpin .mpin__dot::before, .mpin .mpin__card, .mpin.is-open .mpin__card, .wave svg, .hero::before { animation: none !important; }
 }
 @media (max-width: 900px) { .mpin__card::after { inset: -3px -10px; } }
+
+/* Форматы: кнопка «Все цены» дальше от карточек, раздел заканчивается раньше */
+.formats__more { margin-top: 48px; }
+#formaty { padding-bottom: clamp(64px, 7.5vw, 108px); }
+@media (max-width: 734px) { .formats__more { margin-top: 32px; } }
+@media (max-width: 734px) { #formaty { padding-bottom: 72px; } }
