@@ -716,3 +716,9 @@ html { overflow-x: hidden; }
   .portret__photo .slide[src*="finish"] { object-position: 50% 20% !important; }
 }
 @media (min-width: 901px) { .portret__card { top: 28px; bottom: auto !important; max-width: 400px; } }
+/* Телефон: плашка по центру, факты заметнее */
+@media (max-width: 900px) {
+  .portret__card, .portret__card h2 { text-align: center !important; }
+  .portret__card .portret__facts { justify-content: center; color: #fff !important; font-size: 13px; font-weight: 600; opacity: 1; }
+  .portret__card .portret__facts li { color: #fff; }
+}
