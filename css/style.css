@@ -815,3 +815,5 @@ html { overflow-x: hidden; }
 .trener-top .portret { margin-top: var(--nav-h) !important; }
 .nav.is-top { background: rgba(255, 255, 255, .82); backdrop-filter: saturate(160%) blur(18px); -webkit-backdrop-filter: saturate(160%) blur(18px); }
 @media (max-width: 734px) { .trener-top .portret { margin-top: 72px !important; } .nav.is-top { background: #fff; } }
+/* Смена кадров без приближения */
+.slides .slide, .slides .slide.is-on { transform: none !important; animation: none !important; filter: none !important; transition: opacity 1.6s cubic-bezier(.4, 0, .2, 1) !important; }
