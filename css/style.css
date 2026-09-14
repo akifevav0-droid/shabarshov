@@ -597,9 +597,6 @@ html { scrollbar-gutter: stable; }
 /* первый экран: подзаголовок в две строки */
 .hero__sub { max-width: 40em; }
 /* тренер крупнее */
-@media (min-width: 901px) {
-  .trener { grid-template-columns: 480px minmax(0, 600px) !important; gap: 96px !important; }
-}
 /* мелкий текст на ноутбуке читаемее */
 @media (min-width: 901px) {
   .list p { font-size: 16px; }
@@ -611,9 +608,18 @@ html { scrollbar-gutter: stable; }
   .qa p { font-size: 17px; }
   .lead { font-size: 19px; }
 }
-/* подвал: логотип и контакты (фон не меняется) */
-.foot__brand { display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 14px; font-weight: 500; color: var(--head); }
-.foot__brand img { width: 36px; height: auto; }
-.foot__contacts { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 24px; font-size: 15px; }
-.foot__contacts a { color: var(--head); transition: color .45s ease; }
-.foot__contacts a:hover { color: var(--lav-deep); }
+/* ===== Подвал как у дорогих сайтов: колонки, тонкая линия, мелкая строка ===== */
+.foot { display: block !important; margin-top: 96px; padding-top: 40px; border-top: 1px solid rgba(40, 38, 55, .1); text-align: left; }
+.foot__grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; }
+.foot__brand img { width: 44px; height: auto; display: block; margin-bottom: 14px; }
+.foot__brand p { font-size: 14px; line-height: 1.55; color: var(--grey); max-width: 22em; }
+.foot__h { display: block; margin-bottom: 14px; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--head); }
+.foot__col a, .foot__col span { display: block; margin-bottom: 10px; font-size: 14px; color: var(--grey); transition: color .45s ease; }
+.foot__col a:hover { color: var(--head); }
+.foot__bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 24px; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(40, 38, 55, .08); font-size: 12px; color: var(--grey); }
+.foot__bottom a { color: var(--grey); }
+.foot__bottom a:hover { color: var(--head); }
+.end__in { text-align: center; }
+.foot, .foot * { text-align: left; }
+@media (max-width: 900px) { .foot__grid { grid-template-columns: 1fr 1fr; gap: 32px 24px; } .foot__brand { grid-column: 1 / -1; } }
+@media (max-width: 480px) { .foot__bottom { flex-direction: column; } .foot { margin-top: 64px; } }
