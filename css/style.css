@@ -820,3 +820,23 @@ html { overflow-x: hidden; }
 
 /* Плашка тренера — в левом верхнем углу фото */
 @media (min-width: 901px) { .trener-top .portret__card { top: clamp(24px, 4vw, 56px) !important; bottom: auto !important; } }
+
+/* Карта на всю ширину экрана */
+html, body { overflow-x: clip; }
+.citymap { width: 100vw; max-width: none !important; margin-left: calc(50% - 50vw) !important; margin-right: 0; border-radius: 0 !important; box-shadow: none !important; }
+
+/* Шапка крупнее */
+:root { --nav-h: 84px; }
+.logo--nav { width: 58px !important; }
+@media (min-width: 735px) {
+  .nav__city { font-size: 17px !important; }
+  .nav__links a { font-size: 16px !important; }
+  .nav__cta { padding: 12px 26px !important; font-size: 16px !important; }
+}
+@media (max-width: 734px) {
+  :root { --nav-h: 72px; }
+  .logo--nav { width: 50px !important; }
+  .nav__city { font-size: 15px !important; }
+  /* размытие у шапки делало её рамкой для кнопки — кнопка уезжала наверх */
+  .nav, .nav.is-top { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+}
