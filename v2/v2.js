@@ -115,3 +115,33 @@
   }, { threshold: .6 });
   els.forEach(function (el) { io.observe(el); });
 })();
+
+// Переходы по кнопкам к разделам: плавно и с точной доводкой, даже если по пути подгрузились фото
+(function () {
+  var calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function topH() { var t = document.getElementById('top'); return t ? t.offsetHeight : 0; }
+  function goTo(el) {
+    var y = function () { return el.getBoundingClientRect().top + window.scrollY - topH() + 1; };
+    window.scrollTo({ top: y(), behavior: calm ? 'auto' : 'smooth' });
+    var tries = 0, last = -1;
+    var iv = setInterval(function () {
+      tries++;
+      var target = y(), cur = window.scrollY;
+      if (Math.abs(cur - last) < 1) { // прокрутка остановилась
+        if (Math.abs(cur - target) > 2) window.scrollTo({ top: target, behavior: 'auto' });
+        clearInterval(iv); return;
+      }
+      last = cur;
+      if (tries > 40) { window.scrollTo({ top: target, behavior: 'auto' }); clearInterval(iv); }
+    }, 80);
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href^="#"]'); if (!a) return;
+    var id = a.getAttribute('href'); if (id.length < 2) return;
+    var el = document.querySelector(id); if (!el) return;
+    e.preventDefault();
+    if (id === '#top') { window.scrollTo({ top: 0, behavior: calm ? 'auto' : 'smooth' }); return; }
+    setTimeout(function () { goTo(el); }, 0);
+    history.replaceState(null, '', id);
+  });
+})();
