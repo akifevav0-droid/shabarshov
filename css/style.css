@@ -892,3 +892,35 @@ html, body { overflow-x: clip; }
   .nav.is-top .nav__cta { background: rgba(255, 255, 255, .92) !important; color: #2C2A3A; }
   .trener-top .portret__card { top: calc(var(--nav-h) + clamp(16px, 3vw, 40px)) !important; }
 }
+
+/* Карта: бассейны дальше друг от друга, подписи наружу */
+@media (min-width: 901px) {
+  .citymap { --k: 1.2; height: 640px; }
+  .citymap .mpin:not(.is-open) .mpin__card { top: 50% !important; bottom: auto !important; transform: translateY(-50%) !important; left: 20px; right: auto; }
+  .citymap .mpin--tr:not(.is-open) .mpin__card { left: auto; right: 20px; }
+}
+@media (min-width: 901px) and (max-width: 1199px) { .citymap { --k: 1; height: 580px; } }
+
+/* Телефон: шапки нет — логотип и «Связаться» на фото, кнопка всегда видна */
+@media (max-width: 734px) {
+  .nav { position: fixed !important; background: rgba(255, 255, 255, .9); }
+  .nav.is-top { background: transparent !important; }
+  .nav.is-top::before { content: ""; position: absolute; inset: 0 0 -30px; z-index: -1; pointer-events: none;
+    background: linear-gradient(180deg, rgba(20, 18, 32, .34), rgba(20, 18, 32, 0));
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    -webkit-mask: linear-gradient(180deg, #000 45%, transparent); mask: linear-gradient(180deg, #000 45%, transparent); }
+  .nav__in { height: 64px !important; }
+  .nav__city { display: none !important; }
+  .nav.is-top .logo--nav { color: #fff; }
+  .nav__cta, body.past-hero .nav__cta, body.at-end .nav__cta { position: static !important; transform: none !important; opacity: 1 !important; pointer-events: auto !important; margin-left: auto !important; min-width: 0 !important; height: 40px !important; padding: 0 20px !important; font-size: 15px !important; }
+  .nav.is-top .nav__cta { background: rgba(255, 255, 255, .92) !important; }
+  .trener-top .portret { margin-top: 0 !important; }
+
+  /* подвал: слева ©, справа политика, без соцсетей */
+  .foot__row { flex-direction: row !important; justify-content: space-between; text-align: left; font-size: 12px; }
+  .foot__nav { display: none !important; }
+
+  /* отзывы — отступ между карточками */
+  .reviews { display: grid !important; gap: 16px !important; }
+}
+@media (max-width: 734px) { .foot__row { flex-wrap: nowrap !important; gap: 12px !important; font-size: 11px !important; white-space: nowrap; } }
