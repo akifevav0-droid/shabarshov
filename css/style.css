@@ -1039,3 +1039,29 @@ html, body { overflow-x: clip; }
 }
 @media (max-width: 734px) { .band--quote { padding-bottom: 28px !important; } #faq { padding-top: 28px !important; } }
 @media (max-width: 900px) { .citymap__panel { width: 100vw; margin-left: calc(50% - 50vw) !important; } }
+
+/* «Плаваем вместе» ближе к соседям, зазор между фото и на компьютере */
+.clubrow__track img { margin-right: 8px; }
+@media (max-width: 734px) { .clubrow__track img { margin-right: 6px; } }
+@media (min-width: 735px) {
+  #gde { padding-bottom: 64px !important; }
+  .club { padding-top: 56px !important; padding-bottom: 64px !important; }
+  .club .lead { margin-bottom: 0; }
+  .clubrow { margin-top: 28px !important; }
+  .band--quote { padding-top: 72px !important; }
+}
+
+/* Телефон: под заголовком на фото — одна строка фактов, без Masters */
+@media (max-width: 734px) {
+  .trener-top .portret__card .portret__facts { display: flex !important; flex-wrap: nowrap; justify-content: center; gap: 0 14px !important; margin: 10px 0 0 !important; padding: 10px 0 0 !important; border-top: 1px solid rgba(255, 255, 255, .25); font-size: 12px !important; white-space: nowrap; }
+  .trener-top .portret__card .portret__facts li:nth-child(n+3) { display: none !important; }
+}
+@media (max-width: 734px) { .trener-top .portret__card .portret__side { display: block !important; } .trener-top .portret__card .portret__side p { display: none !important; } }
+
+/* Компьютер: плашка тренера меньше и прозрачнее */
+@media (min-width: 735px) {
+  .trener-top .portret__card { max-width: 380px !important; padding: 22px 26px 20px !important; border-radius: 18px !important; background: rgba(22, 20, 34, .24) !important; backdrop-filter: blur(16px) saturate(140%) !important; -webkit-backdrop-filter: blur(16px) saturate(140%) !important; }
+  .trener-top .portret__card h2 { font-size: clamp(22px, 1.9vw, 28px) !important; margin-bottom: 8px !important; }
+  .trener-top .portret__card .portret__side p { font-size: 14px !important; line-height: 1.5 !important; }
+  .trener-top .portret__card .portret__facts { margin-top: 12px !important; padding-top: 12px !important; font-size: 12px !important; gap: 4px 16px !important; }
+}
