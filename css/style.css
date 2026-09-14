@@ -1098,3 +1098,19 @@ html, body { overflow-x: clip; }
   70% { box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .8), 0 0 0 14px rgba(148, 119, 224, 0); }
   100% { box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .8), 0 0 0 0 rgba(148, 119, 224, 0); }
 }
+
+/* Компьютер: без плашки — просто текст в левом верхнем углу, не заходит на лицо ни на одном кадре */
+@media (min-width: 735px) {
+  .trener-top .portret__card { background: none !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; box-shadow: none !important; padding: 0 !important; max-width: 400px !important; left: clamp(28px, 4.4vw, 72px) !important; top: calc(var(--nav-h) + clamp(28px, 4vw, 56px)) !important; }
+  .trener-top .portret__card h2 { font-size: clamp(26px, 2.4vw, 36px) !important; text-shadow: 0 2px 18px rgba(0, 0, 0, .45), 0 1px 3px rgba(0, 0, 0, .3); }
+  .trener-top .portret__card .portret__side p { font-size: 15px !important; color: #fff !important; text-shadow: 0 1px 12px rgba(0, 0, 0, .55), 0 1px 2px rgba(0, 0, 0, .35); }
+  .trener-top .portret__card .portret__facts { border-top: 0 !important; padding-top: 0 !important; margin-top: 14px !important; font-size: 13px !important; text-shadow: 0 1px 10px rgba(0, 0, 0, .55); }
+  .trener-top .portret__card .portret__facts li:nth-child(n+3) { display: none !important; }
+  .trener-top .portret::after { display: none !important; }
+}
+@media (min-width: 735px) { .trener-top .portret__card { max-width: 320px !important; } .trener-top .portret__card h2 { font-size: clamp(24px, 2.1vw, 32px) !important; } .trener-top .portret__card .portret__side p { font-size: 14px !important; } }
+@media (min-width: 735px) {
+  .nav.is-top::before { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; background: linear-gradient(180deg, rgba(20, 18, 32, .3), rgba(20, 18, 32, 0)) !important; }
+  .trener-top .portret::before { content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; background: radial-gradient(ellipse 42% 55% at 0% 12%, rgba(16, 14, 26, .55), rgba(16, 14, 26, 0) 100%); }
+}
+@media (min-width: 735px) { .trener-top .portret::before { background: radial-gradient(ellipse 50% 62% at 0% 14%, rgba(16, 14, 26, .72), rgba(16, 14, 26, .35) 45%, rgba(16, 14, 26, 0) 100%) !important; } }
