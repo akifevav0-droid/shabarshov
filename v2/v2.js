@@ -27,6 +27,8 @@
   btn.addEventListener('click', function () { setMenu(btn.getAttribute('aria-expanded') !== 'true'); });
   mnav.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && root.classList.contains('menu-open')) setMenu(false); });
+  function menuFit() { if (window.innerWidth > 720 && root.classList.contains('menu-open')) setMenu(false); }
+  window.addEventListener('resize', menuFit); window.addEventListener('orientationchange', menuFit);
 
   // Первый экран: новый кадр проявляется поверх старого, старый уходит, когда уже закрыт
   var slides = [].slice.call(document.querySelectorAll('.hero .slide')), cur = 0;
@@ -71,7 +73,11 @@
     tg.href = 'https://t.me/shabarshov?text=' + encodeURIComponent(msg);
     wa.href = 'https://wa.me/79969669160?text=' + encodeURIComponent(msg);
   }
-  quiz.addEventListener('change', build); build();
+  quiz.addEventListener('change', function (e) {
+    if (e.target.name === 'pool' && e.target.value === 'Лужники') pick('fmt', 'Персонально');
+    if (e.target.name === 'fmt' && e.target.value === 'Группа' && val('pool') === 'Лужники') pick('pool', 'подскажите');
+    build();
+  }); build();
   function pick(name, value) {
     var inp = quiz.querySelector('input[name="' + name + '"][value="' + value + '"]');
     if (inp) { inp.checked = true; build(); }
@@ -79,7 +85,11 @@
   // Кнопки записи у форматов и бассейнов заранее отмечают ответы в анкете
   document.addEventListener('click', function (e) {
     var a = e.target.closest('[data-fmt],[data-pool]'); if (!a) return;
-    if (a.dataset.fmt) pick('fmt', a.dataset.fmt);
+    if (a.dataset.fmt) {
+      pick('fmt', a.dataset.fmt);
+      var p = val('pool');
+      if ((a.dataset.fmt === 'Группа' && p === 'Лужники') || a.dataset.fmt === 'Открытая вода') pick('pool', 'подскажите');
+    }
     if (a.dataset.pool) {
       pick('pool', a.dataset.pool);
       pick('fmt', a.dataset.pool === 'Лужники' ? 'Персонально' : 'Группа');
@@ -89,7 +99,12 @@
   // Окно абонементов
   var dlg = document.getElementById('prices'), opener = null;
   document.querySelectorAll('.js-prices').forEach(function (b) { b.addEventListener('click', function () { opener = b; dlg.showModal(); }); });
-  dlg.addEventListener('click', function (e) { if (e.target === dlg || e.target.closest('[data-close]')) dlg.close(); });
+  dlg.addEventListener('click', function (e) {
+    if (e.target.closest('[data-close]')) { dlg.close(); return; }
+    if (e.target !== dlg) return;
+    var r = dlg.getBoundingClientRect(); // закрываем только по клику вне окна, а не по пустому месту внутри
+    if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dlg.close();
+  });
   dlg.addEventListener('close', function () { if (opener) opener.focus(); });
 
   // Нижняя плашка на телефоне: скрыта на первом экране и в разделе записи
@@ -125,16 +140,20 @@
   function goTo(el) {
     var y = function () { return el.getBoundingClientRect().top + window.scrollY - topH() + 1; };
     window.scrollTo({ top: y(), behavior: calm ? 'auto' : 'smooth' });
-    var tries = 0, last = -1;
+    var tries = 0, last = -1, stop = false;
+    var cancel = function () { stop = true; };
+    window.addEventListener('wheel', cancel, { once: true, passive: true });
+    window.addEventListener('touchstart', cancel, { once: true, passive: true });
     var iv = setInterval(function () {
       tries++;
+      if (stop) { clearInterval(iv); return; }
       var target = y(), cur = window.scrollY;
       if (Math.abs(cur - last) < 1) { // прокрутка остановилась
-        if (Math.abs(cur - target) > 2) window.scrollTo({ top: target, behavior: 'auto' });
+        if (Math.abs(cur - target) > 2) window.scrollTo({ top: target, behavior: 'instant' });
         clearInterval(iv); return;
       }
       last = cur;
-      if (tries > 40) { window.scrollTo({ top: target, behavior: 'auto' }); clearInterval(iv); }
+      if (tries > 40) { window.scrollTo({ top: target, behavior: 'instant' }); clearInterval(iv); }
     }, 80);
   }
   document.addEventListener('click', function (e) {

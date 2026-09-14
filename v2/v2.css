@@ -534,3 +534,5 @@ img[height] { height: auto; }
 .hero__nums li { min-width: 0; }
 @media (max-width: 720px) { .hero__nums span { white-space: normal; font-size: 13px; } .hero__nums li { padding-right: 10px; } .hero__nums li + li { padding-left: 12px; } .hero__nums b { font-size: 24px; } }
 @media (max-width: 380px) { .rating { flex-wrap: wrap; row-gap: 0; } }
+.mnav { overflow-y: auto; }
+@media (min-width: 721px) { .mnav { display: none !important; } }
