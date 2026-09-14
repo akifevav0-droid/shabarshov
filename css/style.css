@@ -937,3 +937,18 @@ html, body { overflow-x: clip; }
 @keyframes info-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 .citymap .mpin--t { --tf: translateX(-50%); }
 .citymap .mpin--b { --tf: translateX(-60%); }
+
+/* Телефон: карточка бассейна под картой — фото слева во всю высоту, справа название, расписание и кнопки */
+@media (max-width: 900px) {
+  .citymap__panel { grid-template-columns: 38% 1fr !important; grid-template-rows: auto 1fr; gap: 0 16px !important; padding: 12px !important; border: 0 !important; border-radius: 20px !important; box-shadow: 0 16px 40px -24px rgba(40, 38, 55, .35) !important; min-height: 0 !important; align-items: stretch !important; }
+  .citymap__panel .mpin__img { grid-row: 1 / 3 !important; width: 100% !important; height: 100% !important; min-height: 170px; aspect-ratio: auto !important; border-radius: 12px !important; }
+  .citymap__panel b { margin-top: 4px; font-size: 18px !important; line-height: 1.2; }
+  .citymap__panel .mpin__more { display: flex !important; flex-direction: column; }
+  .citymap__panel .mpin__addr { margin-top: 4px; font-size: 13px !important; line-height: 1.4; color: var(--grey); }
+  .citymap__panel em { margin-top: 8px !important; font-size: 13px !important; line-height: 1.45; font-weight: 600; }
+  .citymap__panel .mpin__acts { flex-direction: column; align-items: stretch; gap: 6px !important; margin-top: 12px !important; }
+  .citymap__panel .mpin__route { justify-content: center; height: 34px !important; padding: 0 10px !important; font-size: 13px !important; }
+}
+/* Лента групп: плитки не сжимаются; на телефоне — небольшой зазор */
+.clubrow__track img { flex: none; }
+@media (max-width: 734px) { .clubrow__track img { width: 180px; margin-right: 6px; } }
