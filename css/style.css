@@ -662,3 +662,9 @@ html { overflow-x: hidden; }
   .portret__facts { gap: 6px 14px; }
   .portret__facts li + li::before { display: none; }
 }
+/* Портрет: текст читается на любом кадре */
+.portret::after { background: linear-gradient(180deg, rgba(20, 18, 30, 0) 30%, rgba(20, 18, 30, .45) 58%, rgba(20, 18, 30, .82) 100%) !important; }
+.portret__text h2, .portret__text p, .portret__facts { text-shadow: 0 1px 18px rgba(0, 0, 0, .35); }
+.portret__text p { color: rgba(255, 255, 255, .95) !important; }
+.portret__facts { color: #fff !important; }
+@media (max-width: 734px) { .portret::after { background: linear-gradient(180deg, rgba(20, 18, 30, 0) 22%, rgba(20, 18, 30, .5) 50%, rgba(20, 18, 30, .88) 100%) !important; } }
