@@ -566,3 +566,8 @@ html { scrollbar-gutter: stable; }
 .more > summary { padding: 0 24px !important; column-gap: 10px; min-height: 52px; }
 .trener .more { margin-top: 28px !important; }
 @media (max-width: 900px) { .regal { text-align: center; font-size: 12px; } }
+
+/* Кнопки при наведении не двигаются — только мягко меняется фон */
+.btn:hover, .nav__cta:hover, .mpin__route:hover, .more > summary:hover, .pr__best-btn:hover { transform: none !important; }
+.btn:active, .nav__cta:active, .mpin__route:active, .more > summary:active { transform: none !important; opacity: .85; }
+.btn:hover, .mpin__route:hover, .more > summary:hover { box-shadow: inset 0 0 0 1px rgba(110, 103, 136, .35) !important; }
