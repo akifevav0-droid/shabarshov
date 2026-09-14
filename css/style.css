@@ -569,3 +569,7 @@ html { scrollbar-gutter: stable; }
   .mpin--t .mpin__card::before { left: -4px !important; bottom: 22px !important; top: auto !important; }
 }
 @media (min-width: 901px) and (max-width: 1099px) { .mpin--b .mpin__card { top: 116px !important; } .mpin--b .mpin__card::before { display: none !important; } }
+
+/* Смена фото: чистое перетекание, без размытия */
+.slides .slide { filter: none !important; transform: scale(1.03); transition: opacity 1.4s cubic-bezier(.45, 0, .2, 1), transform 6s linear !important; }
+.slides .slide.is-on { transform: scale(1); }
