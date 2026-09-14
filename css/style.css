@@ -573,3 +573,13 @@ html { scrollbar-gutter: stable; }
 /* Смена фото: чистое перетекание, без размытия */
 .slides .slide { filter: none !important; transform: scale(1.03); transition: opacity 1.4s cubic-bezier(.45, 0, .2, 1), transform 6s linear !important; }
 .slides .slide.is-on { transform: scale(1); }
+
+/* Тренер: блок не длиннее фото, «Свернуть» — тихая ссылка */
+@media (min-width: 901px) {
+  .trener h2 { font-size: clamp(30px, 3vw, 40px) !important; }
+  .trener .lead { font-size: 17px !important; }
+  .trener .bio { margin-top: 20px !important; padding-top: 20px !important; gap: 32px !important; }
+  .trener .bio p { font-size: 15px !important; line-height: 1.55; }
+}
+.more.is-open > summary { border-color: transparent !important; background: transparent !important; padding-left: 0 !important; padding-right: 0 !important; min-height: 32px !important; color: var(--grey); }
+.more.is-open > summary:hover { color: var(--head); }
