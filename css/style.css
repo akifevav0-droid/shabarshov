@@ -796,3 +796,22 @@ html { overflow-x: hidden; }
   .mosaic__i { border-radius: 16px; }
 }
 @media (prefers-reduced-motion: reduce) { .mosaic__i.rv { opacity: 1; transform: none; } }
+
+/* ===== Фото тренера первым экраном, на всю ширину ===== */
+.trener-top { padding: 0 !important; }
+.trener-top .portret { width: 100%; max-height: none; aspect-ratio: auto !important; height: calc(100svh - var(--nav-h)); min-height: 560px; border-radius: 0 !important; box-shadow: none !important; margin-top: var(--nav-h); }
+.trener-top .portret__card { left: clamp(20px, 4vw, 64px); top: auto !important; bottom: clamp(24px, 5vw, 64px) !important; max-width: 480px; }
+.hero__in { min-height: 0 !important; padding-block: clamp(72px, 9vw, 120px) clamp(96px, 11vw, 150px) !important; }
+@media (max-width: 900px) {
+  .trener-top .portret { height: auto; aspect-ratio: 3 / 4 !important; margin-top: 0; }
+}
+
+/* ===== «Плаваем вместе»: крупная смена всех фото ===== */
+.mosaic { display: none; }
+.clubshow { position: relative; margin-top: 40px; aspect-ratio: 16 / 9; border-radius: 26px; overflow: hidden; box-shadow: var(--sh-card); background: #EDEAF3; }
+.clubshow .slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 734px) { .clubshow { aspect-ratio: 4 / 5; border-radius: 20px; margin-top: 28px; } }
+#trener.trener-top { padding: 0 !important; }
+.trener-top .portret { margin-top: var(--nav-h) !important; }
+.nav.is-top { background: rgba(255, 255, 255, .82); backdrop-filter: saturate(160%) blur(18px); -webkit-backdrop-filter: saturate(160%) blur(18px); }
+@media (max-width: 734px) { .trener-top .portret { margin-top: 72px !important; } .nav.is-top { background: #fff; } }

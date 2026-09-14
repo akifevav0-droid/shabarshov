@@ -219,15 +219,15 @@ window.scrollTo(0, 0);
 })();
 
 // Фото тренера: медленная смена кадров — кадр тает с лёгким приближением, следующий проявляется
-(function () {
-  var box = document.querySelector('.slides'); if (!box) return;
+document.querySelectorAll('.slides').forEach(function (box) {
   var items = box.querySelectorAll('.slide'), i = 0;
   if (items.length < 2 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  items.forEach(function (im) { im.loading = 'eager'; });
   setInterval(function () {
     if (document.hidden) return;
     var cur = items[i]; i = (i + 1) % items.length; var nx = items[i];
     cur.classList.remove('is-on'); cur.setAttribute('aria-hidden', 'true');
     nx.classList.add('is-on'); nx.removeAttribute('aria-hidden');
   }, 5200);
-})();
+});
 
