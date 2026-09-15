@@ -1,0 +1,9 @@
+<style>body{margin:0}iframe{width:100vw;height:100vh;border:0;display:block}</style>
+<iframe id="f" src="/index.html"></iframe>
+<script>
+const f=document.getElementById('f'); const mode=location.hash.slice(1);
+f.onload=()=>setTimeout(()=>{const d=f.contentDocument,w=f.contentWindow;
+ if(mode==='sheet'){d.querySelector('.nav__cta').click(); setTimeout(()=>{d.querySelectorAll('#sheet input[name=slvl]')[1].click();},300);}
+ if(mode==='end'){d.documentElement.style.scrollBehavior='auto'; const m=d.querySelector('main'); const z=d.getElementById('zapis'); d.querySelectorAll('.rv').forEach(e=>e.classList.add('in','on')); m.style.transform='translateY(-'+(z.offsetTop)+'px)';}
+},1200);
+</script>
