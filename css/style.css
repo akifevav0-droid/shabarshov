@@ -1559,3 +1559,31 @@ main h2:not(.cap h2), .end__title { color: #4E4868 !important; font-weight: 500 
 #zapis .qz .qz__acts { max-width: 460px; margin: 0 auto !important; }
 #zapis .qz .qz__acts .qz__wa, #zapis .qz .qz__acts .qz__call-btn { background: rgba(255,255,255,.7) !important; box-shadow: inset 0 0 0 1px rgba(110,103,136,.14) !important; }
 #zapis .foot { align-self: stretch !important; width: auto !important; margin-left: calc(-1 * clamp(20px, 3vw, 48px)) !important; margin-right: calc(-1 * clamp(20px, 3vw, 48px)) !important; }
+
+/* Телефон: подпись прямо на фото — без тёмной полосы, снизу мягкое затемнение */
+@media (max-width: 734px) {
+  .trener-top .portret { position: relative !important; height: min(640px, calc(100svh - 72px)) !important; min-height: 540px; background: #1E1C2A !important; overflow: hidden; }
+  .trener-top .portret__photo { position: absolute !important; inset: 0 !important; height: 100% !important; }
+  .trener-top .portret::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 62%; z-index: 3; pointer-events: none; background: linear-gradient(180deg, rgba(20, 18, 32, 0) 0%, rgba(20, 18, 32, .38) 38%, rgba(20, 18, 32, .78) 100%); }
+  .trener-top .portret__card { position: absolute !important; left: 0 !important; right: 0 !important; bottom: 0 !important; top: auto !important; z-index: 4 !important; padding: 0 22px 50px !important; background: none !important; }
+  .trener-top .cap h2, .trener-top .cap .cap__h { text-shadow: 0 2px 20px rgba(0, 0, 0, .35) !important; }
+  .trener-top .hs { top: auto !important; bottom: 14px !important; z-index: 5 !important; }
+  .trener-top .cap__res li { border: 0 !important; }
+}
+@media (max-width: 734px) {
+  .trener-top .portret__photo .slide:nth-child(1) { object-position: 50% 50% !important; }
+  .trener-top .portret__photo .slide:nth-child(2) { object-position: 96% 50% !important; }
+  .trener-top .portret__photo .slide:nth-child(3) { object-position: 6% 50% !important; }
+  .trener-top .portret__photo .slide:nth-child(4) { object-position: 66% 50% !important; }
+  .trener-top .portret__photo .slide:nth-child(5) { object-position: 50% 50% !important; }
+}
+@media (max-width: 734px) {
+  .trener-top .caps .cap:nth-child(3), .trener-top .caps .cap:nth-child(1) { position: relative; top: -330px; }
+  .trener-top .portret__photo .slide:nth-child(3) { object-position: 0% 50% !important; }
+  .trener-top .portret__photo .slide:nth-child(2) { object-position: 88% 50% !important; }
+}
+@media (max-width: 734px) {
+  .trener-top .portret::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 46%; z-index: 3; pointer-events: none; background: linear-gradient(180deg, rgba(20, 18, 32, .5) 0%, rgba(20, 18, 32, .22) 55%, rgba(20, 18, 32, 0) 100%); }
+  .trener-top .cap p:not(.cap__h) { text-shadow: 0 1px 10px rgba(0, 0, 0, .55) !important; }
+}
+@media (max-width: 734px) { .trener-top .portret__card, .trener-top .portret__card * { pointer-events: none !important; } }
