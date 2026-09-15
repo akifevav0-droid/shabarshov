@@ -1191,3 +1191,17 @@ html, body { overflow-x: clip; }
   .citymap__panel .cp__photo .mpin__img { position: absolute; inset: 0; }
   .citymap__panel.is-up { top: 10px !important; bottom: auto !important; }
 }
+
+/* Первый экран: подписи меняются вместе с фото — все лежат в одной ячейке, высота не прыгает */
+.trener-top .caps { display: grid; }
+.trener-top .cap { grid-area: 1 / 1; opacity: 0; transform: translateY(8px); transition: opacity .9s cubic-bezier(.22, 1, .36, 1), transform 1s cubic-bezier(.22, 1, .36, 1); pointer-events: none; }
+.trener-top .cap.is-on { opacity: 1; transform: none; transition-delay: .25s; pointer-events: auto; }
+.trener-top .cap h2, .trener-top .cap .cap__h { margin: 0 0 8px; color: #fff; font-weight: 600; letter-spacing: -.02em; line-height: 1.15; text-wrap: balance; }
+.trener-top .cap .cap__h { font-size: clamp(24px, 2.1vw, 32px); }
+.trener-top .cap p:not(.cap__h) { color: #fff; font-size: 14px; line-height: 1.5; text-shadow: 0 1px 12px rgba(0, 0, 0, .55), 0 1px 2px rgba(0, 0, 0, .35); }
+.trener-top .cap .cap__h { text-shadow: 0 2px 18px rgba(0, 0, 0, .45), 0 1px 3px rgba(0, 0, 0, .3); }
+@media (max-width: 734px) {
+  .trener-top .cap h2, .trener-top .cap .cap__h { font-size: 24px !important; text-align: center; margin-bottom: 0; }
+  .trener-top .cap p:not(.cap__h) { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .trener-top .cap { transition: none; } }

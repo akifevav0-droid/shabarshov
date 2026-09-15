@@ -318,14 +318,25 @@ document.querySelectorAll('.slides').forEach(function (box) {
   var items = box.querySelectorAll('.slide'), i = 0;
   if (items.length < 2 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   items.forEach(function (im) { im.loading = 'eager'; });
-  setInterval(function () {
-    if (document.hidden) return;
+  // на первом экране вместе с фото меняется подпись: первый кадр держится дольше, при наведении мыши — пауза
+  var wrapEl = box.closest('.portret'), caps = wrapEl ? wrapEl.querySelectorAll('.cap') : [], paused = false;
+  if (wrapEl && window.matchMedia('(hover: hover)').matches) {
+    wrapEl.addEventListener('mouseenter', function () { paused = true; });
+    wrapEl.addEventListener('mouseleave', function () { paused = false; });
+  }
+  function step() {
+    if (document.hidden || paused) { setTimeout(step, 1000); return; }
     var cur = items[i]; i = (i + 1) % items.length; var nx = items[i];
     // новый кадр проявляется поверх старого, старый уходит только когда его уже закрыли — без просвечивания двух кадров
     items.forEach(function (im) { im.classList.remove('was-on'); });
     cur.classList.remove('is-on'); cur.classList.add('was-on'); cur.setAttribute('aria-hidden', 'true');
     nx.classList.add('is-on'); nx.removeAttribute('aria-hidden');
     setTimeout(function () { cur.classList.remove('was-on'); }, 1800);
-  }, 5200);
+    if (caps.length === items.length) {
+      caps.forEach(function (c, k) { c.classList.toggle('is-on', k === i); if (k === i) c.removeAttribute('aria-hidden'); else c.setAttribute('aria-hidden', 'true'); });
+    }
+    setTimeout(step, caps.length ? (i === 0 ? 9000 : 7500) : 5200);
+  }
+  setTimeout(step, caps.length ? 9000 : 5200);
 });
 
