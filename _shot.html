@@ -5,6 +5,7 @@ const f=document.getElementById('f'); const mode=location.hash.slice(1);
 f.onload=()=>setTimeout(()=>{const d=f.contentDocument,w=f.contentWindow;
  if(mode==='sheet'){d.querySelector('.nav__cta').click(); setTimeout(()=>{d.querySelectorAll('#sheet input[name=slvl]')[1].click();},300);}
  if(mode.startsWith('pin')){const i=+mode.slice(3); d.documentElement.style.scrollBehavior='auto'; d.querySelectorAll('.rv').forEach(e=>e.classList.add('in','on')); const map=d.querySelector('.citymap'); d.querySelector('main').style.transform='translateY(-'+(map.getBoundingClientRect().top+w.scrollY-60)+'px)'; const pin=map.querySelectorAll('.mpin')[i]; pin.querySelector('.mpin__dot').dispatchEvent(new w.MouseEvent('mouseover',{bubbles:true}));}
+ if(mode==='prices'){d.querySelector('a.js-prices').click();}
  if(mode==='end'){d.documentElement.style.scrollBehavior='auto'; const m=d.querySelector('main'); const z=d.getElementById('zapis'); d.querySelectorAll('.rv').forEach(e=>e.classList.add('in','on')); m.style.transform='translateY(-'+(z.offsetTop)+'px)';}
 },1200);
 </script>
