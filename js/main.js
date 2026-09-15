@@ -89,22 +89,28 @@ window.scrollTo(0, 0);
   if (map && panel) {
     var mob = window.matchMedia('(max-width: 900px)');
     if (mob.matches) map.appendChild(panel);
-    var openPin = null, downAt = 0, downPin = null;
+    var openPin = null, downAt = 0, downPin = null, swapT = null;
     var show = function (pin) {
       map.querySelectorAll('.mpin.is-open').forEach(function (p) { p.classList.remove('is-open'); p.querySelector('.mpin__dot').setAttribute('aria-expanded', 'false'); });
       pin.classList.add('is-open'); pin.querySelector('.mpin__dot').setAttribute('aria-expanded', 'true');
       openPin = pin;
       if (mob.matches) {
         var c = pin.querySelector('.mpin__card');
-        panel.innerHTML = '<div class="cp__info">' + c.querySelector('b').outerHTML + c.querySelector('.mpin__more').outerHTML + '</div><div class="cp__photo">' + c.querySelector('.mpin__img').outerHTML + '</div>';
-        var low = pin.getBoundingClientRect().top - map.getBoundingClientRect().top > map.clientHeight / 2;
-        panel.classList.toggle('is-up', low); // точка внизу — карточка сверху, чтобы не закрывать название
-        panel.classList.remove('is-show'); void panel.offsetWidth; panel.classList.add('is-show');
+        var fill = function () {
+          panel.innerHTML = '<div class="cp__info">' + c.querySelector('b').outerHTML + c.querySelector('.mpin__more').outerHTML + '</div><div class="cp__photo">' + c.querySelector('.mpin__img').outerHTML + '</div>';
+          var low = pin.getBoundingClientRect().top - map.getBoundingClientRect().top > map.clientHeight / 2;
+          panel.classList.toggle('is-up', low); // точка внизу — карточка сверху, чтобы не закрывать название
+          void panel.offsetWidth; panel.classList.add('is-show');
+        };
+        clearTimeout(swapT);
+        // уже открыт другой бассейн — сначала мягко растворяем его, потом показываем новый
+        if (panel.classList.contains('is-show')) { panel.classList.remove('is-show'); swapT = setTimeout(fill, 320); }
+        else fill();
       }
     };
     var hide = function () {
       map.querySelectorAll('.mpin.is-open').forEach(function (p) { p.classList.remove('is-open'); p.querySelector('.mpin__dot').setAttribute('aria-expanded', 'false'); });
-      openPin = null; panel.classList.remove('is-show');
+      openPin = null; clearTimeout(swapT); panel.classList.remove('is-show');
     };
     map.addEventListener('click', function (e) {
       if (e.target.closest('.citymap__panel a, .mpin__more a')) return;
