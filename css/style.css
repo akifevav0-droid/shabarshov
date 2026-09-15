@@ -1417,3 +1417,52 @@ main h2:not(.cap h2), .end__title { color: #4E4868 !important; font-weight: 500 
   .citymap .mpin.is-open .mpin__img, .citymap .mpin.is-open .mpin__card b, .citymap .mpin.is-open .mpin__more { animation-duration: .9s; animation-timing-function: cubic-bezier(.22, 1, .36, 1); animation-delay: .1s; }
 }
 @keyframes card-in { from { opacity: 0; transform: var(--tf, none) scale(.97); } to { opacity: 1; transform: var(--tf, none) scale(1); } }
+
+/* ===== Единый мягкий ритм движения: наведение .6s, состояния .7s, появление ~1s, уход .5s ===== */
+:root { --soft: cubic-bezier(.22, 1, .36, 1); --soft-out: cubic-bezier(.4, 0, .2, 1); }
+.btn, .nav__cta, .mpin__route, .sheet__btn, .qz__tg, .qz__wa, .qz__call-btn { transition: background .6s var(--soft), box-shadow .6s var(--soft), border-color .6s var(--soft), color .6s var(--soft), opacity .6s var(--soft), transform .6s var(--soft) !important; }
+.nav__links a, .foot__links a, .foot__legal a, .foot__row a, .nav__city, .review__src, .pq__pay, a.name { transition: color .6s var(--soft), text-decoration-color .6s var(--soft), background .6s var(--soft) !important; }
+.nav { transition: background .8s var(--soft), border-color .8s var(--soft), box-shadow .8s var(--soft), backdrop-filter .8s var(--soft) !important; }
+@media (hover: hover) and (min-width: 901px) {
+  .list li { transition: background 1s var(--soft), transform 1.1s var(--soft), box-shadow 1.1s var(--soft) !important; }
+
+}
+.list li b, .list li p, .list__price, .list__price small { transition: color .7s var(--soft) !important; }
+.mosaic__i img { transition: transform 1.4s var(--soft); }
+
+/* Фото первого экрана: быстрый повтор листания не даёт вспышки — прошлый кадр дорастает плавно */
+.slides .slide.was-on { transition: opacity .9s var(--soft-out) !important; }
+.slides .slide, .slides .slide.is-on { transition: opacity 1.6s var(--soft-out) !important; }
+.trener-top .cap { transition: opacity 1s var(--soft), transform 1.2s var(--soft) !important; }
+.trener-top .cap:not(.is-on) { transition-duration: .6s, .7s !important; }
+.trener-top .cap.is-on { transition-delay: .3s !important; }
+.hs__arr { transition: background .6s var(--soft), transform .6s var(--soft) !important; }
+.hs__arr:active { transform: scale(.94); }
+.hs__dot::before { transition: width .7s var(--soft), margin .7s var(--soft), background .6s var(--soft) !important; }
+.rv-nav__b { transition: background .6s var(--soft), opacity .6s var(--soft), transform .6s var(--soft) !important; }
+.rv-nav__b:active { transform: scale(.94); }
+
+/* Анкета */
+.qz label span { transition: background .6s var(--soft), color .6s var(--soft), box-shadow .6s var(--soft) !important; }
+.qz__preview.is-new { animation-duration: 1.4s !important; }
+
+/* Окна: открываются мягко, закрываются без рывка */
+.sheet__bg { transition: opacity .9s var(--soft) !important; }
+.sheet__box { transition: opacity .8s var(--soft), transform 1s var(--soft) !important; }
+.sheet:not(.is-in) .sheet__box { transition: opacity .45s var(--soft-out), transform .5s var(--soft-out) !important; }
+.sheet:not(.is-in) .sheet__bg { transition: opacity .55s var(--soft-out) !important; }
+.sheet:not(.is-in) * { transition-duration: .45s !important; }
+
+/* Тумблер цен */
+.pt__knob { transition: transform .7s var(--soft) !important; }
+.pt__b { transition: color .6s var(--soft) !important; }
+.pp { transition: height .7s var(--soft) !important; }
+.pp__pane.is-on { animation: pp-in .8s var(--soft) !important; }
+
+/* Карта на компьютере: подпись бассейна после закрытия карточки тоже проявляется мягко */
+@media (min-width: 901px) {
+  .citymap .mpin:not(.is-open) .mpin__card { animation: label-back .7s var(--soft) both; }
+}
+@keyframes label-back { from { opacity: .35; transform: var(--tf, none) scale(.97); } to { opacity: 1; transform: var(--tf, none) scale(1); } }
+
+@media (prefers-reduced-motion: reduce) { .citymap .mpin:not(.is-open) .mpin__card, .pp__pane.is-on { animation: none !important; } }

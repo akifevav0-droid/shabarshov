@@ -60,7 +60,7 @@ window.scrollTo(0, 0);
   function close() {
     if (!openEl) return;
     var el = openEl; openEl = null; closingEl = el; el.classList.remove('is-in');
-    closeT = setTimeout(function () { el.hidden = true; closingEl = null; document.documentElement.style.overflow = ''; }, 480);
+    closeT = setTimeout(function () { el.hidden = true; closingEl = null; document.documentElement.style.overflow = ''; }, 580);
     if (lastFocus) lastFocus.focus({ preventScroll: true });
   }
   document.addEventListener('click', function (e) {
@@ -418,9 +418,11 @@ document.querySelectorAll('.slides').forEach(function (box) {
       box.classList.toggle('is-right', key === 'i');
       panes.forEach(function (p) { var on = p.dataset.pane === key; p.hidden = !on; p.classList.toggle('is-on', on); });
       // плавная смена высоты окна
-      var to = wrap.scrollHeight; wrap.style.height = from + 'px'; void wrap.offsetHeight;
+      var cs = getComputedStyle(wrap), to = 0; // высота без сдвига анимации появления
+      panes.forEach(function (p) { if (!p.hidden) to += p.offsetHeight; });
+      to += parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom); wrap.style.height = from + 'px'; void wrap.offsetHeight;
       wrap.style.height = to + 'px';
-      setTimeout(function () { wrap.style.height = ''; }, 450);
+      setTimeout(function () { wrap.style.height = ''; }, 720);
     });
   });
 })();
@@ -431,8 +433,23 @@ document.querySelectorAll('.slides').forEach(function (box) {
   nav.addEventListener('click', function (e) {
     var b = e.target.closest('.rv-nav__b'); if (!b) return;
     var card = box.querySelector('.review'); var step = card ? card.getBoundingClientRect().width + 24 : 360;
-    box.scrollBy({ left: step * +b.dataset.dir, behavior: 'smooth' });
+    glide(box.scrollLeft + step * +b.dataset.dir);
   });
+  // своя плавная прокрутка ленты: медленный разгон и долгое торможение
+  var raf = null;
+  function glide(to) {
+    to = Math.max(0, Math.min(to, box.scrollWidth - box.clientWidth));
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { box.scrollLeft = to; return; }
+    var from = box.scrollLeft, dist = to - from, t0 = null, dur = 900, snap = box.style.scrollSnapType;
+    cancelAnimationFrame(raf); box.style.scrollSnapType = 'none';
+    function step(ts) {
+      if (t0 === null) t0 = ts;
+      var k = Math.min(1, (ts - t0) / dur), e = k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
+      box.scrollLeft = from + dist * e;
+      if (k < 1) raf = requestAnimationFrame(step); else box.style.scrollSnapType = snap;
+    }
+    raf = requestAnimationFrame(step);
+  }
   function upd() { var max = box.scrollWidth - box.clientWidth - 2; nav.children[0].disabled = box.scrollLeft <= 2; nav.children[1].disabled = box.scrollLeft >= max; }
   box.addEventListener('scroll', upd, { passive: true }); window.addEventListener('resize', upd); upd();
 })();
