@@ -1525,3 +1525,11 @@ main h2:not(.cap h2), .end__title { color: #4E4868 !important; font-weight: 500 
   #zapis .foot__nav { margin-bottom: 14px; }
   #zapis .foot__copy, #zapis .foot__pol { grid-row: auto !important; grid-column: 1 !important; justify-self: center !important; }
 }
+
+/* Карта на компьютере: карточка ЗИЛа растёт вверх от точки и не уходит за нижний край; «Маршрут» читается на любом фото */
+@media (min-width: 901px) {
+  .citymap .mpin--t.is-open .mpin__card { top: auto !important; bottom: -14px !important; left: 22px !important; right: auto !important; transform: none !important; }
+  .citymap .mpin--t.is-open .mpin__card::before { display: none !important; }
+  .citymap .mpin.is-open .mpin__img { aspect-ratio: 16 / 10 !important; height: auto !important; }
+  .citymap .mpin.is-open .mpin__acts a { background: rgba(255, 255, 255, .92) !important; color: #2C2A3A !important; box-shadow: 0 6px 16px -6px rgba(20, 18, 30, .45), inset 0 0 0 1px rgba(255, 255, 255, .9) !important; }
+}
