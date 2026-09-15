@@ -1380,3 +1380,7 @@ html, body { overflow-x: clip; }
 .trener-top .cap__res { margin-top: 10px; }
 @media (min-width: 735px) { .trener-top .cap__res li { font-size: clamp(16px, 1.3vw, 20px) !important; gap: 14px; } }
 @media (max-width: 734px) { .trener-top .cap__res li { font-size: 14px !important; padding: 3px 0 !important; } }
+
+/* Заголовки разделов мягче: светлее и тоньше, без резкого тёмного */
+main h2:not(.cap h2), .end__title { color: #4E4868 !important; font-weight: 500 !important; letter-spacing: -.022em !important; }
+.end__title { font-size: clamp(34px, 3.8vw, 52px) !important; }
