@@ -337,10 +337,6 @@ document.querySelectorAll('.slides').forEach(function (box) {
   function manual(n) { go(n); plan(14000); } // после ручного листания автосмена ждёт дольше
   plan(caps.length ? 9000 : 5200);
   if (!wrapEl) return;
-  if (window.matchMedia('(hover: hover)').matches) {
-    wrapEl.addEventListener('mouseenter', function () { paused = true; });
-    wrapEl.addEventListener('mouseleave', function () { paused = false; });
-  }
   // стрелки и точки
   var ctr = document.createElement('div'); ctr.className = 'hs';
   ctr.innerHTML = '<button class="hs__arr" type="button" data-d="-1" aria-label="Предыдущее фото">←</button><div class="hs__dots"></div><button class="hs__arr" type="button" data-d="1" aria-label="Следующее фото">→</button>';

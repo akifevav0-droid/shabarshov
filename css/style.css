@@ -1361,3 +1361,22 @@ html, body { overflow-x: clip; }
 #faq .faq-i h3 { margin: 0; color: #2C2A3A; font-size: 21px; font-weight: 600; letter-spacing: -.01em; line-height: 1.3; }
 #faq .faq-i p { margin: 8px auto 0; max-width: 60ch; color: var(--text); font-size: 17px; line-height: 1.6; }
 @media (max-width: 734px) { #faq .faq-i { padding: 16px 0; } #faq .faq-i h3 { font-size: 18px; } #faq .faq-i p { font-size: 16px; } }
+
+/* Финал v3: прозрачная плашка, мягкие кнопки, подсветка только за текстом */
+.qz:not(.qz--sheet) { background: rgba(255, 255, 255, .22) !important; backdrop-filter: blur(18px) saturate(140%); -webkit-backdrop-filter: blur(18px) saturate(140%); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .85), inset 0 0 0 1px rgba(255, 255, 255, .5), 0 30px 60px -40px rgba(76, 68, 110, .35) !important; }
+.qz label span { background: rgba(255, 255, 255, .35) !important; color: #2C2A3A; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .8), inset 0 0 0 1px rgba(110, 103, 136, .16) !important; }
+.qz input:checked + span { background: rgba(110, 103, 136, .16) !important; color: #2C2A3A !important; font-weight: 600; box-shadow: inset 0 0 0 1.5px rgba(110, 103, 136, .55), 0 4px 10px -8px rgba(76, 68, 110, .35) !important; }
+.qz__tg { background: rgba(110, 103, 136, .78) !important; color: #fff !important; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .25), 0 10px 20px -14px rgba(76, 64, 130, .45) !important; }
+.qz__tg:hover { background: rgba(110, 103, 136, .9) !important; }
+#qz-wa, .qz__wa { background: rgba(255, 255, 255, .35) !important; }
+.qz__preview { background: rgba(255, 255, 255, .6) !important; }
+@keyframes qz-flash { 0% { background: rgba(236, 231, 248, .95); box-shadow: inset 3px 0 0 #8F87AE, 0 0 0 4px rgba(143, 135, 174, .22); } 100% { background: rgba(255, 255, 255, .6); box-shadow: inset 3px 0 0 #8F87AE, 0 6px 16px -10px rgba(76, 68, 110, .35); } }
+@media (min-width: 900px) {
+  #zapis.hero--end { background: radial-gradient(24% 36% at 80% 36%, rgba(160, 138, 214, .34) 0%, rgba(160, 138, 214, 0) 70%), radial-gradient(18% 26% at 90% 58%, rgba(122, 170, 230, .18) 0%, transparent 70%), linear-gradient(180deg, #FFFFFF 0%, #F4F2F8 100%) !important; }
+}
+
+/* Список стартов на фото: без линий, крупнее */
+.trener-top .cap__res li, .trener-top .cap__res li:last-child { border: 0 !important; padding: 5px 0 !important; }
+.trener-top .cap__res { margin-top: 10px; }
+@media (min-width: 735px) { .trener-top .cap__res li { font-size: clamp(16px, 1.3vw, 20px) !important; gap: 14px; } }
+@media (max-width: 734px) { .trener-top .cap__res li { font-size: 14px !important; padding: 3px 0 !important; } }
