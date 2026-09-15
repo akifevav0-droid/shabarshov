@@ -1205,3 +1205,19 @@ html, body { overflow-x: clip; }
   .trener-top .cap p:not(.cap__h) { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { .trener-top .cap { transition: none; } }
+
+/* Подписи первого экрана крупно */
+@media (min-width: 735px) {
+  .trener-top .portret__card { max-width: min(560px, 38vw) !important; }
+  .trener-top .cap h2, .trener-top .cap .cap__h { font-size: clamp(40px, 4.2vw, 68px) !important; line-height: 1.04 !important; letter-spacing: -.03em !important; margin-bottom: 16px !important; }
+  .trener-top .cap p:not(.cap__h) { font-size: clamp(17px, 1.35vw, 21px) !important; line-height: 1.5 !important; max-width: 30ch; }
+}
+@media (max-width: 734px) {
+  .trener-top .cap h2, .trener-top .cap .cap__h { font-size: 31px !important; line-height: 1.1 !important; }
+  .trener-top .portret__card { padding: 22px 20px 26px !important; }
+}
+@media (min-width: 735px) {
+  .trener-top .portret__card { max-width: min(440px, 30vw) !important; }
+  .trener-top .cap h2, .trener-top .cap .cap__h { font-size: clamp(34px, 3.3vw, 58px) !important; }
+  .trener-top .cap p:not(.cap__h) { font-size: clamp(16px, 1.2vw, 19px) !important; }
+}
