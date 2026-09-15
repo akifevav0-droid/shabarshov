@@ -48,7 +48,7 @@
         <div class="portret__photo slides"><img class="slide is-on" src="img/wide_goggles.jpg" width="1600" height="1000" alt="Анатолий Шабаршов в воде у бортика бассейна" loading="lazy" decoding="async"><img class="slide" src="img/wide_doha.jpg" width="1600" height="1000" alt="Анатолий Шабаршов у открытого бассейна на закате, Доха" aria-hidden="true" loading="lazy" decoding="async"><img class="slide" src="img/wide_dive.jpg" width="1600" height="1000" alt="Анатолий Шабаршов в прыжке со стартовой тумбы" aria-hidden="true" loading="lazy" decoding="async"><img class="slide" src="img/wide_pool.jpg" width="1600" height="1000" alt="Анатолий Шабаршов в воде у дорожки бассейна" aria-hidden="true" loading="lazy" decoding="async"><img class="slide" src="img/wide_finish.jpg" width="1600" height="1000" alt="Анатолий Шабаршов на финише заплыва на открытой воде" aria-hidden="true" loading="lazy" decoding="async"></div>
       <div class="portret__card">
         <div class="caps" aria-live="polite">
-          <div class="cap is-on"><h2>В воде рядом с&nbsp;вами,<br>а&nbsp;не&nbsp;на&nbsp;бортике</h2><p>Показываю каждое упражнение сам, в&nbsp;воде. После тренировки&nbsp;— видеоразбор техники и&nbsp;задание на&nbsp;следующий раз.</p></div>
+          <div class="cap is-on"><h2>В воде рядом с&nbsp;вами,<br>а&nbsp;не&nbsp;на&nbsp;бортике</h2><p>Разбираю технику на&nbsp;видео и&nbsp;даю задание к&nbsp;следующей тренировке.</p></div>
           <div class="cap" aria-hidden="true"><p class="cap__h">Сам стартую до&nbsp;сих пор</p><p>Всемирные игры Masters в&nbsp;Абу&#8209;Даби 2026&nbsp;— 2&#8209;е и&nbsp;3&#8209;е места.</p></div>
           <div class="cap" aria-hidden="true"><p class="cap__h">Мастер спорта по&nbsp;плаванию</p><p>Училище олимпийского резерва, РГУФКСМиТ, сборные Тульской области и&nbsp;Москвы.</p></div>
           <div class="cap" aria-hidden="true"><p class="cap__h">Смотрю на&nbsp;технику под водой</p><p>Плыву рядом и&nbsp;вижу, куда уходит локоть, как работает кисть и&nbsp;где теряется скорость.</p></div>
@@ -142,11 +142,33 @@
   <!-- 7. Запись и подвал -->
   <section class="hero hero--end anchor" id="zapis">
     <div class="wrap end__in">
-      <h2 class="end__title rv">Начнём с&nbsp;<em>бесплатной</em><br>тренировки</h2>
-      <p class="end__note rv">Напишите цель и&nbsp;удобный район, предложу формат, бассейн и&nbsp;время.</p>
-      <div class="end__btns rv">
-        <a class="btn js-book" href="#zapis" data-msg="Здравствуйте, Анатолий! Хочу записаться на бесплатную пробную тренировку.">Связаться</a>
-      </div>
+      <h2 class="end__title rv">Напишите&nbsp;— подберу группу и&nbsp;время</h2>
+      <p class="end__note rv">Отметьте три пункта, и&nbsp;сообщение соберётся само. Первая тренировка бесплатно.</p>
+      <form class="qz rv" id="qz" onsubmit="return false">
+        <fieldset><legend>Формат</legend>
+          <label><input type="radio" name="fmt" value="Группа" checked><span>Группа</span></label>
+          <label><input type="radio" name="fmt" value="Персонально"><span>Персонально</span></label>
+          <label><input type="radio" name="fmt" value="Открытая вода"><span>Открытая вода</span></label>
+        </fieldset>
+        <fieldset><legend>Как плаваете</legend>
+          <label><input type="radio" name="lvl" value="пока не плаваю"><span>Не&nbsp;плаваю</span></label>
+          <label><input type="radio" name="lvl" value="держусь на воде"><span>Держусь на&nbsp;воде</span></label>
+          <label><input type="radio" name="lvl" value="плаваю уверенно"><span>Плаваю уверенно</span></label>
+        </fieldset>
+        <fieldset><legend>Бассейн</legend>
+          <label><input type="radio" name="pool" value="Бауманка"><span>Бауманка</span></label>
+          <label><input type="radio" name="pool" value="Формула Воды"><span>Формула Воды</span></label>
+          <label><input type="radio" name="pool" value="Акватория ЗИЛ"><span>ЗИЛ</span></label>
+          <label><input type="radio" name="pool" value="Лужники"><span>Лужники</span></label>
+          <label><input type="radio" name="pool" value="подскажите"><span>Подскажите</span></label>
+        </fieldset>
+        <p class="qz__preview" id="qz-preview" aria-live="polite"></p>
+        <div class="qz__acts">
+          <a class="btn qz__tg" id="qz-tg" href="https://t.me/shabarshov" target="_blank" rel="noopener">Отправить в&nbsp;Telegram</a>
+          <a class="btn btn--outline" id="qz-wa" href="https://wa.me/79969669160" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+        <p class="qz__call">Или позвоните: <a href="tel:+79969669160">+7&nbsp;996&nbsp;966-91-60</a></p>
+      </form>
       <footer class="foot">
         <div class="foot__row">
           <span class="foot__copy">© <span id="year">2026</span> Анатолий Шабаршов</span>
@@ -176,7 +198,7 @@
   <div class="sheet__box sheet__box--wide" role="dialog" aria-modal="true" aria-labelledby="prices-title">
     <button class="sheet__x" type="button" data-close aria-label="Закрыть"></button>
     <p class="sheet__title" id="prices-title">Цены и&nbsp;абонементы</p>
-    <p class="pq__h">Группы</p><ul class="pq"><li><div class="pq__l"><b>Пробная тренировка</b><small>любой формат</small></div><div class="pq__r"><span class="pq__price">Бесплатно</span></div></li><li><div class="pq__l"><b>Разовая тренировка</b><small>в&nbsp;любой группе</small></div><div class="pq__r"><span class="pq__price">2&nbsp;000&nbsp;₽</span><a class="pq__pay pay" href="https://yookassa.ru/my/i/anCYe_NYmOQf/l" target="_blank" rel="noopener" data-pay="1">Оплатить</a></div></li><li><div class="pq__l"><b>4 тренировки</b><small>в&nbsp;месяц, 1&nbsp;875&nbsp;₽ за&nbsp;занятие</small></div><div class="pq__r"><span class="pq__price">7&nbsp;500&nbsp;₽</span><a class="pq__pay pay" href="https://yookassa.ru/my/i/apQmxFM5OBYk/l" target="_blank" rel="noopener" data-pay="4">Оплатить</a></div></li><li><div class="pq__l"><b>8 тренировок<span class="pq__tag">выгоднее</span></b><small>в&nbsp;месяц, 1&nbsp;700&nbsp;₽ за&nbsp;занятие</small></div><div class="pq__r"><span class="pq__price">13&nbsp;600&nbsp;₽</span><a class="pq__pay pay" href="https://yookassa.ru/my/i/apQml-T_gMen/l" target="_blank" rel="noopener" data-pay="8">Оплатить</a></div></li></ul><p class="pq__h">Индивидуально</p><ul class="pq"><li><div class="pq__l"><b>Персональная</b><small>+ проход в&nbsp;бассейн</small></div><div class="pq__r"><span class="pq__price">от&nbsp;3&nbsp;000&nbsp;₽</span></div></li><li><div class="pq__l"><b>Открытая вода</b><small>X-Waters, SwimCup, триатлон</small></div><div class="pq__r"><span class="pq__price">от&nbsp;3&nbsp;500&nbsp;₽</span></div></li></ul><a class="btn pq__cta js-book" href="#zapis" data-msg="Здравствуйте, Анатолий! Хочу записаться на бесплатную пробную тренировку.">Записаться на&nbsp;пробную</a>
+    <div class="pt" role="tablist" aria-label="Тип тренировок"><span class="pt__knob" aria-hidden="true"></span><button class="pt__b is-on" type="button" role="tab" aria-selected="true" data-pane="g">Группы</button><button class="pt__b" type="button" role="tab" aria-selected="false" data-pane="i">Индивидуально</button></div><div class="pp"><div class="pp__pane is-on" data-pane="g" role="tabpanel"><ul class="pq"><li><div class="pq__l"><b>Пробная тренировка</b><small>любой формат</small></div><div class="pq__r"><span class="pq__price">Бесплатно</span></div></li><li><div class="pq__l"><b>Разовая тренировка</b><small>в&nbsp;любой группе</small></div><div class="pq__r"><span class="pq__price">2&nbsp;000&nbsp;₽</span><a class="pq__pay pay" href="https://yookassa.ru/my/i/anCYe_NYmOQf/l" target="_blank" rel="noopener" data-pay="1">Оплатить</a></div></li><li><div class="pq__l"><b>4 тренировки</b><small>в&nbsp;месяц, 1&nbsp;875&nbsp;₽ за&nbsp;занятие</small></div><div class="pq__r"><span class="pq__price">7&nbsp;500&nbsp;₽</span><a class="pq__pay pay" href="https://yookassa.ru/my/i/apQmxFM5OBYk/l" target="_blank" rel="noopener" data-pay="4">Оплатить</a></div></li><li><div class="pq__l"><b>8 тренировок<span class="pq__tag">выгоднее</span></b><small>в&nbsp;месяц, 1&nbsp;700&nbsp;₽ за&nbsp;занятие</small></div><div class="pq__r"><span class="pq__price">13&nbsp;600&nbsp;₽</span><a class="pq__pay pay" href="https://yookassa.ru/my/i/apQml-T_gMen/l" target="_blank" rel="noopener" data-pay="8">Оплатить</a></div></li></ul></div><div class="pp__pane" data-pane="i" role="tabpanel" hidden><ul class="pq"><li><div class="pq__l"><b>Персональная</b><small>+ проход в&nbsp;бассейн</small></div><div class="pq__r"><span class="pq__price">от&nbsp;3&nbsp;000&nbsp;₽</span></div></li><li><div class="pq__l"><b>Открытая вода</b><small>X-Waters, SwimCup, триатлон</small></div><div class="pq__r"><span class="pq__price">от&nbsp;3&nbsp;500&nbsp;₽</span></div></li></ul></div></div><a class="btn pq__cta js-book" href="#zapis" data-msg="Здравствуйте, Анатолий! Хочу записаться на бесплатную пробную тренировку.">Записаться на&nbsp;пробную</a>
     <p class="pr__note">Абонемент действует календарный месяц. Оплата через ЮKassa или переводом на&nbsp;<span class="nw">Т-Банк</span>.</p>
   </div>
 </div>

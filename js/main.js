@@ -340,3 +340,44 @@ document.querySelectorAll('.slides').forEach(function (box) {
   setTimeout(step, caps.length ? 9000 : 5200);
 });
 
+
+// Анкета в конце: собирает сообщение для Telegram и WhatsApp
+(function () {
+  var q = document.getElementById('qz'); if (!q) return;
+  var prev = document.getElementById('qz-preview'), tg = document.getElementById('qz-tg'), wa = document.getElementById('qz-wa');
+  function val(n) { var c = q.querySelector('input[name="' + n + '"]:checked'); return c ? c.value : ''; }
+  function pick(n, v) { var i = q.querySelector('input[name="' + n + '"][value="' + v + '"]'); if (i) i.checked = true; }
+  function build() {
+    var lvl = val('lvl'), pool = val('pool');
+    var msg = 'Здравствуйте, Анатолий! Хочу на бесплатную пробную тренировку. Формат: ' + val('fmt').toLowerCase() + '.' +
+      (lvl ? ' Сейчас ' + lvl + '.' : '') + (pool ? ' Бассейн: ' + (pool === 'подскажите' ? 'подскажите, какой подойдёт' : pool) + '.' : '');
+    prev.textContent = msg;
+    tg.href = 'https://t.me/shabarshov?text=' + encodeURIComponent(msg);
+    wa.href = 'https://wa.me/79969669160?text=' + encodeURIComponent(msg);
+  }
+  q.addEventListener('change', function (e) {
+    if (e.target.name === 'pool' && e.target.value === 'Лужники') pick('fmt', 'Персонально'); // в Лужниках только персональные
+    if (e.target.name === 'fmt' && e.target.value !== 'Персонально' && val('pool') === 'Лужники') pick('pool', 'подскажите');
+    build();
+  });
+  build();
+})();
+
+// Окно цен: переключатель «Группы / Индивидуально»
+(function () {
+  var box = document.querySelector('#prices .pt'); if (!box) return;
+  var btns = box.querySelectorAll('.pt__b'), panes = document.querySelectorAll('#prices .pp__pane'), wrap = document.querySelector('#prices .pp');
+  btns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      if (b.classList.contains('is-on')) return;
+      var key = b.dataset.pane, from = wrap.offsetHeight;
+      btns.forEach(function (x) { var on = x === b; x.classList.toggle('is-on', on); x.setAttribute('aria-selected', on ? 'true' : 'false'); });
+      box.classList.toggle('is-right', key === 'i');
+      panes.forEach(function (p) { var on = p.dataset.pane === key; p.hidden = !on; p.classList.toggle('is-on', on); });
+      // плавная смена высоты окна
+      var to = wrap.scrollHeight; wrap.style.height = from + 'px'; void wrap.offsetHeight;
+      wrap.style.height = to + 'px';
+      setTimeout(function () { wrap.style.height = ''; }, 450);
+    });
+  });
+})();
