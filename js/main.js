@@ -341,26 +341,42 @@ document.querySelectorAll('.slides').forEach(function (box) {
 });
 
 
-// Анкета в конце: собирает сообщение для Telegram и WhatsApp
+// Анкеты (внизу страницы и в окне записи): собирают сообщение для Telegram и WhatsApp
 (function () {
-  var q = document.getElementById('qz'); if (!q) return;
-  var prev = document.getElementById('qz-preview'), tg = document.getElementById('qz-tg'), wa = document.getElementById('qz-wa');
-  function val(n) { var c = q.querySelector('input[name="' + n + '"]:checked'); return c ? c.value : ''; }
-  function pick(n, v) { var i = q.querySelector('input[name="' + n + '"][value="' + v + '"]'); if (i) i.checked = true; }
-  function build() {
-    var lvl = val('lvl'), pool = val('pool');
-    var msg = 'Здравствуйте, Анатолий! Хочу на бесплатную пробную тренировку. Формат: ' + val('fmt').toLowerCase() + '.' +
-      (lvl ? ' Сейчас ' + lvl + '.' : '') + (pool ? ' Бассейн: ' + (pool === 'подскажите' ? 'подскажите, какой подойдёт' : pool) + '.' : '');
-    prev.textContent = msg;
-    tg.href = 'https://t.me/shabarshov?text=' + encodeURIComponent(msg);
-    wa.href = 'https://wa.me/79969669160?text=' + encodeURIComponent(msg);
-  }
-  q.addEventListener('change', function (e) {
-    if (e.target.name === 'pool' && e.target.value === 'Лужники') pick('fmt', 'Персонально'); // в Лужниках только персональные
-    if (e.target.name === 'fmt' && e.target.value !== 'Персонально' && val('pool') === 'Лужники') pick('pool', 'подскажите');
+  function init(q) {
+    var pre = q.dataset.names || '';
+    var prev = q.querySelector('.qz__preview'), tg = q.querySelector('.qz__tg'), wa = q.querySelector('.qz__wa');
+    function val(n) { var c = q.querySelector('input[name="' + pre + n + '"]:checked'); return c ? c.value : ''; }
+    function pick(n, v) { var i = q.querySelector('input[name="' + pre + n + '"][value="' + v + '"]'); if (i) i.checked = true; }
+    function build() {
+      var lvl = val('lvl'), pool = val('pool');
+      var msg = 'Здравствуйте, Анатолий! Хочу на бесплатную пробную тренировку. Формат: ' + val('fmt').toLowerCase() + '.' +
+        (lvl ? ' Сейчас ' + lvl + '.' : '') + (pool ? ' Бассейн: ' + (pool === 'подскажите' ? 'подскажите, какой подойдёт' : pool) + '.' : '');
+      prev.textContent = msg;
+      tg.href = 'https://t.me/shabarshov?text=' + encodeURIComponent(msg);
+      wa.href = 'https://wa.me/79969669160?text=' + encodeURIComponent(msg);
+    }
+    q.addEventListener('change', function (e) {
+      var n = e.target.name.slice(pre.length);
+      if (n === 'pool' && e.target.value === 'Лужники') pick('fmt', 'Персонально'); // в Лужниках только персональные
+      if (n === 'fmt' && e.target.value !== 'Персонально' && val('pool') === 'Лужники') pick('pool', 'подскажите');
+      build();
+    });
+    q.preset = function (msg) { // кнопка записи подсказывает формат
+      msg = msg || '';
+      if (/Лужник/.test(msg)) { pick('fmt', 'Персонально'); pick('pool', 'Лужники'); }
+      else if (/персональн/i.test(msg)) pick('fmt', 'Персонально');
+      else if (/открытой воде/.test(msg)) pick('fmt', 'Открытая вода');
+      else if (/в группу/.test(msg)) pick('fmt', 'Группа');
+      build();
+    };
     build();
+  }
+  document.querySelectorAll('.qz').forEach(init);
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a.js-book'); if (!a) return;
+    var sq = document.querySelector('.qz--sheet'); if (sq && sq.preset) sq.preset(a.getAttribute('data-msg'));
   });
-  build();
 })();
 
 // Окно цен: переключатель «Группы / Индивидуально»
@@ -380,4 +396,16 @@ document.querySelectorAll('.slides').forEach(function (box) {
       setTimeout(function () { wrap.style.height = ''; }, 450);
     });
   });
+})();
+
+// Отзывы на компьютере: лента вправо-влево со стрелками
+(function () {
+  var box = document.querySelector('.reviews'), nav = document.querySelector('.rv-nav'); if (!box || !nav) return;
+  nav.addEventListener('click', function (e) {
+    var b = e.target.closest('.rv-nav__b'); if (!b) return;
+    var card = box.querySelector('.review'); var step = card ? card.getBoundingClientRect().width + 24 : 360;
+    box.scrollBy({ left: step * +b.dataset.dir, behavior: 'smooth' });
+  });
+  function upd() { var max = box.scrollWidth - box.clientWidth - 2; nav.children[0].disabled = box.scrollLeft <= 2; nav.children[1].disabled = box.scrollLeft >= max; }
+  box.addEventListener('scroll', upd, { passive: true }); window.addEventListener('resize', upd); upd();
 })();
