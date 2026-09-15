@@ -1638,3 +1638,8 @@ main h2:not(.cap h2), .end__title { color: #4E4868 !important; font-weight: 500 
 @media (max-width: 900px) { .citymap::after { background: linear-gradient(180deg, #FFFFFF 0, rgba(255, 255, 255, 0) 64px, rgba(255, 255, 255, 0) calc(100% - 64px), #FFFFFF 100%); } }
 #formaty { padding-bottom: clamp(40px, 4vw, 64px) !important; }
 #gde { padding-top: clamp(24px, 2.4vw, 40px) !important; }
+/* Телефон: высота первого экрана фиксируется при загрузке и не меняется, когда при прокрутке прячется панель браузера */
+@media (max-width: 734px) {
+  .trener-top .portret { height: min(640px, calc(var(--hero-vh, 100svh) - 72px)) !important; transition: none !important; }
+  .trener-top .portret__photo .slide { transform: none !important; }
+}

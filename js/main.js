@@ -453,3 +453,12 @@ document.querySelectorAll('.slides').forEach(function (box) {
   function upd() { var max = box.scrollWidth - box.clientWidth - 2; nav.children[0].disabled = box.scrollLeft <= 2; nav.children[1].disabled = box.scrollLeft >= max; }
   box.addEventListener('scroll', upd, { passive: true }); window.addEventListener('resize', upd); upd();
 })();
+
+// Телефон: запоминаем высоту окна один раз; при прокрутке панель браузера прячется, но фото первого экрана не растягивается
+(function () {
+  var root = document.documentElement, w = window.innerWidth;
+  function set() { root.style.setProperty('--hero-vh', window.innerHeight + 'px'); }
+  set();
+  window.addEventListener('resize', function () { if (Math.abs(window.innerWidth - w) > 40) { w = window.innerWidth; set(); } });
+  window.addEventListener('orientationchange', function () { setTimeout(function () { w = window.innerWidth; set(); }, 350); });
+})();
