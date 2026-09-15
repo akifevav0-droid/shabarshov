@@ -316,28 +316,52 @@ window.scrollTo(0, 0);
 // Фото тренера: медленная смена кадров — кадр тает с лёгким приближением, следующий проявляется
 document.querySelectorAll('.slides').forEach(function (box) {
   var items = box.querySelectorAll('.slide'), i = 0;
-  if (items.length < 2 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (items.length < 2) return;
+  var calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   items.forEach(function (im) { im.loading = 'eager'; });
-  // на первом экране вместе с фото меняется подпись: первый кадр держится дольше, при наведении мыши — пауза
-  var wrapEl = box.closest('.portret'), caps = wrapEl ? wrapEl.querySelectorAll('.cap') : [], paused = false;
-  if (wrapEl && window.matchMedia('(hover: hover)').matches) {
-    wrapEl.addEventListener('mouseenter', function () { paused = true; });
-    wrapEl.addEventListener('mouseleave', function () { paused = false; });
-  }
-  function step() {
-    if (document.hidden || paused) { setTimeout(step, 1000); return; }
-    var cur = items[i]; i = (i + 1) % items.length; var nx = items[i];
+  // на первом экране вместе с фото меняется подпись; кадры можно листать пальцем, мышью, стрелками и точками
+  var wrapEl = box.closest('.portret'), caps = wrapEl ? wrapEl.querySelectorAll('.cap') : [], paused = false, timer = null, dots = [];
+  function go(n) {
+    n = (n + items.length) % items.length; if (n === i) return;
+    var cur = items[i]; i = n; var nx = items[i];
     // новый кадр проявляется поверх старого, старый уходит только когда его уже закрыли — без просвечивания двух кадров
     items.forEach(function (im) { im.classList.remove('was-on'); });
     cur.classList.remove('is-on'); cur.classList.add('was-on'); cur.setAttribute('aria-hidden', 'true');
     nx.classList.add('is-on'); nx.removeAttribute('aria-hidden');
     setTimeout(function () { cur.classList.remove('was-on'); }, 1800);
-    if (caps.length === items.length) {
-      caps.forEach(function (c, k) { c.classList.toggle('is-on', k === i); if (k === i) c.removeAttribute('aria-hidden'); else c.setAttribute('aria-hidden', 'true'); });
-    }
-    setTimeout(step, caps.length ? (i === 0 ? 9000 : 7500) : 5200);
+    if (caps.length === items.length) caps.forEach(function (c, k) { c.classList.toggle('is-on', k === i); if (k === i) c.removeAttribute('aria-hidden'); else c.setAttribute('aria-hidden', 'true'); });
+    dots.forEach(function (d, k) { d.classList.toggle('is-on', k === i); d.setAttribute('aria-current', k === i ? 'true' : 'false'); });
   }
-  setTimeout(step, caps.length ? 9000 : 5200);
+  function plan(ms) { clearTimeout(timer); if (calm) return; timer = setTimeout(tick, ms); }
+  function tick() { if (document.hidden || paused) { plan(1000); return; } go(i + 1); plan(caps.length ? (i === 0 ? 9000 : 7500) : 5200); }
+  function manual(n) { go(n); plan(14000); } // после ручного листания автосмена ждёт дольше
+  plan(caps.length ? 9000 : 5200);
+  if (!wrapEl) return;
+  if (window.matchMedia('(hover: hover)').matches) {
+    wrapEl.addEventListener('mouseenter', function () { paused = true; });
+    wrapEl.addEventListener('mouseleave', function () { paused = false; });
+  }
+  // стрелки и точки
+  var ctr = document.createElement('div'); ctr.className = 'hs';
+  ctr.innerHTML = '<button class="hs__arr" type="button" data-d="-1" aria-label="Предыдущее фото">←</button><div class="hs__dots"></div><button class="hs__arr" type="button" data-d="1" aria-label="Следующее фото">→</button>';
+  var dw = ctr.querySelector('.hs__dots');
+  items.forEach(function (_, k) { var d = document.createElement('button'); d.type = 'button'; d.className = 'hs__dot' + (k === 0 ? ' is-on' : ''); d.setAttribute('aria-label', 'Фото ' + (k + 1)); d.addEventListener('click', function () { manual(k); }); dw.appendChild(d); dots.push(d); });
+  ctr.querySelectorAll('.hs__arr').forEach(function (b) { b.addEventListener('click', function () { manual(i + +b.dataset.d); }); });
+  box.parentNode.insertBefore(ctr, box.nextSibling);
+  // свайп пальцем и перетаскивание мышью
+  var x0 = null, y0 = 0, t0 = 0;
+  box.style.touchAction = 'pan-y';
+  box.addEventListener('pointerdown', function (e) { x0 = e.clientX; y0 = e.clientY; t0 = Date.now(); });
+  box.addEventListener('pointerup', function (e) {
+    if (x0 === null) return;
+    var dx = e.clientX - x0, dy = e.clientY - y0; x0 = null;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) && Date.now() - t0 < 900) manual(i + (dx < 0 ? 1 : -1));
+  });
+  box.addEventListener('pointercancel', function () { x0 = null; });
+  document.addEventListener('keydown', function (e) {
+    if (!wrapEl.matches(':hover')) return;
+    if (e.key === 'ArrowRight') manual(i + 1); if (e.key === 'ArrowLeft') manual(i - 1);
+  });
 });
 
 
@@ -352,6 +376,7 @@ document.querySelectorAll('.slides').forEach(function (box) {
       var lvl = val('lvl'), pool = val('pool');
       var msg = 'Здравствуйте, Анатолий! Хочу на бесплатную пробную тренировку. Формат: ' + val('fmt').toLowerCase() + '.' +
         (lvl ? ' Сейчас ' + lvl + '.' : '') + (pool ? ' Бассейн: ' + (pool === 'подскажите' ? 'подскажите, какой подойдёт' : pool) + '.' : '');
+      if (prev.textContent && prev.textContent !== msg) { prev.classList.remove('is-new'); void prev.offsetWidth; prev.classList.add('is-new'); } // подсветка: сообщение изменилось
       prev.textContent = msg;
       tg.href = 'https://t.me/shabarshov?text=' + encodeURIComponent(msg);
       wa.href = 'https://wa.me/79969669160?text=' + encodeURIComponent(msg);

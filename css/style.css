@@ -1320,3 +1320,44 @@ html, body { overflow-x: clip; }
   .trener-top .cap__res { margin-top: 10px; }
   .trener-top .cap__res li { padding: 4px 0; font-size: 13px; gap: 8px; }
 }
+
+/* Листание фото первого экрана */
+.trener-top .portret__photo { cursor: grab; user-select: none; -webkit-user-select: none; }
+.trener-top .portret__photo:active { cursor: grabbing; }
+.trener-top .portret__photo img { -webkit-user-drag: none; pointer-events: none; }
+.hs { position: absolute; z-index: 6; right: clamp(20px, 3vw, 48px); bottom: clamp(20px, 3vw, 40px); display: flex; align-items: center; gap: 14px; }
+.hs__arr { width: 46px; height: 46px; border: 0; border-radius: 50%; background: rgba(255, 255, 255, .28); color: #fff; font-size: 18px; cursor: pointer; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .45), 0 8px 20px -10px rgba(0, 0, 0, .4); transition: background .3s; }
+.hs__arr:hover { background: rgba(255, 255, 255, .45); }
+.hs__dots { display: flex; gap: 2px; }
+.hs__dot { position: relative; width: 22px; height: 44px; border: 0; background: none; cursor: pointer; padding: 0; }
+.hs__dot::before { content: ""; position: absolute; left: 50%; top: 50%; width: 8px; height: 8px; margin: -4px 0 0 -4px; border-radius: 999px; background: rgba(255, 255, 255, .55); box-shadow: 0 1px 4px rgba(0, 0, 0, .3); transition: width .4s cubic-bezier(.22, 1, .36, 1), margin .4s cubic-bezier(.22, 1, .36, 1), background .3s; }
+.hs__dot.is-on::before { width: 22px; margin-left: -11px; background: #fff; }
+@media (max-width: 734px) {
+  .hs { left: 0; right: 0; bottom: auto; top: 420px; justify-content: center; gap: 0; }
+  .hs__arr { display: none; }
+  .hs__dot { width: 18px; height: 32px; }
+}
+
+/* Финал: объёмная плашка, спокойные кнопки, сияние со стороны текста */
+.qz:not(.qz--sheet) { background: linear-gradient(160deg, rgba(255, 255, 255, .78) 0%, rgba(255, 255, 255, .42) 100%); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .95), inset 0 0 0 1px rgba(255, 255, 255, .6), 0 2px 4px rgba(60, 54, 90, .04), 0 18px 36px -18px rgba(76, 68, 110, .28), 0 50px 90px -50px rgba(76, 68, 110, .45); }
+.qz input:checked + span { background: linear-gradient(180deg, #A79FC2, #928AB2); color: #fff; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .35), 0 6px 14px -8px rgba(76, 64, 130, .35); }
+.qz__tg { background: linear-gradient(180deg, #9F97BC, #8A82AB) !important; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .3), 0 10px 20px -12px rgba(76, 64, 130, .4) !important; }
+@media (min-width: 900px) {
+  #zapis.hero--end { background: radial-gradient(38% 55% at 76% 42%, rgba(169, 150, 214, .30) 0%, rgba(169, 150, 214, 0) 70%), radial-gradient(30% 40% at 88% 70%, rgba(122, 170, 230, .16) 0%, transparent 70%), linear-gradient(180deg, #FFFFFF 0%, #F6F5F9 100%) !important; }
+  #zapis.hero--end::before, #zapis.hero--end::after { display: none !important; }
+}
+
+/* Превью сообщения: заметнее и подсвечивается при изменении */
+.qz__preview { position: relative; margin: 6px 0 18px !important; padding: 30px 16px 14px 18px !important; border-radius: 14px; background: #fff !important; color: #2C2A3A !important; font-size: 16px !important; line-height: 1.5; box-shadow: inset 3px 0 0 #8F87AE, 0 6px 16px -10px rgba(76, 68, 110, .35) !important; }
+.qz__preview::before { content: "Сообщение"; position: absolute; top: 10px; left: 18px; color: #8F87AE; font-size: 12px; font-weight: 600; letter-spacing: .04em; }
+.qz__preview.is-new { animation: qz-flash 1s cubic-bezier(.22, 1, .36, 1); }
+@keyframes qz-flash { 0% { background: #ECE7F8; box-shadow: inset 3px 0 0 #8F87AE, 0 0 0 4px rgba(143, 135, 174, .25); } 100% { background: #fff; box-shadow: inset 3px 0 0 #8F87AE, 0 6px 16px -10px rgba(76, 68, 110, .35); } }
+@media (prefers-reduced-motion: reduce) { .qz__preview.is-new { animation: none; } }
+
+/* Вопросы: просто текст, без плитки и полос */
+#faq .wrap--narrow { background: none !important; box-shadow: none !important; border-radius: 0 !important; padding: 0 24px !important; margin: 0 auto !important; }
+#faq .faq-i { max-width: 720px; margin: 0 auto; padding: 22px 0; text-align: center; }
+#faq h2 + .faq-i { margin-top: 32px; }
+#faq .faq-i h3 { margin: 0; color: #2C2A3A; font-size: 21px; font-weight: 600; letter-spacing: -.01em; line-height: 1.3; }
+#faq .faq-i p { margin: 8px auto 0; max-width: 60ch; color: var(--text); font-size: 17px; line-height: 1.6; }
+@media (max-width: 734px) { #faq .faq-i { padding: 16px 0; } #faq .faq-i h3 { font-size: 18px; } #faq .faq-i p { font-size: 16px; } }
