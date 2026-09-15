@@ -1605,3 +1605,36 @@ main h2:not(.cap h2), .end__title { color: #4E4868 !important; font-weight: 500 
   .trener-top .portret::before { background: linear-gradient(90deg, rgba(16, 14, 26, .62) 0%, rgba(16, 14, 26, .38) 30%, rgba(16, 14, 26, 0) 58%), radial-gradient(60% 55% at 0% 18%, rgba(16, 14, 26, .3), rgba(16, 14, 26, 0) 70%) !important; }
   .trener-top .cap__res li, .trener-top .cap p:not(.cap__h) { text-shadow: 0 1px 12px rgba(0, 0, 0, .5), 0 1px 2px rgba(0, 0, 0, .3) !important; }
 }
+
+/* Запись: ровная сетка, плоские кнопки без «парящих» теней */
+@media (min-width: 900px) {
+  #zapis .qz fieldset { display: grid !important; grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 10px !important; }
+  #zapis .qz fieldset legend { grid-column: 1 / -1; }
+  #zapis .qz label { display: block; }
+  #zapis .qz label span { width: 100%; height: 46px; min-height: 46px !important; padding: 0 10px !important; }
+  #zapis .qz { align-items: stretch; }
+  #zapis .qz fieldset:nth-of-type(3) { align-self: end; }
+  #zapis .qz .qz__preview { align-self: stretch; justify-content: flex-start; margin: 23px 0 16px !important; }
+  #zapis .qz .qz__acts { align-self: end; }
+}
+#zapis .qz label span { box-shadow: inset 0 0 0 1px rgba(110, 103, 136, .16) !important; background: rgba(255, 255, 255, .72) !important; }
+#zapis .qz label:hover span { background: #fff !important; }
+#zapis .qz input:checked + span { background: #fff !important; color: #2C2A3A !important; box-shadow: inset 0 0 0 1.5px #6E6788 !important; }
+#zapis .qz .qz__preview { box-shadow: inset 0 0 0 1px rgba(110, 103, 136, .12) !important; background: rgba(255, 255, 255, .8) !important; }
+#zapis .qz .qz__acts .qz__wa, #zapis .qz .qz__acts .qz__call-btn { box-shadow: inset 0 0 0 1px rgba(110, 103, 136, .16) !important; background: rgba(255, 255, 255, .72) !important; height: 50px; min-height: 50px !important; border-radius: 14px !important; }
+#zapis .qz .qz__acts .qz__tg { box-shadow: inset 0 1px 0 rgba(255, 255, 255, .18) !important; border-radius: 14px !important; height: 52px; min-height: 52px !important; }
+@media (min-width: 900px) {
+  #zapis .qz .qz__preview { grid-row: 1 / 4 !important; margin: 23px 0 126px !important; }
+  #zapis .qz .qz__acts { grid-row: 3 !important; }
+}
+
+/* Стык «Цены» → «Бассейны»: фон перетекает без границы, карта проявляется мягко, без срезанного края */
+#formaty { background: linear-gradient(180deg, #F3F1F7 0%, #F7F6FA 55%, #FFFFFF 100%) !important; padding-bottom: clamp(56px, 6vw, 88px) !important; }
+#gde { background: #FFFFFF; padding-top: clamp(40px, 4vw, 64px) !important; }
+#gde h2 { position: relative; z-index: 2; }
+.citymap { background: transparent !important; margin-top: clamp(20px, 2.4vw, 36px) !important; }
+
+.citymap::after { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: linear-gradient(180deg, #FFFFFF 0, rgba(255, 255, 255, 0) 120px, rgba(255, 255, 255, 0) calc(100% - 120px), #FFFFFF 100%); }
+@media (max-width: 900px) { .citymap::after { background: linear-gradient(180deg, #FFFFFF 0, rgba(255, 255, 255, 0) 64px, rgba(255, 255, 255, 0) calc(100% - 64px), #FFFFFF 100%); } }
+#formaty { padding-bottom: clamp(40px, 4vw, 64px) !important; }
+#gde { padding-top: clamp(24px, 2.4vw, 40px) !important; }
