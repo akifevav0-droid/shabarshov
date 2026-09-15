@@ -1533,3 +1533,20 @@ main h2:not(.cap h2), .end__title { color: #4E4868 !important; font-weight: 500 
   .citymap .mpin.is-open .mpin__img { aspect-ratio: 16 / 10 !important; height: auto !important; }
   .citymap .mpin.is-open .mpin__acts a { background: rgba(255, 255, 255, .92) !important; color: #2C2A3A !important; box-shadow: 0 6px 16px -6px rgba(20, 18, 30, .45), inset 0 0 0 1px rgba(255, 255, 255, .9) !important; }
 }
+
+/* ===== Запись: всё по центру — на странице и в окнах ===== */
+#zapis .end__in { display: flex !important; flex-direction: column; align-items: center; text-align: center !important; }
+#zapis .end__title { order: 1; align-self: center !important; margin: 0 auto 14px !important; max-width: 14em !important; text-align: center !important; }
+#zapis .end__note { order: 2; margin: 0 auto 36px !important; max-width: 30em; text-align: center !important; }
+#zapis .qz { order: 3; width: 100%; max-width: 580px !important; margin: 0 auto !important; }
+#zapis .foot { order: 4; }
+.qz fieldset { justify-content: center; }
+.qz legend { text-align: center; }
+.qz .qz__preview { text-align: center; }
+#sheet .sheet__box:has(.qz--sheet) { text-align: center !important; }
+#sheet .sheet__title, #sheet .sheet__sub { text-align: center !important; }
+#sheet .sheet__sub { margin-left: auto !important; margin-right: auto !important; max-width: 24em !important; }
+#prices .sheet__title, #prices .pr__note { text-align: center; }
+#prices .pq__h { text-align: center; }
+@media (max-width: 734px) { #zapis .end__note { margin-bottom: 28px !important; } #sheet .sheet__sub { margin: 4px auto 18px !important; } }
+#zapis.hero--end { background: radial-gradient(34% 30% at 32% 58%, rgba(160, 138, 214, .26) 0%, rgba(160, 138, 214, 0) 70%), radial-gradient(30% 28% at 70% 66%, rgba(122, 170, 230, .18) 0%, transparent 70%), radial-gradient(40% 22% at 50% 22%, rgba(190, 176, 230, .16) 0%, transparent 70%), linear-gradient(180deg, #FFFFFF 0%, #F4F2F8 100%) !important; }
