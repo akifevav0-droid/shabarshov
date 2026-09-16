@@ -1645,3 +1645,61 @@ main h2:not(.cap h2), .end__title { color: #4E4868 !important; font-weight: 500 
 }
 /* Одинаковая скорость наведения и у карточек цен */
 @media (hover: hover) and (min-width: 901px) { .list li { transition: background .7s var(--soft), transform .7s var(--soft), box-shadow .7s var(--soft) !important; } }
+
+/* ===== Единая система: кнопки, стрелки, блики (перенос из макета) ===== */
+:root { --acc: #756F94; --acc-h: #6B6589; --acc-p: #615B7F; --line-s: rgba(110, 103, 136, .16); }
+.btn:not(.btn--outline), .qz .qz__acts .qz__tg, .pq__cta, .pr__best-btn { background: var(--acc) !important; color: #fff !important; border: 0 !important; box-shadow: 0 12px 28px -16px rgba(76, 68, 110, .4) !important; }
+.btn:not(.btn--outline):hover, .qz .qz__acts .qz__tg:hover { background: var(--acc-h) !important; }
+.btn:not(.btn--outline):active, .qz .qz__acts .qz__tg:active { background: var(--acc-p) !important; }
+.btn--outline, .qz .qz__acts .qz__wa, .qz .qz__acts .qz__call-btn { background: rgba(255, 255, 255, .72) !important; color: #2C2A3A !important; box-shadow: inset 0 0 0 1px var(--line-s) !important; border: 0 !important; }
+.btn--outline:hover, .qz .qz__acts .qz__wa:hover, .qz .qz__acts .qz__call-btn:hover { background: #fff !important; }
+/* выбранный вариант — свечение внутрь, размер не меняется */
+.qz label span { box-shadow: inset 0 0 0 1px var(--line-s) !important; background: rgba(255, 255, 255, .72) !important; }
+.qz input:checked + span { background: #fff !important; color: #332F44 !important; box-shadow: inset 0 0 0 1px rgba(110, 103, 136, .2), inset 0 0 0 5px rgba(110, 103, 136, .07), inset 0 0 16px rgba(110, 103, 136, .2) !important; }
+/* стрелки — рисованные, один размер */
+.hs__arr, .rv-nav__b { width: 44px !important; height: 44px !important; font-size: 0 !important; position: relative; }
+.hs__arr::after, .rv-nav__b::after { content: ""; position: absolute; inset: 0; background: center/18px no-repeat; }
+.rv-nav__b[data-dir="-1"]::after { background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%236E6788" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>'); }
+.rv-nav__b[data-dir="1"]::after { background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%236E6788" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>'); }
+.hs__arr[data-d="-1"]::after { background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>'); }
+.hs__arr[data-d="1"]::after { background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>'); }
+.rv-nav__b { background: rgba(255, 255, 255, .72) !important; box-shadow: inset 0 0 0 1px var(--line-s) !important; }
+.rv-nav__b:hover { background: #fff !important; }
+.hs__arr { background: rgba(255, 255, 255, .16) !important; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .3) !important; }
+.hs__arr:hover { background: rgba(255, 255, 255, .3) !important; }
+/* карточки: один радиус и одна тень */
+.list li, .review, .citymap, .sheet__box { border-radius: 24px !important; }
+.list li, .review { box-shadow: 0 1px 2px rgba(40, 38, 55, .04), 0 8px 20px -12px rgba(76, 68, 110, .18) !important; }
+.sheet__box { box-shadow: 0 40px 80px -40px rgba(76, 68, 110, .35), 0 0 0 1px rgba(40, 38, 55, .05) !important; }
+.list li b, .list__price { font-weight: 500 !important; color: #4E4868 !important; }
+.list__price { font-size: 26px !important; }
+.list li .arrow { color: var(--acc) !important; font-size: 15px !important; }
+/* заголовки одного веса */
+main h2, main h3, .end__title, #faq .faq-i h3, .sheet__title { font-weight: 500 !important; color: #4E4868 !important; }
+.trener-top .cap h2, .trener-top .cap .cap__h, .club h2 { color: #fff !important; }
+.trener-top .cap h2, .trener-top .cap .cap__h { font-weight: 600 !important; }
+/* мягкие блики на фонах разделов */
+#formaty { background: radial-gradient(38% 42% at 14% 12%, rgba(160, 138, 214, .16), transparent 70%), radial-gradient(34% 40% at 88% 78%, rgba(122, 170, 230, .14), transparent 70%), linear-gradient(180deg, #F3F1F7 0%, #F7F6FA 55%, #FFFFFF 100%) !important; }
+#otzyvy { background: radial-gradient(36% 40% at 16% 70%, rgba(122, 170, 230, .14), transparent 70%); }
+#faq { background: radial-gradient(34% 36% at 84% 30%, rgba(160, 138, 214, .12), transparent 70%); }
+
+/* Телефон: последний экран целиком помещается — кнопки видны без прокрутки */
+@media (max-width: 734px) {
+  #zapis { padding-top: 40px !important; padding-bottom: 0 !important; }
+  #zapis .end__title { font-size: 26px !important; line-height: 1.15 !important; margin-bottom: 8px !important; }
+  #zapis .end__note { font-size: 14px !important; margin-bottom: 18px !important; max-width: 24em; }
+  #zapis .qz fieldset { margin-bottom: 12px !important; gap: 6px !important; }
+  #zapis .qz legend { margin-bottom: 6px !important; font-size: 11px !important; }
+  #zapis .qz label span { height: 36px; min-height: 36px !important; font-size: 13.5px !important; padding: 0 11px !important; }
+  #zapis .qz .qz__preview { margin: 2px 0 10px !important; padding: 12px 14px !important; font-size: 13.5px !important; }
+  #zapis .qz .qz__acts .qz__tg { height: 48px; min-height: 48px !important; font-size: 15px !important; }
+  #zapis .qz .qz__acts .qz__wa, #zapis .qz .qz__acts .qz__call-btn { height: 44px; min-height: 44px !important; }
+  /* на последнем экране кнопка «Связаться» в шапке не нужна: форма уже перед глазами */
+  body.at-end .nav__cta { opacity: 0 !important; pointer-events: none !important; transform: translateY(-6px); transition: opacity .5s var(--soft), transform .5s var(--soft) !important; }
+}
+/* Четыре бассейна — ровно два на два */
+@media (min-width: 900px) { #zapis .qz fieldset:nth-of-type(3) { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; } }
+@media (max-width: 899px) { .qz fieldset:nth-of-type(3) { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)) !important; max-width: 320px; margin-left: auto !important; margin-right: auto !important; } .qz fieldset:nth-of-type(3) legend { grid-column: 1 / -1; } .qz fieldset:nth-of-type(3) label, .qz fieldset:nth-of-type(3) label span { width: 100%; } }
+#sheet .qz--sheet fieldset:nth-of-type(3) { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)) !important; max-width: 340px; margin-left: auto !important; margin-right: auto !important; }
+#sheet .qz--sheet fieldset:nth-of-type(3) legend { grid-column: 1 / -1; }
+#sheet .qz--sheet fieldset:nth-of-type(3) label, #sheet .qz--sheet fieldset:nth-of-type(3) label span { width: 100%; }

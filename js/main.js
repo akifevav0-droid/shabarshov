@@ -317,6 +317,14 @@ window.scrollTo(0, 0);
   if (!hero || !('IntersectionObserver' in window)) return;
   new IntersectionObserver(function (e) { document.body.classList.toggle('past-hero', !e[0].isIntersecting); }, { threshold: 0.15 }).observe(hero);
   if (end) new IntersectionObserver(function (e) { document.body.classList.toggle('at-end', e[0].isIntersecting); }, { threshold: 0.2 }).observe(end);
+  // запасной расчёт по прокрутке: работает и там, где события видимости не приходят
+  function byScroll() {
+    var r = hero.getBoundingClientRect();
+    document.body.classList.toggle('past-hero', r.bottom < window.innerHeight * 0.85);
+    if (end) { var q = end.getBoundingClientRect(); document.body.classList.toggle('at-end', q.top < window.innerHeight * 0.8 && q.bottom > 0); }
+  }
+  window.addEventListener('scroll', byScroll, { passive: true });
+  window.addEventListener('resize', byScroll); byScroll();
 })();
 
 // Фото тренера: медленная смена кадров — кадр тает с лёгким приближением, следующий проявляется
@@ -374,10 +382,11 @@ document.querySelectorAll('.slides').forEach(function (box) {
     var prev = q.querySelector('.qz__preview'), tg = q.querySelector('.qz__tg'), wa = q.querySelector('.qz__wa');
     function val(n) { var c = q.querySelector('input[name="' + pre + n + '"]:checked'); return c ? c.value : ''; }
     function pick(n, v) { var i = q.querySelector('input[name="' + pre + n + '"][value="' + v + '"]'); if (i) i.checked = true; }
+    function clear(n) { q.querySelectorAll('input[name="' + pre + n + '"]').forEach(function (i) { i.checked = false; }); }
     function build() {
       var lvl = val('lvl'), pool = val('pool');
       var msg = 'Здравствуйте, Анатолий! Хочу на бесплатную пробную тренировку. Формат: ' + val('fmt').toLowerCase() + '.' +
-        (lvl ? ' Сейчас ' + lvl + '.' : '') + (pool ? ' Бассейн: ' + (pool === 'подскажите' ? 'подскажите, какой подойдёт' : pool) + '.' : '');
+        (lvl ? ' Сейчас ' + lvl + '.' : '') + (pool ? ' Бассейн: ' + pool + '.' : ' Бассейн подскажите, пожалуйста.');
       if (prev.textContent && prev.textContent !== msg) { prev.classList.remove('is-new'); void prev.offsetWidth; prev.classList.add('is-new'); } // подсветка: сообщение изменилось
       prev.textContent = msg;
       tg.href = 'https://t.me/shabarshov?text=' + encodeURIComponent(msg);
@@ -386,7 +395,7 @@ document.querySelectorAll('.slides').forEach(function (box) {
     q.addEventListener('change', function (e) {
       var n = e.target.name.slice(pre.length);
       if (n === 'pool' && e.target.value === 'Лужники') pick('fmt', 'Персонально'); // в Лужниках только персональные
-      if (n === 'fmt' && e.target.value !== 'Персонально' && val('pool') === 'Лужники') pick('pool', 'подскажите');
+      if (n === 'fmt' && e.target.value !== 'Персонально' && val('pool') === 'Лужники') clear('pool'); // Лужники только персонально
       build();
     });
     q.preset = function (msg) { // кнопка записи подсказывает формат
