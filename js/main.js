@@ -385,8 +385,8 @@ document.querySelectorAll('.slides').forEach(function (box) {
     function clear(n) { q.querySelectorAll('input[name="' + pre + n + '"]').forEach(function (i) { i.checked = false; }); }
     function build() {
       var lvl = val('lvl'), pool = val('pool');
-      var msg = 'Здравствуйте, Анатолий! Хочу на бесплатную пробную тренировку. Формат: ' + val('fmt').toLowerCase() + '.' +
-        (lvl ? ' Сейчас ' + lvl + '.' : '') + (pool ? ' Бассейн: ' + pool + '.' : ' Бассейн подскажите, пожалуйста.');
+      var msg = 'Здравствуйте, Анатолий! Хочу записаться на бесплатную пробную тренировку. Формат: ' + ({'Персонально': 'персональная тренировка', 'Группа': 'группа', 'Открытая вода': 'открытая вода'}[val('fmt')] || val('fmt').toLowerCase()) + '.' +
+        (lvl ? ' Сейчас ' + lvl + '.' : '') + (val('fmt') === 'Открытая вода' ? '' : (pool ? ' Бассейн: ' + pool + '.' : ' Бассейн подскажите, пожалуйста.'));
       if (prev.textContent && prev.textContent !== msg) { prev.classList.remove('is-new'); void prev.offsetWidth; prev.classList.add('is-new'); } // подсветка: сообщение изменилось
       prev.textContent = msg;
       tg.href = 'https://t.me/shabarshov?text=' + encodeURIComponent(msg);

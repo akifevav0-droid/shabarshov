@@ -1707,3 +1707,39 @@ main h2, main h3, .end__title, #faq .faq-i h3, .sheet__title { font-weight: 500 
 #zapis .qz input:checked + span, #sheet .qz input:checked + span, .qz input:checked + span { background: #fff !important; color: #332F44 !important; box-shadow: inset 0 0 0 1px rgba(110, 103, 136, .2), inset 0 0 0 5px rgba(110, 103, 136, .07), inset 0 0 16px rgba(110, 103, 136, .2) !important; }
 #zapis .qz label span, #sheet .qz label span { box-shadow: inset 0 0 0 1px var(--line-s) !important; }
 .qz label span, #zapis .qz label span, #sheet .qz label span, .qz input:checked + span, #zapis .qz input:checked + span, #sheet .qz input:checked + span { font-weight: 500 !important; }
+
+/* «Написать в» у WhatsApp: на узких экранах остаётся просто «WhatsApp», чтобы кнопка не ломалась */
+@media (max-width: 520px) { .wa-v { display: none; } }
+
+/* Окно «Связаться» на телефоне: помещается целиком даже с панелями браузера */
+@media (max-width: 734px) {
+  #sheet .sheet__box:has(.qz--sheet) { padding: 18px 16px 14px !important; max-height: calc(100dvh - 16px) !important; }
+  #sheet .sheet__title { font-size: 19px !important; line-height: 1.2 !important; padding-right: 36px; }
+  #sheet .sheet__sub { margin: 2px auto 10px !important; font-size: 12.5px !important; }
+  #sheet .sheet__x { top: 10px !important; right: 10px !important; width: 32px !important; height: 32px !important; }
+  #sheet .qz--sheet fieldset { margin-bottom: 8px !important; gap: 5px !important; }
+  #sheet .qz--sheet legend { margin-bottom: 4px !important; font-size: 10.5px !important; }
+  #sheet .qz--sheet label span { height: 34px !important; min-height: 34px !important; font-size: 13px !important; padding: 0 9px !important; }
+  #sheet .qz--sheet .qz__preview { margin: 2px 0 8px !important; padding: 9px 12px !important; font-size: 12.5px !important; line-height: 1.35 !important; }
+  #sheet .qz--sheet .qz__preview::before { margin-bottom: 2px; font-size: 10px !important; }
+  #sheet .qz--sheet .qz__acts { gap: 6px !important; }
+  #sheet .qz--sheet .qz__acts .qz__tg { height: 44px !important; min-height: 44px !important; font-size: 14.5px !important; }
+  #sheet .qz--sheet .qz__acts .qz__wa, #sheet .qz--sheet .qz__acts .qz__call-btn { height: 40px !important; min-height: 40px !important; font-size: 13.5px !important; }
+}
+
+/* Первый экран на телефоне: кадры по центру фигуры, подпись на закате читается */
+@media (max-width: 734px) {
+  .trener-top .portret__photo .slide:nth-child(4) { object-position: 44% 50% !important; }
+  .trener-top .portret__photo .slide:nth-child(3) { object-position: 24% 50% !important; transform: scale(1.18) !important; transform-origin: 30% 92% !important; }
+  .trener-top .portret::after { height: 70% !important; background: linear-gradient(180deg, rgba(20, 18, 32, 0) 0%, rgba(20, 18, 32, .45) 34%, rgba(20, 18, 32, .86) 100%) !important; }
+  .trener-top .cap__res li, .trener-top .cap__res li b, .trener-top .cap__res .y { text-shadow: 0 1px 8px rgba(0, 0, 0, .6) !important; }
+  .trener-top .cap__res .y { color: rgba(255, 255, 255, .78) !important; }
+}
+@media (max-width: 734px) {
+  #sheet .sheet__title { font-size: 17.5px !important; white-space: nowrap; }
+  #sheet .qz--sheet fieldset:nth-of-type(1), #sheet .qz--sheet fieldset:nth-of-type(2) { display: grid !important; grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+  #sheet .qz--sheet fieldset:nth-of-type(1) legend, #sheet .qz--sheet fieldset:nth-of-type(2) legend { grid-column: 1 / -1; }
+  #sheet .qz--sheet fieldset label, #sheet .qz--sheet fieldset label span { width: 100%; }
+  #sheet .qz--sheet fieldset:nth-of-type(1) label span, #sheet .qz--sheet fieldset:nth-of-type(2) label span { font-size: 12px !important; padding: 0 4px !important; }
+  #sheet .qz--sheet fieldset:nth-of-type(3) { max-width: none; }
+}
