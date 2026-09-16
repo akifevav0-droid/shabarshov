@@ -1643,3 +1643,5 @@ main h2:not(.cap h2), .end__title { color: #4E4868 !important; font-weight: 500 
   .trener-top .portret { height: min(640px, calc(var(--hero-vh, 100svh) - 72px)) !important; transition: none !important; }
   .trener-top .portret__photo .slide { transform: none !important; }
 }
+/* Одинаковая скорость наведения и у карточек цен */
+@media (hover: hover) and (min-width: 901px) { .list li { transition: background .7s var(--soft), transform .7s var(--soft), box-shadow .7s var(--soft) !important; } }

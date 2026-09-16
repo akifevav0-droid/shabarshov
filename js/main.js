@@ -233,7 +233,7 @@ window.scrollTo(0, 0);
   var raf = null;
   function smoothTo(to) {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { window.scrollTo(0, to); return; }
-    var from = window.scrollY, dist = to - from, dur = Math.min(1400, Math.max(700, Math.abs(dist) * 0.35)), t0 = null;
+    var from = window.scrollY, dist = to - from, dur = Math.abs(dist) < 500 ? 700 : 900, t0 = null; // одинаковая скорость независимо от расстояния
     var html = document.documentElement, prev = html.style.scrollBehavior; html.style.scrollBehavior = 'auto';
     cancelAnimationFrame(raf);
     function ease(t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
@@ -436,19 +436,24 @@ document.querySelectorAll('.slides').forEach(function (box) {
     glide(box.scrollLeft + step * +b.dataset.dir);
   });
   // своя плавная прокрутка ленты: медленный разгон и долгое торможение
-  var raf = null;
+  var raf = null, guard = null;
   function glide(to) {
     to = Math.max(0, Math.min(to, box.scrollWidth - box.clientWidth));
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { box.scrollLeft = to; return; }
     var from = box.scrollLeft, dist = to - from, t0 = null, dur = 900, snap = box.style.scrollSnapType;
-    cancelAnimationFrame(raf); box.style.scrollSnapType = 'none';
+    cancelAnimationFrame(raf); clearTimeout(guard);
+    if (document.hidden) { box.scrollLeft = to; return; } // вкладка спрятана — кадры не идут, двигаем сразу
+    box.style.scrollSnapType = 'none';
+    function done() { box.style.scrollSnapType = snap; clearTimeout(guard); }
     function step(ts) {
       if (t0 === null) t0 = ts;
       var k = Math.min(1, (ts - t0) / dur), e = k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
       box.scrollLeft = from + dist * e;
-      if (k < 1) raf = requestAnimationFrame(step); else box.style.scrollSnapType = snap;
+      if (k < 1) raf = requestAnimationFrame(step); else done();
     }
     raf = requestAnimationFrame(step);
+    // страховка: если кадры встали (ушли в другую вкладку) — доводим ленту и возвращаем привязку
+    guard = setTimeout(function () { cancelAnimationFrame(raf); box.scrollLeft = to; done(); }, dur + 400);
   }
   function upd() { var max = box.scrollWidth - box.clientWidth - 2; nav.children[0].disabled = box.scrollLeft <= 2; nav.children[1].disabled = box.scrollLeft >= max; }
   box.addEventListener('scroll', upd, { passive: true }); window.addEventListener('resize', upd); upd();
