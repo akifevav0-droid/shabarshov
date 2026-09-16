@@ -97,7 +97,11 @@ window.scrollTo(0, 0);
       if (mob.matches) {
         var c = pin.querySelector('.mpin__card');
         var fill = function () {
-          panel.innerHTML = '<div class="cp__info">' + c.querySelector('b').outerHTML + c.querySelector('.mpin__more').outerHTML + '</div><div class="cp__photo">' + c.querySelector('.mpin__img').outerHTML + '</div>';
+          // «Маршрут» — прозрачной кнопкой прямо на фото, в карточке остаются название, адрес и время
+          var more = c.querySelector('.mpin__more').cloneNode(true), route = more.querySelector('.mpin__route'), routeHtml = '';
+          if (route) { routeHtml = '<a class="cp__route" href="' + route.getAttribute('href') + '" target="_blank" rel="noopener">Маршрут ↗</a>'; route.parentNode.removeChild(route); }
+          var acts = more.querySelector('.mpin__acts'); if (acts && !acts.children.length) acts.parentNode.removeChild(acts);
+          panel.innerHTML = '<div class="cp__info">' + c.querySelector('b').outerHTML + more.outerHTML + '</div><div class="cp__photo">' + c.querySelector('.mpin__img').outerHTML + routeHtml + '</div>';
           var low = pin.getBoundingClientRect().top - map.getBoundingClientRect().top > map.clientHeight / 2;
           panel.classList.toggle('is-up', low); // точка внизу — карточка сверху, чтобы не закрывать название
           void panel.offsetWidth; panel.classList.add('is-show');

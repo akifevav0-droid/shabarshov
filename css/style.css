@@ -1743,3 +1743,14 @@ main h2, main h3, .end__title, #faq .faq-i h3, .sheet__title { font-weight: 500 
   #sheet .qz--sheet fieldset:nth-of-type(1) label span, #sheet .qz--sheet fieldset:nth-of-type(2) label span { font-size: 12px !important; padding: 0 4px !important; }
   #sheet .qz--sheet fieldset:nth-of-type(3) { max-width: none; }
 }
+
+/* Телефон, карта: текст карточки по центру, «Маршрут» — прозрачная кнопка на фото */
+@media (max-width: 900px) {
+  .citymap__panel > .cp__info { display: flex !important; flex-direction: column; justify-content: center; text-align: center !important; }
+  .citymap__panel .cp__info b, .citymap__panel .cp__info .mpin__addr, .citymap__panel .cp__info em { text-align: center !important; }
+  .citymap__panel .cp__info .mpin__acts { align-items: center !important; }
+  .citymap__panel .cp__info .mpin__acts a { background: none !important; box-shadow: none !important; height: auto !important; padding: 2px 0 !important; color: #6E6788 !important; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(110, 103, 136, .35); }
+  .citymap__panel .cp__photo { position: relative; }
+  .citymap__panel .cp__route { position: absolute; left: 50%; bottom: 10px; transform: translateX(-50%); z-index: 2; display: inline-flex; align-items: center; height: 30px; padding: 0 13px; border-radius: 999px; white-space: nowrap; font-size: 12.5px; font-weight: 500; color: #fff !important; background: rgba(255, 255, 255, .2); backdrop-filter: blur(10px) saturate(1.3); -webkit-backdrop-filter: blur(10px) saturate(1.3); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .55), 0 6px 16px -8px rgba(20, 18, 32, .5); text-shadow: 0 1px 6px rgba(0, 0, 0, .35); text-decoration: none; }
+  .citymap__panel .cp__photo::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 45%; background: linear-gradient(180deg, rgba(20, 18, 32, 0), rgba(20, 18, 32, .35)); pointer-events: none; }
+}
