@@ -1757,3 +1757,10 @@ main h2, main h3, .end__title, #faq .faq-i h3, .sheet__title { font-weight: 500 
 /* Шестой кадр — под водой */
 @media (max-width: 734px) { .trener-top .portret__photo .slide:nth-child(6) { object-position: 47% 50% !important; } }
 @media (min-width: 735px) { .trener-top .portret__photo .slide:nth-child(6) { object-position: 50% 45% !important; } }
+/* Компьютер: закат и прыжок — фигура по центру высоты */
+@media (min-width: 735px) {
+  .trener-top .portret__photo .slide:nth-child(2) { object-position: 73% 40% !important; }
+  .trener-top .portret__photo .slide:nth-child(3) { object-position: 27% 55% !important; }
+}
+@media (min-width: 735px) { .trener-top .portret__photo .slide:nth-child(3) { object-position: 27% 48% !important; } }
+@media (max-width: 734px) { .trener-top .portret__photo .slide:nth-child(3) { object-position: 30% 50% !important; transform: none !important; } }
