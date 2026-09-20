@@ -236,7 +236,7 @@ window.scrollTo(0, 0);
 (function () {
   var raf = null;
   function smoothTo(to) {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { window.scrollTo(0, to); return; }
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || document.hidden) { window.scrollTo(0, to); return; } // спрятанная вкладка: кадры не идут, прыгаем сразу
     var from = window.scrollY, dist = to - from, dur = Math.abs(dist) < 500 ? 700 : 900, t0 = null; // одинаковая скорость независимо от расстояния
     var html = document.documentElement, prev = html.style.scrollBehavior; html.style.scrollBehavior = 'auto';
     cancelAnimationFrame(raf);
@@ -262,9 +262,20 @@ window.scrollTo(0, 0);
     var nav = document.querySelector('.nav'), navH = nav && getComputedStyle(nav).position === 'fixed' ? nav.offsetHeight : 0;
     var r = target.getBoundingClientRect(), avail = window.innerHeight - navH;
     var gap = Math.max(32, (avail - r.height) / 2);
-    var y = r.top + window.scrollY - navH - gap;
+    var aim = function () {
+      var rr = target.getBoundingClientRect(), av = window.innerHeight - navH;
+      var g = Math.max(32, (av - rr.height) / 2);
+      return Math.max(0, Math.min(rr.top + window.scrollY - navH - g, document.documentElement.scrollHeight - window.innerHeight));
+    };
     e.preventDefault();
-    smoothTo(Math.max(0, y));
+    smoothTo(aim());
+    // доводка: пока страница летела, ниже могли подгрузиться фото и цель сместиться
+    var tries = 0, fix = setInterval(function () {
+      tries++;
+      var d = aim() - window.scrollY;
+      if (tries > 12) { clearInterval(fix); return; }
+      if (Math.abs(d) > 6 && tries > 3) { window.scrollTo({ top: aim(), behavior: document.hidden ? 'auto' : 'smooth' }); clearInterval(fix); }
+    }, 180);
   });
 })();
 
